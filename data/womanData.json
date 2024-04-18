@@ -1,0 +1,636 @@
+[
+  {
+    "id": 50,
+    "name": "Fabrícia Damando",
+    "job": "Cientista da Computação",
+    "tags": [
+      "Cientista da Computação",
+      "Engenheira da Computação",
+      "Professora",
+      "Pesquisadora",
+      "UERGS"
+    ],
+    "imageUrl": "FabriciaDamando",
+    
+    "bio": "Possui doutorado em Informática na Educação pela UFRGS, coordenadora do Projeto #Include<GURIAS> e projeto de Aprendizagem Criativa, especialista em Mídias na Educação.",
+    "birthDate": "01-01-1980",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 51,
+    "name": "Leticia Guimaraes",
+    "job": "Engenheira de Sistemas",
+    "tags": ["Engenheira de Sistemas", "Professora", "Pesquisadora", "UERGS"],
+    "imageUrl": "LeticiaGuimaraes",
+    
+
+    "bio": "Engenheira elétrica com mestrado e doutorado em Engenharia Elétrica - Instrumentação Eletrônica, com experiência em Ciência de Computação e Engenharia de Sistemas.",
+    "birthDate": "01-01-1980",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 52,
+    "name": "Adriane Parraga",
+    "job": "Engenheira Eletricista",
+    "tags": ["Engenheira Eletricista", "Professora", "Pesquisadora", "UERGS"],
+    "imageUrl": "AdrianeParraga",
+    "bio": "Adriane Parraga: Mestre e doutora em Engenharia Elétrica, com experiência em processamento de imagens e doutorado sanduíche na Bélgica.",
+    "birthDate": "01-01-1980",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 53,
+    "name": "Margrit Krug",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora", "UERGS"],
+    "imageUrl": "MargritKrug",
+    "bio": "Mestre e Doutora em Ciências da Computação, com experiência em teste de software e gerenciamento de projetos.",
+    "birthDate": "01-01-1980",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 54,
+    "name": "Débora Matos",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora", "UERGS"],
+    "imageUrl": "DeboraMatos",
+    "bio": "Coordenadora de pós-graduação, com doutorado e mestrado em Ciência da Computação, com colaborações internacionais na Itália e na França.",
+    "birthDate": "01-01-1980",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 55,
+    "name": "Tânia Cabral",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora", "UERGS"],
+    "imageUrl": "TaniaCabral",
+    "bio": "Professora Adjunta na Escola Politécnica na PUC-RS, com mestrado em Educação Matemática e doutorado em Educação, especializada em Docência em STEM.",
+    "birthDate": "01-01-1980",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 1,
+    "name": "Ada Lovelace",
+    "job": "Programadora",
+    "tags": ["Programadora", "Escritora", "Matemática"],
+    "imageUrl": "AdaLoveLace",
+    "bio": "Criadora do primeiro algoritmo processado por máquina, programadora cuja criação foi tão importante que ganhou seu próprio dia.",
+    "birthDate": "10-12-1815",
+    "deathDate": "27-11-1852",
+    "birthPlace": "Londres, Inglaterra"
+  },
+  {
+    "id": 2,
+    "name": "Adriana Neumann",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "AdrianaNeumann",
+    "bio": "Vencedora do Prêmio Loreal Inesco 2016 por seu estudo sobre o comportamento coletivo de partículas em sistemas físicos.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 3,
+    "name": "Ana Chies",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "AnaChies",
+    "bio": "Estuda coleções antigas de estrelas usando dados de grandes telescópios para elucidar questões importantes sobre formação estelar e acumulação de matéria em galáxias.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 4,
+    "name": "Camila Achutti",
+    "job": "Empreendedora",
+    "tags": ["Empreendedora", "Programadora", "Palestrante"],
+    "imageUrl": "CamilaAchutti",
+    "bio": "Condecorada em 2015 como Woman of Vision pela Forbes e listada na categoria 30 under 30 em tecnologia e educação. Administra um blog chamado 'Mulheres na Computação', dedicado a destacar mulheres na área.",
+    "birthDate": "01-01-1990",
+    "deathDate": "",
+    "birthPlace": "São Paulo, Brasil"
+  },
+  {
+    "id": 5,
+    "name": "Alexandra Elbakyan",
+    "job": "Programadora",
+    "tags": ["Programadora", "Empreendedora", "Pesquisadora"],
+    "imageUrl": "AlexandraElbakyan",
+    "bio": "Pirata da internet e criadora do site Sci-Hub, que disponibiliza mais de 62 milhões de artigos gratuitos para pesquisadores.",
+    "birthDate": "06-11-1988",
+    "deathDate": "",
+    "birthPlace": "Almaty, Cazaquistão"
+  },
+  {
+    "id": 6,
+    "name": "Carla Dal Sasso",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "CarlaDalSasso",
+    "bio": "Professora de computação gráfica, atuando tanto na graduação quanto na pós-graduação em visualização interativa de dados. Foi presidente da comissão especial de computação gráfica de 1996 a 2000.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 7,
+    "name": "Barbara Liskov",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "BarbaraLiskov",
+    "bio": "Cientista da computação pioneira em orientação a objetos. Implementou CLU, a primeira linguagem de programação a suportar abstração de dados. Recebeu o Prêmio Turing por contribuições à linguagem de programação e metodologia de software.",
+    "birthDate": "07-11-1939",
+    "deathDate": "",
+    "birthPlace": "Los Angeles, Estados Unidos"
+  },
+  {
+    "id": 8,
+    "name": "Carol Shaw",
+    "job": "Engenheira de Software",
+    "tags": ["Engenheira de Software", "Programadora", "Empreendedora"],
+    "imageUrl": "CarolShaw",
+    "bio": "Primeira mulher a trabalhar na indústria de jogos, contribuindo para o desenvolvimento de clássicos na Atari. Criou um sistema de geração procedural de conteúdo.",
+    "birthDate": "01-01-1955",
+    "deathDate": "",
+    "birthPlace": "Palo Alto, Estados Unidos"
+  },
+  {
+    "id": 9,
+    "name": "Cecília Baranauskas",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "CeciliaBaranauskas",
+    "bio": "Especialista em interação humano-computador, semiótica, design de interface de usuário e sistemas computacionais interativos. Recebeu o Prêmio ACM SIGDOC Rigo Award em 2010.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Campinas, Brasil"
+  },
+  {
+    "id": 10,
+    "name": "Clarisse Sieckenius",
+    "job": "Engenharia Semiótica",
+    "tags": ["Engenharia Semiótica", "Professora", "Pesquisadora"],
+    "imageUrl": "ClarisseSieckenius",
+    "bio": "Professora pioneira de Informática na PUC RJ desde 1988, conhecida por sua contribuição pioneira em interface humano-computador no Brasil e pela criação da Engenharia Semiótica, uma teoria de base semiótica para Interação Humano-Computador (IHC).",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 11,
+    "name": "Cynthia Breazeal",
+    "job": "Cientista",
+    "tags": ["Cientista", "Professora", "Pesquisadora"],
+    "imageUrl": "CynthiaBreazeal",
+    "bio": "Cientista especialista em robótica, reconhecida como pioneira da robótica social e interação humano-robô. Seu livro 'Designing Sociable Robots' é um marco no campo da Robótica Social e Interação Humano-Robô. Recebeu o Prêmio Gilbreth Lecture e o Prêmio TR35 da Technology Review.",
+    "birthDate": "15-11-1967",
+    "deathDate": "",
+    "birthPlace": "Albuquerque, Estados Unidos"
+  },
+  {
+    "id": 12,
+    "name": "Edith Clarke",
+    "job": "Engenheira Elétrica",
+    "tags": ["Engenheira Elétrica", "Professora", "Pesquisadora"],
+    "imageUrl": "EdithClarke",
+    "bio": "Primeira mulher a receber o diploma de engenharia elétrica no MIT. Suas invenções, como a Clarke Calculator, tiveram um grande impacto na engenharia elétrica, especialmente na resolução de problemas de transmissão de energia elétrica.",
+    "birthDate": "10-02-1883",
+    "deathDate": "29-10-1959",
+    "birthPlace": "Howard County, Estados Unidos"
+  },
+  {
+    "id": 13,
+    "name": "Edith Stoney",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "EdithStoney",
+    "bio": "Matemática talentosa, pioneira no uso de raios-x no diagnóstico de gangrena gasosa, salvando muitas vidas. Embora não tenha recebido um diploma de Cambridge devido às restrições da época para mulheres, suas contribuições foram significativas para a ciência.",
+    "birthDate": "06-01-1869",
+    "deathDate": "25-06-1938",
+    "birthPlace": "Londres, Inglaterra"
+  },
+  {
+    "id": 14,
+    "name": "Edith Ranzini",
+    "job": "Engenheira da Computação",
+    "tags": ["Engenheira da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "EdithRanzini",
+    "bio": "Pioneira em Inteligência Artificial, Engenharia de Computação, Redes Neurais e Sistemas Gráficos no Brasil. Contribuiu para o desenvolvimento tecnológico no país, desde a construção do primeiro computador brasileiro até a formação de profissionais na área de informática.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Campinas, Brasil"
+  },
+  {
+    "id": 15,
+    "name": "Emily Roebling",
+    "job": "Engenheira",
+    "tags": ["Engenheira", "Professora", "Pesquisadora"],
+    "imageUrl": "EmilyRoebling",
+    "bio": "Engenheira chefe na construção da ponte do Brooklyn, primeira mulher a liderar nesse papel. Além de suas realizações profissionais, abriu caminho para outras mulheres na luta por igualdade.",
+    "birthDate": "23-09-1843",
+    "deathDate": "28-02-1903",
+    "birthPlace": "Cold Spring, Estados Unidos"
+  },
+  {
+    "id": 16,
+    "name": "Émilie du Châtelet",
+    "job": "Cientista",
+    "tags": ["Cientista", "Professora", "Pesquisadora"],
+    "imageUrl": "EmilieDuChatelet",
+    "bio": "Autodidata em matemática e física, contribuiu significativamente para a compreensão da conservação de energia. Suas experiências sugeriram que a energia é proporcional ao mv^2, desafiando as ideias anteriores de Newton.",
+    "birthDate": "17-12-1706",
+    "deathDate": "10-09-1749",
+    "birthPlace": "Paris, França"
+  },
+  {
+    "id": 17,
+    "name": "Enedina Marques",
+    "job": "Engenheira",
+    "tags": ["Engenheira", "Professora", "Pesquisadora"],
+    "imageUrl": "EnedinaMarques",
+    "bio": "Primeira mulher a se formar em engenharia no estado do Paraná e primeira engenheira negra do Brasil, formada em Engenharia Civil pela Universidade Federal do Paraná.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 18,
+    "name": "Emmy Noether",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "EmmyNoether",
+    "bio": "Matemática alemã conhecida por suas contribuições fundamentais para a física teórica e álgebra abstrata. Reconhecida por Albert Einstein como a mulher mais importante na história da matemática.",
+    "birthDate": "23-03-1882",
+    "deathDate": "14-04-1935",
+    "birthPlace": "Erlangen, Alemanha"
+  },
+  {
+    "id": 19,
+    "name": "Fernanda Gusmão",
+    "job": "Engenheira Eletricista",
+    "tags": ["Engenheira Eletricista", "Professora", "Pesquisadora"],
+    "imageUrl": "FernandaGusmao",
+    "bio": "Coordenadora do Programa de Pós-Graduação em Microeletrônica, com experiência em hardware e foco em analisar os efeitos da SAA em Circuitos Integrados fabricados em tecnologia nanométrica para o projeto NanoSatc-BR2.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 20,
+    "name": "Ethel Wihelm",
+    "job": "Ciências da Vida",
+    "tags": ["Ciências da Vida", "Professora", "Pesquisadora"],
+    "imageUrl": "EthelWihelm",
+    "bio": "Bioquímica dedicada a estudar os efeitos adversos da quimioterapia em idosos, visando promover qualidade de vida para pacientes em tratamento de câncer.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 21,
+    "name": "Frances Allen",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "FrancesAllen",
+    "bio": "Cientista da computação pioneira em otimização de compiladores, liderando projetos como o PTRAN para execução paralela automática de programas FORTRAN.",
+    "birthDate": "04-08-1932",
+    "deathDate": "",
+    "birthPlace": "Peru, Estados Unidos"
+  },
+  {
+    "id": 22,
+    "name": "Gladys West",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "GladysWest",
+    "bio": "Trabalhou no desenvolvimento do GPS ao programar um modelo preciso da Terra para o Laboratório de Armas Navais dos EUA, lançando as bases para a tecnologia de localização.",
+    "birthDate": "27-10-1930",
+    "deathDate": "",
+    "birthPlace": "Sutherland, Estados Unidos"
+  },
+  {
+    "id": 23,
+    "name": "Hedy Lamarr",
+    "job": "Atriz",
+    "tags": ["Atriz", "Inventora", "Empreendedora"],
+    "imageUrl": "HedyLamarr",
+    "bio": "Atriz de Hollywood conhecida como 'mãe do Wi-Fi', co-inventora do “Sistema de Comunicação Secreto” durante a Segunda Guerra Mundial, além de contribuir com algoritmos para cálculos matemáticos.",
+    "birthDate": "09-11-1914",
+    "deathDate": "19-01-2000",
+    "birthPlace": "Viena, Áustria"
+  },
+  {
+    "id": 24,
+    "name": "Hertha Marks",
+    "job": "Engenheira",
+    "tags": ["Engenheira", "Professora", "Pesquisadora", "Matemática"],
+    "imageUrl": "HerthaMarks",
+    "bio": "Engenheira, matemática e inventora inglesa conhecida por suas contribuições em diversas áreas da ciência, incluindo a construção de um esfigmomanômetro.",
+    "birthDate": "27-09-1875",
+    "deathDate": "06-04-1932",
+    "birthPlace": "Hastings, Estados Unidos"
+  },
+  {
+    "id": 25,
+    "name": "Isabelle Stone",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "IsabelleStone",
+    "bio": "Fundadora da American Physical Society e primeira mulher a obter um doutorado em física nos Estados Unidos, destacando-se por sua tese sobre a resistência elétrica de filmes finos.",
+    "birthDate": "02-12-1901",
+    "deathDate": "06-04-1974",
+    "birthPlace": "Brooklyn, Estados Unidos"
+  },
+  {
+    "id": 26,
+    "name": "Juliana Rotich",
+    "job": "Tecnologia da Informação",
+    "tags": ["Tecnologia da Informação", "Empreendedora", "Pesquisadora"],
+    "imageUrl": "JulianaRotich",
+    "bio": "Cientista da computação especializada em desenvolvimento de software livre e de código aberto, contribuindo para o avanço tecnológico e sendo reconhecida como uma das “100 melhores mulheres do mundo”.",
+    "birthDate": "11-08-1977",
+    "deathDate": "",
+    "birthPlace": "Nairóbi, Quênia"
+  },
+  {
+    "id": 27,
+    "name": "Karen Uhlenbeck",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "KarenUhlenbeck",
+    "bio": " Primeira mulher a receber uma honraria importante na Matemática, suas teorias revolucionaram o entendimento das superfícies mínimas e contribuíram para a teoria quântica de campos.",
+    "birthDate": "24-08-1942",
+    "deathDate": "",
+    "birthPlace": "Cleveland, Estados Unidos"
+  },
+  {
+    "id": 28,
+    "name": "Katie Bouman",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "KatieBouman",
+    "bio": "Professora de Ciência da Computação no Instituto de Tecnologia da Califórnia. Participou do projeto que possibilitou a primeira foto de um buraco negro, desenvolvendo um algoritmo fundamental para essa conquista.",
+    "birthDate": "17-05-1989",
+    "deathDate": "",
+    "birthPlace": "West Lafayette, Estados Unidos"
+  },
+  {
+    "id": 29,
+    "name": "Kirstine Bjerrum",
+    "job": "Física",
+    "tags": ["Física", "Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "KirstineBjerrum",
+    "bio": "Primeira mulher dinamarquesa a obter um doutorado em ciências naturais e pioneira feminina em física. Fundou o Fysisk Tidsskrift e recebeu a medalha de ouro da Academia Dinamarquesa de Ciências.",
+    "birthDate": "01-01-1893",
+    "deathDate": "13-03-1976",
+    "birthPlace": "Copenhague, Dinamarca"
+  },
+  {
+    "id": 30,
+    "name": "Liane Tarouco",
+    "job": "Cientista da Computação",
+    "tags": [
+      "Cientista da Computação",
+      "Engenheira da Computação",
+      "Professora",
+      "Pesquisadora"
+    ],
+    "imageUrl": "LianeTarouco",
+    "bio": "Referência nacional em redes de computadores, considerada a mãe das redes no Brasil. Publicou o primeiro livro sobre o tema no país em 1977 e é Mestre em Ciências da Computação e Doutora em Engenharia Elétrica.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 31,
+    "name": "Lise Meitner",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "LiseMeitner",
+    "bio": "Física austríaca responsável pela descoberta da fissão nuclear, um processo crucial na geração de energia nuclear e armas atômicas.",
+    "birthDate": "07-11-1878",
+    "deathDate": "27-10-1968",
+    "birthPlace": "Viena, Áustria"
+  },
+  {
+    "id": 32,
+    "name": "Ma Chung-pei",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "MaChungPei",
+    "bio": "Pesquisadora em física, liderou a equipe que descobriu os maiores buracos negros conhecidos em 2011. Seus interesses incluem a estrutura em larga escala do universo, matéria escura e fundo cósmico de microondas.",
+    "birthDate": "01-01-1934",
+    "deathDate": "",
+    "birthPlace": "Taiwan"
+  },
+  {
+    "id": 33,
+    "name": "Marcelle Soares",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "MarcelleSoares",
+    "bio": "Líder do Dark Energy Survey (DES) e única mulher negra da equipe. Estuda a natureza da expansão acelerada do universo e coordenou uma equipe no Fermilab que ajudou a detectar a fusão de estrelas de nêutrons pela primeira vez.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 34,
+    "name": "Margaret Hamilton",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "MargaretHamilton",
+    "bio": "Engenheira de software renomada, desenvolveu o programa de voo usado no projeto Apollo 11. Criou o termo 'engenharia de software' e foi pioneira em conceitos como teste de sistema e computação paralela.",
+    "birthDate": "17-08-1936",
+    "deathDate": "",
+    "birthPlace": "Paoli, Estados Unidos"
+  },
+  {
+    "id": 35,
+    "name": "Márcia Barbosa",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "MarciaBarbosa",
+    "bio": "Especialista em mecânica estatística, agraciada com o Prêmio L’Oréal-UNESCO para Mulheres em Ciência em 2013. É uma grande incentivadora da participação feminina nas áreas de exatas.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 36,
+    "name": "Maria Klawe",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "MariaKlawe",
+    "bio": "Primeira mulher presidente de uma faculdade privada de ciências e engenharia. Ativa na promoção da representação feminina em STEM e defensora da igualdade salarial para mulheres.",
+    "birthDate": "05-07-1951",
+    "deathDate": "",
+    "birthPlace": "Toronto, Canadá"
+  },
+  {
+    "id": 37,
+    "name": "Mária Telkes",
+    "job": "Biofísica",
+    "tags": ["Biofísica", "Professora", "Cientista", "Pesquisadora"],
+    "imageUrl": "MariaTelkes",
+    "bio": "Biofísica húngara pioneira em energia solar, inventora do gerador e refrigerador termoelétricos.",
+    "birthDate": "12-12-1900",
+    "deathDate": "02-12-1995",
+    "birthPlace": "Budapeste, Hungria"
+  },
+  {
+    "id": 38,
+    "name": "Mary Kenneth",
+    "job": "Cientista da Computação",
+    "tags": [
+      "Cientista da Computação",
+      "Professora",
+      "Pesquisadora",
+      "Matemática"
+    ],
+    "imageUrl": "MaryKenneth",
+    "bio": "Primeira mulher a receber um doutorado em ciência da computação, contribuiu para o desenvolvimento da linguagem de programação BASIC e previu o surgimento de inteligências artificiais.",
+    "birthDate": "01-01-1906",
+    "deathDate": "01-01-1978",
+    "birthPlace": "Estados Unidos"
+  },
+  {
+    "id": 39,
+    "name": "Marietta Blau",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "MariettaBlau",
+    "bio": "Reconhecida pioneira em emulsões nucleares, inventou a emulsão nuclear e foi a primeira a usar emulsões nucleares para detectar nêutrons.",
+    "birthDate": "29-04-1894",
+    "deathDate": "27-01-1970",
+    "birthPlace": "Viena, Áustria"
+  },
+  {
+    "id": 40,
+    "name": "Maryam Mirzakhani",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "MaryamMirzakhani",
+    "bio": "Matemática iraniana, primeira mulher a receber a Medalha Fields, maior prêmio da Matemática.",
+    "birthDate": "03-05-1977",
+    "deathDate": "14-07-2017",
+    "birthPlace": "Teerã, Irã"
+  },
+  {
+    "id": 41,
+    "name": "Philippa Fawcett",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "PhilippaFawcett",
+    "bio": "Matemática e educadora, estimulou discussões sobre os direitos das mulheres ao alcançar destaque acadêmico.",
+    "birthDate": "04-04-1868",
+    "deathDate": "10-06-1948",
+    "birthPlace": "Brighton, Inglaterra"
+  },
+  {
+    "id": 42,
+    "name": "Radia Perlman",
+    "job": "Cientista da Computação",
+    "tags": [
+      "Cientista da Computação",
+      "Engenheira da Computação",
+      "Professora",
+      "Pesquisadora"
+    ],
+    "imageUrl": "RadiaPerlman",
+    "bio": "Cientista da computação conhecida como a 'mãe da Internet', inventou o Protocolo Spanning Tree (STP) e contribuiu significativamente para a robustez e escalabilidade da Internet.",
+    "birthDate": "18-12-1951",
+    "deathDate": "",
+    "birthPlace": "Portsmouth, Estados Unidos"
+  },
+  {
+    "id": 43,
+    "name": "Rosa Maria Vicari",
+    "job": "Inteligência Artificial",
+    "tags": [
+      "Inteligência Artificial",
+      "Professora",
+      "Cientista",
+      "Pesquisadora"
+    ],
+    "imageUrl": "RosaMariaVicari",
+    "bio": "Professora de Ciência da Computação com foco em Inteligência Artificial aplicada à Educação, atuando com Sistemas Tutores Inteligentes e Sistemas Multiagentes.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 44,
+    "name": "Raquel Giulian",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "RaquelGiulian",
+    "bio": "Física premiada na área de formação de poros em antimonetos irradiados por feixes de íons e sua aplicação na detecção de gases.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 45,
+    "name": "Sonja Ashauer",
+    "job": "Física",
+    "tags": ["Física", "Professora", "Pesquisadora"],
+    "imageUrl": "SonjaAshauer",
+    "bio": "Primeira mulher brasileira a concluir o doutorado em física, destacando-se como física teórica e aluna da Universidade de Cambridge.",
+    "birthDate": "01-01-1902",
+    "deathDate": "01-01-1990",
+    "birthPlace": "Alemanha"
+  },
+  {
+    "id": 46,
+    "name": "Sophie Germain",
+    "job": "Matemática",
+    "tags": ["Matemática", "Professora", "Pesquisadora"],
+    "imageUrl": "SophieGermain",
+    "bio": "Matemática que enfrentou o preconceito de gênero em sua época, contribuiu significativamente para a teoria dos números e teoria da elasticidade, sendo reconhecida pela Académie des Sciences por sua tese pioneira na teoria da elasticidade.",
+    "birthDate": "01-04-1776",
+    "deathDate": "27-06-1831",
+    "birthPlace": "Paris, França"
+  },
+  {
+    "id": 47,
+    "name": "Thaisa Bergmann",
+    "job": "Astrônoma",
+    "tags": ["Astrônoma", "Professora", "Pesquisadora", "Cientista"],
+    "imageUrl": "ThaisaBergmann",
+    "bio": "Reconhecida cientista premiada pelo entendimento da formação de buracos negros maciços no centro das galáxias. Também foi professora de física e astronomia em Porto Alegre.",
+    "birthDate": "01-01-1960",
+    "deathDate": "",
+    "birthPlace": "Porto Alegre, Brasil"
+  },
+  {
+    "id": 48,
+    "name": "Terri Attwood",
+    "job": "Bioinformática",
+    "tags": ["Bioinformática", "Professora", "Pesquisadora"],
+    "imageUrl": "TerriAttwood",
+    "bio": "Professora de Bioinformática com contribuições notáveis no desenvolvimento de um método de impressão digital de proteínas e na criação do banco de dados PRINTS.",
+    "birthDate": "01-01-1953",
+    "deathDate": "",
+    "birthPlace": "Inglaterra"
+  },
+  {
+    "id": 49,
+    "name": "Veronica Dahl",
+    "job": "Cientista da Computação",
+    "tags": ["Cientista da Computação", "Professora", "Pesquisadora"],
+    "imageUrl": "VeronicaDahl",
+    "bio": "Reconhecida como uma das primeiras doutoras em Inteligência Artificial pela Université d'Aix-Marseille. Criou o primeiro programa para utilizar programação lógica na determinação de consultas em linguagem humana, sendo uma das fundadoras do campo da programação lógica.",
+    "birthDate": "01-01-1948",
+    "deathDate": "",
+    "birthPlace": "Canadá"
+  }
+]

@@ -1,0 +1,20 @@
+export const tagColors = {
+  Programadora: "yellow",
+  "Cientista da Computação": "red",
+  Matemática: "green",
+  Física: "blue",
+  Química: "purple",
+  Engenheira: "pink",
+  Atriz: "orange",
+  Ativista: "cyan",
+  Empreendedora: "lime",
+  Escritora: "gold",
+  Médica: "volcano",
+  Bióloga: "geekblue",
+  Arquiteta: "magenta",
+  Jornalista: "cyan",
+  Psicóloga: "purple",
+  Economista: "gold",
+  UERGS: "red",
+  // ...
+};

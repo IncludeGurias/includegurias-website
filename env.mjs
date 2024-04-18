@@ -8,7 +8,9 @@ export const env = createEnv({
       .optional()
       .transform((value) => value === "true"),
   },
-  client: {},
+  client: {
+    SITE_URL: z.string().url().default("https://includegurias.com"),
+  },
   runtimeEnv: {
     ANALYZE: process.env.ANALYZE,
   },
