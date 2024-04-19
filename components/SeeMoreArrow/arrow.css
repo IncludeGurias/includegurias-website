@@ -13,10 +13,6 @@
   --arrow-head-thickness: var(--shaft-thickness);
 }
 
-.arrowLI {
-  margin: 0 0 24px;
-}
-
 .the-arrow {
   font-family: "Roboto", sans-serif;
   font-size: 16px;

@@ -1,12 +1,14 @@
 import { Box, Button, Heading, Link, Text } from "@chakra-ui/react"
 import { Metadata } from "next"
+import baseMetadata from "utils/metadata"
 
 export const metadata: Metadata = {
+  ...baseMetadata,
   title: "404 Garota não encontrada - Include Gurias",
   description: "Ops! Parece que essa mulher não foi encontrada.",
 }
 
-const GirlNotFound = ({ girlName, language }: { girlName: string; language: string }) => {
+const GirlNotFound = ({ girlName }: { girlName: string }) => {
   return (
     <Box
       textAlign="center"

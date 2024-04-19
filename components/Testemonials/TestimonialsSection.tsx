@@ -1,3 +1,4 @@
+"use client"
 import { HeadingText, Reveal, TestimonialsCarousel } from "components"
 
 const TestimonialsSection = () => {

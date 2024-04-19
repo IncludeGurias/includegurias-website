@@ -1,4 +1,4 @@
-import * as images from "@/public/images/cards";
+import * as images from "public/cards"
 
 const WomanImageDict: any = {
   adaLovelace: images.AdaLoveLace,
@@ -56,6 +56,6 @@ const WomanImageDict: any = {
   terriAttwood: images.TerriAttwood,
   thaisaBergmann: images.ThaisaBergmann,
   veronicaDahl: images.VeronicaDahl,
-};
+}
 
-export default WomanImageDict;
+export default WomanImageDict

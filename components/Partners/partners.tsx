@@ -1,11 +1,11 @@
 import {
-  SBC,
-  MeninasDigitais,
-  STEMConnectionHub,
   BritishCouncil,
-  UERGS,
   CarlosChagas,
   KingsCollageLondon,
+  MeninasDigitais,
+  SBC,
+  STEMConnectionHub,
+  UERGS,
 } from "public"
 import "./partners.css"
 import { StaticImageData } from "next/image"

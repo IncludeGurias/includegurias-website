@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { env } from "env.mjs"
 
 export const keywords = [
   "IncludeGurias",
@@ -72,12 +73,12 @@ export const keywords = [
 export const openGraph = {
   title: "Include Gurias",
   description: "Aqui você encontra tudo sobre o projeto Include Gurias",
-  url: `${process.env.SITE_URL}/`,
+  url: `${env.SITE_URL}/`,
   type: "website",
   siteName: "Include Gurias",
   images: [
     {
-      url: `${process.env.SITE_URL}/images/og/main.png`,
+      url: `${env.SITE_URL}/images/og/main.png`,
       width: 800,
       height: 600,
       alt: "Include Gurias",

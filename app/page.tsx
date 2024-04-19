@@ -1,4 +1,9 @@
 import { Box, Container, Flex, Grid, GridItem, Heading, Icon, Stack, Text } from "@chakra-ui/react"
+import { Metadata } from "next"
+import Link from "next/link"
+import { createElement } from "react"
+import { IoIosPeople, IoLogoYoutube } from "react-icons/io"
+import { MdLocalPhone } from "react-icons/md"
 import {
   AnimatedWavyText,
   HeadingText,
@@ -16,12 +21,7 @@ import {
   VideoFrame,
   WhatWeDoSection,
 } from "components"
-import { Metadata } from "next"
-import Link from "next/link"
-import { AdaLoveCard, FacebookPost, IncludeAvatar, IncludeAvatarFace, instagramPost } from "public"
-import { createElement } from "react"
-import { IoIosPeople, IoLogoYoutube } from "react-icons/io"
-import { MdLocalPhone } from "react-icons/md"
+import { AdaLoveCard, FacebookPost, IncludeAvatar, IncludeAvatarFace, InstagramPost } from "public"
 import { contactLinks } from "utils/includeLinks"
 import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
@@ -146,7 +146,6 @@ export default function Home() {
               size={45}
               label={socialMedia.name}
               href={socialMedia.link}
-              variant="ghost"
               animation="rotateHover"
               delay={index * 0.1}
             >
@@ -198,7 +197,7 @@ export default function Home() {
               name="include.gurias"
               subname="UERGS Guaíba"
               socialMedia="Instagram"
-              postImage={instagramPost}
+              postImage={InstagramPost}
               delay={0.6}
             />
           </GridItem>

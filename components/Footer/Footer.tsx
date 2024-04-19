@@ -45,16 +45,14 @@ const Footer = () => {
             Siga o #Include
           </Text>
           <Stack direction={"row"} spacing={6}>
-            {SocialMediaData.map((socialMedia, index) => (
+            {SocialMediaData.map((socialMedia) => (
               <SocialButton
                 key={socialMedia.name}
                 size={50}
                 label={socialMedia.name}
                 href={socialMedia.link}
-                variant="ghost"
                 animation="rotateHover"
                 circle={true}
-                bg="#f7202080"
               >
                 {createElement(socialMedia.icon, {
                   size: 20,

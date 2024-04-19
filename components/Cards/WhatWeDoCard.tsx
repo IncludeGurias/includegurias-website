@@ -1,8 +1,8 @@
 import { Divider } from "@chakra-ui/react"
+import { Box, Text } from "@chakra-ui/react"
+import Image from "next/image"
 import SeeMoreArrow from "components/SeeMoreArrow/SeeMoreArrow"
 import { WhatWeDoCardProps } from "types/WhatWeDoCard"
-import Image from "next/image"
-import { Box, Text } from "@chakra-ui/react"
 
 const WhatWeDoCard = ({ image, title, text, arrowTxt, arrowHref }: WhatWeDoCardProps) => {
   return (

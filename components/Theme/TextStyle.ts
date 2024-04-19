@@ -1,5 +1,4 @@
-import { StyleFunctionProps, mode } from "@chakra-ui/theme-tools"
-import { RxFontFamily } from "react-icons/rx"
+import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools"
 
 export const TextStyle = {
   baseStyle: {},

@@ -1,3 +1,3 @@
 export interface headerMotionProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }

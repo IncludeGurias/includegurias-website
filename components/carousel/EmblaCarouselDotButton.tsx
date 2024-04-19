@@ -1,6 +1,6 @@
 "use client"
-import React, { PropsWithChildren, useCallback, useEffect, useState } from "react"
 import { EmblaCarouselType } from "embla-carousel"
+import React, { PropsWithChildren, useCallback, useEffect, useState } from "react"
 
 type UseDotButtonType = {
   selectedIndex: number

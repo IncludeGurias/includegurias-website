@@ -1,6 +1,6 @@
-import { Box, Heading, Text, Button, Link } from "@chakra-ui/react"
-import { FaHome } from "react-icons/fa"
+import { Box, Button, Heading, Link, Text } from "@chakra-ui/react"
 import { Metadata } from "next"
+import { FaHome } from "react-icons/fa"
 
 export const metadata: Metadata = {
   title: "404 Página não encontrada - Include Gurias",

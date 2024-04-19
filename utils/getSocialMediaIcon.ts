@@ -1,32 +1,24 @@
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa"
 
 const getIcon = (socialMedia: string) => {
   switch (socialMedia.toLocaleLowerCase()) {
     case "instagram":
-      return FaInstagram;
+      return FaInstagram
     case "facebook":
-      return FaFacebook;
+      return FaFacebook
     case "youtube":
-      return FaYoutube;
+      return FaYoutube
     case "twitter":
-      return FaTwitter;
+      return FaTwitter
     case "linkedin":
-      return FaLinkedin;
+      return FaLinkedin
     case "email":
-      return FaEnvelope;
+      return FaEnvelope
     case "github":
-      return FaGithub;
+      return FaGithub
     default:
-      return FaInstagram;
+      return FaInstagram
   }
-};
+}
 
-export default getIcon;
+export default getIcon

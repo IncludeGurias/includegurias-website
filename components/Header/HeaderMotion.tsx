@@ -3,8 +3,8 @@
 import { motion, useAnimation } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { Logo } from "public"
 import { useEffect, useState } from "react"
+import { Logo } from "public"
 import { headerMotionProps } from "types/Header"
 
 export const HeaderMotion = ({ children }: headerMotionProps) => {

@@ -1,6 +1,5 @@
 /* theme.ts */
-import { Text, extendTheme } from "@chakra-ui/react"
-import { text } from "stream/consumers"
+import { extendTheme } from "@chakra-ui/react"
 import TextStyle from "./TextStyle"
 
 export const theme = extendTheme({

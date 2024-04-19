@@ -3,7 +3,7 @@ export interface VideoType {
   title: string
 }
 
-export const videoList: VideoType[] = [
+const videoList: VideoType[] = [
   {
     video: "evX_Bbdk-Gc?si=07SCtBy4xqtqjgM7",
     // video: "https://www.youtube.com/embed/evX_Bbdk-Gc?si=07SCtBy4xqtqjgM7",
@@ -35,3 +35,5 @@ export const videoList: VideoType[] = [
     title: "Relato das alunas da Escola Municipal de Ensino Fundamental Anita Garibaldi e Prof. Paola Pureza",
   },
 ]
+
+export default videoList

@@ -1,8 +1,8 @@
 import "styles/tailwind.css"
 import "styles/global.css"
-import ChakraProvider from "../components/Providers/ChakraProvider"
-import { fonts } from "./fonts"
 import { FloatButton, Footer, Header } from "components"
+import { fonts } from "./fonts"
+import ChakraProvider from "../components/Providers/ChakraProvider"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { breeSerif, raleway, encodeSans } = fonts

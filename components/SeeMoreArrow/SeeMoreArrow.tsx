@@ -1,3 +1,4 @@
+"use client"
 import { Link } from "@chakra-ui/react"
 import { Reveal } from "components"
 import "./arrow.css"

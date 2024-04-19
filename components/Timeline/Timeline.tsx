@@ -1,75 +1,42 @@
-"use client";
-import React from "react";
+"use client"
 import {
   Box,
   chakra,
   Container,
-  Text,
-  HStack,
-  VStack,
   Flex,
-  useColorModeValue,
+  HStack,
+  Text,
   useBreakpointValue,
-} from "@chakra-ui/react";
+  useColorModeValue,
+  VStack,
+} from "@chakra-ui/react"
+import SeeMoreArrow from "components/SeeMoreArrow/SeeMoreArrow"
+import { TIMELINE_DATA } from "data"
+import { ConfettiDark } from "public"
+import { TimelineItemProps } from "types/timeline"
 
-export interface TimelineItemProps {
-  id: number;
-  date: number;
-  image: string;
-  title: string;
-  description: string;
-  href?: string;
-}
-
-function generateRandomDateForYear(year: number) {
-  return new Date(
-    year,
-    Math.floor(Math.random() * 12),
-    Math.floor(Math.random() * 30),
-  ).getTime();
-}
-
-const ABC: TimelineItemProps[] = [
-  {
-    id: 1,
-    date: generateRandomDateForYear(2021),
-    image: "/image1.jpg",
-    title: "Evento 1",
-    description: "Descrição do evento 1",
-    href: "/event1",
-  },
-  {
-    id: 2,
-    date: generateRandomDateForYear(2022),
-    image: "/image2.jpg",
-    title: "Evento 2",
-    description: "Descrição do evento 2",
-  },
-  {
-    id: 3,
-    date: generateRandomDateForYear(2023),
-    image: "/image3.jpg",
-    title: "Evento 3",
-    description: "Descrição do evento 3",
-    href: "/event3",
-  },
-];
-
-const Milestones = () => {
-  const isMobile = useBreakpointValue({ base: true, md: false });
-  const isDesktop = useBreakpointValue({ base: false, md: true });
-  const years = ABC.map((item) => new Date(item.date).getFullYear());
+const Timeline = () => {
+  const isMobile = useBreakpointValue({ base: true, md: false })
+  const isDesktop = useBreakpointValue({ base: false, md: true })
+  // const years = ABC.map((item) => new Date(item.date).getFullYear())
 
   return (
-    <Container maxWidth="7xl" p={{ base: 2, sm: 10 }}>
+    <Container
+      maxWidth="7xl"
+      p={{ base: 2, sm: 10 }}
+      css={{
+        backgroundImage: ConfettiDark,
+        backgroundAttachment: "fixed",
+      }}
+    >
       <chakra.h3 fontSize="4xl" fontWeight="bold" mb={18} textAlign="center">
-        #Include {"<"}gurias{">"} Timeline
+        Linha do Tempo do #Include
       </chakra.h3>
-      {ABC.map((milestone: TimelineItemProps) => (
+      {TIMELINE_DATA.map((milestone: TimelineItemProps, index) => (
         <>
           <Flex key={milestone.id} mb="10px">
             {/* Desktop view(left card) */}
-            {isDesktop && milestone.id % 2 === 0 && (
+            {isDesktop && (index + 1) % 2 === 0 && (
               <>
                 <EmptyCard />
                 <LineWithDot />
@@ -86,7 +53,7 @@ const Milestones = () => {
             )}
 
             {/* Desktop view(right card) */}
-            {isDesktop && milestone.id % 2 !== 0 && (
+            {isDesktop && (index + 1) % 2 !== 0 && (
               <>
                 <Card {...milestone} />
 
@@ -98,38 +65,31 @@ const Milestones = () => {
         </>
       ))}
     </Container>
-  );
-};
+  )
+}
 
-const Card = ({
-  id,
-  date,
-  image,
-  title,
-  description,
-  href,
-}: TimelineItemProps) => {
+const Card = ({ id, date, title, description, href }: TimelineItemProps) => {
   // For even id show card on left side
   // For odd id show card on right side
-  const formattedDate = new Date(date).toLocaleDateString();
+  const formattedDate = new Date(date).toLocaleDateString()
 
-  const isEvenId = id % 2 == 0;
-  let borderWidthValue = isEvenId ? "15px 15px 15px 0" : "15px 0 15px 15px";
-  let leftValue = isEvenId ? "-15px" : "unset";
-  let rightValue = isEvenId ? "unset" : "-15px";
+  const isEvenId = id % 2 === 0
+  let borderWidthValue = isEvenId ? "15px 15px 15px 0" : "15px 0 15px 15px"
+  let leftValue = isEvenId ? "-15px" : "unset"
+  let rightValue = isEvenId ? "unset" : "-15px"
 
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isMobile = useBreakpointValue({ base: true, md: false })
   if (isMobile) {
-    leftValue = "-15px";
-    rightValue = "unset";
-    borderWidthValue = "15px 15px 15px 0";
+    leftValue = "-15px"
+    rightValue = "unset"
+    borderWidthValue = "15px 15px 15px 0"
   }
 
   return (
     <HStack
       flex={1}
       p={{ base: 3, sm: 6 }}
-      bg={useColorModeValue("gray.100", "gray.800")}
+      bg={useColorModeValue("red.200", "gray.800")}
       spacing={5}
       rounded="lg"
       alignItems="center"
@@ -138,7 +98,7 @@ const Card = ({
         content: `""`,
         w: "0",
         h: "0",
-        borderColor: `transparent ${useColorModeValue("#edf2f6", "#1a202c")} transparent`,
+        borderColor: `transparent ${useColorModeValue("#FEB2B2", "#1a202c")} transparent`,
         borderStyle: "solid",
         borderWidth: borderWidthValue,
         position: "absolute",
@@ -148,7 +108,7 @@ const Card = ({
       }}
     >
       <Box>
-        <Text fontSize="lg" color={isEvenId ? "teal.400" : "blue.400"}>
+        <Text fontWeight={"700"} fontSize="lg" color={"white"}>
           {formattedDate}
         </Text>
 
@@ -158,25 +118,21 @@ const Card = ({
           </chakra.h1>
           <Text fontSize="md">{description}</Text>
         </VStack>
+        {href && <SeeMoreArrow text="Saiba mais" href={href} />}
       </Box>
     </HStack>
-  );
-};
+  )
+}
 
 const LineWithDot = () => {
   return (
-    <Flex
-      pos="relative"
-      alignItems="center"
-      mr={{ base: "40px", md: "40px" }}
-      ml={{ base: "0", md: "40px" }}
-    >
+    <Flex pos="relative" alignItems="center" mr={{ base: "40px", md: "40px" }} ml={{ base: "0", md: "40px" }}>
       <chakra.span
         position="absolute"
         left="50%"
         height="calc(100% + 10px)"
         border="1px solid"
-        borderColor={useColorModeValue("gray.200", "gray.700")}
+        borderColor={useColorModeValue("red.100", "red.700")}
         top="0px"
       ></chakra.span>
       <Box pos="relative" p="10px">
@@ -198,17 +154,11 @@ const LineWithDot = () => {
         ></Box>
       </Box>
     </Flex>
-  );
-};
+  )
+}
 
 const EmptyCard = () => {
-  return (
-    <Box
-      flex={{ base: 0, md: 1 }}
-      p={{ base: 0, md: 6 }}
-      bg="transparent"
-    ></Box>
-  );
-};
+  return <Box flex={{ base: 0, md: 1 }} p={{ base: 0, md: 6 }} bg="transparent"></Box>
+}
 
-export default Milestones;
+export default Timeline

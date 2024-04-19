@@ -1,11 +1,11 @@
-import { VideoType } from "data/videoList"
 import { EmblaCarouselType, EmblaOptionsType } from "embla-carousel"
 import Autoplay from "embla-carousel-autoplay"
 import useEmblaCarousel from "embla-carousel-react"
 import { useCallback, useEffect, useState } from "react"
-import { NextButton, PrevButton, usePrevNextButtons } from "../EmblaCarouselArrowButtons"
-import VideoFrameCarousel from "./VideoFrameCarousel"
+import { VideoType } from "data/videoList"
 import S from "./embla.module.css"
+import VideoFrameCarousel from "./VideoFrameCarousel"
+import { NextButton, PrevButton, usePrevNextButtons } from "../EmblaCarouselArrowButtons"
 
 type PropType = {
   slides: VideoType[]
@@ -17,14 +17,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay()])
   const [activeSlide, setActiveSlide] = useState(0)
 
-  // Set active slide on mount
-  useEffect(() => {
-    if (!emblaApi) return
-    emblaApi.slideNodes().forEach((slideNode, index) => {
-      slideNode.classList.toggle(`${S.is__active}`, index === activeSlide)
-    })
-  }, [activeSlide])
-
   // Set active slide on select
   useEffect(() => {
     if (!emblaApi) return
@@ -32,7 +24,11 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     emblaApi.on("select", () => {
       setActiveSlide(emblaApi.selectedScrollSnap())
     })
-  }, [emblaApi])
+
+    emblaApi.slideNodes().forEach((slideNode, index) => {
+      slideNode.classList.toggle(`${S.is__active}`, index === activeSlide)
+    })
+  }, [emblaApi, activeSlide])
 
   const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
     const autoplay = emblaApi?.plugins()?.autoplay

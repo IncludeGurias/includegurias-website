@@ -8,13 +8,9 @@ const MeninasDigitais = () => {
       viewBox="0 0 500.000000 500.000000"
       preserveAspectRatio="xMidYMid meet"
     >
-      <g
-        transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)"
-        fill="#FFFFFF"
-        stroke="none"
-      ></g>
+      <g transform="translate(0.000000,500.000000) scale(0.100000,-0.100000)" fill="#FFFFFF" stroke="none"></g>
     </svg>
-  );
-};
+  )
+}
 
-export default MeninasDigitais;
+export default MeninasDigitais

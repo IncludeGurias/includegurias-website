@@ -14,11 +14,11 @@ import {
   useDisclosure,
 } from "@chakra-ui/react"
 import { Collapse } from "@chakra-ui/transition"
-import IncludeMaterials from "data/materials"
 import { FaChevronDown, FaChevronRight } from "react-icons/fa"
 import { GoChevronDown } from "react-icons/go"
 import { IoClose } from "react-icons/io5"
 import { RxHamburgerMenu } from "react-icons/rx"
+import IncludeMaterials from "data/materials"
 import { HeaderMotion, LogoMotion } from "./HeaderMotion"
 
 export default function WithSubnavigation() {
@@ -103,7 +103,7 @@ const DesktopNav = () => {
   )
 }
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav = ({ label, subLabel }: NavItem) => {
   return (
     <Box role={"group"} display={"block"} p={2} rounded={"md"}>
       <Stack direction={"row"} align={"center"}>
@@ -207,7 +207,7 @@ const NAV_ITEMS: Array<NavItem> = [
         href: "/about-us",
       },
       {
-        label: "Time",
+        label: "Equipe",
         href: "/team",
       },
       {

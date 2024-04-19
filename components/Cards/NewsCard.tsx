@@ -1,6 +1,7 @@
+"use client"
 import { Box, Card, Grid, Text } from "@chakra-ui/react"
-import Link from "next/link"
 import Image from "next/image"
+import Link from "next/link"
 import { NewsItem } from "types/News"
 
 const NewsCard = ({ title, description, image, href, date }: NewsItem) => {
@@ -10,38 +11,28 @@ const NewsCard = ({ title, description, image, href, date }: NewsItem) => {
     <Card
       rounded="lg"
       shadow="base"
-      className="relative w-full transition-shadow duration-300 ease-in-out"
-      _hover={{ shadow: "md" }}
+      className="group relative w-full transition-shadow duration-300 ease-in-out"
+      transition="all 0.3s ease-in-out"
+      _hover={{ shadow: "lg", transform: "translateY(-4px)" }}
     >
-      {/* Grid agora com uma única coluna e a imagem acima do texto */}
       <Grid templateColumns="1fr" gap={0}>
-        {/* Área da imagem agora com largura total */}
-        <Box position="relative" overflow="hidden" w="full" h="200px">
+        <Box position="relative" overflow="hidden" w="full" h="200px" rounded="t-lg">
           {image ? (
             <Image
               src={image}
               alt={title}
               fill
-              className="rounded-t-lg object-cover"
+              className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
               sizes={"(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
             />
           ) : (
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              w="full"
-              h="full"
-              bg="gray.200" // Cor de fundo placeholder
-              className="rounded-t-lg"
-            >
+            <Box display="flex" justifyContent="center" alignItems="center" w="full" h="full" bg="gray.200">
               <Text fontSize="xl" fontWeight="bold">
                 Sem imagem
               </Text>
             </Box>
           )}
         </Box>
-        {/* Área do texto agora ajustada para ocupar a largura total */}
         <Box p={4} w="full">
           <Text id="text" fontSize="lg" fontWeight="bold" mb={2}>
             {title}

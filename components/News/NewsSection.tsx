@@ -1,7 +1,7 @@
 "use client"
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react"
 import { HeadingText, NewsCard, Reveal, SeeMoreArrow } from "components"
-import NewsArray from "data/News"
+import NewsArray from "data/news"
 
 const NewsSection = () => {
   return (

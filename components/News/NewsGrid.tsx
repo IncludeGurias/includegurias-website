@@ -1,7 +1,7 @@
+import { Box } from "@chakra-ui/react"
 import { HeadingText } from "components"
 import NewsCard from "components/Cards/NewsCard"
-import NewsArray from "data/News"
-import { Box } from "@chakra-ui/react"
+import NewsArray from "data/news"
 const NewsGrid = () => {
   return (
     <Box

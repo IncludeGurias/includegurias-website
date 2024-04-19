@@ -7,11 +7,11 @@ export const env = createEnv({
       .enum(["true", "false"])
       .optional()
       .transform((value) => value === "true"),
-  },
-  client: {
     SITE_URL: z.string().url().default("https://includegurias.com"),
   },
+  client: {},
   runtimeEnv: {
     ANALYZE: process.env.ANALYZE,
+    SITE_URL: process.env.SITE_URL,
   },
 })

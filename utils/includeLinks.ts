@@ -13,15 +13,11 @@ export const contactLinks = {
   Youtube: "https://www.youtube.com/@IncludeGurias",
   "Meninas Digitais": "https://meninas.sbc.org.br/portfolio-3/includegurias/",
   creatorSite: "https://www.botschannel.com/",
-};
+}
 
 export const GibisLinks = {
-  MeninasEmpoderadas:
-    "https://www.uergs.edu.br/upload/arquivos/202105/03112424-gibi-meninas-empoderadas-digital-3.pdf",
-  EletroinoVolume1:
-    "https://drive.google.com/file/d/1-qGLCtEPlkFIo9VHAkAz0eowpu_YB4Cd/view?usp=drive_link",
-  EletroinoVolume2:
-    "https://drive.google.com/file/d/1teZCP-c0ABEcq-c1FIQU3GsD5231IORW/view?usp=drive_link",
-  EletroinoVolume3:
-    "https://drive.google.com/file/d/1_D2LL_f5GqMIUPp8Y0kXKu1mPawBKne7/view?usp=drive_link",
-};
+  MeninasEmpoderadas: "https://www.uergs.edu.br/upload/arquivos/202105/03112424-gibi-meninas-empoderadas-digital-3.pdf",
+  EletroinoVolume1: "https://drive.google.com/file/d/1-qGLCtEPlkFIo9VHAkAz0eowpu_YB4Cd/view?usp=drive_link",
+  EletroinoVolume2: "https://drive.google.com/file/d/1teZCP-c0ABEcq-c1FIQU3GsD5231IORW/view?usp=drive_link",
+  EletroinoVolume3: "https://drive.google.com/file/d/1_D2LL_f5GqMIUPp8Y0kXKu1mPawBKne7/view?usp=drive_link",
+}

@@ -1,11 +1,11 @@
 "use client"
 import { Box, Flex, Grid, Text } from "@chakra-ui/react"
 import { HeadingText, Reveal, SeeMoreArrow, WhatWeDoCard } from "components"
-import { Clubs, College, workshops } from "public"
+import { Clubs, College, Workshops } from "public"
 
 const WhatWeDoCards = [
   {
-    image: workshops,
+    image: Workshops,
     title: "Oficinas Inspiradoras",
     text: "esmistificamos a computação, inspirando garotas com oficinas criativas.",
     arrowTxt: "Explore as oficinas",

@@ -1,6 +1,6 @@
 import { TestimonialType } from "types/TestimonialType"
 
-export const testimonials: TestimonialType[] = [
+const testimonials: TestimonialType[] = [
   {
     name: "Professora Euridice",
     sublegend: "Escola Santa Rita de Cassia, Guaíba",
@@ -56,3 +56,5 @@ export const testimonials: TestimonialType[] = [
       "Como mulher na computação, sempre vemos a disparidade de gênero. É bom ver projetos que visam arrumar isso. Estou empolgada em participar do projeto Include Gurias, pois é uma oportunidade única de aprender e crescer junto com outras mulheres interessadas em tecnologia. Estou confiante de que esse projeto abrirá portas e inspirará muitas meninas a seguir carreiras na área de STEM.",
   },
 ]
+
+export default testimonials

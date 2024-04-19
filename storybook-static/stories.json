@@ -1,0 +1,1 @@
+{"v":3,"stories":{"button--default":{"id":"button--default","name":"Default","title":"Button","importPath":"./components/Buttons/Button.stories.tsx","tags":["story"],"kind":"Button","story":"Default","parameters":{"__id":"button--default","docsOnly":false,"fileName":"./components/Buttons/Button.stories.tsx"}}}}

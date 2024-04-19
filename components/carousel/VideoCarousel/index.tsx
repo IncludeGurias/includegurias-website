@@ -1,13 +1,12 @@
 "use client"
-import { videoList } from "data/videoList"
 import { EmblaOptionsType } from "embla-carousel"
+import { MAIN_PAGE_VIDEO_LIST } from "data"
 import EmblaCarousel from "./EmblaCarousel"
 
-const VideosCarousel: React.FC = (props) => {
-  const OPTIONS: EmblaOptionsType = { loop: true, active: true }
-  const SLIDES = videoList
+const VideosCarousel: React.FC = () => {
+  const OPTIONS: EmblaOptionsType = { loop: true }
 
-  return <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+  return <EmblaCarousel slides={MAIN_PAGE_VIDEO_LIST} options={OPTIONS} />
 }
 
 export default VideosCarousel

@@ -1,6 +1,6 @@
-import { Logo } from "public"
 import { Box, Spinner } from "@chakra-ui/react"
 import Image from "next/image"
+import { Logo } from "public"
 
 const LoadingPage = () => {
   return (
