@@ -47,7 +47,7 @@
  *         description: Bad request
  */
 
-import data from "data/womanData.json"
+import { WOMAN_DATA } from "data"
 import WomanImageDict from "utils/cardsDict"
 import { removeAccents as normalize } from "utils/stringFunctions"
 
@@ -67,7 +67,7 @@ export async function GET(request: Request) {
     if (checkSubstring) {
       const guria: string = checkGuria.replace(/([A-Z])/g, " $1").replace(/^\w/, (c: string) => c.toUpperCase())
       const name: string = guria.toLowerCase()
-      const nameData: any = data.filter((item: any) => item.name.toLowerCase().includes(name))
+      const nameData: any = WOMAN_DATA.filter((item: any) => item.name.toLowerCase().includes(name))
 
       return new Response(JSON.stringify(nameData), {
         headers: { "Content-Type": "application/json" },
@@ -81,7 +81,7 @@ export async function GET(request: Request) {
       })
     } else {
       const guria: string = checkGuria.replace(/([A-Z])/g, " $1").replace(/^\w/, (c: string) => c.toUpperCase())
-      const guriaData: any = data.find((item: any) => normalize(item.name) === guria)
+      const guriaData: any = WOMAN_DATA.find((item: any) => normalize(item.name) === guria)
 
       return new Response(JSON.stringify(guriaData), {
         headers: { "Content-Type": "application/json" },
@@ -93,7 +93,7 @@ export async function GET(request: Request) {
       .map((tag: string) => tag.replace(/([A-Z])/g, " $1").replace(/^\w/, (c) => c.toUpperCase()))
     const tags: string[] = listtags.map((tag: string) => tag.replace(/Da/g, "da").replace(/De/g, "de"))
 
-    const tagsData: any = data.filter((item: any) =>
+    const tagsData: any = WOMAN_DATA.filter((item: any) =>
       tags.every((tag: string) => {
         return item.tags.map((tag: string) => normalize(tag)).includes(normalize(tag))
       })

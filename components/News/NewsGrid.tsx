@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
-import { HeadingText } from "components"
-import NewsCard from "components/Cards/NewsCard"
-import NewsArray from "data/news"
+import { HeadingText, NewsCard } from "components"
+import { NEWS } from "data"
+
 const NewsGrid = () => {
   return (
     <Box
@@ -13,7 +13,7 @@ const NewsGrid = () => {
       className="section"
     >
       <HeadingText text="Notícias" align="start" />
-      {NewsArray.map((item, index) => (
+      {NEWS.map((item, index) => (
         <NewsCard key={index} title={item.title} description={item.description} image={item.image} href={item.href} />
       ))}
     </Box>

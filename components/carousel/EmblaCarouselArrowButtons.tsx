@@ -23,14 +23,14 @@ export const usePrevNextButtons = (
     emblaApi.scrollPrev()
     setActiveSlide && setActiveSlide(emblaApi.selectedScrollSnap())
     if (onButtonClick) onButtonClick(emblaApi)
-  }, [emblaApi, onButtonClick])
+  }, [emblaApi, onButtonClick, setActiveSlide])
 
   const onNextButtonClick = useCallback(() => {
     if (!emblaApi) return
     emblaApi.scrollNext()
     setActiveSlide && setActiveSlide(emblaApi.selectedScrollSnap())
     if (onButtonClick) onButtonClick(emblaApi)
-  }, [emblaApi, onButtonClick])
+  }, [emblaApi, onButtonClick, setActiveSlide])
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
     setPrevBtnDisabled(!emblaApi.canScrollPrev())

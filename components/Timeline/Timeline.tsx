@@ -10,7 +10,7 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react"
-import SeeMoreArrow from "components/SeeMoreArrow/SeeMoreArrow"
+import { SeeMoreArrow } from "components"
 import { TIMELINE_DATA } from "data"
 import { ConfettiDark } from "public"
 import { TimelineItemProps } from "types/timeline"

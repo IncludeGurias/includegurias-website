@@ -17,7 +17,7 @@ import {
   SubText,
   TeamForAboutUs,
 } from "components"
-import IncludeMaterials from "data/materials"
+import { INCLUDE_MATERIALS } from "data"
 import { AboutUsBanner, ChaComAda, CosturaPost, FacebookPost, IncludeAvatar, IncludeAvatarFace } from "public"
 import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
@@ -60,7 +60,7 @@ export default function AboutUs() {
         />
         <Grid gridTemplateColumns="repeat(3, 1fr)" gap={4} className="mt-4">
           {/* array de 3 items do materials */}
-          {IncludeMaterials.slice(0, 3).map((material, index) => (
+          {INCLUDE_MATERIALS.slice(0, 3).map((material, index) => (
             <MaterialCard
               key={material.title + index}
               title={material.title}

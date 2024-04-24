@@ -18,7 +18,7 @@ import { FaChevronDown, FaChevronRight } from "react-icons/fa"
 import { GoChevronDown } from "react-icons/go"
 import { IoClose } from "react-icons/io5"
 import { RxHamburgerMenu } from "react-icons/rx"
-import IncludeMaterials from "data/materials"
+import { INCLUDE_MATERIALS } from "data"
 import { HeaderMotion, LogoMotion } from "./HeaderMotion"
 
 export default function WithSubnavigation() {
@@ -225,7 +225,7 @@ const NAV_ITEMS: Array<NavItem> = [
 const materialsItem = NAV_ITEMS?.find((item) => item.label === "Materiais")
 
 if (materialsItem) {
-  materialsItem.children = IncludeMaterials.map((material) => ({
+  materialsItem.children = INCLUDE_MATERIALS.map((material) => ({
     label: material.title,
     href: `${material.href}`,
   })).concat([

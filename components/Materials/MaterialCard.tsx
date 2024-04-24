@@ -1,9 +1,9 @@
 "use client"
-import { FiArrowRight } from "react-icons/fi"
 import { AspectRatio, Badge, Box, Button, Flex } from "@chakra-ui/react"
-import { Reveal } from "components"
 import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
+import { FiArrowRight } from "react-icons/fi"
+import { Reveal } from "components"
 
 export type MaterialCardProps = {
   title: string

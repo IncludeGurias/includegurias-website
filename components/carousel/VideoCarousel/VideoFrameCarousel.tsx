@@ -1,6 +1,6 @@
 import { Card, CardBody, CardFooter, Heading } from "@chakra-ui/react"
 import { VideoFrame } from "components"
-import { VideoType } from "data/videoList"
+import { VideoType } from "types/videoType"
 
 const VideoFrameCarousel = ({ videoList }: { videoList: VideoType }) => {
   return (

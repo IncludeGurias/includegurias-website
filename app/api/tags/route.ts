@@ -1,4 +1,4 @@
-import data from "data/womanData.json"
+import { WOMAN_DATA } from "data"
 
 /**
  * @swagger
@@ -21,7 +21,7 @@ export async function GET() {
   // return all tags from the data
   const uniqueTags: any = new Set()
 
-  data.forEach((item: any) => {
+  WOMAN_DATA.forEach((item: any) => {
     item.tags.forEach((tag: any) => {
       uniqueTags.add(tag)
     })

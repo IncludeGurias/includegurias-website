@@ -1,7 +1,4 @@
-export interface VideoType {
-  video: string
-  title: string
-}
+import { VideoType } from "types/videoType"
 
 const videoList: VideoType[] = [
   {

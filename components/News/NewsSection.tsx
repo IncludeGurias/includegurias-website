@@ -1,7 +1,7 @@
 "use client"
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react"
 import { HeadingText, NewsCard, Reveal, SeeMoreArrow } from "components"
-import NewsArray from "data/news"
+import { NEWS } from "data"
 
 const NewsSection = () => {
   return (
@@ -21,7 +21,7 @@ const NewsSection = () => {
           gap={4}
           w="full"
         >
-          {NewsArray.slice(0, 3).map(
+          {NEWS.slice(0, 3).map(
             (
               item,
               index // Limit to 3 items

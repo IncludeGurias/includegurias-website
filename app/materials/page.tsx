@@ -1,7 +1,7 @@
 import { Box, Flex, Grid, GridItem, Heading, Text, VStack } from "@chakra-ui/react"
 import { Metadata } from "next"
 import { MaterialCard, Reveal } from "components"
-import IncludeMaterials from "data/materials"
+import { INCLUDE_MATERIALS } from "data"
 import { ConfettiDark } from "public"
 import baseMetadata from "utils/metadata"
 
@@ -51,7 +51,7 @@ export default function OurMaterials() {
               }}
               gap={4}
             >
-              {IncludeMaterials.map((material, index) => (
+              {INCLUDE_MATERIALS.map((material, index) => (
                 <GridItem key={material.title} colSpan={{ base: 1, md: 1 }} h={{ base: "full" }}>
                   <Reveal key={index} animationdirection="bottom" delay={index * 0.3} className="h-full">
                     <MaterialCard
