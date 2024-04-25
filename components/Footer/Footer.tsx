@@ -11,7 +11,7 @@ import { Love } from "components"
 
 const Footer = () => {
   return (
-    <Box style={{ backgroundColor: "#F28080" }} color={"white"} maxWidth="100wh" overflowX="hidden">
+    <Box style={{ backgroundColor: "#F28080" }} color={"white"} maxWidth="100wh" overflowX="hidden" id="footer">
       <Container
         as={Stack}
         maxW={"6xl"}

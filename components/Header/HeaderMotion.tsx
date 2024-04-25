@@ -34,6 +34,7 @@ export const HeaderMotion = ({ children }: headerMotionProps) => {
   return (
     <motion.div
       className="fixed z-50 w-full text-white"
+      id="header"
       initial="hidden2"
       animate={controls}
       variants={{
