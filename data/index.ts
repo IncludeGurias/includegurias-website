@@ -4,7 +4,7 @@ export { CURRENT_PARTNERS as CURRENT_PARTNERS } from "./partners"
 export { ALL_PARTNERS as ALL_PARTNERS } from "./partners"
 
 export { default as TESTIMONIALS } from "./testimonialsData"
-export { NewsArray as NEWS } from "./news"
+export { default as NEWS } from "./newsData"
 
 export { CURRENT_TEAM_MEMBERS as CURRENT_TEAM_MEMBERS } from "./team"
 export { ALL_TEAM_MEMBERS as ALL_TEAM_MEMBERS } from "./team"

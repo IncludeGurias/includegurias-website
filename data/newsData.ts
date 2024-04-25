@@ -2,7 +2,7 @@ import { AdaLoveCard, IncludeOnCPT, NewChatbot, NewWebsite } from "public"
 import { NewsItem } from "types/News"
 import generateTimestampByDate from "utils/generateTimestampByDate"
 
-export const NewsArray: NewsItem[] = [
+export default [
   {
     title: "Include Gurias - Computer on the beach 2024",
     description:
