@@ -55,7 +55,7 @@ export default function SocialButton({
   border,
   className,
   tooltipCustomLabel,
-  delay,
+  delay = 0,
 }: SocialButtonProps) {
   if (label === "email") {
     href = `mailto:${href}`
@@ -63,48 +63,44 @@ export default function SocialButton({
 
   label = label.charAt(0).toUpperCase() + label.slice(1)
 
-  const ButtonContent = () => (
-    <Link href={href} target={"_target"} passHref>
-      <Flex
-        bgGradient={Gradients[label.toLowerCase()]}
-        w={size}
-        h={size}
-        justifyContent={"center"}
-        alignItems={"center"}
-        className="group"
-        transition={"all 0.3s ease-in-out"}
-        _hover={{
-          shadow: "lg",
-        }}
-        {...(circle ? { borderRadius: "50%" } : { rounded: border ? border : "md" })}
-      >
-        <Reveal delay={delay}>
-          <IconButton
-            aria-label="Social Media Button"
-            w={size}
-            h={size}
-            className={`${className}`}
-            variant={"unstyled"}
-            rounded={circle ? "full" : border ? border : "md"}
-            transition={"all 0.3s ease-in-out"}
-            display={"flex"}
-            justifyContent={"center"}
-            alignItems={"center"}
-            bg={"transparent"}
-            _groupHover={{
-              transform: animation === "rotateHover" ? "rotate(360deg) scale(1.5)" : animation,
-            }}
-          >
-            {children}
-          </IconButton>
-        </Reveal>
-      </Flex>
-    </Link>
-  )
-
   return (
     <Tooltip hasArrow key={label} label={tooltipCustomLabel || label} placement="top" color={"white"} fontSize={"md"}>
-      <ButtonContent />
+      <Link href={href} target={"_target"} passHref>
+        <Flex
+          bgGradient={Gradients[label.toLowerCase()]}
+          w={size}
+          h={size}
+          justifyContent={"center"}
+          alignItems={"center"}
+          className="group"
+          transition={"all 0.3s ease-in-out"}
+          _hover={{
+            shadow: "lg",
+          }}
+          {...(circle ? { borderRadius: "50%" } : { rounded: border ? border : "md" })}
+        >
+          <Reveal delay={delay}>
+            <IconButton
+              aria-label="Social Media Button"
+              w={size}
+              h={size}
+              className={`${className}`}
+              variant={"unstyled"}
+              rounded={circle ? "full" : border ? border : "md"}
+              transition={"all 0.3s ease-in-out"}
+              display={"flex"}
+              justifyContent={"center"}
+              alignItems={"center"}
+              bg={"transparent"}
+              _groupHover={{
+                transform: animation === "rotateHover" ? "rotate(360deg) scale(1.5)" : animation,
+              }}
+            >
+              {children}
+            </IconButton>
+          </Reveal>
+        </Flex>
+      </Link>
     </Tooltip>
   )
 }

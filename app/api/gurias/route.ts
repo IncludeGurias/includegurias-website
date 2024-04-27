@@ -49,7 +49,7 @@
 
 import { WOMAN_DATA } from "data"
 import WomanImageDict from "utils/cardsDict"
-import { removeAccents as normalize } from "utils/stringFunctions"
+import { removeAccents as normalize, toCamelCase } from "utils/stringFunctions"
 
 export async function GET(request: Request) {
   const { searchParams }: any = new URL(request.url)
@@ -63,7 +63,7 @@ export async function GET(request: Request) {
   const checkGuria = _checkGuria ? normalize(_checkGuria) : null
 
   if (checkGuria) {
-    console.log(checkGuria)
+    console.log("checkGuria", checkGuria)
     if (checkSubstring) {
       const guria: string = checkGuria.replace(/([A-Z])/g, " $1").replace(/^\w/, (c: string) => c.toUpperCase())
       const name: string = guria.toLowerCase()
@@ -73,15 +73,14 @@ export async function GET(request: Request) {
         headers: { "Content-Type": "application/json" },
       })
     } else if (checkImage) {
-      console.log(checkGuria)
-      const guriaImage: any = WomanImageDict[checkGuria]
+      const guriaImage: any = WomanImageDict[toCamelCase(checkGuria)]
 
       return new Response(JSON.stringify(guriaImage["src"]), {
         headers: { "Content-Type": "application/json" },
       })
     } else {
-      const guria: string = checkGuria.replace(/([A-Z])/g, " $1").replace(/^\w/, (c: string) => c.toUpperCase())
-      const guriaData: any = WOMAN_DATA.find((item: any) => normalize(item.name) === guria)
+      const guria: string = toCamelCase(checkGuria)
+      const guriaData: any = WOMAN_DATA.find((item: any) => toCamelCase(item.name) === guria)
 
       return new Response(JSON.stringify(guriaData), {
         headers: { "Content-Type": "application/json" },
@@ -103,6 +102,6 @@ export async function GET(request: Request) {
       headers: { "Content-Type": "application/json" },
     })
   } else {
-    return new Response("Missing parameter", { status: 400 })
+    return new Response("Missing Parameters in the request", { status: 400 })
   }
 }

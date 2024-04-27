@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 interface ClassNames {
   firstLine?: string
   secondLine?: string
+  div?: string
 }
 
 interface Styles {
@@ -50,7 +51,7 @@ const AnimatedWavyText = ({ line1, line2, ClassNames, Styles }: AnimatedWavyText
   }, [])
 
   return (
-    <div className="min-h-[135px]">
+    <div className={`min-h-[135px] ${ClassNames?.div}`}>
       {isMounted && (
         <motion.h3 className="load-screen--message" variants={sentence} initial="hidden" animate="visible">
           {line1.split("").map((char, index) => {

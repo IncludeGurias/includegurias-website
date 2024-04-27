@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 }
 
 const GirlNotFound = ({ girlName }: { girlName: string }) => {
+  const decodedName = decodeURIComponent(girlName)
+
   return (
     <Box
       textAlign="center"
@@ -24,7 +26,7 @@ const GirlNotFound = ({ girlName }: { girlName: string }) => {
       color={"gray.700"}
     >
       <Heading fontSize="2xl" mb={4}>
-        &#34;{girlName}&#34; não encontrada
+        &#34;{decodedName}&#34; não encontrada
       </Heading>
       <Text mb={4}>Ops! Parece que essa mulher não foi encontrada.</Text>
       <Box>

@@ -13,9 +13,11 @@ interface PrimaryButtonProps {
   children: React.ReactNode
   classNames?: Classnames
   recuo?: number
+  type?: "button" | "submit" | "reset"
+  disabled?: boolean
 }
 
-const PrimaryButton = ({ children, icon, classNames, recuo }: PrimaryButtonProps) => {
+const PrimaryButton = ({ children, icon, classNames, recuo, type, disabled }: PrimaryButtonProps) => {
   const controls = useAnimation()
   const iconControls = useAnimation()
 
@@ -40,11 +42,15 @@ const PrimaryButton = ({ children, icon, classNames, recuo }: PrimaryButtonProps
   return (
     <div className={`relative inline-block min-w-[250px] ${classNames?.divContainer}`}>
       <motion.button
+        disabled={disabled || false}
         onHoverStart={onHoverStart}
         onHoverEnd={onHoverEnd}
+        type={type || "button"}
         whileTap={whileTap} // Adiciona animação de clique
         whileHover={{ scale: 1.1 }} // Efeito de escala no hover
-        className={`relative w-full cursor-pointer overflow-hidden rounded-md bg-[var(--primary-400)] px-6 py-3 text-lg font-medium text-white shadow-md ${classNames?.button}`}
+        className={`relative w-full cursor-pointer overflow-hidden rounded-md bg-[var(--primary-400)] px-6 py-3 text-lg font-medium text-white shadow-md ${classNames?.button}
+        disabled:cursor-not-allowed disabled:bg-[var(--primary-300)] disabled:text-[var(--primary-400)] disabled:opacity-50 disabled:hover:bg-[var(--primary-300)] disabled:hover:text-[var(--primary-400)]
+        `}
         style={{ minWidth: "200px" }}
       >
         {/* Texto visível normalmente */}

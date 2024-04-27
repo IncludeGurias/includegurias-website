@@ -12,7 +12,7 @@ interface womanCardProps {
 const WomanCard = ({ name, imageUrl }: womanCardProps) => {
   return (
     <WrapItem key={name} zIndex={1} title={name}>
-      <Link href={`/materials/mulheres-da-stem/${name.replaceAll(" ", "-")}`} prefetch={false} className="z-1">
+      <Link href={`/materials/mulheres-da-stem/${name.replaceAll(" ", "+")}`} prefetch={false} className="z-1">
         <Box
           w="300px"
           h="400px"

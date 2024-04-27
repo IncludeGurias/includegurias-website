@@ -1,28 +1,13 @@
-import {
-  AspectRatio,
-  Badge,
-  Box,
-  Card,
-  CardBody,
-  Container,
-  Divider,
-  Flex,
-  Stack,
-  Text,
-  Tooltip,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react"
+//legacy code - needs to be refactored (o sistema inteiro de gurias pode ser refatorado), rmeover axios possivlemente
+import { AspectRatio, Box, Container, Divider, Flex, Stack, Text } from "@chakra-ui/react"
 import Image from "next/image"
-import Link from "next/link"
-import { BiArrowBack } from "react-icons/bi"
+import { BiArrowBack, BiEdit } from "react-icons/bi"
 import GirlNotFound from "app/not-found-woman"
 import { AnimatedWavyText, Reveal } from "components"
-import { env } from "env.mjs" // On server
 import { womanType } from "types/womanType"
-import { tagColors } from "utils/getTagColors"
-import { toCamelCase } from "utils/stringFunctions"
-import { fetchImage } from "utils/webService"
+import { fetchGuria, fetchGuriaImage } from "./FetchMulherNext"
+import IconCircleButton from "./IconCircleButton"
+import MulherTags from "./Tags"
 
 interface paramsProp {
   params: {
@@ -31,52 +16,33 @@ interface paramsProp {
 }
 
 export default async function GuriaPage({ params }: paramsProp) {
-  const name = toCamelCase(params.ID)
-  const guriaUrl = `${env.SITE_URL}/api/gurias?guria=${name}`
-  const staticData = await fetch(guriaUrl, {
-    cache: "force-cache",
-  })
+  const { ID } = params
 
-  if (!staticData.ok) {
-    return <GirlNotFound girlName={name} />
-  }
-
-  const womanImage = await fetchImage(name)
-
-  if (!womanImage.ok) {
-    return <GirlNotFound girlName={name} />
-  }
-
-  const data = (await staticData.json()) as womanType
-  const womanImageItem = (await womanImage.json()) as string
+  var data = (await fetchGuria(ID)) as womanType | null
+  var womanImageItem = (await fetchGuriaImage(ID)) as string | null
 
   return (
     <>
       {data ? (
         <>
-          <Stack direction={{ base: "column" }}>
-            <Container
-              maxW="7xl"
-              flexDirection={"row"}
-              display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              mt={4}
-              minH={"100vh"}
-            >
-              <Flex w={"full"} h={"full"} direction={"column"} alignItems="center" maxW={500} mx={8}>
-                <AspectRatio ratio={1 / 1} w={400} h={600}>
+          <Stack direction={{ base: "column" }} mt={"110px"}>
+            <Container maxW="7xl" flexDirection={"row"} display={"flex"} mt={4} minH={"100vh"} alignItems="flex-start">
+              <Flex w={"full"} h={"full"} direction={"column"} maxW={500} mx={8}>
+                <AspectRatio ratio={1 / 1} w={500} h={698}>
                   {womanImageItem ? (
                     <Reveal>
                       <Image
                         src={womanImageItem}
                         alt={data.name}
-                        loading="lazy"
+                        priority={true}
                         fill
+                        sizes={"(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 500px"}
                         className="h-full rounded-xl object-cover"
                       />
                     </Reveal>
-                  ) : null}
+                  ) : (
+                    <Text>Imagem não encontrada</Text>
+                  )}
                 </AspectRatio>
               </Flex>
 
@@ -85,6 +51,7 @@ export default async function GuriaPage({ params }: paramsProp) {
                   line1={data.name}
                   ClassNames={{
                     firstLine: "text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-2",
+                    div: "min-h-[80px]",
                   }}
                 />
                 <Box
@@ -94,27 +61,13 @@ export default async function GuriaPage({ params }: paramsProp) {
                   justifyContent="flex-end"
                   h={"full"}
                 >
-                  <Wrap py={4} display="flex" flexDirection="column" alignItems="center">
-                    {data.tags.map((tag, index) => (
-                      <WrapItem key={index}>
-                        <Reveal delay={index * 0.2}>
-                          <Badge
-                            size="lg"
-                            fontSize="md"
-                            colorScheme={tagColors[tag as keyof typeof tagColors] || "teal"}
-                          >
-                            {tag}
-                          </Badge>
-                        </Reveal>
-                      </WrapItem>
-                    ))}
-                  </Wrap>
+                  <MulherTags tags={data.tags} />
 
                   <Divider mt={2} />
 
                   <div className="my-6 flex h-full flex-col items-start justify-center">
                     {data.birthPlace && (
-                      <Reveal animationdirection="right" delay={0.1}>
+                      <Reveal>
                         <Text fontSize="xl">
                           <strong>Local de Nascimento:</strong> {data.birthPlace}
                         </Text>
@@ -128,13 +81,21 @@ export default async function GuriaPage({ params }: paramsProp) {
                         </Text>
                       </Reveal>
                     )}
+
+                    {data.birthDate && (
+                      <Reveal animationdirection="right" delay={0.3}>
+                        <Text fontSize="xl" mt="1">
+                          <strong>Data de Nascimento:</strong> {data.birthDate.split("-").join("/")}
+                        </Text>
+                      </Reveal>
+                    )}
                   </div>
                 </Box>
 
                 <Divider />
 
                 <Flex h="full" alignItems="center" justifyContent="center">
-                  <Reveal animationdirection="right">
+                  <Reveal>
                     <Text textAlign={"start"} fontSize="lg" mt="6">
                       {data.bio}
                     </Text>
@@ -143,33 +104,25 @@ export default async function GuriaPage({ params }: paramsProp) {
               </Flex>
             </Container>
           </Stack>
-
-          <Link href="/materials/mulheres-da-stem">
-            <Tooltip label="Voltar" aria-label="Voltar">
-              <Card
-                position="fixed"
-                top={"125px"}
-                left={"15px"}
-                borderRadius="15rem"
-                boxShadow="lg"
-                transition={"all 0.2s ease-in-out"}
-                _hover={{
-                  cursor: "pointer",
-                  transform: "scale(1.1)",
-                  zIndex: 1,
-                }}
-              >
-                <CardBody>
-                  <Text>
-                    <BiArrowBack />
-                  </Text>
-                </CardBody>
-              </Card>
-            </Tooltip>
-          </Link>
+          <Stack position="fixed" top={"125px"} left={"15px"}>
+            <Flex direction="column" justifyItems="center" alignItems="center" gap={4}>
+              <IconCircleButton
+                icon={<BiArrowBack />}
+                href="/materials/mulheres-da-stem"
+                tooltip="Voltar"
+                bgColor="red.100"
+              />
+              <IconCircleButton
+                icon={<BiEdit />}
+                href={`/materials/mulheres-da-stem/${encodeURIComponent(data.name)}/edit`}
+                tooltip="Editar Página"
+                bgColor="blue.200"
+              />
+            </Flex>
+          </Stack>
         </>
       ) : (
-        <GirlNotFound girlName={name} />
+        <GirlNotFound girlName={ID} />
       )}
     </>
   )
