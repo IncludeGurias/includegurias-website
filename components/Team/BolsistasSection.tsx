@@ -18,7 +18,7 @@ const Bolsistas = () => {
 }
 
 const BolsistasSection = () => {
-  const [noBolsistas, _] = useState(true)
+  const [noBolsistas, _] = useState(false)
   return (
     <Box p={4} className="section">
       {noBolsistas ? (
