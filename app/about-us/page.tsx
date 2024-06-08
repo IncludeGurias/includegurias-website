@@ -30,23 +30,11 @@ export const metadata: Metadata = {
 
 export default function AboutUs() {
   return (
-    <div className="flex flex-col items-center">
-      <Box className="relative mt-[100px] h-96 w-screen">
-        <Image
-          priority
-          src={AboutUsBanner}
-          alt="About Us Banner"
-          quality={100}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
-        />
-      </Box>
-
+    <div className="mt-[200px] flex flex-col items-center">
       <Box p={4} className="section">
-        <HeadingText text="Nossos valores" align={"start"} />
+        <HeadingText text="Quem somos" align={"start"} />
         <SubText
-          text="Nossos valores são a base de tudo o que fazemos. Eles nos ajudam a crescer e a sermos melhores a cada dia."
+          text="O Projeto Include Gurias foi criado desde 2016 pela profª. Drª Fabrícia Damando Santos, docente da UERGS. O projeto está vinculado ao Curso de Engenharia de Computação - na unidade em Guaíba/RS."
           align={"start"}
         />
         <AboutUsValues />

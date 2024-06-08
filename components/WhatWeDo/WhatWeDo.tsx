@@ -36,8 +36,8 @@ const WhatWeDoSection = () => {
           <Text fontSize={{ base: "lg", lg: "xl" }} maxW={{ base: "100%", md: "2xl" }} textAlign="justify" id="text">
             Nós promovemos a participação de meninas na área STEM, incentivando o interesse pela tecnologia e ciências
             exatas. Oferecemos oficinas de programação, robótica e olimpíadas de aplicativos, visando ampliar o acesso e
-            a representatividade feminina nessas áreas. Parceiros do Programa Meninas Digitais da Sociedade Brasileira
-            de Computação.
+            a representatividade feminina nessas áreas. Somos parceiros do programa Meninas Digitais da Sociedade
+            Brasileira de Computação.
           </Text>
         </Reveal>
         <SeeMoreArrow text="Sobre nós" href="/about-us" delay={0.5} />

@@ -28,7 +28,7 @@ import { SocialMediaData } from "utils/socialMedia"
 
 export const metadata: Metadata = {
   ...baseMetadata,
-  title: "Bem-vindo ao #Include Gurias",
+  title: "Bem-vinda(o) ao Include Gurias",
   description: "Garotas que codam mudam o mundo!",
 }
 
@@ -59,8 +59,8 @@ export default function Home() {
           </Heading>
           <Reveal>
             <Text fontSize={{ base: "lg", lg: "xl" }} textAlign="justify" id="text">
-              Nossa missão é despertar o interesse das meninas pela engenharia de computação, promover a igualdade e
-              capacitar futuras líderes em tecnologia feminina.
+              Nossa objetivo é divulgar a área da STEM, despertando o interesse de meninas para a área tecnológica e das
+              exatas, através do desenvolvimento do pensamento computacional.
             </Text>
           </Reveal>
           <Stack
