@@ -65,7 +65,7 @@ export default function SocialButton({
 
   return (
     <Tooltip hasArrow key={label} label={tooltipCustomLabel || label} placement="top" color={"white"} fontSize={"md"}>
-      <Link href={href} target={"_target"} passHref>
+      <Link href={href ?? "/404"} target={"_target"} passHref>
         <Flex
           bgGradient={Gradients[label.toLowerCase()]}
           w={size}

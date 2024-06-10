@@ -7,7 +7,11 @@ import { BolsistaType } from "types/teamMembers"
 
 const Bolsistas = () => {
   return (
-    <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: "2em", md: "3em" }} my={12}>
+    <Grid
+      templateColumns={{ base: "repeat(1, 1fr)", xl: "repeat(4, 1fr)", md: "repeat(2, 1fr)" }}
+      gap={{ base: "2em", md: "4em" }}
+      my={12}
+    >
       <>
         {CURRENT_BOLSISTAS.map((teamMember: BolsistaType, index: number) => (
           <BolsistaCard key={index} {...teamMember} />
@@ -20,7 +24,7 @@ const Bolsistas = () => {
 const BolsistasSection = () => {
   const [noBolsistas, _] = useState(false)
   return (
-    <Box p={4} className="section">
+    <Box className="section">
       {noBolsistas ? (
         <Flex justifyContent="center" flexDirection="column" alignItems="center">
           <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>

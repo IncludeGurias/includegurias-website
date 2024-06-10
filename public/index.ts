@@ -39,7 +39,6 @@ export { default as AdaLoveCard } from "./SocialMediaCards/adaLove.png"
 export { default as InstagramPost } from "./SocialMediaCards/brave_rasP3TYMx6.png"
 export { default as FacebookPost } from "./SocialMediaCards/facebookPost.jpg"
 export { default as IncludeAvatar } from "./SocialMediaCards/avatar.jpg"
-export { default as IncludeAvatarFace } from "./SocialMediaCards/avatarFace.png"
 export { default as ChaComAda } from "./SocialMediaCards/chaComAda.png"
 export { default as CosturaPost } from "./SocialMediaCards/costura.jpg"
 

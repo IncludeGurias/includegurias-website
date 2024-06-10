@@ -11,14 +11,16 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { SeeMoreArrow } from "components"
-import { TIMELINE_DATA } from "data"
+import NEWS_DATA from "data/newsData"
 import { ConfettiDark } from "public"
-import { TimelineItemProps } from "types/timeline"
+import { NewsItem } from "types/News"
 
 const Timeline = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
   const isDesktop = useBreakpointValue({ base: false, md: true })
   // const years = ABC.map((item) => new Date(item.date).getFullYear())
+
+  const TIMELINE_DATA = NEWS_DATA.filter((item) => item.showInTimeline === true)
 
   return (
     <Container
@@ -32,7 +34,7 @@ const Timeline = () => {
       <chakra.h3 fontSize="4xl" fontWeight="bold" mb={18} textAlign="center">
         Linha do Tempo do #Include
       </chakra.h3>
-      {TIMELINE_DATA.map((milestone: TimelineItemProps, index) => (
+      {TIMELINE_DATA.map((milestone: NewsItem, index) => (
         <>
           <Flex key={milestone.id} mb="10px">
             {/* Desktop view(left card) */}
@@ -56,7 +58,6 @@ const Timeline = () => {
             {isDesktop && (index + 1) % 2 !== 0 && (
               <>
                 <Card {...milestone} />
-
                 <LineWithDot />
                 <EmptyCard />
               </>
@@ -68,9 +69,7 @@ const Timeline = () => {
   )
 }
 
-const Card = ({ id, date, title, description, href }: TimelineItemProps) => {
-  // For even id show card on left side
-  // For odd id show card on right side
+const Card = ({ id, date, title, description, href }: NewsItem) => {
   const formattedDate = new Date(date).toLocaleDateString()
 
   const isEvenId = id % 2 === 0

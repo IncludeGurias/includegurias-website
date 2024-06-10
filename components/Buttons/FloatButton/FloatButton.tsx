@@ -47,7 +47,7 @@ const FloatButton = () => {
   }
 
   return (
-    <Box position="fixed" bottom="15px" right="15px">
+    <Box position="fixed" bottom="15px" right="15px" zIndex={99999}>
       <Tooltip label="Abrir menu de acessibilidade" aria-label="Abrir" placement="top">
         <IconButton
           visibility={!isMenuOpen ? "visible" : "hidden"}

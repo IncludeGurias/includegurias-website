@@ -2,16 +2,19 @@ import { AdaLoveCard, IncludeOnCPT, NewChatbot, NewWebsite } from "public"
 import { NewsItem } from "types/News"
 import generateTimestampByDate from "utils/generateTimestampByDate"
 
-export default [
+const NEWS_DATA: NewsItem[] = [
   {
+    id: 1,
     title: "Include Gurias - Computer on the beach 2024",
     description:
       "Include Gurias estará presente no evento Computer on the beach 2024. Teremos um stand com diversas atividades para o público. Venha nos visitar!",
     image: IncludeOnCPT,
     date: generateTimestampByDate("2024-04-10"),
     href: "https://computeronthebeach.com.br/",
+    showInTimeline: true,
   },
   {
+    id: 2,
     title: "Include Gurias - Mulheres da STEM",
     description:
       "Você é mulher e está no ensino médio? Quer saber mais sobre as mulheres que fazem parte da área de exatas? Então esse programa é para você!",
@@ -21,15 +24,23 @@ export default [
   },
 
   {
+    id: 3,
     title: "Lançamento do novo site",
     description: "Estamos felizes em anunciar o lançamento do nosso novo site. Venha conferir!",
     image: NewWebsite,
     date: generateTimestampByDate("2024-04-08"),
+    showInTimeline: true,
+    href: null,
   },
   {
+    id: 4,
     title: "Lançamento Chatbot",
     description: "Estamos felizes em anunciar o lançamento do nosso chatbot. Venha conversar com a gente!",
     image: NewChatbot,
     date: generateTimestampByDate("2024-04-07"),
+    showInTimeline: true,
+    href: null,
   },
 ]
+
+export default NEWS_DATA

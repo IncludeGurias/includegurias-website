@@ -8,7 +8,7 @@ const PartnerImage = ({ name, href, image }: partnerType) => {
   return (
     <AspectRatio ratio={1} minW="150px" minH="100px" maxH={150} overflow="hidden" p={4}>
       <Tooltip label={name} aria-label={name}>
-        <Link href={href || "#"}>
+        <Link href={href ?? "#"}>
           <Box
             position="relative"
             width="100%"

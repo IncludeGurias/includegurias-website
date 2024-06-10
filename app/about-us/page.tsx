@@ -69,7 +69,7 @@ export default function AboutUs() {
           text="Nossa missão é empoderar mulheres e meninas através da tecnologia, ciência e inovação."
           align={"start"}
         />
-        <Grid gridTemplateColumns="repeat(3, 1fr)" gap={4} className="mt-4">
+        <Grid gridTemplateColumns={{ base: "repeat(1, 1fr)", lg: "repeat(3, 1fr)" }} gap={4} className="mt-4">
           {/* array de 3 items do materials */}
           {INCLUDE_MATERIALS.slice(0, 3).map((material, index) => (
             <MaterialCard
@@ -110,7 +110,10 @@ export default function AboutUs() {
 
       <Box p={4} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"} mt={8}>
         <HeadingText text="Parceiros" align={"center"} />
-        <SubText text="Aqui estão algumas das pessoas que fizeram parte da nossa história." align={"center"} />
+        <SubText
+          text="Aqui estão algumas das pessoas que fazem ou já fizeram parte da nossa história."
+          align={"center"}
+        />
         <AllPartners />
       </Box>
     </div>
