@@ -1,14 +1,14 @@
 "use client"
-import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react"
+import { Flex, GridItem, SimpleGrid, Text } from "@chakra-ui/react"
 import Image from "next/image"
 import { Reveal } from "components"
 import { ABOUT_US_VALUES } from "data"
 
 const AboutUsValues = () => {
   return (
-    <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4} justifyItems={"center"}>
+    <SimpleGrid columns={{ base: 1, md: 3 }} justifyItems={"center"} gap={4} my={8}>
       {ABOUT_US_VALUES.map((item) => (
-        <Box key={item.id} maxW="300px">
+        <GridItem key={item.id} maxW="300px" h="fit-content" p={4} w="100%">
           <Reveal animationdirection="left" delay={0.3}>
             <Flex direction="column" h="full">
               <Image src={item.icon} width={150} height={150} alt={item.title} />
@@ -21,7 +21,7 @@ const AboutUsValues = () => {
               </Text>
             </Flex>
           </Reveal>
-        </Box>
+        </GridItem>
       ))}
     </SimpleGrid>
   )

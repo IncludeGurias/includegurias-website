@@ -10,7 +10,7 @@ interface iconCircleButtonProps {
 
 const IconCircleButton = ({ icon, href, tooltip, bgColor }: iconCircleButtonProps) => {
   return (
-    <Link href={href} passHref>
+    <Link href={href ?? "#"} passHref>
       <Tooltip label={tooltip} aria-label={tooltip}>
         <Button
           borderRadius="full"

@@ -6,6 +6,7 @@ import { HeadingText, Reveal, SearchBar, WomanCard } from "components"
 import { ConfettiDark } from "public"
 import { womanType } from "types/womanType"
 import { tagColors } from "utils/getTagColors"
+import { contactLinks } from "utils/includeLinks"
 import { toCamelCase } from "utils/stringFunctions"
 import { fetchGurias, fetchImage, fetchTags } from "utils/webService"
 
@@ -111,9 +112,34 @@ const MulheresNasExatas = () => {
     >
       <div className="section mt-28 flex w-full flex-col items-center gap-2">
         <HeadingText text="Mulheres da STEM" align="center" />
-        <p id="text" className="mb-6 text-center text-xl">
-          Conheça mulheres incríveis que fizeram história nas áreas de Ciência, Tecnologia, Engenharia e Matemática!
+        <p id="text" className="text-center text-xl">
+          Conheça as mulheres que fizeram história nas áreas de Ciência, Tecnologia, Engenharia e Matemática! Clique
+          sobre a imagem para saber mais sobre a vida e a carreira de cada uma delas.{" "}
         </p>
+        {/* Falar que temos os cards fisicamente, PDF (disponibilizar o link) e no chatbot (link) */}
+        <span className="text-md text-center" id="text">
+          Nós temos os estes cards fisicamente, em{" "}
+          <a
+            className="text-blue-500 underline hover:text-blue-700"
+            href="#@TODO adicionar link cards"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            PDF
+          </a>{" "}
+          e no{" "}
+          <a
+            className="text-blue-500 underline hover:text-blue-700"
+            href={contactLinks.Chatbot}
+            target="_blank"
+            rel="noreferrer"
+          >
+            chatbot
+          </a>
+          .
+        </span>
+
         <Divider orientation="horizontal" w="100%" mb={4} borderColor={"red.400"} opacity={0.1} />
         <SearchBar
           tags={tags}

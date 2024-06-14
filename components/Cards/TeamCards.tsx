@@ -25,7 +25,7 @@ export const BaseTeamCard = ({ title, children }: CardTeamProps) => (
 
 export const TeamCard = ({ name, image, role }: TeamMemberType) => {
   return (
-    <Reveal animationdirection="bottom" delay={0.1}>
+    <Reveal animationdirection="bottom" delay={0.1} dontanimateonview="true">
       <BaseTeamCard title={name}>
         <Flex justifyContent="space-between" direction="column" h={"90%"}>
           <Flex justify="center" align="center">
@@ -58,7 +58,7 @@ export const TeamCard = ({ name, image, role }: TeamMemberType) => {
 
 export const BolsistaCard = ({ name, image, github, linkedin, instagram }: TeamMemberType) => {
   return (
-    <Reveal animationdirection="bottom" delay={0.1}>
+    <Reveal animationdirection="bottom" delay={0.1} dontanimateonview="true">
       <BaseTeamCard title={name}>
         <Flex justifyContent="space-between" direction="column" h={"90%"}>
           <Flex justify="center" align="center">

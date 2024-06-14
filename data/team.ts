@@ -1,5 +1,4 @@
-import { FounderImage } from "public"
-import { BolsistaType, TeamMemberType, allMembersMemberType } from "types/teamMembers"
+import { allMembersMemberType, BolsistaType, TeamMemberType } from "types/teamMembers"
 
 export const ALL_TEAM_MEMBERS: allMembersMemberType[] = [
   { name: "Michel F. Dick" },
@@ -19,8 +18,10 @@ export const CURRENT_BOLSISTAS: BolsistaType[] = [
   {
     name: "Lucas Diniz",
     linkedin: "https://www.linkedin.com/in/brunobc/",
-    github: "#",
   },
-  { name: "Bolsista 2", image: FounderImage, instagram: "#", linkedin: "#" },
-  { name: "Bolsista 3", instagram: "" },
+  { name: "Duda" },
+  { name: "Sarah" },
+  { name: "Mariana" },
+  { name: "João" },
+  { name: "Gabriel Soares" },
 ]

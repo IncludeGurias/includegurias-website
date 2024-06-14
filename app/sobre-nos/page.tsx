@@ -1,6 +1,5 @@
 import { Box, Flex, Grid, Stack } from "@chakra-ui/react"
 import { Metadata } from "next"
-import Image from "next/image"
 import { createElement } from "react"
 import { TbBook } from "react-icons/tb"
 import {
@@ -12,13 +11,11 @@ import {
   MaterialCard,
   PrimaryButton,
   SocialButton,
-  SocialMediaCard,
   SubHeadingText,
   SubText,
   TeamForAboutUs,
 } from "components"
 import { INCLUDE_MATERIALS } from "data"
-import { AboutUsBanner, ChaComAda, CosturaPost, FacebookPost, IncludeAvatar, IncludeAvatarFace } from "public"
 import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
 
@@ -30,35 +27,49 @@ export const metadata: Metadata = {
 
 export default function AboutUs() {
   return (
-    <div className="flex flex-col items-center">
-      <Box className="relative mt-[100px] h-96 w-screen">
-        <Image
-          priority
-          src={AboutUsBanner}
-          alt="About Us Banner"
-          quality={100}
-          fill
-          className="object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
-        />
-      </Box>
-
+    <div className="mt-[200px] flex flex-col items-center">
       <Box p={4} className="section">
-        <HeadingText text="Nossos valores" align={"start"} />
+        <HeadingText text="Quem somos" align={"start"} />
         <SubText
-          text="Nossos valores são a base de tudo o que fazemos. Eles nos ajudam a crescer e a sermos melhores a cada dia."
+          text="O Projeto Include Gurias foi criado desde 2016 pela profª. Drª Fabrícia Damando Santos, docente da UERGS. O projeto está vinculado ao Curso de Engenharia de Computação - na unidade em Guaíba/RS."
           align={"start"}
+          classNames={{
+            span: "mb-8",
+          }}
         />
         <AboutUsValues />
+
+        <SubHeadingText
+          text="Quer ficar por dentro de tudo? siga o include!"
+          align={"start"}
+          classNames={{ text: "mt-8" }}
+        />
+        <Stack direction={"row"} spacing={6} justifyContent="start" mb={4}>
+          {SocialMediaData.map((socialMedia, index) => (
+            <SocialButton
+              key={socialMedia.name + index}
+              size={45}
+              label={socialMedia.name}
+              href={socialMedia.link}
+              animation="rotateHover"
+              delay={index * 0.1}
+            >
+              {createElement(socialMedia.icon, {
+                color: "white",
+                size: 25,
+              })}
+            </SocialButton>
+          ))}
+        </Stack>
       </Box>
 
       <Box p={4} className="section">
-        <HeadingText text="Nossa Missão" align={"start"} />
+        <HeadingText text="Nossos Materias" align={"start"} />
         <SubText
           text="Nossa missão é empoderar mulheres e meninas através da tecnologia, ciência e inovação."
           align={"start"}
         />
-        <Grid gridTemplateColumns="repeat(3, 1fr)" gap={4} className="mt-4">
+        <Grid gridTemplateColumns={{ base: "repeat(1, 1fr)", lg: "repeat(3, 1fr)" }} gap={4} className="mt-4">
           {/* array de 3 items do materials */}
           {INCLUDE_MATERIALS.slice(0, 3).map((material, index) => (
             <MaterialCard
@@ -97,61 +108,12 @@ export default function AboutUs() {
         </Flex>
       </Box>
 
-      <HeadingText text="Siga-nos nas redes sociais" align={"center"} />
-
-      <Stack direction={"row"} spacing={6} justifyContent="center" mb={4}>
-        {SocialMediaData.map((socialMedia, index) => (
-          <SocialButton
-            key={socialMedia.name + index}
-            size={45}
-            label={socialMedia.name}
-            href={socialMedia.link}
-            animation="rotateHover"
-            delay={index * 0.1}
-          >
-            {createElement(socialMedia.icon, {
-              color: "white",
-              size: 25,
-            })}
-          </SocialButton>
-        ))}
-      </Stack>
-      <Flex dir="column" gap={4} justifyContent="space-between" className="section">
-        <SocialMediaCard
-          text="Chá com Ada Lovelace #fcc# 19SNCT @enigmaprojeto"
-          avatarImage={IncludeAvatar}
-          name="include.gurias"
-          subname="UERGS Guaíba"
-          socialMedia="Instagram"
-          postImage={ChaComAda}
-          delay={0.2}
-        />
-
-        <SocialMediaCard
-          text="Com esse time de mulheres em prol da ciência, inovação, tecnologia e educacao! #jovemtalentors #premiopesquisadorgaucho"
-          avatarImage={IncludeAvatarFace}
-          name="Include Gurias"
-          subname="450 curtidas • 476 seguidores"
-          socialMedia="Facebook"
-          postImage={FacebookPost}
-          className="mt-16"
-          delay={0.4}
-        />
-
-        <SocialMediaCard
-          text="Temos muito orgulho em sermos Meninas Digitais @meninasdigitaissbc"
-          avatarImage={IncludeAvatarFace}
-          name="include.gurias"
-          subname="450 curtidas • 476 seguidores"
-          socialMedia="Facebook"
-          postImage={CosturaPost}
-          delay={0.6}
-        />
-      </Flex>
-
       <Box p={4} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"} mt={8}>
-        <HeadingText text="Hall da Fama" align={"center"} />
-        <SubText text="Aqui estão algumas das pessoas que fizeram parte da nossa história." align={"center"} />
+        <HeadingText text="Parceiros" align={"center"} />
+        <SubText
+          text="Aqui estão algumas das pessoas que fazem ou já fizeram parte da nossa história."
+          align={"center"}
+        />
         <AllPartners />
       </Box>
     </div>

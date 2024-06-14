@@ -34,6 +34,7 @@ const NewsSection = () => {
                     image={item.image}
                     href={item.href}
                     date={item.date}
+                    id={item.id}
                   />
                 </Reveal>
               </GridItem>

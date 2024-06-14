@@ -1,13 +1,13 @@
+import { StaticImageData } from "next/image"
 import {
   AdaLovelace,
   BitBoxImage,
   EletroinoAOrigem,
   EletroinoArduino,
   EletroinoProtoboard,
-  OficinaDeSkratch,
   meninasEmpoderadas,
+  OficinaDeSkratch,
 } from "public"
-import { StaticImageData } from "next/image"
 
 export interface Material {
   title: string

@@ -1,13 +1,13 @@
-import { ProjetoChancelado } from "public"
-import { SocialMediaData } from "utils/socialMedia"
 import { Box, Container, Flex, Stack, Text } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
 import { createElement } from "react"
-import { contactLinks } from "utils/includeLinks"
 import { SocialButton } from "components"
 import "styles/TextHoverAnimation.css"
 import { Love } from "components"
+import { ProjetoChancelado } from "public"
+import { contactLinks } from "utils/includeLinks"
+import { SocialMediaData } from "utils/socialMedia"
 
 const Footer = () => {
   return (

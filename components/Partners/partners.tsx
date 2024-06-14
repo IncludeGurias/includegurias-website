@@ -1,71 +1,39 @@
-import {
-  BritishCouncil,
-  CarlosChagas,
-  KingsCollageLondon,
-  MeninasDigitais,
-  SBC,
-  STEMConnectionHub,
-  UERGS,
-} from "public"
+"use client"
 import "./partners.css"
-import { StaticImageData } from "next/image"
+import { motion, useInView } from "framer-motion"
+import { useEffect, useRef } from "react"
+import PARTNERS_LIST from "data/partnersList"
 import PartnerSlide from "./partnerSlide"
 
-type Partner = {
-  name: string
-  image: StaticImageData
-}
-
-const PartnersList: Partner[] = [
-  {
-    name: "SBC",
-    image: SBC,
-  },
-  {
-    name: "British Council",
-    image: BritishCouncil,
-  },
-  {
-    name: "Meninas Digitais",
-    image: MeninasDigitais,
-  },
-  {
-    name: "STEM Connection Hub",
-    image: STEMConnectionHub,
-  },
-  {
-    name: "UERGS",
-    image: UERGS,
-  },
-  {
-    name: "Fundaçao Carlos Chagas",
-    image: CarlosChagas,
-  },
-  {
-    name: "Kings Collage London",
-    image: KingsCollageLondon,
-  },
-]
-
 export default function Partners() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    const marquee = document.querySelector(".marquee--8") as HTMLElement
+    if (marquee) {
+      marquee.style.setProperty("--marquee-items", PARTNERS_LIST.length.toString())
+    }
+  }, [])
+
   return (
-    <div className="scroller" data-direction="left" data-speed="fast" data-animated={true}>
-      <div className="scroller__inner">
-        {PartnersList.map((partner, index) => (
-          <PartnerSlide
-            image={partner.image}
-            name={partner.name}
-            key={partner.name + " " + index}
-            delay={index * 0.2}
-          />
-        ))}
-        {PartnersList.map((partner, index) => (
-          <PartnerSlide
-            image={partner.image}
-            name={partner.name}
-            delay={index * 0.2}
-            key={partner + " " + index * 10}
-          />
+    <div className="container mx-auto flex flex-col items-center justify-center space-y-8">
+      <div className="marquee marquee--8" id="first-line">
+        {PARTNERS_LIST.map((partner, index) => (
+          <motion.div
+            key={index}
+            className="marquee__item first-row"
+            initial={{ scale: 0 }}
+            ref={ref}
+            animate={{ ...(isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }) }}
+          >
+            <PartnerSlide
+              image={partner.image}
+              name={partner.name}
+              key={partner.name + " " + index}
+              delay={index * 0.2}
+            />
+          </motion.div>
         ))}
       </div>
     </div>

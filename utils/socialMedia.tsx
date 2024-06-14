@@ -1,6 +1,7 @@
-import { FaInstagram, FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa"
-import { contactLinks } from "./includeLinks"
 import { IconType } from "react-icons"
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa"
+import { TbMessageChatbot } from "react-icons/tb"
+import { contactLinks } from "./includeLinks"
 
 const MeninasDigitaisIcon: IconType = ({ size, color }) => (
   <svg
@@ -46,5 +47,10 @@ export const SocialMediaData = [
     name: "Meninas Digitais",
     icon: MeninasDigitaisIcon,
     link: contactLinks["Meninas Digitais"],
+  },
+  {
+    name: "Chatbot",
+    icon: TbMessageChatbot,
+    link: contactLinks["Chatbot"],
   },
 ]
