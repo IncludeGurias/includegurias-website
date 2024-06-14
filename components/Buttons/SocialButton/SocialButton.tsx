@@ -17,6 +17,7 @@ const Gradients: Record<string, string> = {
   whatsapp: "linear(#25D366 0%, #25D366 50%)",
   tiktok: "linear(#000000 0%, #000000 50%)",
   "meninas digitais": "linear(#F56040 0%, #FCAF45 50%)",
+  chatbot: "linear(#25D366 0%, #25D366 50%)",
 }
 
 // const Colors: Record<string, string> = {

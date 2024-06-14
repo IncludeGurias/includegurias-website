@@ -74,7 +74,7 @@ export default function Home() {
             my={2}
             w="full"
           >
-            <Link href="/about-us" passHref>
+            <Link href="/sobre-nos" passHref>
               <PrimaryButton icon={<IoIosPeople size={25} />}>Sobre nós</PrimaryButton>
             </Link>
             <Link href="/contact" passHref>

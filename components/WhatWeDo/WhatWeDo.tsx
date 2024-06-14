@@ -40,7 +40,7 @@ const WhatWeDoSection = () => {
             Brasileira de Computação.
           </Text>
         </Reveal>
-        <SeeMoreArrow text="Sobre nós" href="/about-us" delay={0.5} />
+        <SeeMoreArrow text="Sobre nós" href="/sobre-nos" delay={0.5} />
       </Flex>
 
       <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} gap={"4em"} px={"2rem"}>

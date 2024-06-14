@@ -14,7 +14,15 @@ const NewsGrid = () => {
     >
       <HeadingText text="Notícias" align="start" />
       {NEWS.map((item, index) => (
-        <NewsCard key={index} title={item.title} description={item.description} image={item.image} href={item.href} />
+        <NewsCard
+          key={index}
+          title={item.title}
+          description={item.description}
+          image={item.image}
+          href={item.href}
+          date={item.date}
+          id={item.id}
+        />
       ))}
     </Box>
   )

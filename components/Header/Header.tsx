@@ -204,11 +204,11 @@ const NAV_ITEMS: Array<NavItem> = [
     children: [
       {
         label: "Quem somos",
-        href: "/about-us",
+        href: "/sobre-nos",
       },
       {
         label: "Equipe",
-        href: "/team",
+        href: "/equipe",
       },
       {
         label: "Linha do tempo",
@@ -217,12 +217,16 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
+    label: "Eventos e Atividades",
+    href: "/eventos-e-atividades",
+  },
+  {
     label: "Contato",
-    href: "/contact-us",
+    href: "/contato",
   },
 ]
 
-const materialsItem = NAV_ITEMS?.find((item) => item.label === "Materiais")
+const materialsItem = NAV_ITEMS?.find((item) => item.label === "Nossos Materiais")
 
 if (materialsItem) {
   materialsItem.children = INCLUDE_MATERIALS.map((material) => ({

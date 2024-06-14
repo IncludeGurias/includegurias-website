@@ -15,9 +15,9 @@ import { createElement } from "react"
 import { BsPerson } from "react-icons/bs"
 import { FaRegMessage } from "react-icons/fa6"
 import { FiSend } from "react-icons/fi"
-import { MdOutlineEmail } from "react-icons/md"
+import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md"
 import { HeadingText, PrimaryButton, SocialButton } from "components"
-import { ConfettiDark } from "public"
+import { ConfettiLight } from "public"
 import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
 
@@ -33,7 +33,7 @@ export default function ContactForm() {
       align="center"
       justify="center"
       css={{
-        backgroundImage: ConfettiDark,
+        backgroundImage: ConfettiLight,
         backgroundAttachment: "fixed",
       }}
       id="contact"
@@ -46,19 +46,23 @@ export default function ContactForm() {
             <Stack spacing={{ base: 4, md: 8, lg: 20 }} direction={{ base: "column", md: "row" }}>
               <Stack align="center" justify="space-around" direction={{ base: "row", md: "column" }}>
                 {SocialMediaData.map((socialMedia) => (
-                  <SocialButton
-                    key={socialMedia.name}
-                    size={50}
-                    label={socialMedia.name}
-                    href={socialMedia.link}
-                    animation="rotateHover"
-                    circle={true}
-                  >
-                    {createElement(socialMedia.icon, {
-                      size: 20,
-                      color: "white",
-                    })}
-                  </SocialButton>
+                  <div className="flex w-full items-center justify-start gap-2" key={socialMedia.name}>
+                    <SocialButton
+                      size={50}
+                      label={socialMedia.name}
+                      href={socialMedia.link}
+                      animation="rotateHover"
+                      circle={true}
+                    >
+                      {createElement(socialMedia.icon, {
+                        size: 20,
+                        color: "white",
+                      })}
+                    </SocialButton>
+                    <span className="text-lg font-semibold ">
+                      {socialMedia.name === "Chatbot" ? "Whatsapp" : socialMedia.name}
+                    </span>
+                  </div>
                 ))}
               </Stack>
               <Box bg={"white"} borderRadius="lg" p={10} w={450} color={"text.700"} shadow="base">
@@ -100,6 +104,44 @@ export default function ContactForm() {
                 </VStack>
               </Box>
             </Stack>
+
+            {/* Adicionar informações de contato */}
+            <Box bg={"white"} borderRadius="lg" p={5} w="100%" color={"text.700"} shadow="base">
+              <VStack spacing={3}>
+                <span className="text-lg font-semibold">Informações de Contato</span>
+                <Flex align="center">
+                  <MdOutlineEmail />
+                  <span className="ml-2">
+                    <strong> include.gurias@gmail.com</strong>
+                  </span>
+                </Flex>
+                <Flex align="center">
+                  <MdPhone />
+                  <span className="ml-2">
+                    Telefone da Secretaria: <strong> (51) 3491-4042</strong>
+                  </span>
+                </Flex>
+                <Flex align="center">
+                  <MdOutlineEmail />
+                  <span className="ml-2">
+                    Email da Coordenadora:<strong> fabricia-santos@uergs.com</strong>
+                  </span>
+                </Flex>
+                <Flex align="center">
+                  <MdLocationOn />
+                  <span className="ml-2">
+                    Endereço:{" "}
+                    <strong>Unidade da Uergs em Guaíba Estrada Santa Maria, 2300 - Bairro Columbia City</strong>
+                  </span>
+                </Flex>
+                <Flex align="center">
+                  <MdPhone />
+                  <span className="ml-2">
+                    Número do Chatbot:<strong> (51) 8027-1366</strong>
+                  </span>
+                </Flex>
+              </VStack>
+            </Box>
           </VStack>
         </Box>
       </Box>

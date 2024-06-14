@@ -9,7 +9,7 @@ type PartnerSlideProps = {
   key?: string
 }
 
-const PartnerSlide = ({ image, name, ariaLabel, delay, key }: PartnerSlideProps) => {
+const PartnerSlide = ({ image, name }: PartnerSlideProps) => {
   return (
     <div className="absolute inset-0 flex h-full w-full items-center justify-center">
       <Image
