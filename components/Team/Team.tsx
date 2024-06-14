@@ -10,7 +10,6 @@ export const TeamForAboutUs = () => {
     <Grid
       templateColumns={{ base: "repeat(1, 1fr)", xl: "repeat(4, 1fr)", md: "repeat(2, 1fr)" }}
       gap={{ base: "2em", md: "4em" }}
-      px={{ base: "1rem", md: "2rem" }}
       my={12}
     >
       <>

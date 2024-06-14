@@ -23,9 +23,19 @@ export const BaseTeamCard = ({ title, children }: CardTeamProps) => (
   </Box>
 )
 
+export const BaseBolsistaCard = ({ title, children }: CardTeamProps) => (
+  <Box className={S.__BolsistaCardMain}>
+    <Image src={CounterMap} alt="Contour Line" fill className={S.__CountourLineSvg} />
+    <Box p="6" bg={"var(--primary-300)"} className={S.__BolsistaCard}>
+      <Box className={S.__TeamCardTitle}>{title}</Box>
+      {children}
+    </Box>
+  </Box>
+)
+
 export const TeamCard = ({ name, image, role }: TeamMemberType) => {
   return (
-    <Reveal animationdirection="bottom" delay={0.1} dontanimateonview="true">
+    <Reveal animationdirection="bottom" delay={0.1}>
       <BaseTeamCard title={name}>
         <Flex justifyContent="space-between" direction="column" h={"90%"}>
           <Flex justify="center" align="center">
@@ -58,12 +68,12 @@ export const TeamCard = ({ name, image, role }: TeamMemberType) => {
 
 export const BolsistaCard = ({ name, image, github, linkedin, instagram }: TeamMemberType) => {
   return (
-    <Reveal animationdirection="bottom" delay={0.1} dontanimateonview="true">
-      <BaseTeamCard title={name}>
+    <Reveal animationdirection="bottom" delay={0.1}>
+      <BaseBolsistaCard title={name}>
         <Flex justifyContent="space-between" direction="column" h={"90%"}>
           <Flex justify="center" align="center">
             {image ? (
-              <AspectRatio ratio={1} w="300px" mb={4} className={S.__CardTeamImage}>
+              <AspectRatio ratio={1} w="150px" mb={4} className={S.__CardTeamImage}>
                 <Image src={image} alt={name} fill className="h-full rounded-lg object-cover shadow-lg" />
               </AspectRatio>
             ) : (
@@ -72,7 +82,7 @@ export const BolsistaCard = ({ name, image, github, linkedin, instagram }: TeamM
                   name={name}
                   variant="beam"
                   square={true}
-                  size={"300"}
+                  size={"150"}
                   colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
                 />
               </Box>
@@ -82,24 +92,24 @@ export const BolsistaCard = ({ name, image, github, linkedin, instagram }: TeamM
             {linkedin && (
               <SocialButton
                 key={linkedin}
-                size={45}
+                size={35}
                 label={`Linkedin`}
                 href={linkedin}
                 animation="rotateHover"
                 delay={0.1}
               >
-                <Icon as={getIcon("linkedin")} color="white" size={25} />
+                <Icon as={getIcon("linkedin")} color="white" size={35} />
               </SocialButton>
             )}
             {github && (
-              <SocialButton key={github} size={45} label={"Github"} href={github} animation="rotateHover" delay={0.1}>
+              <SocialButton key={github} size={35} label={"Github"} href={github} animation="rotateHover" delay={0.1}>
                 <Icon as={getIcon("github")} color="white" size={25} />
               </SocialButton>
             )}
             {instagram && (
               <SocialButton
                 key={instagram}
-                size={45}
+                size={35}
                 label={"Instagram"}
                 href={instagram}
                 animation="rotateHover"
@@ -110,7 +120,7 @@ export const BolsistaCard = ({ name, image, github, linkedin, instagram }: TeamM
             )}
           </Stack>
         </Flex>
-      </BaseTeamCard>
+      </BaseBolsistaCard>
     </Reveal>
   )
 }

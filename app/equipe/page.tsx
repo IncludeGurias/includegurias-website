@@ -44,7 +44,11 @@ export default function TeamSection() {
           <SubHeadingText text="Nossos Bolsistas" align={"center"} classNames={{ text: "mt-16" }} />
           <BolsistasSection />
 
-          <SubHeadingText text="Todos os Membros da Equipe" align={"center"} classNames={{ text: "mt-16" }} />
+          <SubHeadingText
+            text="Todas as pessoas que já ajudaram o Include"
+            align={"center"}
+            classNames={{ text: "mt-16" }}
+          />
           <AllPeople />
         </Flex>
       </Box>

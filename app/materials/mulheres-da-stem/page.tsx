@@ -1,5 +1,6 @@
 "use client"
 import { Badge, Button, Card, CardBody, Divider, Flex, Spinner, Text, Wrap, WrapItem } from "@chakra-ui/react"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import { AiFillDelete } from "react-icons/ai"
 import { HeadingText, Reveal, SearchBar, WomanCard } from "components"
@@ -119,7 +120,7 @@ const MulheresNasExatas = () => {
         {/* Falar que temos os cards fisicamente, PDF (disponibilizar o link) e no chatbot (link) */}
         <span className="text-md text-center" id="text">
           Nós temos os estes cards fisicamente, em{" "}
-          <a
+          <Link
             className="text-blue-500 underline hover:text-blue-700"
             href="#@TODO adicionar link cards"
             target="_blank"
@@ -127,16 +128,16 @@ const MulheresNasExatas = () => {
           >
             {" "}
             PDF
-          </a>{" "}
+          </Link>{" "}
           e no{" "}
-          <a
-            className="text-blue-500 underline hover:text-blue-700"
+          <Link
             href={contactLinks.Chatbot}
+            className="text-blue-500 underline hover:text-blue-700"
             target="_blank"
             rel="noreferrer"
           >
             chatbot
-          </a>
+          </Link>
           .
         </span>
 
