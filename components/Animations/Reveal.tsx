@@ -1,6 +1,6 @@
 "use client"
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 export interface RevealProps {
   children: React.ReactNode
@@ -11,11 +11,20 @@ export interface RevealProps {
   layout?: boolean
   layoutID?: string
   key?: any
+  animateOnce?: boolean
 }
 
 const Reveal = ({ children, delay = 0, animationdirection = "none", ...props }: RevealProps) => {
   const ref = useRef(null)
   const isInView = useInView(ref)
+  const [hasAnimated, setHasAnimated] = useState(false)
+
+  const handleInView = () => {
+    console.log("isInView", isInView)
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true)
+    }
+  }
 
   function getStart() {
     if (animationdirection === "none") {
@@ -36,7 +45,7 @@ const Reveal = ({ children, delay = 0, animationdirection = "none", ...props }: 
   return (
     <motion.div
       ref={ref}
-      animate={props.dontanimateonview === "true" ? "visible" : isInView ? "visible" : "hidden"}
+      animate={isInView && !hasAnimated ? "visible" : "hidden"}
       initial="hidden"
       {...(props.key && { key: props.key })}
       {...(props.className && { className: props.className })}
@@ -48,6 +57,7 @@ const Reveal = ({ children, delay = 0, animationdirection = "none", ...props }: 
       {...(props.layoutID && { layoutId: props.layoutID })}
       {...(props.layout && { layout: true })}
       {...props}
+      onViewportEnter={handleInView}
     >
       {children}
     </motion.div>

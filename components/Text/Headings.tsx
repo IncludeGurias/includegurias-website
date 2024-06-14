@@ -76,6 +76,7 @@ export const SubText = ({ align, classNames, text }: HeadingProps) => {
         color={"gray.800"}
         className={`${classNames && classNames.text}`}
         textAlign={align || "center"}
+        mb={"8px"}
       >
         {text}
       </Text>

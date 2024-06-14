@@ -4,23 +4,21 @@ const aboutUsValues = [
   {
     id: 1,
     icon: AboutUsIcon,
-    title: "Empoderamento",
+    title: "Nossa História",
     description:
-      "Promovendo a força, a confiança e o empoderamento de meninas nas áreas de STEM, desafiando estereótipos e expandindo horizontes.",
+      "Tudo comecou em 2016, com a profª. Drª Fabrícia Damando Santos, docente da UERGS. O projeto está vinculado ao Curso de Engenharia de Computação - na unidade em Guaíba/RS. ...vermais",
   },
   {
     id: 2,
     icon: AboutUsIcon2,
-    title: "Colaboração",
-    description:
-      "Estimulando a colaboração e o compartilhamento de conhecimentos entre meninas e mulheres na tecnologia, construindo uma comunidade inclusiva e de suporte mútuo.",
+    title: "Mestrados e Doutorados",
+    description: "@TODO - Ver o que colocar aqui",
   },
   {
     id: 3,
     icon: AboutUsIcon3,
-    title: "Inclusão",
-    description:
-      "Garantindo a inclusão e acessibilidade no aprendizado de tecnologia, tornando o campo de STEM acolhedor para todas as meninas, independentemente de seu background.",
+    title: "Graduação",
+    description: "@TODO - Ver o que colocar aqui",
   },
 ]
 

@@ -6,6 +6,11 @@ import { Reveal, SocialButton } from "components"
 import getIcon from "utils/getSocialMediaIcon"
 import { contactLinks } from "utils/includeLinks"
 
+interface classNames {
+  reveal?: string
+  card?: string
+}
+
 type SocialMediaCardProps = {
   text: string
   avatarImage: StaticImageData
@@ -13,7 +18,7 @@ type SocialMediaCardProps = {
   subname: string
   socialMedia: string
   postImage: StaticImageData
-  className?: string
+  classNames?: classNames
   delay?: number
 }
 
@@ -24,20 +29,20 @@ const SocialMediaCard = ({
   subname,
   socialMedia,
   postImage,
-  className,
+  classNames,
   delay,
 }: SocialMediaCardProps) => {
   const icon = getIcon(socialMedia)
 
   return (
-    <Reveal animationdirection="bottom" delay={delay || 0.01}>
+    <Reveal animationdirection="bottom" delay={delay || 0.01} className={`flex justify-center ${classNames?.reveal}`}>
       <Card
         maxW="sm"
         maxH="xl"
         borderRadius="xl"
         boxShadow="md"
         justifyContent={"space-between"}
-        className={`group ${className}`}
+        className={`group ${classNames?.card}`}
         transition={"all 0.2s ease-in-out"}
         _hover={{
           transform: "scale(1.05)",

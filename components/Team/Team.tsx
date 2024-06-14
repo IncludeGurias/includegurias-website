@@ -8,13 +8,13 @@ import { TeamMemberType } from "types/teamMembers"
 export const TeamForAboutUs = () => {
   return (
     <Grid
-      templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }}
+      templateColumns={{ base: "repeat(1, 1fr)", xl: "repeat(4, 1fr)", md: "repeat(2, 1fr)" }}
       gap={{ base: "2em", md: "4em" }}
       px={{ base: "1rem", md: "2rem" }}
       my={12}
     >
       <>
-        <TeamCard name="Profª. Drª Fabrícia Damando Santos" image={FounderImage} role="Founder" />
+        <TeamCard name="Profª. Drª Fabrícia Damando Santos" image={FounderImage} role="Coordenadora" />
         {CURRENT_TEAM_MEMBERS.map((teamMember: TeamMemberType, index: number) => (
           <TeamCard key={index} name={teamMember.name} image={teamMember.image} role={teamMember.role} />
         ))}

@@ -21,14 +21,15 @@ import {
   VideoFrame,
   WhatWeDoSection,
 } from "components"
-import { AdaLoveCard, FacebookPost, IncludeAvatar, IncludeAvatarFace, InstagramPost } from "public"
+import SOCIALMEDIA_DATA from "data/socialMediaPosts"
+import { IncludeAvatar } from "public"
 import { contactLinks } from "utils/includeLinks"
 import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
 
 export const metadata: Metadata = {
   ...baseMetadata,
-  title: "Bem-vindo ao #Include Gurias",
+  title: "Bem-vinda(o) ao Include Gurias",
   description: "Garotas que codam mudam o mundo!",
 }
 
@@ -59,8 +60,8 @@ export default function Home() {
           </Heading>
           <Reveal>
             <Text fontSize={{ base: "lg", lg: "xl" }} textAlign="justify" id="text">
-              Nossa missão é despertar o interesse das meninas pela engenharia de computação, promover a igualdade e
-              capacitar futuras líderes em tecnologia feminina.
+              Nosso objetivo é divulgar a área da STEM, despertando o interesse de meninas para a área tecnológica e das
+              exatas, através do desenvolvimento do pensamento computacional.
             </Text>
           </Reveal>
           <Stack
@@ -70,10 +71,10 @@ export default function Home() {
             justifyItems="center"
             alignItems="center"
             display="flex"
-            my={4}
+            my={2}
             w="full"
           >
-            <Link href="/about-us" passHref>
+            <Link href="/sobre-nos" passHref>
               <PrimaryButton icon={<IoIosPeople size={25} />}>Sobre nós</PrimaryButton>
             </Link>
             <Link href="/contact" passHref>
@@ -163,44 +164,22 @@ export default function Home() {
           w="full"
           justifyContent="space-between"
         >
-          <GridItem className={""}>
-            <SocialMediaCard
-              text="Ada Lovelace Day! ✨
-            Celebrado anualmente na segunda terça feira de outubro, o evento tem como objetivo homenagear e destacar as conquistas das mulheres na ciência, tecnologia, engenharia e matemática.
-            O dia leva o nome de Ada Lovelace matemática e escritora britânica do século XIX e a primeira programadora da história 👩🏻‍💻💕
-            #tech #technology #tecnologia #computer #science #women #womenintech #programming #programmer #programadora #university #universidade #uergs #rs #poa #guaiba #brazil #fy #fypage #fypシ"
-              avatarImage={IncludeAvatar}
-              name="include.gurias"
-              subname="UERGS Guaíba"
-              socialMedia="Instagram"
-              postImage={AdaLoveCard}
-              delay={0.2}
-            />
-          </GridItem>
-          <GridItem w="full" className={"GridItem"}>
-            <SocialMediaCard
-              text="Com esse time de mulheres em prol da ciência, inovação, tecnologia e educacao! #jovemtalentors #premiopesquisadorgaucho"
-              avatarImage={IncludeAvatarFace}
-              name="Include Gurias"
-              subname="450 curtidas • 476 seguidores"
-              socialMedia="Facebook"
-              postImage={FacebookPost}
-              className="mt-16"
-              delay={0.4}
-            />
-          </GridItem>
-          <GridItem w="full" className={"GridItem"}>
-            <SocialMediaCard
-              text="O #include <gurias> é um projeto de empoderamento de meninas e mulheres nas exatas através da aprendizagem criativa, pensamento computacional, espaço maker e clube de eletrônica.
-            #fy #fyp #women #tech #womenintech #technology #science #math #programming #meninasdigitais #uergs #br #rs #guaiba #poa #inclusao #empoderamento"
-              avatarImage={IncludeAvatar}
-              name="include.gurias"
-              subname="UERGS Guaíba"
-              socialMedia="Instagram"
-              postImage={InstagramPost}
-              delay={0.6}
-            />
-          </GridItem>
+          {SOCIALMEDIA_DATA.map((post, index) => (
+            <GridItem w="full" className={"GridItem"} key={index}>
+              <SocialMediaCard
+                text={post.text}
+                avatarImage={IncludeAvatar}
+                name={post.name}
+                subname={post.subname}
+                socialMedia={post.socialMedia}
+                classNames={{
+                  reveal: `${index === 1 && "mt-8"}`,
+                }}
+                postImage={post.image}
+                delay={index * 0.2}
+              />
+            </GridItem>
+          ))}
         </Grid>
       </Box>
       <Box p={4} maxW={{ base: "100%", md: "9xl" }} display={"flex"} flexDirection={"column"} mt={8}>

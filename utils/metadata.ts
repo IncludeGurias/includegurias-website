@@ -92,11 +92,11 @@ const baseMetadata: Metadata = {
   applicationName: "Include Gurias",
   publisher: "Bots Channel",
   authors: [
-    { name: "Bots Channel", url: "https://www.botschannel.com//" },
     {
       name: "Lucas Henrique Diniz Ostroski",
       url: "https://www.linkedin.com/in/lucas-diniz-ostroski/",
     },
+    { name: "Bots Channel", url: "https://www.botschannel.com//" },
   ],
   creator: "Bots Channel, Lucas Henrique Diniz Ostroski",
   keywords: keywords,
