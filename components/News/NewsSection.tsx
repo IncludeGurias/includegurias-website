@@ -24,7 +24,7 @@ const NewsSection = () => {
           {NEWS.slice(0, 3).map(
             (
               item,
-              index // Limit to 3 items
+              index // limit showcase to 3 items
             ) => (
               <GridItem key={index} w="full" className={index !== 0 ? "GridItem" : ""}>
                 <Reveal animationdirection="bottom" delay={0.1} className="flex h-full w-full justify-between">
