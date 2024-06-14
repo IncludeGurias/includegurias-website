@@ -2,7 +2,7 @@ import { StaticImageData } from "next/image"
 import { AdaLoveCard, FacebookPost, InstagramPost } from "public"
 import generateTimestampByDate from "utils/generateTimestampByDate"
 
-type socialMediaType = "Facebook" | "Instagram" | "Twitter" | "Linkedin" | "Youtube";
+type socialMediaType = "Facebook" | "Instagram" | "Twitter" | "Linkedin" | "Youtube"
 
 interface socialMediaPost {
   text: string
