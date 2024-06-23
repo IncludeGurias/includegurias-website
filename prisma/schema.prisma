@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["rhel-openssl-1.0.x", "debian-openssl-3.0.x", "windows"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Guria {
+  id         Int      @id @default(autoincrement())
+  name       String
+  birthplace String
+  birthdate  String
+  deathdate  String?
+  bio        String
+  job        String
+  imageUrl   String
+  GuriaTags  GuriaTag[]
+}
+
+model Tag {
+  id        Int       @id @default(autoincrement())
+  name      String
+  GuriaTags GuriaTag[]
+}
+
+model GuriaTag {
+  id      Int    @id @default(autoincrement())
+  guria   Guria  @relation(fields: [guriaId], references: [id])
+  tag     Tag    @relation(fields: [tagId], references: [id])
+  guriaId Int
+  tagId   Int
+}
