@@ -32,7 +32,7 @@ export async function GET(
                 job: guriaTag.guria.job,
                 imageUrl: guriaTag.guria.imageUrl,
             }
-        })
+        }).sort(() => Math.random() - 0.5)
     })
 
     return new Response(JSON.stringify(gurias), {
