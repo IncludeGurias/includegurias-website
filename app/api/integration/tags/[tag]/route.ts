@@ -35,7 +35,11 @@ export async function GET(
         }).sort(() => Math.random() - 0.5)
     })
 
-    return new Response(JSON.stringify(gurias), {
+    const response = {
+        gurias: gurias
+    };
+    
+    return new Response(JSON.stringify(response), {
         headers: { 'Content-Type': 'application/json' },
     })
 }
