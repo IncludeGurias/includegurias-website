@@ -78,9 +78,9 @@ export const openGraph = {
   siteName: "Include Gurias",
   images: [
     {
-      url: `${env.SITE_URL}/images/og/main.png`,
-      width: 800,
-      height: 600,
+      url: "public/metadata/main.png",
+      width: 1313,
+      height: 793,
       alt: "Include Gurias",
     },
   ],

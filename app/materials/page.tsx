@@ -43,17 +43,17 @@ export default function OurMaterials() {
                 área de tecnologia.
               </Text>
             </Reveal>
-            <Grid
-              templateColumns={{
-                base: "1fr",
-                md: "repeat(2, 1fr)",
-                lg: "repeat(3, 1fr)",
-              }}
-              gap={4}
-            >
-              {INCLUDE_MATERIALS.map((material, index) => (
-                <GridItem key={material.title} colSpan={{ base: 1, md: 1 }} h={{ base: "full" }}>
-                  <Reveal key={index} animationdirection="bottom" delay={index * 0.3} className="h-full">
+            <Reveal animationdirection="bottom" delay={0.4}>
+              <Grid
+                templateColumns={{
+                  base: "1fr",
+                  md: "repeat(2, 1fr)",
+                  lg: "repeat(3, 1fr)",
+                }}
+                gap={4}
+              >
+                {INCLUDE_MATERIALS.map((material, index) => (
+                  <GridItem key={material.title} colSpan={{ base: 1, md: 1 }} h={{ base: "full" }}>
                     <MaterialCard
                       title={material.title}
                       description={material.description}
@@ -62,10 +62,10 @@ export default function OurMaterials() {
                       href={material.href}
                       delay={index * 0.3}
                     />
-                  </Reveal>
-                </GridItem>
-              ))}
-            </Grid>
+                  </GridItem>
+                ))}
+              </Grid>
+            </Reveal>
           </VStack>
         </Box>
       </Box>

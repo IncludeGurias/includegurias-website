@@ -6,19 +6,19 @@ import { Reveal } from "components"
 
 export type BorderType = "none" | "sm" | "md" | "lg" | "full" | undefined
 
-const Gradients: Record<string, string> = {
-  instagram: "linear(#405DE6 0%, #833AB4 25%, #FD1D1D 50%, #F56040 75%, #FCAF45 100%)",
-  facebook: "linear(#1877F2 0%, #1877F2 50%)",
-  youtube: "linear(#FF0000 0%, #FF0000 50%)",
-  twitter: "linear(#1DA1F2 0%, #1DA1F2 50%)",
-  linkedin: "linear(#0077B5 0%, #0077B5 50%)",
-  email: "linear(#EA4335 0%, #EA4335 50%)",
-  github: "linear(#333333 0%, #333333 50%)",
-  whatsapp: "linear(#25D366 0%, #25D366 50%)",
-  tiktok: "linear(#000000 0%, #000000 50%)",
-  "meninas digitais": "linear(#F56040 0%, #FCAF45 50%)",
-  chatbot: "linear(#25D366 0%, #25D366 50%)",
-}
+// const Gradients: Record<string, string> = {
+//   instagram: "linear(#405DE6 0%, #833AB4 25%, #FD1D1D 50%, #F56040 75%, #FCAF45 100%)",
+//   facebook: "linear(#1877F2 0%, #1877F2 50%)",
+//   youtube: "linear(#FF0000 0%, #FF0000 50%)",
+//   twitter: "linear(#1DA1F2 0%, #1DA1F2 50%)",
+//   linkedin: "linear(#0077B5 0%, #0077B5 50%)",
+//   email: "linear(#EA4335 0%, #EA4335 50%)",
+//   github: "linear(#333333 0%, #333333 50%)",
+//   whatsapp: "linear(#25D366 0%, #25D366 50%)",
+//   tiktok: "linear(#000000 0%, #000000 50%)",
+//   "meninas digitais": "linear(#F56040 0%, #FCAF45 50%)",
+//   chatbot: "linear(#25D366 0%, #25D366 50%)",
+// }
 
 // const Colors: Record<string, string> = {
 //   instagram: "#833AB4",
@@ -68,7 +68,8 @@ export default function SocialButton({
     <Tooltip hasArrow key={label} label={tooltipCustomLabel || label} placement="top" color={"white"} fontSize={"md"}>
       <Link href={href ?? "/404"} target={"_target"} passHref>
         <Flex
-          bgGradient={Gradients[label.toLowerCase()]}
+          bgGradient={`linear(to-br, var(--primary-300), var(--primary-400))`}
+          border={"1px solid var(--primary-300)"}
           w={size}
           h={size}
           justifyContent={"center"}

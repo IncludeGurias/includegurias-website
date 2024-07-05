@@ -61,3 +61,16 @@ export { CONFETTI_LIGHT as ConfettiLight } from "./svgs/CONFETTI"
 export { CONFETTI_DARK as ConfettiDark } from "./svgs/CONFETTI"
 export { default as Topography } from "./svgs/topography"
 export { default as WaveArrow } from "./svgs/wave-arrow.svg"
+
+//Bolsistas images temporary
+export { default as GabeImage } from "./bolsistas/gabriel.jpg"
+export { default as EduardaImage } from "./bolsistas/eduarda.png"
+export { default as MaryImage } from "./bolsistas/mary.png"
+export { default as SaraImage } from "./bolsistas/sara.png"
+export { default as JoaoImage } from "./bolsistas/joao.png"
+export { default as LucasImage } from "./bolsistas/lucas.png"
+
+//equipe
+export { default as leticiaImage } from "./equipe/leticia.png"
+export { default as deboraImage } from "./equipe/debora.png"
+export { default as adrianeImage } from "./equipe/adriane.png"
