@@ -9,6 +9,7 @@ const Bolsistas = () => {
   return (
     <Grid
       templateColumns={{ base: "repeat(1, 1fr)", xl: "repeat(4, 1fr)", md: "repeat(2, 1fr)" }}
+      alignItems="center"
       gap={{ base: "2em", md: "4em" }}
       my={12}
     >

@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className={`${breeSerif.variable} ${raleway.variable} ${encodeSans.variable}`}>
-      <body className="bg-white">
+      <body className="bg-[#F3F4F6]">
         {/* <ProtectedRoute> */}
         <ChakraProvider>
           <Header />

@@ -20,7 +20,5 @@ export interface allMembersMemberType {
 export interface BolsistaType {
   name: string
   image?: StaticImageData
-  linkedin?: string
-  github?: string
-  instagram?: string
+  altText?: string
 }

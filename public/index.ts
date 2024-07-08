@@ -7,6 +7,7 @@ export { default as EletroinoProtoboard } from "./gibis/eletroino-protoboard/cap
 export { default as EletroinoArduino } from "./gibis/eletroino-arduino/capa.png"
 export { default as OficinaDeSkratch } from "./gibis/skratch/brave_R8GUWstjW2.png"
 export { default as BitBoxImage } from "./gibis/bitbox/brave_pfLYYtO3q9.png"
+export { default as BitBoxImage2 } from "./gibis/bitbox/brave_avvaM0GIPC.png"
 
 // icons
 export { default as USAicon } from "./icons/Flag_of_United_States_Flat_Round-64x64.webp"
@@ -24,6 +25,7 @@ export { default as KingsCollageLondon } from "./partners/kings collage london.p
 export { default as SBC } from "./partners/SBC.png"
 export { default as MeninasDigitais } from "./partners/Meninas digitais.png"
 export { default as BotsChannel } from "./partners/bots-channel.webp"
+export { default as SofiaCavedon } from "./partners/SofiaCavedon.png"
 
 export { default as ProjetoChancelado } from "./ChanceladoSBC.png"
 
@@ -61,3 +63,16 @@ export { CONFETTI_LIGHT as ConfettiLight } from "./svgs/CONFETTI"
 export { CONFETTI_DARK as ConfettiDark } from "./svgs/CONFETTI"
 export { default as Topography } from "./svgs/topography"
 export { default as WaveArrow } from "./svgs/wave-arrow.svg"
+
+//Bolsistas images temporary
+export { default as GabeImage } from "./bolsistas/gabriel.jpg"
+export { default as EduardaImage } from "./bolsistas/eduarda.png"
+export { default as MaryImage } from "./bolsistas/mary.png"
+export { default as SaraImage } from "./bolsistas/sara.png"
+export { default as JoaoImage } from "./bolsistas/joao.png"
+export { default as LucasImage } from "./bolsistas/lucas.png"
+
+//equipe
+export { default as leticiaImage } from "./equipe/leticia.png"
+export { default as deboraImage } from "./equipe/debora.png"
+export { default as adrianeImage } from "./equipe/adriane.png"

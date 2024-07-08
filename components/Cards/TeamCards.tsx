@@ -1,11 +1,9 @@
 "use client"
-import { AspectRatio, Box, Flex, Icon, Stack } from "@chakra-ui/react"
+import { AspectRatio, Box, Flex } from "@chakra-ui/react"
 import Avatar from "boring-avatars"
 import Image from "next/image"
-import { Reveal, SocialButton } from "components"
 import { CounterMap } from "public"
-import { TeamMemberType } from "types/teamMembers"
-import getIcon from "utils/getSocialMediaIcon"
+import { BolsistaType, TeamMemberType } from "types/teamMembers"
 import S from "./cardTeam.module.css"
 
 type CardTeamProps = {
@@ -35,92 +33,74 @@ export const BaseBolsistaCard = ({ title, children }: CardTeamProps) => (
 
 export const TeamCard = ({ name, image, role }: TeamMemberType) => {
   return (
-    <Reveal animationdirection="bottom" delay={0.1}>
-      <BaseTeamCard title={name}>
-        <Flex justifyContent="space-between" direction="column" h={"90%"}>
-          <Flex justify="center" align="center">
-            {image ? (
-              <AspectRatio ratio={1} w="300px" mb={4} className={S.__CardTeamImage}>
-                <Image src={image} alt={name} fill className="h-full rounded-lg object-cover shadow-lg" />
-              </AspectRatio>
-            ) : (
-              <Box mb={4} className={`${S.__CardTeamImage} shadow-lg`}>
-                <Avatar
-                  name={name}
-                  variant="beam"
-                  square={true}
-                  size={300}
-                  colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                />
-              </Box>
-            )}
-          </Flex>
-          <Flex direction="column" align="center" justify="center" h="100%">
-            <Box fontSize="xl" fontWeight="bold" textAlign="center" mb={4}>
-              {role}
+    <BaseTeamCard title={name}>
+      <Flex justifyContent="space-between" direction="column" h={"90%"}>
+        <Flex justify="center" align="center">
+          {image ? (
+            <AspectRatio ratio={1} w="300px" mb={4} className={S.__CardTeamImage}>
+              <Image
+                src={image}
+                alt={name}
+                fill
+                className="h-full rounded-lg object-cover shadow-lg"
+                sizes="315px, 315px, 315px"
+              />
+            </AspectRatio>
+          ) : (
+            <Box mb={4} className={`${S.__CardTeamImage} shadow-lg`}>
+              <Avatar
+                name={name}
+                variant="beam"
+                square={true}
+                size={300}
+                colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+              />
             </Box>
-          </Flex>
+          )}
         </Flex>
-      </BaseTeamCard>
-    </Reveal>
+        <Flex direction="column" align="center" justify="center" h="100%">
+          <Box fontSize="xl" fontWeight="bold" textAlign="center" mb={4}>
+            {role}
+          </Box>
+        </Flex>
+      </Flex>
+    </BaseTeamCard>
   )
 }
 
-export const BolsistaCard = ({ name, image, github, linkedin, instagram }: TeamMemberType) => {
+export const BolsistaCard = ({ name, image, altText }: BolsistaType) => {
   return (
-    <Reveal animationdirection="bottom" delay={0.1}>
-      <BaseBolsistaCard title={name}>
-        <Flex justifyContent="space-between" direction="column" h={"90%"}>
-          <Flex justify="center" align="center">
-            {image ? (
-              <AspectRatio ratio={1} w="150px" mb={4} className={S.__CardTeamImage}>
-                <Image src={image} alt={name} fill className="h-full rounded-lg object-cover shadow-lg" />
-              </AspectRatio>
-            ) : (
-              <Box mb={4} className={`${S.__CardTeamImage} shadow-lg`}>
-                <Avatar
-                  name={name}
-                  variant="beam"
-                  square={true}
-                  size={"150"}
-                  colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-                />
-              </Box>
-            )}
-          </Flex>
-          <Stack direction={"row"} spacing={6} justifyContent="center" mb={4} className={S.__CardTeamSocialMedia}>
-            {linkedin && (
-              <SocialButton
-                key={linkedin}
-                size={35}
-                label={`Linkedin`}
-                href={linkedin}
-                animation="rotateHover"
-                delay={0.1}
-              >
-                <Icon as={getIcon("linkedin")} color="white" size={35} />
-              </SocialButton>
-            )}
-            {github && (
-              <SocialButton key={github} size={35} label={"Github"} href={github} animation="rotateHover" delay={0.1}>
-                <Icon as={getIcon("github")} color="white" size={25} />
-              </SocialButton>
-            )}
-            {instagram && (
-              <SocialButton
-                key={instagram}
-                size={35}
-                label={"Instagram"}
-                href={instagram}
-                animation="rotateHover"
-                delay={0.1}
-              >
-                <Icon as={getIcon("instagram")} color="white" size={25} />
-              </SocialButton>
-            )}
-          </Stack>
+    <BaseBolsistaCard title={name}>
+      <Flex justifyContent="space-between" direction="column" h={"90%"}>
+        <Flex justify="center" align="center">
+          {image ? (
+            <AspectRatio ratio={1} w="150px" mb={4} className={S.__CardTeamImage}>
+              <Image
+                src={image}
+                alt={name}
+                fill
+                className="h-full rounded-lg object-cover shadow-lg"
+                sizes={"155px, 155px, 155px"}
+              />
+            </AspectRatio>
+          ) : (
+            <Box mb={4} className={`${S.__CardTeamImage} shadow-lg`}>
+              <Avatar
+                name={name}
+                variant="beam"
+                square={true}
+                size={"150"}
+                colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+              />
+            </Box>
+          )}
         </Flex>
-      </BaseBolsistaCard>
-    </Reveal>
+        <Flex direction="column" align="center" justify="center" h="100%">
+          <Box fontSize="xl" fontWeight="bold" textAlign="center" mb={4}>
+            {altText ?? "Bolsista"}
+          </Box>
+        </Flex>
+      </Flex>
+    </BaseBolsistaCard>
   )
 }
