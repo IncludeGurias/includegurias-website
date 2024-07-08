@@ -1,33 +1,47 @@
-import { prisma } from 'prisma/config'
+import { prisma } from "prisma/config"
 
 export async function GET() {
-    const gurias = await prisma.guria.findMany({
-        include: {
+  const gurias = await prisma.guria
+    .findMany({
+      include: {
         GuriaTags: {
-            include: {
-            tag: true
-            }
+          include: {
+            tag: true,
+          },
+        },
+      },
+    })
+    .then((gurias: any[]) => {
+      return gurias.map(
+        (guria: {
+          id: any
+          name: any
+          birthplace: any
+          birthdate: any
+          deathdate: any
+          bio: any
+          job: any
+          imageUrl: any
+          GuriaTags: { tag: { name: any } }[]
+        }) => {
+          return {
+            id: guria.id,
+            name: guria.name,
+            birthplace: guria.birthplace,
+            birthdate: guria.birthdate,
+            deathdate: guria.deathdate,
+            bio: guria.bio,
+            job: guria.job,
+            imageUrl: guria.imageUrl,
+            tags: guria.GuriaTags.map((guriaTag: { tag: { name: any } }) => guriaTag.tag.name),
+          }
         }
-        }
-    }).then((gurias: any[]) => {
-        return gurias.map((guria: { id: any; name: any; birthplace: any; birthdate: any; deathdate: any; bio: any; job: any; imageUrl: any; GuriaTags: { tag: { name: any; }; }[]; }) => {
-            return {
-                id: guria.id,
-                name: guria.name,
-                birthplace: guria.birthplace,
-                birthdate: guria.birthdate,
-                deathdate: guria.deathdate,
-                bio: guria.bio,
-                job: guria.job,
-                imageUrl: guria.imageUrl,
-                tags: guria.GuriaTags.map((guriaTag: { tag: { name: any; }; }) => guriaTag.tag.name),
-            }
-        })
+      )
     })
 
-    return new Response(JSON.stringify(gurias), {
-        headers: { 'Content-Type': 'application/json' },
-    })
+  return new Response(JSON.stringify(gurias), {
+    headers: { "Content-Type": "application/json" },
+  })
 }
 
 /*

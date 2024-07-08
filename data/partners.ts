@@ -5,8 +5,8 @@ import {
   KingsCollageLondon,
   MeninasDigitais,
   SBC,
-  STEMConnectionHub,
   SofiaCavedon,
+  STEMConnectionHub,
   UERGS,
 } from "public"
 import partnerType from "types/partnerType"

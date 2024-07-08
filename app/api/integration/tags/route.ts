@@ -1,17 +1,17 @@
-import { prisma } from 'prisma/config'
+import { prisma } from "prisma/config"
 
 export async function GET() {
-    const tags = await prisma.tag.findMany().then((tags: any[]) => {
-        return tags.map((tag: { name: any }) => tag.name).sort(() => Math.random() - 0.5)
-    })
-    
-    const response = {
-        tags: tags
-    };
+  const tags = await prisma.tag.findMany().then((tags: any[]) => {
+    return tags.map((tag: { name: any }) => tag.name).sort(() => Math.random() - 0.5)
+  })
 
-    return new Response(JSON.stringify(response), {
-        headers: { 'Content-Type': 'application/json' },
-    });
+  const response = {
+    tags: tags,
+  }
+
+  return new Response(JSON.stringify(response), {
+    headers: { "Content-Type": "application/json" },
+  })
 }
 
 /*

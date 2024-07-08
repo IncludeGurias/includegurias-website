@@ -1,42 +1,56 @@
-import { NextRequest } from 'next/server'
-import { prisma } from 'prisma/config'
+import { NextRequest } from "next/server"
+import { prisma } from "prisma/config"
 
 export async function GET(
-    req: NextRequest,
-    context: {
-        params: {
-            guria: string;
-        };
+  req: NextRequest,
+  context: {
+    params: {
+      guria: string
     }
+  }
 ) {
-    const guria = await prisma.guria.findFirst({
-        where: {
-            name: context.params.guria,
+  const guria = await prisma.guria
+    .findFirst({
+      where: {
+        name: context.params.guria,
+      },
+      include: {
+        GuriaTags: {
+          include: {
+            tag: true,
+          },
         },
-        include: {
-            GuriaTags: {
-                include: {
-                    tag: true
-                }
-            }
-        }
-    }).then((guria: { id: any; name: any; birthplace: any; birthdate: any; deathdate: any; bio: any; job: any; imageUrl: any; GuriaTags: { tag: { name: any; }; }[]; }) => {
+      },
+    })
+    .then(
+      (guria: {
+        id: any
+        name: any
+        birthplace: any
+        birthdate: any
+        deathdate: any
+        bio: any
+        job: any
+        imageUrl: any
+        GuriaTags: { tag: { name: any } }[]
+      }) => {
         return {
-            id: guria.id,
-            name: guria.name,
-            birthplace: guria.birthplace,
-            birthdate: guria.birthdate,
-            deathdate: guria.deathdate,
-            bio: guria.bio,
-            job: guria.job,
-            imageUrl: guria.imageUrl,
-            tags: guria.GuriaTags.map((guriaTag: { tag: { name: any; }; }) => guriaTag.tag.name),
+          id: guria.id,
+          name: guria.name,
+          birthplace: guria.birthplace,
+          birthdate: guria.birthdate,
+          deathdate: guria.deathdate,
+          bio: guria.bio,
+          job: guria.job,
+          imageUrl: guria.imageUrl,
+          tags: guria.GuriaTags.map((guriaTag: { tag: { name: any } }) => guriaTag.tag.name),
         }
-    })
+      }
+    )
 
-    return new Response(JSON.stringify(guria), {
-        headers: { 'Content-Type': 'application/json' },
-    })
+  return new Response(JSON.stringify(guria), {
+    headers: { "Content-Type": "application/json" },
+  })
 }
 
 /*

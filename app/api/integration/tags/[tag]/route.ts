@@ -1,50 +1,80 @@
-import { NextRequest } from 'next/server'
-import { prisma } from 'prisma/config'
+import { NextRequest } from "next/server"
+import { prisma } from "prisma/config"
 
 export async function GET(
-    req: NextRequest,
-    context: {
-        params: {
-            tag: string;
-        };
+  req: NextRequest,
+  context: {
+    params: {
+      tag: string
     }
+  }
 ) {
-    const gurias = await prisma.tag.findFirst({
-        where: {
-            name: context.params.tag,
+  const gurias = await prisma.tag
+    .findFirst({
+      where: {
+        name: context.params.tag,
+      },
+      include: {
+        GuriaTags: {
+          include: {
+            guria: true,
+          },
         },
-        include: {
-            GuriaTags: {
-                include: {
-                    guria: true
-                }
+      },
+    })
+    .then(
+      (tag: {
+        GuriaTags: {
+          guria: {
+            id: any
+            name: any
+            birthplace: any
+            birthdate: any
+            deathdate: any
+            bio: any
+            job: any
+            imageUrl: any
+          }
+        }[]
+      }) => {
+        return tag.GuriaTags.map(
+          (guriaTag: {
+            guria: {
+              id: any
+              name: any
+              birthplace: any
+              birthdate: any
+              deathdate: any
+              bio: any
+              job: any
+              imageUrl: any
             }
-        }
-    }).then((tag: { GuriaTags: { guria: { id: any; name: any; birthplace: any; birthdate: any; deathdate: any; bio: any; job: any; imageUrl: any; } }[]; }) => {
-        return tag.GuriaTags.map((guriaTag: { guria: { id: any; name: any; birthplace: any; birthdate: any; deathdate: any; bio: any; job: any; imageUrl: any; }; }) => {
+          }) => {
             return {
-                id: guriaTag.guria.id,
-                name: guriaTag.guria.name,
-                birthplace: guriaTag.guria.birthplace,
-                birthdate: guriaTag.guria.birthdate,
-                deathdate: guriaTag.guria.deathdate,
-                bio: guriaTag.guria.bio,
-                job: guriaTag.guria.job,
-                imageUrl: guriaTag.guria.imageUrl,
+              id: guriaTag.guria.id,
+              name: guriaTag.guria.name,
+              birthplace: guriaTag.guria.birthplace,
+              birthdate: guriaTag.guria.birthdate,
+              deathdate: guriaTag.guria.deathdate,
+              bio: guriaTag.guria.bio,
+              job: guriaTag.guria.job,
+              imageUrl: guriaTag.guria.imageUrl,
             }
-        }).sort(() => Math.random() - 0.5)
-    })
+          }
+        ).sort(() => Math.random() - 0.5)
+      }
+    )
 
-    const response = {
-        gurias: gurias
-    };
-    
-    return new Response(JSON.stringify(response), {
-        headers: { 'Content-Type': 'application/json' },
-    })
+  const response = {
+    gurias: gurias,
+  }
+
+  return new Response(JSON.stringify(response), {
+    headers: { "Content-Type": "application/json" },
+  })
 }
 
-    /*
+/*
 model Guria {
   id         Int      @id @default(autoincrement())
   name       String
