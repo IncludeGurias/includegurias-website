@@ -6,7 +6,6 @@ import { AnimatedWavyText } from "components"
 import { EletroinoAOrigem } from "public"
 import { GibisLinks } from "utils/includeLinks"
 import baseMetadata from "utils/metadata"
-import Test from "./test"
 
 export const metadata: Metadata = {
   ...baseMetadata,
@@ -62,7 +61,7 @@ const Eletroino1 = () => {
           </Link>
         </Flex>
       </Container>
-      <Test />
+      {/* <Test /> */}
     </>
   )
 }

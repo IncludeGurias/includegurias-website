@@ -18,7 +18,9 @@ export const contactLinks = {
 
 export const GibisLinks = {
   MeninasEmpoderadas: "https://www.uergs.edu.br/upload/arquivos/202105/03112424-gibi-meninas-empoderadas-digital-3.pdf",
-  EletroinoVolume1: "https://drive.google.com/file/d/1-qGLCtEPlkFIo9VHAkAz0eowpu_YB4Cd/view?usp=drive_link",
-  EletroinoVolume2: "https://drive.google.com/file/d/1teZCP-c0ABEcq-c1FIQU3GsD5231IORW/view?usp=drive_link",
-  EletroinoVolume3: "https://drive.google.com/file/d/1_D2LL_f5GqMIUPp8Y0kXKu1mPawBKne7/view?usp=drive_link",
+  EletroinoVolume1: "https://drive.google.com/file/d/1zy2joaVZey4nt36jrG_erIEhEdF9-dgS/view?usp=sharing",
+  EletroinoVolume2: "https://drive.google.com/file/d/1I8AF8YzHcis_KMMwj2LhIAIIFb_XHRCl/view?usp=sharing",
+  EletroinoVolume3: "https://drive.google.com/file/d/1d_0PGagIoCX4KswuLP5BWLQWhcjoCd9l/view?usp=sharing",
+  ProgramandoComScratch: "https://drive.google.com/file/d/1nf4wdrl1YoS9NaDeYlX7-Fgo5nHToUw8/view?usp=sharing",
+  BitBox: "https://drive.google.com/file/d/1UDECZ5dm2F1zhhB4Z0sKQS5dJpJL0JRX/view?usp=sharing",
 }

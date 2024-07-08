@@ -114,10 +114,7 @@ export default function AboutUs() {
 
       <Box p={4} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"} mt={8}>
         <HeadingText text="Parceiros" align={"center"} />
-        <SubText
-          text="Aqui estão algumas das pessoas que fazem ou já fizeram parte da nossa história."
-          align={"center"}
-        />
+        <SubText text="Aqui estão algumas das Empresas, Entidades e pessoas que nos apoiam." align={"center"} />
         <AllPartners />
       </Box>
     </div>

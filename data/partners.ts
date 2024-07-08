@@ -6,6 +6,7 @@ import {
   MeninasDigitais,
   SBC,
   STEMConnectionHub,
+  SofiaCavedon,
   UERGS,
 } from "public"
 import partnerType from "types/partnerType"
@@ -46,6 +47,11 @@ export const CURRENT_PARTNERS: partnerType[] = [
     href: "https://www.kcl.ac.uk/",
     image: KingsCollageLondon,
   },
+  {
+    name: "Sofia Cavedon",
+    href: "https://www.instagram.com/sofiacavedonoficial/",
+    image: SofiaCavedon,
+  }
 ]
 
 export const ALL_PARTNERS: partnerType[] = [

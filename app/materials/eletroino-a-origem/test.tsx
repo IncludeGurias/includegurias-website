@@ -1,14 +1,12 @@
 'use client';
 
-import { useCallback, useState } from 'react';
 import { useResizeObserver } from '@wojtekmaj/react-hooks';
-import { pdfjs, Document, Page } from 'react-pdf';
+import type { PDFDocumentProxy } from 'pdfjs-dist';
+import { useCallback, useState } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
-
 import './Sample.css';
-
-import type { PDFDocumentProxy } from 'pdfjs-dist';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -27,7 +25,7 @@ const maxWidth = 800;
 type PDFFile = string | File | null;
 
 export default function Sample() {
-  const [file, setFile] = useState<PDFFile>('./sample.pdf');
+  const [file, setFile] = useState<PDFFile>('./1.pdf');
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
   const [containerWidth, setContainerWidth] = useState<number>();
