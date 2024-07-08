@@ -51,7 +51,7 @@ export const CURRENT_PARTNERS: partnerType[] = [
     name: "Sofia Cavedon",
     href: "https://www.instagram.com/sofiacavedonoficial/",
     image: SofiaCavedon,
-  }
+  },
 ]
 
 export const ALL_PARTNERS: partnerType[] = [

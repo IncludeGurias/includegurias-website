@@ -1,57 +1,54 @@
-'use client';
+"use client"
 
-import { useResizeObserver } from '@wojtekmaj/react-hooks';
-import type { PDFDocumentProxy } from 'pdfjs-dist';
-import { useCallback, useState } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
-import './Sample.css';
+import { useResizeObserver } from "@wojtekmaj/react-hooks"
+import type { PDFDocumentProxy } from "pdfjs-dist"
+import { useCallback, useState } from "react"
+import { Document, Page, pdfjs } from "react-pdf"
+import "react-pdf/dist/esm/Page/AnnotationLayer.css"
+import "react-pdf/dist/esm/Page/TextLayer.css"
+import "./Sample.css"
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = new URL("pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).toString()
 
 const options = {
-  cMapUrl: '/cmaps/',
-  standardFontDataUrl: '/standard_fonts/',
-};
+  cMapUrl: "/cmaps/",
+  standardFontDataUrl: "/standard_fonts/",
+}
 
-const resizeObserverOptions = {};
+const resizeObserverOptions = {}
 
-const maxWidth = 800;
+const maxWidth = 800
 
-type PDFFile = string | File | null;
+type PDFFile = string | File | null
 
 export default function Sample() {
-  const [file, setFile] = useState<PDFFile>('./1.pdf');
-  const [numPages, setNumPages] = useState<number>();
-  const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
-  const [containerWidth, setContainerWidth] = useState<number>();
+  const [file, setFile] = useState<PDFFile>("./1.pdf")
+  const [numPages, setNumPages] = useState<number>()
+  const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
+  const [containerWidth, setContainerWidth] = useState<number>()
 
   const onResize = useCallback<ResizeObserverCallback>((entries) => {
-    const [entry] = entries;
+    const [entry] = entries
 
     if (entry) {
-      setContainerWidth(entry.contentRect.width);
+      setContainerWidth(entry.contentRect.width)
     }
-  }, []);
+  }, [])
 
-  useResizeObserver(containerRef, resizeObserverOptions, onResize);
+  useResizeObserver(containerRef, resizeObserverOptions, onResize)
 
   function onFileChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    const { files } = event.target;
+    const { files } = event.target
 
-    const nextFile = files?.[0];
+    const nextFile = files?.[0]
 
     if (nextFile) {
-      setFile(nextFile);
+      setFile(nextFile)
     }
   }
 
   function onDocumentLoadSuccess({ numPages: nextNumPages }: PDFDocumentProxy): void {
-    setNumPages(nextNumPages);
+    setNumPages(nextNumPages)
   }
 
   return (
@@ -61,8 +58,7 @@ export default function Sample() {
       </header>
       <div className="Example__container">
         <div className="Example__container__load">
-          <label htmlFor="file">Load from file:</label>{' '}
-          <input onChange={onFileChange} type="file" />
+          <label htmlFor="file">Load from file:</label> <input onChange={onFileChange} type="file" />
         </div>
         <div className="Example__container__document" ref={setContainerRef}>
           <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
@@ -77,5 +73,5 @@ export default function Sample() {
         </div>
       </div>
     </div>
-  );
+  )
 }
