@@ -4,9 +4,7 @@ export interface TeamMemberType {
   name: string
   role?: string
   image?: StaticImageData | null
-  linkedin?: string
-  github?: string
-  instagram?: string
+  href?: string
 }
 
 // usado no all team memebrs component

@@ -2,6 +2,7 @@
 import { AspectRatio, Box, Flex } from "@chakra-ui/react"
 import Avatar from "boring-avatars"
 import Image from "next/image"
+import Link from "next/link"
 import { CounterMap } from "public"
 import { BolsistaType, TeamMemberType } from "types/teamMembers"
 import S from "./cardTeam.module.css"
@@ -9,16 +10,19 @@ import S from "./cardTeam.module.css"
 type CardTeamProps = {
   title: string
   children: React.ReactNode
+  href: string
 }
 
-export const BaseTeamCard = ({ title, children }: CardTeamProps) => (
-  <Box className={S.__TeamCardMain}>
-    <Image src={CounterMap} alt="Contour Line" fill className={S.__CountourLineSvg} />
-    <Box p="6" bg={"var(--primary-300)"} className={S.__TeamCard}>
-      <Box className={S.__TeamCardTitle}>{title}</Box>
-      {children}
+export const BaseTeamCard = ({ title, children, href }: CardTeamProps) => (
+  <Link href={href} passHref>
+    <Box className={S.__TeamCardMain}>
+      <Image src={CounterMap} alt="Contour Line" fill className={S.__CountourLineSvg} />
+      <Box p="6" bg={"var(--primary-300)"} className={S.__TeamCard}>
+        <Box className={S.__TeamCardTitle}>{title}</Box>
+        {children}
+      </Box>
     </Box>
-  </Box>
+  </Link>
 )
 
 export const BaseBolsistaCard = ({ title, children }: CardTeamProps) => (
@@ -31,9 +35,9 @@ export const BaseBolsistaCard = ({ title, children }: CardTeamProps) => (
   </Box>
 )
 
-export const TeamCard = ({ name, image, role }: TeamMemberType) => {
+export const TeamCard = ({ name, image, role, href }: TeamMemberType) => {
   return (
-    <BaseTeamCard title={name}>
+    <BaseTeamCard title={name} href={href ?? "#"}>
       <Flex justifyContent="space-between" direction="column" h={"90%"}>
         <Flex justify="center" align="center">
           {image ? (

@@ -122,7 +122,7 @@ export default function Home() {
                   id="text"
                   transform={"rotate(10deg)"}
                 >
-                  Assista um video sobre o #Include!
+                  Assista um video sobre o Include!
                 </Text>
               </>
             </RotateReveal>

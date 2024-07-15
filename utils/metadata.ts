@@ -70,22 +70,6 @@ export const keywords = [
   "Meninas na robótica",
 ]
 
-export const openGraph = {
-  title: "Include Gurias",
-  description: "Aqui você encontra tudo sobre o projeto Include Gurias",
-  url: `${env.SITE_URL}/`,
-  type: "website",
-  siteName: "Include Gurias",
-  images: [
-    {
-      url: "public/metadata/main.png",
-      width: 1313,
-      height: 793,
-      alt: "Include Gurias",
-    },
-  ],
-}
-
 const baseMetadata: Metadata = {
   title: "Include Gurias",
   description: "Aqui você encontra tudo sobre o projeto Include Gurias",
@@ -100,7 +84,22 @@ const baseMetadata: Metadata = {
   ],
   creator: "Bots Channel, Lucas Henrique Diniz Ostroski",
   keywords: keywords,
-  openGraph: openGraph,
+  openGraph: {
+    title: "Include Gurias",
+    description: "Aqui você encontra tudo sobre o projeto Include Gurias",
+    url: `${env.SITE_URL}/`,
+    type: "website",
+    siteName: "Include Gurias",
+    images: [
+      {
+        url: "public/metadata/main.png",
+        width: 1313,
+        height: 793,
+        alt: "Include Gurias",
+      },
+    ],
+  },
+  metadataBase: new URL(env.SITE_URL), // Assuming env.SITE_URL holds your base URL
 }
 
 export default baseMetadata
