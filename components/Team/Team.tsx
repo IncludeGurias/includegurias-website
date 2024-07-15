@@ -1,8 +1,7 @@
 "use client"
 import { Grid } from "@chakra-ui/react"
 import { TeamCard } from "components"
-import { CURRENT_TEAM_MEMBERS } from "data"
-import { FounderImage } from "public"
+import { CURRENT_TEAM_MEMBERS, FOUNDER } from "data"
 import { TeamMemberType } from "types/teamMembers"
 
 export const TeamForAboutUs = () => {
@@ -13,9 +12,15 @@ export const TeamForAboutUs = () => {
       my={12}
     >
       <>
-        <TeamCard name="Profª. Drª Fabrícia Damando Santos" image={FounderImage} role="Coordenadora" />
+        <TeamCard name={FOUNDER.name} image={FOUNDER.image} role={FOUNDER.role} href={FOUNDER.href} />
         {CURRENT_TEAM_MEMBERS.map((teamMember: TeamMemberType, index: number) => (
-          <TeamCard key={index} name={teamMember.name} image={teamMember.image} role={teamMember.role} />
+          <TeamCard
+            key={index}
+            name={teamMember.name}
+            image={teamMember.image}
+            role={teamMember.role}
+            href={teamMember.href ?? "#"}
+          />
         ))}
       </>
     </Grid>
