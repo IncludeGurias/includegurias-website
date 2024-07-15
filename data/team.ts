@@ -19,7 +19,12 @@ export const FOUNDER: TeamMemberType = {
 }
 
 export const CURRENT_TEAM_MEMBERS: TeamMemberType[] = [
-  { name: "Profª. Drª Débora Mota Mattos", role: "Colaboradora", image: deboraImage },
+  {
+    name: "Profª. Drª Débora Mota Mattos",
+    role: "Colaboradora",
+    image: deboraImage,
+    href: "http://lattes.cnpq.br/8152949833507899",
+  },
   {
     name: "Profª. Drª Adriane Parraga",
     role: "Colaboradora",
