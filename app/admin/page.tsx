@@ -1,13 +1,11 @@
 "use client"
 import {
-  Avatar,
   Box,
   Button,
   chakra,
   Flex,
   FormControl,
   FormHelperText,
-  Heading,
   Input,
   InputGroup,
   InputLeftElement,
@@ -16,7 +14,7 @@ import {
   Stack,
 } from "@chakra-ui/react"
 import { useState } from "react"
-import { FaLock, FaUserAlt } from "react-icons/fa"
+import { FaEye, FaEyeSlash, FaLock, FaUserAlt } from "react-icons/fa"
 
 const CFaUserAlt = chakra(FaUserAlt)
 const CFaLock = chakra(FaLock)
@@ -36,17 +34,15 @@ const App = () => {
       alignItems="center"
     >
       <Stack flexDir="column" mb="2" justifyContent="center" alignItems="center">
-        <Avatar bg="teal.500" />
-        <Heading color="teal.400">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
-            <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md">
+            <Stack spacing={4} p="1rem" backgroundColor="whiteAlpha.900" boxShadow="md" borderRadius="md">
               <FormControl>
                 <InputGroup>
                   <InputLeftElement pointerEvents="none">
                     <CFaUserAlt color="gray.300" />
                   </InputLeftElement>
-                  <Input type="email" placeholder="email address" />
+                  <Input type="email" placeholder="Email" />
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -54,15 +50,15 @@ const App = () => {
                   <InputLeftElement pointerEvents="none" color="gray.300">
                     <CFaLock color="gray.300" />
                   </InputLeftElement>
-                  <Input type={showPassword ? "text" : "password"} placeholder="Password" />
-                  <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={handleShowClick}>
-                      {showPassword ? "Hide" : "Show"}
+                  <Input type={showPassword ? "text" : "password"} placeholder="Senha" />
+                  <InputRightElement>
+                    <Button size="sm" onClick={handleShowClick} h="1.75rem" variant="unstyled">
+                      {showPassword ? <FaEye /> : <FaEyeSlash />}
                     </Button>
                   </InputRightElement>
                 </InputGroup>
                 <FormHelperText textAlign="right">
-                  <Link>forgot password?</Link>
+                  <Link color="teal.500">Esqueceu a senha?</Link>
                 </FormHelperText>
               </FormControl>
               <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full">
@@ -72,12 +68,6 @@ const App = () => {
           </form>
         </Box>
       </Stack>
-      <Box>
-        New to us?
-        <Link color="teal.500" href="#">
-          Sign Up
-        </Link>
-      </Box>
     </Flex>
   )
 }
