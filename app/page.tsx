@@ -139,7 +139,7 @@ export default function Home() {
       <TestimonialsSection />
 
       <Box p={4} maxW={{ base: "100%", md: "9xl" }} display={"flex"} flexDirection={"column"}>
-        <HeadingText text="Siga o #Include" align="center" />
+        <HeadingText text="Siga o Include" align="center" />
         <Stack direction={"row"} spacing={6} justifyContent="center" mb={4}>
           {SocialMediaData.map((socialMedia, index) => (
             <SocialButton
