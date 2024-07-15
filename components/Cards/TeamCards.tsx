@@ -74,7 +74,7 @@ export const TeamCard = ({ name, image, role, href }: TeamMemberType) => {
 
 export const BolsistaCard = ({ name, image, altText }: BolsistaType) => {
   return (
-    <BaseBolsistaCard title={name}>
+    <BaseBolsistaCard title={name} href="#">
       <Flex justifyContent="space-between" direction="column" h={"90%"}>
         <Flex justify="center" align="center">
           {image ? (
