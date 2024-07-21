@@ -2,7 +2,7 @@ import { Box, Flex, Grid, GridItem, Heading, Text, VStack } from "@chakra-ui/rea
 import { Metadata } from "next"
 import { MaterialCard, Reveal } from "components"
 import { INCLUDE_MATERIALS } from "data"
-import { ConfettiDark } from "public"
+import { ConfettiLight } from "public"
 import baseMetadata from "utils/metadata"
 
 export const metadata: Metadata = {
@@ -17,11 +17,12 @@ export default function OurMaterials() {
       align="center"
       justify="center"
       css={{
-        backgroundImage: ConfettiDark,
+        backgroundImage: ConfettiLight,
         backgroundAttachment: "fixed",
       }}
       id="contact"
       m={0}
+      pt={100}
     >
       <Box m={{ base: 5, md: 16, lg: 10 }} p={{ base: 5, lg: 16 }}>
         <Box>
@@ -33,7 +34,7 @@ export default function OurMaterials() {
                   md: "5xl",
                 }}
               >
-                Materias do #Include Gurias
+                Materias do Include Gurias
               </Heading>
             </Reveal>
             <Reveal animationdirection="bottom" delay={0.2}>
@@ -48,7 +49,7 @@ export default function OurMaterials() {
                 templateColumns={{
                   base: "1fr",
                   md: "repeat(2, 1fr)",
-                  lg: "repeat(3, 1fr)",
+                  xl: "repeat(3, 1fr)",
                 }}
                 gap={4}
               >

@@ -1,7 +1,6 @@
 import { Box, Container, Flex, Grid, GridItem, Heading, Icon, Stack, Text } from "@chakra-ui/react"
 import { Metadata } from "next"
 import Link from "next/link"
-import { createElement } from "react"
 import { IoIosPeople, IoLogoYoutube } from "react-icons/io"
 import { MdLocalPhone } from "react-icons/md"
 import {
@@ -66,18 +65,17 @@ export default function Home() {
           </Reveal>
           <Stack
             spacing={{ base: 8, sm: 20 }}
-            direction="row"
             justify="center"
             justifyItems="center"
             alignItems="center"
-            display="flex"
             my={2}
             w="full"
+            flexDirection={{ base: "column", sm: "row" }}
           >
             <Link href="/sobre-nos" passHref>
               <PrimaryButton icon={<IoIosPeople size={25} />}>Sobre nós</PrimaryButton>
             </Link>
-            <Link href="/contact" passHref>
+            <Link href="/contato" passHref>
               <PrimaryButton icon={<MdLocalPhone size={25} />}>Contato</PrimaryButton>
             </Link>
           </Stack>
@@ -135,12 +133,15 @@ export default function Home() {
       </Flex>
 
       <WhatWeDoSection />
+
       <NewsSection />
+
       <TestimonialsSection />
 
       <Box p={4} maxW={{ base: "100%", md: "9xl" }} display={"flex"} flexDirection={"column"}>
         <HeadingText text="Siga o Include" align="center" />
-        <Stack direction={"row"} spacing={6} justifyContent="center" mb={4}>
+        <div className="mb-6 grid grid-cols-3 justify-items-center gap-4 sm:flex-wrap sm:justify-center md:flex">
+          {/* placeholder hidden, later mobile friendly */}
           {SocialMediaData.map((socialMedia, index) => (
             <SocialButton
               key={socialMedia.name + index}
@@ -150,22 +151,23 @@ export default function Home() {
               animation="rotateHover"
               delay={index * 0.1}
             >
-              {createElement(socialMedia.icon, {
-                color: "white",
-                size: 25,
-              })}
+              {socialMedia.icon}
             </SocialButton>
           ))}
-        </Stack>
+        </div>
         <Grid
           templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
+          templateRows={{ base: "repeat(1, 1fr)", md: "repeat(1, 1fr)" }}
           columnGap={4}
           rowGap={4}
+          maxH={"600px"}
+          overflow={"hidden"}
+          row={1}
           w="full"
           justifyContent="space-between"
         >
           {SOCIALMEDIA_DATA.map((post, index) => (
-            <GridItem w="full" className={"GridItem"} key={index}>
+            <GridItem w="full" key={post.name + index}>
               <SocialMediaCard
                 text={post.text}
                 avatarImage={IncludeAvatar}

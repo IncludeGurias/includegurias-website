@@ -1,6 +1,5 @@
 import { Box, Flex, Grid, Stack } from "@chakra-ui/react"
 import { Metadata } from "next"
-import { createElement } from "react"
 import { TbBook } from "react-icons/tb"
 import {
   AboutUsValues,
@@ -44,7 +43,7 @@ export default function AboutUs() {
           align={"start"}
           classNames={{ text: "mt-8" }}
         />
-        <Stack direction={"row"} spacing={6} justifyContent="start" mb={4}>
+        <Stack direction={"row"} spacing={6} justifyContent={{ base: "center", lg: "start" }} mb={4}>
           {SocialMediaData.map((socialMedia, index) => (
             <SocialButton
               key={socialMedia.name + index}
@@ -54,10 +53,7 @@ export default function AboutUs() {
               animation="rotateHover"
               delay={index * 0.1}
             >
-              {createElement(socialMedia.icon, {
-                color: "white",
-                size: 25,
-              })}
+              {socialMedia.icon}
             </SocialButton>
           ))}
         </Stack>
