@@ -1,5 +1,5 @@
-import { womanType } from "types/womanType"
 import axios from "axios"
+import { womanType } from "types/womanType"
 
 export async function fetchGurias() {
   try {
@@ -13,7 +13,6 @@ export async function fetchGurias() {
 export async function fetchGuria(name: string) {
   try {
     const data = await axios.get(`/api/gurias?guria=${name}`)
-    console.log("data", data.data, "for", name)
     return data.data
   } catch (error) {
     console.error(error)

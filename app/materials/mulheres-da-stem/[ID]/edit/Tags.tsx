@@ -29,7 +29,6 @@ const TagSelect = ({ tags, selectedTags, setSelectedTags }: TagSelectProps) => {
   }
 
   const handleSelectChange = (value: any) => {
-    console.log(value)
     setSelectedTags([...selectedTags, value])
     setIsOpen(false) // Close popover after selection
   }

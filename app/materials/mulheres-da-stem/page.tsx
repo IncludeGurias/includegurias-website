@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { AiFillDelete } from "react-icons/ai"
 import { HeadingText, Reveal, SearchBar, WomanCard } from "components"
-import { ConfettiDark } from "public"
+import { ConfettiLight } from "public"
 import { womanType } from "types/womanType"
 import { tagColors } from "utils/getTagColors"
 import { contactLinks } from "utils/includeLinks"
@@ -12,7 +12,6 @@ import { toCamelCase } from "utils/stringFunctions"
 import { fetchGurias, fetchImage, fetchTags } from "utils/webService"
 
 const TagsSelecionadas = ({ selectedTags }: { selectedTags: string[] }) => {
-  console.log("selectedTags", selectedTags)
   return (
     <Wrap>
       {selectedTags &&
@@ -54,14 +53,12 @@ const MulheresNasExatas = () => {
         setGurias(guriasData)
         setFilteredGurias(guriasData)
         setTags(tagsData)
-        console.log("Tags:", tagsData)
 
         // Mapear gurias para um array de promessas de imagens
         const imagePromises = guriasData.map(async (guria) => {
           try {
             const guriaName = toCamelCase(guria.name)
             const imageData = await fetchImage(guriaName)
-            console.log("Imagem para", guriaName, imageData)
             return imageData
           } catch (error) {
             console.error("Erro ao carregar imagem para", guria.name, error)
@@ -85,6 +82,7 @@ const MulheresNasExatas = () => {
       const filteredGurias = gurias.filter((guria) => {
         const name = guria.name.toLowerCase()
         const searchValueLower = searchValue.toLowerCase()
+
         const nameMatches = name.includes(searchValueLower)
 
         const tagsMatches = selectedTags.every((tag) => guria.tags.includes(tag))
@@ -107,7 +105,7 @@ const MulheresNasExatas = () => {
       minH={"100vh"}
       justify={"center"}
       css={{
-        backgroundImage: ConfettiDark,
+        backgroundImage: ConfettiLight,
         backgroundAttachment: "fixed",
       }}
     >

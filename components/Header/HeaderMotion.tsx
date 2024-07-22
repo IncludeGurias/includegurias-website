@@ -14,7 +14,7 @@ export const HeaderMotion = ({ children }: headerMotionProps) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY === 0) 
+      setIsScrolled(window.scrollY === 0)
     }
 
     window.addEventListener("scroll", handleScroll) // Add event listener

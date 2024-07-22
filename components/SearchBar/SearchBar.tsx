@@ -34,7 +34,7 @@ const SearchBar = ({ tags, selectedTags, setSelectedTags, searchValue, setSearch
   const [isEditing, setIsEditing] = useState(false)
 
   return (
-    <InputGroup borderRadius={5} size="sm" maxW={600} zIndex={25}>
+    <InputGroup borderRadius={5} size="sm" maxW={600} zIndex={25} bg={"white"} boxShadow={"md"}>
       <InputLeftElement pointerEvents="none">
         <BiSearch color="gray.300" />
       </InputLeftElement>

@@ -93,12 +93,18 @@ const baseMetadata: Metadata = {
     images: [
       {
         url: "public/metadata/main.png",
-        width: 1313,
-        height: 793,
-        alt: "Include Gurias",
       },
     ],
   },
+  twitter: {
+    site: "@includegurias",
+    card: "summary_large_image",
+    creator: "@lucasostroski",
+    title: "Include Gurias",
+    description: "Aqui você encontra tudo sobre o projeto Include Gurias",
+    images: "public/metadata/main.png",
+  },
+
   metadataBase: new URL(env.SITE_URL), // Assuming env.SITE_URL holds your base URL
 }
 
