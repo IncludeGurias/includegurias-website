@@ -11,7 +11,6 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { Metadata } from "next"
-import { createElement } from "react"
 import { BsPerson } from "react-icons/bs"
 import { FaRegMessage } from "react-icons/fa6"
 import { FiSend } from "react-icons/fi"
@@ -37,13 +36,14 @@ export default function ContactForm() {
         backgroundAttachment: "fixed",
       }}
       id="contact"
+      pt={100}
     >
       <Box borderRadius="lg" m={{ base: 5, md: 16, lg: 10 }} p={{ base: 5, lg: 16 }}>
         <Box>
           <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
             <HeadingText text="Entre em contato conosco!" color="primary.300" />
 
-            <Stack spacing={{ base: 4, md: 8, lg: 20 }} direction={{ base: "column", md: "row" }}>
+            <Stack spacing={{ base: 4, md: 8, lg: 20 }} direction={{ base: "column", md: "row" }} w={"100%"}>
               <Stack align="center" justify="space-around" direction={{ base: "row", md: "column" }}>
                 {SocialMediaData.map((socialMedia) => (
                   <div className="flex w-full items-center justify-start gap-2" key={socialMedia.name}>
@@ -54,18 +54,15 @@ export default function ContactForm() {
                       animation="rotateHover"
                       circle={true}
                     >
-                      {createElement(socialMedia.icon, {
-                        size: 20,
-                        color: "white",
-                      })}
+                      {socialMedia.icon}
                     </SocialButton>
-                    <span className="text-lg font-semibold ">
+                    <span className="hidden text-lg font-semibold md:block">
                       {socialMedia.name === "Chatbot" ? "Whatsapp" : socialMedia.name}
                     </span>
                   </div>
                 ))}
               </Stack>
-              <Box bg={"white"} borderRadius="lg" p={10} w={450} color={"text.700"} shadow="base">
+              <Box bg={"white"} borderRadius="lg" p={10} color={"text.700"} shadow="base" w={{ base: "100%", md: 450 }}>
                 <VStack spacing={5}>
                   <FormControl isRequired>
                     <FormLabel>Nome</FormLabel>

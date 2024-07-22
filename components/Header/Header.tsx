@@ -131,7 +131,7 @@ const DesktopSubNav = ({ label, subLabel }: NavItem) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={"primary.500"} p={4} display={{ md: "none" }}>
+    <Stack p={4} display={{ md: "none" }} bg={"var(--primary-300)"}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} label={navItem.label} href={navItem.href}>
           {navItem.children}

@@ -63,7 +63,6 @@ export async function GET(request: Request) {
   const checkGuria = _checkGuria ? normalize(_checkGuria) : null
 
   if (checkGuria) {
-    console.log("checkGuria", checkGuria)
     if (checkSubstring) {
       const guria: string = checkGuria.replace(/([A-Z])/g, " $1").replace(/^\w/, (c: string) => c.toUpperCase())
       const name: string = guria.toLowerCase()

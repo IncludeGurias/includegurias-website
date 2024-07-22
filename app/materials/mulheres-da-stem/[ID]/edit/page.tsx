@@ -1,11 +1,11 @@
 import { Box, Container, Flex, Stack } from "@chakra-ui/react"
-import { BiArrowBack } from "react-icons/bi"
+import { Metadata } from "next"
 import GirlNotFound from "app/not-found-woman"
 import { womanType } from "types/womanType"
+import ConfirmLeaveModal from "./ConfirmLeaveModal"
 import EditarMulherForm from "./EditarMulherForm"
 import EditarMulherImagem from "./EditarMulherImagem"
 import { fetchGuria, fetchGuriaImage, fetchTags } from "../FetchMulherNext"
-import IconCircleButton from "../IconCircleButton"
 
 interface paramsProp {
   params: {
@@ -13,6 +13,24 @@ interface paramsProp {
   }
 }
 
+export async function generateMetadata({ params }: paramsProp): Promise<Metadata> {
+  const { ID } = params
+  //@TODO remove need for double fetch
+  const data = (await fetchGuria(ID)) as womanType | null
+  const womanImageItem = (await fetchGuriaImage(ID)) as string | null
+
+  return {
+    title: "Editar " + data?.name + " - Include Gurias" || "Mulher não encontrada",
+    openGraph: {
+      images: [
+        {
+          url: womanImageItem || "",
+          alt: data?.name,
+        },
+      ],
+    },
+  }
+}
 export default async function GuriaEditPage({ params }: paramsProp) {
   const { ID } = params
 
@@ -26,13 +44,13 @@ export default async function GuriaEditPage({ params }: paramsProp) {
           <Stack direction={{ base: "column" }}>
             <Container
               maxW="7xl"
-              flexDirection={"row"}
+              flexDirection={{ base: "column", md: "row" }}
+              gap={4}
               display={"flex"}
               justifyContent={"start"}
               alignItems={"start"}
               minH={"100vh"}
-              mt={"100px"}
-              pt={4}
+              py={"110px"}
             >
               <>
                 {/* Image section with error handling */}
@@ -52,14 +70,9 @@ export default async function GuriaEditPage({ params }: paramsProp) {
               </>
             </Container>
           </Stack>
-          <Stack position="fixed" top={"125px"} left={"15px"}>
+          <Stack direction="row" justifySelf="flex-start" position="fixed" bottom="15px" left="15px" zIndex="100">
             <Flex direction="column" justifyItems="center" alignItems="center" gap={4}>
-              <IconCircleButton
-                icon={<BiArrowBack />}
-                href={`/materials/mulheres-da-stem/${encodeURIComponent(data.name)}`}
-                bgColor="red.100"
-                tooltip="Voltar"
-              />
+              <ConfirmLeaveModal url={`/materials/mulheres-da-stem/${encodeURIComponent(data.name)}`} />
             </Flex>
           </Stack>
         </>

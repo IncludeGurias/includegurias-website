@@ -20,7 +20,6 @@ const Reveal = ({ children, delay = 0, animationdirection = "none", ...props }: 
   const [hasAnimated, setHasAnimated] = useState(false)
 
   const handleInView = () => {
-    console.log("isInView", isInView)
     if (isInView && !hasAnimated) {
       setHasAnimated(true)
     }

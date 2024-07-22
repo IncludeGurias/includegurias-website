@@ -9,26 +9,22 @@ import { headerMotionProps } from "types/Header"
 
 export const HeaderMotion = ({ children }: headerMotionProps) => {
   const controls = useAnimation()
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(true) // Initial state: header is large
+  // const isMobileRef = useRef(window.innerWidth < 768)
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    if (!isScrolled) {
-      controls.start("visible")
-      controls.start("heightMax")
-    } else {
-      controls.start("hidden")
-      controls.start("heightMin")
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY === 0)
     }
+
+    window.addEventListener("scroll", handleScroll) // Add event listener
+
+    return () => window.removeEventListener("scroll", handleScroll) // Cleanup
+  }, []) // Only re-attach listener if mobile state changes
+
+  useEffect(() => {
+    controls.start(isScrolled ? "visible" : "hidden")
+    controls.start(isScrolled ? "heightMax" : "heightMin")
   }, [isScrolled, controls])
 
   return (

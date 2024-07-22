@@ -3,22 +3,24 @@ import Link from "next/link"
 
 interface iconCircleButtonProps {
   icon: any
-  href: string
+  href?: string
   tooltip: string
   bgColor?: string
+  onClick?: () => void
 }
 
-const IconCircleButton = ({ icon, href, tooltip, bgColor }: iconCircleButtonProps) => {
+const IconCircleButton = ({ icon, href, tooltip, bgColor, onClick }: iconCircleButtonProps) => {
   return (
     <Link href={href ?? "#"} passHref>
       <Tooltip label={tooltip} aria-label={tooltip}>
         <Button
           borderRadius="full"
-          height="60px"
-          width="60px"
+          height="50px"
+          width="50px"
           boxShadow="lg"
           transition={"all 0.2s ease-in-out"}
-          fontSize={"2xl"}
+          fontSize={"4xl"}
+          {...(onClick && { onClick })}
           backgroundColor={bgColor ?? "white"}
           _hover={{
             cursor: "pointer",

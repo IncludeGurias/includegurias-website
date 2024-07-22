@@ -1,7 +1,6 @@
 import { Box, Container, Flex, Stack, Text } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
-import { createElement } from "react"
 import { SocialButton } from "components"
 import "styles/TextHoverAnimation.css"
 import { Love } from "components"
@@ -44,7 +43,7 @@ const Footer = () => {
           <Text fontWeight={600} className="tracking-wider" id="text">
             Siga o #Include
           </Text>
-          <Stack direction={"row"} spacing={6}>
+          <div className="mb-6 grid grid-cols-3 justify-items-center gap-4 sm:flex-wrap sm:justify-center md:flex">
             {SocialMediaData.map((socialMedia) => (
               <SocialButton
                 key={socialMedia.name}
@@ -54,17 +53,14 @@ const Footer = () => {
                 animation="rotateHover"
                 circle={true}
               >
-                {createElement(socialMedia.icon, {
-                  size: 20,
-                  color: "white",
-                })}
+                {socialMedia.icon}
               </SocialButton>
             ))}
-          </Stack>
+          </div>
         </Flex>
       </Container>
-      <Container as={Stack} maxW={"6xl"} py={4} direction="row" spacing={4} justify="space-between">
-        <Text fontWeight={300} textAlign="center" color={"white"} id="text" fontSize="md">
+      <Container as={Stack} maxW={"6xl"} py={1} direction="row" spacing={4} justify="space-between">
+        <Text fontWeight={300} textAlign="center" color={"white"} id="text" fontSize={"sm"}>
           &copy; {new Date().getFullYear()}
           <strong> #Include &lt;gurias&gt;</strong> Todos os direitos reservados
         </Text>

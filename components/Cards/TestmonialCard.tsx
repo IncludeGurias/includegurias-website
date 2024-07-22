@@ -4,15 +4,15 @@ import Link from "next/link"
 import { FaQuoteLeft } from "react-icons/fa"
 import { TestimonialType } from "types/TestimonialType"
 
+interface TestimonialProps {
+  testimonial: TestimonialType
+  className?: string
+}
+
 const TestimonialsCard = ({
-  name,
-  sublegend,
-  sublegendHref,
-  color,
-  avatar,
-  testimonial,
+  testimonial: { testimonial, name, sublegend, sublegendHref, avatar, color },
   className,
-}: TestimonialType) => {
+}: TestimonialProps) => {
   return (
     <div
       className={`${

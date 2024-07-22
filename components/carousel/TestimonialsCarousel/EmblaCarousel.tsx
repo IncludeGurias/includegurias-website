@@ -40,7 +40,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           {slides.map((testimonial, index) => (
             <div className="embla__slide" key={index}>
               <Reveal className="h-full w-full" animationdirection={index % 2 === 0 ? "top" : "bottom"} delay={0.3}>
-                <TestimonialsCard {...testimonial} />
+                <TestimonialsCard testimonial={testimonial} />
               </Reveal>
             </div>
           ))}

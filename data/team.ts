@@ -2,6 +2,7 @@ import {
   adrianeImage,
   deboraImage,
   EduardaImage,
+  FounderImage,
   GabeImage,
   JoaoImage,
   leticiaImage,
@@ -14,7 +15,7 @@ import { allMembersMemberType, BolsistaType, TeamMemberType } from "types/teamMe
 export const FOUNDER: TeamMemberType = {
   name: "Profª. Drª Fabrícia Damando Santos",
   role: "Coordenadora",
-  image: deboraImage,
+  image: FounderImage,
   href: "http://lattes.cnpq.br/4675873218622076",
 }
 
@@ -38,6 +39,8 @@ export const CURRENT_TEAM_MEMBERS: TeamMemberType[] = [
     href: "http://lattes.cnpq.br/3611501530862140",
   },
 ]
+
+export const CURRENT_TEAM_MEMBERS_WITH_FOUNDER: TeamMemberType[] = [FOUNDER, ...CURRENT_TEAM_MEMBERS]
 
 export const CURRENT_BOLSISTAS: BolsistaType[] = [
   {

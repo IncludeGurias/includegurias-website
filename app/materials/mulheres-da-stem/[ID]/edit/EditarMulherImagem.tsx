@@ -40,7 +40,6 @@ const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null 
         direction={"column"}
         alignItems="center"
         maxW={500}
-        mx={8}
         pos={"relative"}
         rounded={"3xl"}
       >
@@ -53,8 +52,8 @@ const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null 
         {/* Image */}
         <AspectRatio
           ratio={1 / 1}
-          w={500}
-          h={698}
+          w={{ base: "full", md: 500 }}
+          h={{ base: 450, md: 698 }}
           pointerEvents={"none"}
           className="z-0 rounded-3xl transition duration-300 ease-in-out"
         >

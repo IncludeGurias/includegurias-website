@@ -60,7 +60,7 @@ const SocialMediaCard = ({
           />
         </AspectRatio>
 
-        <CardFooter justify="space-between" flexWrap="wrap">
+        <CardFooter justify="space-between" flexWrap="wrap" alignItems={"center"} p={4}>
           <Text id="text" fontSize="sm" color="gray.500" noOfLines={4}>
             {text}
           </Text>
@@ -78,6 +78,7 @@ const SocialMediaCard = ({
               mt={3}
               w="full"
               transition={"all 0.2s ease-in-out"}
+              alignItems={"center"}
               px={4}
               _groupHover={{
                 paddingLeft: "1",
@@ -99,7 +100,7 @@ const SocialMediaCard = ({
                 circle={true}
                 tooltipCustomLabel={`Follow us on ${socialMedia}`}
               >
-                {icon && createElement(icon, { color: "white", size: 25 })}
+                {createElement(icon, { size: 30 })}
               </SocialButton>
             </Flex>
           </div>
