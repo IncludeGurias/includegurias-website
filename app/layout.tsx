@@ -1,7 +1,15 @@
-import "styles/tailwind.css"
+import { Metadata } from "next"
+import { ChakraProvider } from "components"
 import "styles/global.css"
-import { ChakraProvider, FloatButton, Footer, Header } from "components"
+import "styles/tailwind.css"
+import baseMetadata from "utils/metadata"
 import { fonts } from "./fonts"
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  title: "Bem-vinda(o) ao Include Gurias",
+  description: "Garotas que codam mudam o mundo!",
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const { breeSerif, raleway, encodeSans } = fonts
@@ -9,14 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${breeSerif.variable} ${raleway.variable} ${encodeSans.variable}`}>
       <body className="bg-[#F3F4F6]">
-        {/* <ProtectedRoute> */}
-        <ChakraProvider>
-          <Header />
-          <FloatButton />
-          <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
-          <Footer />
-        </ChakraProvider>
-        {/* </ProtectedRoute> */}
+        <ChakraProvider>{children}</ChakraProvider>
       </body>
     </html>
   )

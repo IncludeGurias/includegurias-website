@@ -10,3 +10,4 @@ export { CURRENT_TEAM_MEMBERS, ALL_TEAM_MEMBERS, CURRENT_BOLSISTAS, FOUNDER } fr
 export { default as ABOUT_US_VALUES } from "./aboutUsValues"
 export { default as MAIN_PAGE_VIDEO_LIST } from "./videoList"
 export { default as WOMAN_DATA } from "./womanData.json"
+export { default as includeInfo } from "./contato"
