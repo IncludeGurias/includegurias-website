@@ -5,12 +5,6 @@ import { INCLUDE_MATERIALS } from "data"
 import { ConfettiLight } from "public"
 import baseMetadata from "utils/metadata"
 
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Materiais - Include Gurias",
-  description: "Conheça os materiais disponíveis para todos criados pela equipe do Include Gurias.",
-}
-
 export default function OurMaterials() {
   return (
     <Flex

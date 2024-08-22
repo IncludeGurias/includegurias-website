@@ -84,6 +84,9 @@ const baseMetadata: Metadata = {
   ],
   creator: "Bots Channel, Lucas Henrique Diniz Ostroski",
   keywords: keywords,
+  icons: {
+    icon: "/public/favicon.ico",
+  },
   openGraph: {
     title: "Include Gurias",
     description: "Aqui você encontra tudo sobre o projeto Include Gurias",

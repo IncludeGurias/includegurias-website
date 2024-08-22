@@ -16,6 +16,7 @@ import { FaRegMessage } from "react-icons/fa6"
 import { FiSend } from "react-icons/fi"
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md"
 import { HeadingText, PrimaryButton, SocialButton } from "components"
+import { includeInfo } from "data"
 import { ConfettiLight } from "public"
 import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
@@ -101,7 +102,6 @@ export default function ContactForm() {
                 </VStack>
               </Box>
             </Stack>
-
             {/* Adicionar informações de contato */}
             <Box bg={"white"} borderRadius="lg" p={5} w="100%" color={"text.700"} shadow="base">
               <VStack spacing={3}>
@@ -110,31 +110,32 @@ export default function ContactForm() {
                   <MdOutlineEmail />
                   <span className="ml-2">
                     <strong> include.gurias@gmail.com</strong>
+                    <strong>{includeInfo.email}</strong>
                   </span>
                 </Flex>
                 <Flex align="center">
                   <MdPhone />
                   <span className="ml-2">
-                    Telefone da Secretaria: <strong> (51) 3491-4042</strong>
+                    Telefone da Secretaria: <strong>{includeInfo.phone}</strong>
                   </span>
                 </Flex>
                 <Flex align="center">
                   <MdOutlineEmail />
                   <span className="ml-2">
-                    Email da Coordenadora:<strong> fabricia-santos@uergs.com</strong>
+                    Email da Coordenadora:<strong>{includeInfo.coordinatorEmail}</strong>
                   </span>
                 </Flex>
                 <Flex align="center">
                   <MdLocationOn />
                   <span className="ml-2">
-                    Endereço:{" "}
-                    <strong>Unidade da Uergs em Guaíba Estrada Santa Maria, 2300 - Bairro Columbia City</strong>
+                    Endereço:
+                    <strong>{includeInfo.address}</strong>
                   </span>
                 </Flex>
                 <Flex align="center">
                   <MdPhone />
                   <span className="ml-2">
-                    Número do Chatbot:<strong> (51) 8027-1366</strong>
+                    Número do Chatbot:<strong>{includeInfo.chatbotNumber}</strong>
                   </span>
                 </Flex>
               </VStack>
