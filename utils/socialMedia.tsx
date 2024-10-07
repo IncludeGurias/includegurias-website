@@ -3,12 +3,6 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa"
 import { TbMessageChatbot } from "react-icons/tb"
 import { contactLinks } from "./includeLinks"
 
-export interface SocialMediaType {
-  name: string
-  icon: JSX.Element
-  link: string
-}
-
 const iconProps = {
   size: 24,
   color: "white",

@@ -1,15 +1,6 @@
-import {
-  AbsoluteCenter,
-  Box,
-  Button,
-  Center,
-  Divider,
-  FormControl,
-  FormHelperText,
-  FormLabel,
-  Input,
-} from "@chakra-ui/react"
+import { Box, Button, FormControl, FormLabel, Input } from "@chakra-ui/react"
 import { useState } from "react"
+import { HeadingText } from "components"
 import { includeInfo } from "data"
 
 interface Info {
@@ -29,7 +20,8 @@ const Contato = () => {
 
   return (
     <Box px={4} display="flex" flexDirection="column" gap={4}>
-      <h1>Contato</h1>
+      <HeadingText align="left" text="Contato" />
+
       <span className="block h-[0.5px] w-full bg-gray-400" />
       <FormControl pb={4} w="100%" borderBottom="1px solid" borderColor="blue.200">
         <FormLabel>Email do include</FormLabel>

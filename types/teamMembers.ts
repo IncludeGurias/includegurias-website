@@ -7,7 +7,7 @@ export interface TeamMemberType {
   href?: string
 }
 
-// usado no all team memebrs component
+// usado no all team members component
 export interface allMembersMemberType {
   name: string
   role?: string

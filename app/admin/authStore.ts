@@ -1,51 +1,50 @@
-import { create } from 'zustand';
+import { create } from "zustand"
+import { supabase } from "utils/supabaseClient"
 
 interface User {
-  id: string;
-  name: string;
-  email: string;
+  id: string
+  name?: string // Opcional, dependendo do que o Supabase retorna
+  email?: string // Adjusted to match Supabase user object
 }
 
 interface AuthState {
-  email: string;
-  password: string;
-  user: User | null;
-  setEmail: (email: string) => void;
-  setPassword: (password: string) => void;
-  setUser: (user: User | null) => void;
-  login: () => Promise<void>;
+  email: string
+  password: string
+  user: User | null
+  setEmail: (email: string) => void
+  setPassword: (password: string) => void
+  setUser: (user: User | null) => void
+  login: () => Promise<void>
 }
 
 const useAuthStore = create<AuthState>((set, get) => ({
-  email: '',
-  password: '',
+  email: "",
+  password: "",
   user: null,
   setEmail: (email) => set({ email }),
   setPassword: (password) => set({ password }),
   setUser: (user) => set({ user }),
   login: async () => {
-    const { email, password } = get();
+    const { email, password } = get()
     try {
-      const response = await fakeLoginAPI(email, password);
-      console.log('Login successful:', response);
-      set({ user: response.user });
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      const user = data?.user
+
+      if (error) {
+        console.error("Login failed:", error)
+        throw error
+      } else {
+        console.log("Login successful:", user)
+        set({ user })
+      }
     } catch (error) {
-      console.error('Login failed:', error);
-      throw error;
+      console.error("Login failed:", error)
+      throw error
     }
   },
-}));
+}))
 
-export default useAuthStore;
-
-const fakeLoginAPI = async (email: string, password: string): Promise<{ user: User }> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (email === 'admin@includegurias.com' && password === 'password') {
-        resolve({ user: { id: '1', name: 'Admin', email } });
-      } else {
-        reject(new Error('Invalid credentials'));
-      }
-    }, 1000);
-  });
-};
+export default useAuthStore

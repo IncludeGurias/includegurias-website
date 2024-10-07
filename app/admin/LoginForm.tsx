@@ -3,12 +3,10 @@ import {
   Button,
   chakra,
   FormControl,
-  FormHelperText,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Link,
   Stack,
   useToast,
 } from "@chakra-ui/react"
@@ -77,9 +75,10 @@ const FormLogin = () => {
               </Button>
             </InputRightElement>
           </InputGroup>
+          {/* Theres no need for a password recovery mechanism 
           <FormHelperText textAlign="right">
             <Link color="teal.500">Esqueceu a senha?</Link>
-          </FormHelperText>
+          </FormHelperText>*/}
         </FormControl>
         <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full">
           Login

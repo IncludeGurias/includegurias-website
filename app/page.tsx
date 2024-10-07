@@ -4,6 +4,7 @@ import { IoIosPeople, IoLogoYoutube } from "react-icons/io"
 import { MdLocalPhone } from "react-icons/md"
 import {
   AnimatedWavyText,
+  HeaderAndFooter,
   HeadingText,
   MainVideoArrow,
   MotionBlob,
@@ -23,11 +24,10 @@ import SOCIALMEDIA_DATA from "data/socialMediaPosts"
 import { IncludeAvatar } from "public"
 import { contactLinks } from "utils/includeLinks"
 import { SocialMediaData } from "utils/socialMedia"
-import Layout from "./sobre-nos/layout"
 
 export default function Home() {
   return (
-    <Layout>
+    <HeaderAndFooter>
       <Container maxW={{ base: "100%", md: "7xl" }} pt={100}>
         <Stack
           align={"center"}
@@ -192,6 +192,6 @@ export default function Home() {
           </Flex>
         </Box>
       </Container>
-    </Layout>
+    </HeaderAndFooter>
   )
 }

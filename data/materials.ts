@@ -1,4 +1,3 @@
-import { StaticImageData } from "next/image"
 import {
   AdaLovelace,
   BitBoxImage,
@@ -8,14 +7,7 @@ import {
   meninasEmpoderadas,
   OficinaDeSkratch,
 } from "public"
-
-export interface Material {
-  title: string
-  description: string
-  isNew?: boolean
-  imageURL: StaticImageData
-  href: string
-}
+import { Material } from "types/data/material"
 
 const IncludeMaterials: Material[] = [
   {

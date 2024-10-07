@@ -1,10 +1,9 @@
 "use client"
-import { Box, Flex, Stack } from "@chakra-ui/react"
-import LoginForm from "./LoginForm"
-import useAuthStore from "./authStore"
+import { Box, Flex } from "@chakra-ui/react"
 import { useEffect } from "react"
+import useAuthStore from "./authStore"
 import Dashboard from "./Dashboard"
-import "./login.css"
+import LoginForm from "./LoginForm"
 
 const App = () => {
   const { user } = useAuthStore()

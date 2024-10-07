@@ -1,14 +1,13 @@
-import { FloatButton, Footer, Header } from "components"
-import "styles/global.css"
-import "styles/tailwind.css"
+import { Metadata } from "next"
+import { getLayout } from "components"
+import baseMetadata from "utils/metadata"
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  title: "Eventos e Atividades",
+  description: "Conheça os eventos e atividades do projeto #include <gurias>!",
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Header />
-      <FloatButton />
-      <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
-      <Footer />
-    </>
-  )
+  return getLayout(children)
 }

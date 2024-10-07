@@ -1,5 +1,4 @@
 import { Box, Flex, Grid, Stack } from "@chakra-ui/react"
-import { Metadata } from "next"
 import { TbBook } from "react-icons/tb"
 import {
   AboutUsValues,
@@ -15,14 +14,7 @@ import {
   TeamForAboutUs,
 } from "components"
 import { INCLUDE_MATERIALS } from "data"
-import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Sobre nós - Include Gurias",
-  description: "Conheça mais sobre o projeto Include Gurias e sua equipe!",
-}
 
 export default function AboutUs() {
   return (
@@ -72,7 +64,7 @@ export default function AboutUs() {
               key={material.title + index}
               title={material.title}
               description={material.description}
-              isNew={material.isNew} // Isso é opcional, dependendo se você quer usar a propriedade isNew ou não.
+              isNew={material.isNew}
               imageURL={material.imageURL}
               href={material.href}
               delay={index * 0.1}

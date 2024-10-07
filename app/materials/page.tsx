@@ -1,9 +1,7 @@
 import { Box, Flex, Grid, GridItem, Heading, Text, VStack } from "@chakra-ui/react"
-import { Metadata } from "next"
 import { MaterialCard, Reveal } from "components"
 import { INCLUDE_MATERIALS } from "data"
 import { ConfettiLight } from "public"
-import baseMetadata from "utils/metadata"
 
 export default function OurMaterials() {
   return (

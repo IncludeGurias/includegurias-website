@@ -1,5 +1,4 @@
 import { Box, Flex } from "@chakra-ui/react"
-import { Metadata } from "next"
 import {
   AllPeople,
   BolsistasSection,
@@ -10,13 +9,6 @@ import {
   TeamWithNoFounder,
 } from "components"
 import { FounderImage } from "public"
-import baseMetadata from "utils/metadata"
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Nossa Equipe",
-  description: "Conheça a equipe do projeto #include <gurias>!",
-}
 
 export default function TeamSection() {
   return (

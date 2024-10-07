@@ -1,13 +1,4 @@
-import { Metadata } from "next"
 import Link from "next/link"
-import baseMetadata from "utils/metadata"
-
-// Configuração de metadados
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Eventos e Atividades",
-  description: "Conheça os eventos e atividades do projeto #include <gurias>!",
-}
 
 export default function EventosAndActivities() {
   return (

@@ -1,14 +1,6 @@
 import { Button, Container, Flex } from "@chakra-ui/react"
-import { Metadata } from "next"
 import Link from "next/link"
 import { HeadingText } from "components"
-import baseMetadata from "utils/metadata"
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Include News",
-  description: "Fique por dentro de todas as novidades do Include!",
-}
 
 const News = () => {
   return (

@@ -3,6 +3,7 @@ import { Box, Button, FormControl, FormLabel, IconButton, Input, Stack, Textarea
 import { ChangeEvent, useState } from "react"
 import { BiSave } from "react-icons/bi"
 import { TbPlus, TbTrash } from "react-icons/tb"
+import { HeadingText } from "components"
 import { MAIN_PAGE_VIDEO_LIST, TESTIMONIALS } from "data"
 import { TestimonialType } from "types/TestimonialType"
 
@@ -25,7 +26,8 @@ const PaginaInicial = () => {
 
   return (
     <Box px={4} display="flex" flexDirection="column" gap={4}>
-      <h1>Página Inicial</h1>
+      <HeadingText align="left" text="Página Inicial" />
+
       <span className="block h-[0.5px] w-full bg-gray-400" />
 
       {Divider("Vídeos")}

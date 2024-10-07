@@ -1,7 +1,8 @@
 import { Box, Button, Divider, Input, Table, Tbody, Td, Th, Thead, Tooltip, Tr } from "@chakra-ui/react"
-import React, { ChangeEvent, useState } from "react"
-import { CURRENT_BOLSISTAS, CURRENT_TEAM_MEMBERS, FOUNDER } from "data"
 import { Image } from "@chakra-ui/react"
+import React, { ChangeEvent, useState } from "react"
+import { HeadingText } from "components"
+import { CURRENT_BOLSISTAS, CURRENT_TEAM_MEMBERS, FOUNDER } from "data"
 
 const Time = () => {
   const [time, setTime] = useState(CURRENT_TEAM_MEMBERS)
@@ -32,7 +33,8 @@ const Time = () => {
 
   return (
     <Box px={4} display="flex" flexDirection="column" gap={4}>
-      <h1>Fundador</h1>
+      <HeadingText align="left" text="Fundador" />
+
       <Divider />
       <Input placeholder="Nome" mb={2} value={founder.name} onChange={(e) => handleFounderChange(e, "name")} />
       <Input placeholder="Cargo" mb={2} value={founder.role} onChange={(e) => handleFounderChange(e, "role")} />

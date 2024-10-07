@@ -10,7 +10,6 @@ import {
   Textarea,
   VStack,
 } from "@chakra-ui/react"
-import { Metadata } from "next"
 import { BsPerson } from "react-icons/bs"
 import { FaRegMessage } from "react-icons/fa6"
 import { FiSend } from "react-icons/fi"
@@ -18,14 +17,7 @@ import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md"
 import { HeadingText, PrimaryButton, SocialButton } from "components"
 import { includeInfo } from "data"
 import { ConfettiLight } from "public"
-import baseMetadata from "utils/metadata"
 import { SocialMediaData } from "utils/socialMedia"
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Contato - Include Gurias",
-  description: "Entre em contato com a equipe do Include Gurias!",
-}
 
 export default function ContactForm() {
   return (
