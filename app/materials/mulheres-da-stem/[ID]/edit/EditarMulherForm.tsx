@@ -22,7 +22,7 @@ import { useForm } from "react-hook-form"
 import { BiSave } from "react-icons/bi"
 import { MdOutlineCancel } from "react-icons/md"
 import { PrimaryButton } from "components"
-import { womanType } from "types/womanType"
+import { womanType } from "types/woman"
 import { formatYYYYMMDD } from "utils/dateFunctions"
 import Tags from "./Tags"
 

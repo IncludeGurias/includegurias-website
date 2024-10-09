@@ -1,20 +1,17 @@
 "use client"
 import { AspectRatio, Badge, Box, Button, Flex } from "@chakra-ui/react"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 import Link from "next/link"
 import { FiArrowRight } from "react-icons/fi"
 import { Reveal } from "components"
+import Material from "types/data/material"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 
-export type MaterialCardProps = {
-  title: string
-  description: string
-  isNew?: boolean
-  imageURL: StaticImageData
-  href: string
+interface MaterialCardProps extends Material {
   delay: number
 }
 
-const MaterialCard = ({ title, description, isNew, imageURL, href, delay }: MaterialCardProps) => {
+const MaterialCard = ({ title, description, isNew, imageUrl, href, delay }: MaterialCardProps) => {
   return (
     <Link href={href} className="flex h-full w-full items-center justify-center">
       <Reveal animationdirection="bottom" delay={delay} className="h-full">
@@ -37,7 +34,7 @@ const MaterialCard = ({ title, description, isNew, imageURL, href, delay }: Mate
         >
           <AspectRatio ratio={16 / 12} display={{ base: "none", md: "block" }} h="300px" w="400">
             <Image
-              src={imageURL}
+              src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
               fill
               sizes="400 300"
               alt={`Picture of ${title}`}

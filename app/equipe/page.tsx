@@ -1,5 +1,4 @@
 import { Box, Flex } from "@chakra-ui/react"
-import { Metadata } from "next"
 import {
   AllPeople,
   BolsistasSection,
@@ -10,13 +9,6 @@ import {
   TeamWithNoFounder,
 } from "components"
 import { FounderImage } from "public"
-import baseMetadata from "utils/metadata"
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Nossa Equipe",
-  description: "Conheça a equipe do projeto #include <gurias>!",
-}
 
 export default function TeamSection() {
   return (
@@ -33,8 +25,8 @@ export default function TeamSection() {
           <SubHeadingText text="Nossa Fundadora" align={"center"} classNames={{ text: "mt-4" }} />
           <FounderCard
             name="Fabrícia Damando"
-            role="Coordenadora"
-            image={FounderImage}
+            job="Coordenadora"
+            imageUrl={FounderImage.src}
             text="“Fabrícia Damando Santos, professora na UERGS, atua no curso de Engenharia de Computação e no Mestrado Profissional em Formação Docente para PPGSTEM. Doutora em Informática na Educação pela UFRGS/PPGIE, bacharel em Ciência da Computação pela PUC-Goiás e mestre em Engenharia Elétrica e de Computação pela UFG. Destacando-se pela criação do Projeto #include <gurias> em 2018, busca incentivar mais garotas a ingressarem na área de Ciências da Computação, reconhecendo a importância da representatividade. Seu trabalho visa ampliar o acesso e promover a diversidade nesse campo.”"
           />
 

@@ -1,6 +1,8 @@
-import { Box, Flex, Grid, Stack } from "@chakra-ui/react"
-import { Metadata } from "next"
+"use client"
+import { Box, Flex, Grid, Spinner, Stack } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { TbBook } from "react-icons/tb"
+import { useMaterialsStore, useSocialMediaStore } from "app/states"
 import {
   AboutUsValues,
   AllPartners,
@@ -14,17 +16,29 @@ import {
   SubText,
   TeamForAboutUs,
 } from "components"
-import { INCLUDE_MATERIALS } from "data"
-import baseMetadata from "utils/metadata"
-import { SocialMediaData } from "utils/socialMedia"
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Sobre nós - Include Gurias",
-  description: "Conheça mais sobre o projeto Include Gurias e sua equipe!",
-}
+import Material from "types/data/material"
+import getSocialmediaIcon from "utils/getSocialMediaIcon"
 
 export default function AboutUs() {
+  const [materials] = useMaterialsStore((state) => [state.materials])
+  const { getMaterials, loading } = useMaterialsStore((state) => ({
+    getMaterials: state.getMaterials,
+    loading: state.materials_loading,
+  }))
+
+  const [SocialMediaData] = useSocialMediaStore((state) => [state.socialMedia])
+  const { getSocialMedia } = useSocialMediaStore((state) => ({
+    getSocialMedia: state.getSocialMedia,
+  }))
+
+  useEffect(() => {
+    getMaterials()
+  }, [getMaterials])
+
+  useEffect(() => {
+    getSocialMedia()
+  }, [getSocialMedia])
+
   return (
     <div className="mt-[200px] flex flex-col items-center">
       <Box p={4} className="section">
@@ -49,11 +63,11 @@ export default function AboutUs() {
               key={socialMedia.name + index}
               size={45}
               label={socialMedia.name}
-              href={socialMedia.link}
+              href={socialMedia.href}
               animation="rotateHover"
               delay={index * 0.1}
             >
-              {socialMedia.icon}
+              {getSocialmediaIcon({ socialMedia: socialMedia.name, props: { size: 25, color: "white" } })}
             </SocialButton>
           ))}
         </Stack>
@@ -67,17 +81,22 @@ export default function AboutUs() {
         />
         <Grid gridTemplateColumns={{ base: "repeat(1, 1fr)", lg: "repeat(3, 1fr)" }} gap={4} className="mt-4">
           {/* array de 3 items do materials */}
-          {INCLUDE_MATERIALS.slice(0, 3).map((material, index) => (
-            <MaterialCard
-              key={material.title + index}
-              title={material.title}
-              description={material.description}
-              isNew={material.isNew} // Isso é opcional, dependendo se você quer usar a propriedade isNew ou não.
-              imageURL={material.imageURL}
-              href={material.href}
-              delay={index * 0.1}
-            />
-          ))}
+          {loading ? (
+            <Spinner />
+          ) : (
+            materials
+              .slice(0, 3)
+              .map((material: Material) => (
+                <MaterialCard
+                  key={material.title}
+                  title={material.title}
+                  description={material.description}
+                  isNew={material.isNew}
+                  imageUrl={material.imageUrl}
+                  href={material.href}
+                />
+              ))
+          )}
         </Grid>
         <Flex justifyContent={"center"} mt={6}>
           <PrimaryButton recuo={-255} classNames={{ divContainer: "w-[325px]" }} icon={<TbBook size={25} />}>

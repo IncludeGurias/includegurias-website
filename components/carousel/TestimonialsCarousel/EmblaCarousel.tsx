@@ -4,7 +4,7 @@ import Autoplay from "embla-carousel-autoplay"
 import useEmblaCarousel from "embla-carousel-react"
 import { useCallback } from "react"
 import { Reveal, TestimonialsCard } from "components"
-import { TestimonialType } from "types/TestimonialType"
+import TestimonialType from "types/data/testimonial"
 import { NextButton, PrevButton, usePrevNextButtons } from "../EmblaCarouselArrowButtons"
 import { DotButton, useDotButton } from "../EmblaCarouselDotButton"
 

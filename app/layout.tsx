@@ -1,9 +1,6 @@
 import { Metadata } from "next"
-import { ChakraProvider } from "components"
-import "styles/global.css"
-import "styles/tailwind.css"
+import { getRootLayout } from "components"
 import baseMetadata from "utils/metadata"
-import { fonts } from "./fonts"
 
 export const metadata: Metadata = {
   ...baseMetadata,
@@ -12,13 +9,5 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const { breeSerif, raleway, encodeSans } = fonts
-
-  return (
-    <html lang="en" className={`${breeSerif.variable} ${raleway.variable} ${encodeSans.variable}`}>
-      <body className="bg-[#F3F4F6]">
-        <ChakraProvider>{children}</ChakraProvider>
-      </body>
-    </html>
-  )
+  return getRootLayout(children)
 }

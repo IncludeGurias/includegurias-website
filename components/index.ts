@@ -38,7 +38,7 @@ export { default as VideoFrame } from "./VideoFrame/VideoFrame"
 export { default as SeeMoreArrow } from "./SeeMoreArrow/SeeMoreArrow"
 
 // Text
-export { HeadinText as HeadingText } from "./Text/Headings"
+export { HeadingText } from "./Text/Headings"
 export { SubHeadingText } from "./Text/Headings"
 export { SubText } from "./Text/Headings"
 export { MegaTitle } from "./Text/Headings"
@@ -59,3 +59,13 @@ export { default as Partners } from "./Partners/partners"
 export { default as TestimonialsCarousel } from "./carousel/TestimonialsCarousel"
 export { default as Timeline } from "./Timeline/Timeline"
 export { default as SearchBar } from "./SearchBar/SearchBar"
+
+export {
+  getLayout,
+  getCleanLayout,
+  getOnlyHeaderLayout,
+  getRootLayout,
+  HeaderAndFooter,
+  OnlyHeader,
+  CleanLayout,
+} from "./Layout"

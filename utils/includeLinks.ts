@@ -12,7 +12,7 @@ export const contactLinks = {
   WhatsApp: "",
   Youtube: "https://www.youtube.com/@IncludeGurias",
   "Meninas Digitais": "https://meninas.sbc.org.br/portfolio-3/includegurias/",
-  creatorSite: "https://www.botschannel.com/",
+  creatorSite: "https://www.linkedin.com/in/lucas-diniz-ostroski/",
   Chatbot: "https://wa.me//555180271366?text=Ol%C3%A1%2C%20,%20queria%20saber%20mais%20sobre%20o%20Include%20Gurias",
 }
 

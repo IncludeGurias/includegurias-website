@@ -1,17 +1,7 @@
-"use client"
-import { Box, Flex, Stack } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 import LoginForm from "./LoginForm"
-import useAuthStore from "./authStore"
-import { useEffect } from "react"
-import Dashboard from "./Dashboard"
-import "./login.css"
 
-const App = () => {
-  const { user } = useAuthStore()
-  useEffect(() => {
-    console.log("User:", user?.name || "Guest")
-  }, [user])
-
+export default function Admin() {
   return (
     <Flex
       flexDirection="column"
@@ -21,15 +11,9 @@ const App = () => {
       justifyContent="center"
       alignItems="center"
     >
-      {user ? (
-        <Dashboard />
-      ) : (
-        <Box minW={{ base: "90%", md: "468px" }}>
-          <LoginForm />
-        </Box>
-      )}
+      <Box minW={{ base: "90%", md: "468px" }}>
+        <LoginForm />
+      </Box>
     </Flex>
   )
 }
-
-export default App

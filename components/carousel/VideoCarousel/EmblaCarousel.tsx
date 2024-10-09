@@ -2,7 +2,7 @@ import { EmblaCarouselType, EmblaOptionsType } from "embla-carousel"
 import Autoplay from "embla-carousel-autoplay"
 import useEmblaCarousel from "embla-carousel-react"
 import { useCallback, useEffect, useState } from "react"
-import { VideoType } from "types/videoType"
+import VideoType from "types/data/video"
 import S from "./embla.module.css"
 import VideoFrameCarousel from "./VideoFrameCarousel"
 import { NextButton, PrevButton, usePrevNextButtons } from "../EmblaCarouselArrowButtons"
@@ -51,16 +51,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
         <div className={S.embla__container}>
           {slides.map((video, index) => (
             <div className={S.embla__slide} key={index}>
-              <VideoFrameCarousel videoList={video} />
+              <VideoFrameCarousel video={video} />
             </div>
           ))}
         </div>
       </div>
       <div className="absolute bottom-[55%] w-full">
-        {/* <div className="embla__buttons"> */}
         <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} className={`${S.embla__button} ${S.prev}`} />
         <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} className={`${S.embla__button} ${S.next}`} />
-        {/* </div> */}
       </div>
     </section>
   )

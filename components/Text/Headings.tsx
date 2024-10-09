@@ -14,7 +14,7 @@ interface HeadingProps {
   color?: string
 }
 
-export const HeadinText = ({ align, classNames, text, color }: HeadingProps) => {
+export const HeadingText = ({ align, classNames, text, color }: HeadingProps) => {
   return (
     <Reveal animationdirection="left">
       <Heading

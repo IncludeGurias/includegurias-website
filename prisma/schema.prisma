@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["rhel-openssl-3.0.x", "rhel-openssl-1.0.x", "debian-openssl-1.1.x", "debian-openssl-3.0.x", "windows"]
 }
 
@@ -10,7 +10,7 @@ datasource db {
 }
 
 model Guria {
-  id         Int      @id @default(autoincrement())
+  id         Int        @id @default(autoincrement())
   name       String
   birthplace String
   birthdate  String
@@ -22,15 +22,109 @@ model Guria {
 }
 
 model Tag {
-  id        Int       @id @default(autoincrement())
+  id        Int        @id @default(autoincrement())
   name      String
   GuriaTags GuriaTag[]
 }
 
 model GuriaTag {
-  id      Int    @id @default(autoincrement())
-  guria   Guria  @relation(fields: [guriaId], references: [id])
-  tag     Tag    @relation(fields: [tagId], references: [id])
+  id      Int   @id @default(autoincrement())
   guriaId Int
   tagId   Int
+  guria   Guria @relation(fields: [guriaId], references: [id])
+  tag     Tag   @relation(fields: [tagId], references: [id])
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+
+model Material {
+  id          Int     @id @default(autoincrement())
+  title       String  @unique
+  description String
+  isNew       Boolean @default(false)
+  imageUrl    String
+  href        String
+}
+
+model Testimonial {
+  id            Int     @id @default(autoincrement())
+  name          String
+  sublegend     String
+  sublegendHref String
+  color         String
+  avatar        String?
+  testimonial   String
+}
+
+model PrimaryPageVideos {
+  id       Int    @id @default(autoincrement())
+  title    String
+  videoUrl String
+}
+
+model PrimaryPageSocialMediaPosts {
+  id             Int     @id @default(autoincrement())
+  text           String
+  name           String
+  subname        String
+  href           String?
+  date           String?
+  showInTimeline Boolean @default(false)
+  socialMedia    String
+  imageUrl       String
+}
+
+model SocialMedia {
+  id   Int    @id @default(autoincrement())
+  name String
+  href String
+}
+
+model Partners {
+  id       Int     @id @default(autoincrement())
+  name     String
+  imageUrl String
+  href     String?
+  active   Boolean @default(true)
+}
+
+model IncludeInfo {
+  id    Int    @id @default(autoincrement())
+  name  String
+  value String
+}
+
+model News {
+  id             Int     @id @default(autoincrement())
+  title          String
+  text           String
+  imageUrl       String?
+  date           String?
+  href           String?
+  showInTimeline Boolean @default(false)
+}
+
+model TeamMember {
+  id       Int     @id @default(autoincrement())
+  name     String
+  job      String?
+  imageUrl String?
+  href     String?
+}
+
+model ScholarshipMember {
+  id       Int     @id @default(autoincrement())
+  imageUrl String?
+  name     String
+}
+
+model OldMember {
+  id       Int     @id @default(autoincrement())
+  name     String
+  job      String?
+  imageUrl String?
 }

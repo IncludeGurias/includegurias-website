@@ -1,14 +1,6 @@
 import { Container } from "@chakra-ui/react"
-import { Metadata } from "next"
 import Link from "next/link"
 import { Timeline } from "components"
-import baseMetadata from "utils/metadata"
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "Linha do Tempo",
-  description: "Conheça a história do projeto #include <gurias>!",
-}
 
 export default function TimelinePage() {
   return (

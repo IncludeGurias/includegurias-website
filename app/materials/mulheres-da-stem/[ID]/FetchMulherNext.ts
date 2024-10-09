@@ -1,5 +1,5 @@
 import { env } from "env.mjs"
-import { womanType } from "types/womanType"
+import { womanType } from "types/woman"
 
 interface womanData {
   data: womanType | null

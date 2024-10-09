@@ -10,17 +10,30 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react"
+import { useEffect } from "react"
+import { useNewsStore } from "app/states"
 import { SeeMoreArrow } from "components"
-import NEWS_DATA from "data/newsData"
 import { ConfettiDark } from "public"
-import { NewsItem } from "types/News"
+import News from "types/data/news"
 
 const Timeline = () => {
   const isMobile = useBreakpointValue({ base: true, md: false })
   const isDesktop = useBreakpointValue({ base: false, md: true })
-  // const years = ABC.map((item) => new Date(item.date).getFullYear())
 
-  const TIMELINE_DATA = NEWS_DATA.filter((item) => item.showInTimeline === true)
+  const { getNews, news } = useNewsStore((state) => ({
+    getNews: state.getNews,
+    news: state.news,
+  }))
+
+  useEffect(() => {
+    getNews()
+  }, [getNews])
+
+  const TIMELINE_DATA = news
+    .filter((item) => item.showInTimeline === true)
+    .sort((a, b) => {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    })
 
   return (
     <Container
@@ -34,45 +47,47 @@ const Timeline = () => {
       <chakra.h3 fontSize="4xl" fontWeight="bold" mb={18} textAlign="center">
         Linha do Tempo do #Include
       </chakra.h3>
-      {TIMELINE_DATA.map((milestone: NewsItem, index) => (
-        <>
-          <Flex key={milestone.id} mb="10px">
-            {/* Desktop view(left card) */}
-            {isDesktop && (index + 1) % 2 === 0 && (
-              <>
-                <EmptyCard />
-                <LineWithDot />
-                <Card {...milestone} />
-              </>
-            )}
+      {TIMELINE_DATA.map((milestone: News, index) => (
+        <Flex key={index} mb="10px">
+          {/* Desktop view(left card) */}
+          {isDesktop && (index + 1) % 2 === 0 && (
+            <>
+              <EmptyCard />
+              <LineWithDot />
+              <Card index={index} {...milestone} />
+            </>
+          )}
 
-            {/* Mobile view */}
-            {isMobile && (
-              <>
-                <LineWithDot />
-                <Card {...milestone} />
-              </>
-            )}
+          {/* Mobile view */}
+          {isMobile && (
+            <>
+              <LineWithDot />
+              <Card index={index} {...milestone} />
+            </>
+          )}
 
-            {/* Desktop view(right card) */}
-            {isDesktop && (index + 1) % 2 !== 0 && (
-              <>
-                <Card {...milestone} />
-                <LineWithDot />
-                <EmptyCard />
-              </>
-            )}
-          </Flex>
-        </>
+          {/* Desktop view(right card) */}
+          {isDesktop && (index + 1) % 2 !== 0 && (
+            <>
+              <Card index={index} {...milestone} />
+              <LineWithDot />
+              <EmptyCard />
+            </>
+          )}
+        </Flex>
       ))}
     </Container>
   )
 }
 
-const Card = ({ id, date, title, description, href }: NewsItem) => {
+interface CardProps extends News {
+  index: number
+}
+
+const Card = ({ index, date, title, text, href }: CardProps) => {
   const formattedDate = new Date(date).toLocaleDateString()
 
-  const isEvenId = id % 2 === 0
+  const isEvenId = index % 2 === 0
   let borderWidthValue = isEvenId ? "15px 15px 15px 0" : "15px 0 15px 15px"
   let leftValue = isEvenId ? "-15px" : "unset"
   let rightValue = isEvenId ? "unset" : "-15px"
@@ -115,7 +130,7 @@ const Card = ({ id, date, title, description, href }: NewsItem) => {
           <chakra.h1 fontSize="2xl" lineHeight={1.2} fontWeight="bold" w="100%">
             {title}
           </chakra.h1>
-          <Text fontSize="md">{description}</Text>
+          <Text fontSize="md">{text}</Text>
         </VStack>
         {href && <SeeMoreArrow text="Saiba mais" href={href} />}
       </Box>

@@ -1,11 +1,22 @@
-import { Box, Flex, Grid, GridItem, Heading, Text, VStack } from "@chakra-ui/react"
-import { Metadata } from "next"
+"use client"
+import { Box, Flex, Grid, GridItem, Heading, Spinner, Text, VStack } from "@chakra-ui/react"
+import { useEffect } from "react"
+import { useMaterialsStore } from "app/states"
 import { MaterialCard, Reveal } from "components"
-import { INCLUDE_MATERIALS } from "data"
 import { ConfettiLight } from "public"
-import baseMetadata from "utils/metadata"
+import Material from "types/data/material"
 
 export default function OurMaterials() {
+  const { getMaterials, loading, materials } = useMaterialsStore((state) => ({
+    getMaterials: state.getMaterials,
+    loading: state.materials_loading,
+    materials: state.materials,
+  }))
+
+  useEffect(() => {
+    getMaterials()
+  }, [getMaterials])
+
   return (
     <Flex
       align="center"
@@ -47,18 +58,21 @@ export default function OurMaterials() {
                 }}
                 gap={4}
               >
-                {INCLUDE_MATERIALS.map((material, index) => (
-                  <GridItem key={material.title} colSpan={{ base: 1, md: 1 }} h={{ base: "full" }}>
-                    <MaterialCard
-                      title={material.title}
-                      description={material.description}
-                      isNew={material.isNew}
-                      imageURL={material.imageURL}
-                      href={material.href}
-                      delay={index * 0.3}
-                    />
-                  </GridItem>
-                ))}
+                {loading ? (
+                  <Spinner />
+                ) : (
+                  materials.map((material: Material) => (
+                    <GridItem key={material.title} colSpan={{ base: 1, md: 1 }} h={{ base: "full" }}>
+                      <MaterialCard
+                        title={material.title}
+                        description={material.description}
+                        isNew={material.isNew}
+                        imageUrl={material.imageUrl}
+                        href={material.href}
+                      />
+                    </GridItem>
+                  ))
+                )}
               </Grid>
             </Reveal>
           </VStack>

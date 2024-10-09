@@ -1,18 +1,17 @@
 "use client"
 import { AspectRatio, Box, Divider, Text } from "@chakra-ui/react"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 import { useState } from "react"
 import { Reveal } from "components"
 import { CounterMap } from "public"
+import { TeamMember } from "types/data/team"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 
-interface FounderCardType {
-  name: string
-  role: string
-  image: StaticImageData
+interface FounderCardType extends TeamMember {
   text: string
 }
 
-const FounderCard = ({ name, role, image, text }: FounderCardType) => {
+const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
   const [isHovered, setIsHovered] = useState(false)
   return (
     <Box
@@ -39,7 +38,12 @@ const FounderCard = ({ name, role, image, text }: FounderCardType) => {
       </Reveal>
       <Reveal className="flex" delay={0.1}>
         <AspectRatio ratio={1} maxW="500px" className="z-10 h-full w-full">
-          <Image src={image} alt={name} fill className="z-10 rounded-l-lg object-cover" />
+          <Image
+            src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
+            alt={name}
+            fill
+            className="z-10 rounded-l-lg object-cover"
+          />
         </AspectRatio>
         <Box
           p={4}
@@ -64,7 +68,7 @@ const FounderCard = ({ name, role, image, text }: FounderCardType) => {
             color="gray.200"
             className="text-bold text-center uppercase"
           >
-            {name}, {role}
+            {name}, {job}
           </Text>
         </Box>
       </Reveal>

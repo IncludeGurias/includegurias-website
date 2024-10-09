@@ -4,7 +4,8 @@ import Avatar from "boring-avatars"
 import Image from "next/image"
 import Link from "next/link"
 import { CounterMap } from "public"
-import { BolsistaType, TeamMemberType } from "types/teamMembers"
+import { ScholarshipMember, TeamMember } from "types/data/team"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 import S from "./cardTeam.module.css"
 
 type CardTeamProps = {
@@ -35,19 +36,20 @@ export const BaseBolsistaCard = ({ title, children }: CardTeamProps) => (
   </Box>
 )
 
-export const TeamCard = ({ name, image, role, href }: TeamMemberType) => {
+export const TeamCard = ({ name, imageUrl, job, href }: TeamMember) => {
   return (
     <BaseTeamCard title={name} href={href ?? "#"}>
       <Flex justifyContent="space-between" direction="column" h={"90%"}>
         <Flex justify="center" align="center">
-          {image ? (
+          {imageUrl ? (
             <AspectRatio ratio={1} w="300px" mb={4} className={S.__CardTeamImage}>
               <Image
-                src={image}
+                src={getPlaceholderImageIfNone(imageUrl, 300, 300)}
+                loading="lazy"
                 alt={name}
                 fill
                 className="h-full rounded-lg object-cover shadow-lg"
-                sizes="315px, 315px, 315px"
+                sizes="300 300"
               />
             </AspectRatio>
           ) : (
@@ -62,25 +64,27 @@ export const TeamCard = ({ name, image, role, href }: TeamMemberType) => {
             </Box>
           )}
         </Flex>
-        <Flex direction="column" align="center" justify="center" h="100%">
-          <Box fontSize="xl" fontWeight="bold" textAlign="center" mb={4}>
-            {role}
-          </Box>
-        </Flex>
+        {job && (
+          <Flex direction="column" align="center" justify="center" h="100%">
+            <Box fontSize="xl" fontWeight="bold" textAlign="center" mb={4}>
+              {job}
+            </Box>
+          </Flex>
+        )}
       </Flex>
     </BaseTeamCard>
   )
 }
 
-export const BolsistaCard = ({ name, image, altText }: BolsistaType) => {
+export const BolsistaCard = ({ name, imageUrl }: ScholarshipMember) => {
   return (
     <BaseBolsistaCard title={name} href="#">
       <Flex justifyContent="space-between" direction="column" h={"90%"}>
         <Flex justify="center" align="center">
-          {image ? (
+          {imageUrl ? (
             <AspectRatio ratio={1} w="150px" mb={4} className={S.__CardTeamImage}>
               <Image
-                src={image}
+                src={getPlaceholderImageIfNone(imageUrl, 150, 150)}
                 alt={name}
                 fill
                 className="h-full rounded-lg object-cover shadow-lg"
@@ -98,11 +102,6 @@ export const BolsistaCard = ({ name, image, altText }: BolsistaType) => {
               />
             </Box>
           )}
-        </Flex>
-        <Flex direction="column" align="center" justify="center" h="100%">
-          <Box fontSize="xl" fontWeight="bold" textAlign="center" mb={4}>
-            {altText ?? "Bolsista"}
-          </Box>
         </Flex>
       </Flex>
     </BaseBolsistaCard>

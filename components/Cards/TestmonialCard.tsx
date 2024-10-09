@@ -2,10 +2,11 @@ import Avatar from "boring-avatars"
 import Image from "next/image"
 import Link from "next/link"
 import { FaQuoteLeft } from "react-icons/fa"
-import { TestimonialType } from "types/TestimonialType"
+import Testimonial from "types/data/testimonial"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 
 interface TestimonialProps {
-  testimonial: TestimonialType
+  testimonial: Testimonial
   className?: string
 }
 
@@ -38,7 +39,7 @@ const TestimonialsCard = ({
               />
             ) : (
               <Image
-                src={avatar}
+                src={getPlaceholderImageIfNone(avatar, 50, 50)}
                 alt={name + " avatar"}
                 fill
                 sizes="50px, 50px"

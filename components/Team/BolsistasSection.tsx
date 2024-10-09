@@ -1,11 +1,11 @@
 "use client"
 import { Box, Flex, Grid } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect } from "react"
+import { useScholarshipMembersStore } from "app/states"
 import { BolsistaCard } from "components"
-import { CURRENT_BOLSISTAS } from "data"
-import { BolsistaType } from "types/teamMembers"
+import { ScholarshipMember } from "types/data/team"
 
-const Bolsistas = () => {
+const Bolsistas = ({ bolsistas }: { bolsistas: ScholarshipMember[] }) => {
   return (
     <Grid
       templateColumns={{ base: "repeat(1, 1fr)", xl: "repeat(4, 1fr)", md: "repeat(2, 1fr)" }}
@@ -14,7 +14,7 @@ const Bolsistas = () => {
       my={12}
     >
       <>
-        {CURRENT_BOLSISTAS.map((teamMember: BolsistaType, index: number) => (
+        {bolsistas.map((teamMember: ScholarshipMember, index: number) => (
           <BolsistaCard key={index} {...teamMember} />
         ))}
       </>
@@ -23,17 +23,25 @@ const Bolsistas = () => {
 }
 
 const BolsistasSection = () => {
-  const [noBolsistas, _] = useState(false)
+  const [bolsistas] = useScholarshipMembersStore((state) => [state.scholarshipMembers])
+  const { getScholarshipMembers } = useScholarshipMembersStore((state) => ({
+    getScholarshipMembers: state.getScholarshipMembers,
+  }))
+
+  useEffect(() => {
+    getScholarshipMembers()
+  }, [getScholarshipMembers])
+
   return (
     <Box className="section">
-      {noBolsistas ? (
+      {bolsistas.length === 0 ? (
         <Flex justifyContent="center" flexDirection="column" alignItems="center">
           <Box fontSize="2xl" fontWeight="semibold" as="h4" lineHeight="tight" isTruncated>
             Não há bolsistas cadastrados no momento.
           </Box>
         </Flex>
       ) : (
-        <Bolsistas />
+        <Bolsistas bolsistas={bolsistas} />
       )}
     </Box>
   )
