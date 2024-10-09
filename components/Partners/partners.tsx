@@ -1,8 +1,8 @@
 "use client"
 import { motion, useInView } from "framer-motion"
 import { useEffect, useRef } from "react"
-import PartnerSlide from "./partnerSlide"
 import { usePartnersStore } from "app/states"
+import PartnerSlide from "./partnerSlide"
 import "./partners.css"
 
 export default function Partners() {
@@ -23,7 +23,7 @@ export default function Partners() {
     if (marquee) {
       marquee.style.setProperty("--marquee-items", partners.length.toString())
     }
-  }, [])
+  })
 
   return (
     <div className="container mx-auto flex flex-col items-center justify-center space-y-8">

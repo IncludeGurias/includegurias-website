@@ -10,10 +10,10 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { useNewsStore } from "app/states"
 import { SeeMoreArrow } from "components"
 import { ConfettiDark } from "public"
-import { useEffect } from "react"
 import News from "types/data/news"
 
 const Timeline = () => {

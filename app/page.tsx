@@ -1,6 +1,7 @@
 "use client"
 import { Box, Container, Flex, Grid, GridItem, Heading, Icon, Stack, Text } from "@chakra-ui/react"
 import Link from "next/link"
+import { useEffect } from "react"
 import { IoIosPeople, IoLogoYoutube } from "react-icons/io"
 import { MdLocalPhone } from "react-icons/md"
 import {
@@ -21,8 +22,6 @@ import {
   VideoFrame,
   WhatWeDoSection,
 } from "components"
-import { contactLinks } from "utils/includeLinks"
-import { useEffect } from "react"
 import SocialMedia from "types/data/socialMedia"
 import getSocialmediaIcon from "utils/getSocialMediaIcon"
 import { useSocialMediaPostsStore, useSocialMediaStore } from "./states"

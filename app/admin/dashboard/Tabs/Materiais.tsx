@@ -34,25 +34,36 @@ const Materiais = () => {
   }))
 
   useEffect(() => {
-    getMaterials().then((data) => setIncludeMaterials(data))
+    getMaterials().then((data) => {
+      if (data) {
+        setIncludeMaterials(data)
+      }
+    })
   }, [getMaterials])
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number, field: string) => {
-    try {
-      if (index < 0 || index >= IncludeMaterials.length || !IncludeMaterials[index]) return
-      IncludeMaterials[index][field] = e.target.value
-      setHasChanged(true)
-    } catch (error) {
-      console.error(error)
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    index: number,
+    type: keyof Material
+  ) => {
+    if (index < 0 || index >= IncludeMaterials.length || !IncludeMaterials[index]) {
+      return
     }
+
+    setIncludeMaterials((prevMaterials) =>
+      prevMaterials.map((material, i) => (i === index ? { ...material, [type]: e.target.value } : material))
+    )
+    setHasChanged(true)
   }
 
-  const handleSwitchChange = (e: ChangeEvent<HTMLInputElement>, index: number, field: string) => {
+  const handleSwitchChange = (index: number) => {
     try {
       if (index < 0 || index >= IncludeMaterials.length || !IncludeMaterials[index]) return
-      console.log(e.target.checked)
-      IncludeMaterials[index].isNew = e.target.checked
-      setIncludeMaterials([...IncludeMaterials])
+      setIncludeMaterials((prevMaterials) => {
+        return prevMaterials.map((material, i) =>
+          i === index ? { ...material, isNew: material.isNew ? false : true } : material
+        )
+      })
       setHasChanged(true)
     } catch (error) {
       console.error(error)
@@ -158,7 +169,7 @@ const Materiais = () => {
                   colorScheme="blue"
                   size="lg"
                   isChecked={item.isNew}
-                  onChange={(e) => handleSwitchChange(e, index, "isNew")}
+                  onChange={() => handleSwitchChange(index)}
                   alignItems="center"
                   display="flex"
                 >

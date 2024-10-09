@@ -2,9 +2,9 @@
 import { AspectRatio, Box, Flex, Grid, Popover, PopoverContent, PopoverTrigger, Text } from "@chakra-ui/react"
 import Avatar from "boring-avatars"
 import Image from "next/image"
-import { Reveal } from "components"
-import { useOldMembersStore } from "app/states"
 import { useEffect } from "react"
+import { useOldMembersStore } from "app/states"
+import { Reveal } from "components"
 import { OldMember } from "types/data/team"
 
 const AllPeople = () => {

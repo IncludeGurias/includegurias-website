@@ -1,8 +1,8 @@
 "use client"
 import { AspectRatio, Box, Card, CardFooter, Flex, Heading, Text } from "@chakra-ui/react"
+import Image from "next/image"
 import { Reveal, SocialButton } from "components"
 import AvatarInclude from "components/IncludeAvatar"
-import Image from "next/image"
 import SocialMediaPost from "types/data/socialMediaPost"
 import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 import getSocialmediaIcon from "utils/getSocialMediaIcon"
@@ -18,18 +18,7 @@ interface SocialMediaCardProps extends SocialMediaPost {
   delay?: number
 }
 
-const SocialMediaCard = ({
-  classNames,
-  delay,
-  text,
-  name,
-  subname,
-  imageUrl,
-  href,
-  date,
-  showInTimeline,
-  socialMedia,
-}: SocialMediaCardProps) => {
+const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, socialMedia }: SocialMediaCardProps) => {
   return (
     <Reveal animationdirection="bottom" delay={delay || 0.01} className={`flex justify-center ${classNames?.reveal}`}>
       <Card

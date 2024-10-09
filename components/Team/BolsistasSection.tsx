@@ -1,9 +1,9 @@
 "use client"
 import { Box, Flex, Grid } from "@chakra-ui/react"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
+import { useScholarshipMembersStore } from "app/states"
 import { BolsistaCard } from "components"
 import { ScholarshipMember } from "types/data/team"
-import { useScholarshipMembersStore } from "app/states"
 
 const Bolsistas = ({ bolsistas }: { bolsistas: ScholarshipMember[] }) => {
   return (

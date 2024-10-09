@@ -14,11 +14,11 @@ import {
   Stack,
   Switch,
 } from "@chakra-ui/react"
-import { useNewsStore } from "app/states"
-import { HeadingText } from "components"
 import { ChangeEvent, useEffect, useState } from "react"
 import { BiSave } from "react-icons/bi"
 import { TbPlus } from "react-icons/tb"
+import { useNewsStore } from "app/states"
+import { HeadingText } from "components"
 import News from "types/data/news"
 import DeleteButton from "./DeleteButton"
 
@@ -73,7 +73,7 @@ const Noticias = () => {
   ) => {
     try {
       if (index < 0 || index >= noticias.length || !noticias[index]) return
-      ;(noticias[index][type] as string) = e.target.value
+      setNoticias((prev) => prev.map((news, i) => (i === index ? { ...news, [type]: e.target.value } : news)))
       setHasChanged(true)
     } catch (error) {
       console.error(error)
@@ -83,8 +83,9 @@ const Noticias = () => {
   const handleSwitchChange = (index: number) => {
     try {
       if (index < 0 || index >= noticias.length || !noticias[index]) return
-      noticias[index].showInTimeline = !noticias[index].showInTimeline || false
-      setNoticias([...noticias])
+      setNoticias((prev) =>
+        prev.map((news, i) => (i === index ? { ...news, showInTimeline: news.showInTimeline ? false : true } : news))
+      )
       setHasChanged(true)
     } catch (error) {
       console.error(error)
@@ -152,7 +153,7 @@ const Noticias = () => {
                   </FormControl>
                   <FormControl>
                     <FormLabel>Exibir na timeline</FormLabel>
-                    <Switch defaultChecked={noticia.showInTimeline} onChange={(e) => handleSwitchChange(index)} />
+                    <Switch defaultChecked={noticia.showInTimeline} onChange={() => handleSwitchChange(index)} />
                   </FormControl>
                   <DeleteButton
                     onDelete={() => {

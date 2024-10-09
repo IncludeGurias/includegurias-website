@@ -1,9 +1,9 @@
 "use client"
 import { Box, Flex, Grid, GridItem, Heading, Spinner, Text, VStack } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { useMaterialsStore } from "app/states"
 import { MaterialCard, Reveal } from "components"
 import { ConfettiLight } from "public"
-import { useEffect } from "react"
 import Material from "types/data/material"
 
 export default function OurMaterials() {

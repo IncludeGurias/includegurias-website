@@ -1,10 +1,10 @@
 "use client"
 import { Box, Button, Input, Spinner, Stack, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
-import { useOldMembersStore, useScholarshipMembersStore, useTeamMembersStore } from "app/states"
-import { HeadingText } from "components"
 import { ChangeEvent, useEffect, useState } from "react"
 import { BiSave } from "react-icons/bi"
 import { TbPlus } from "react-icons/tb"
+import { useOldMembersStore, useScholarshipMembersStore, useTeamMembersStore } from "app/states"
+import { HeadingText } from "components"
 import { OldMember, ScholarshipMember, TeamMember } from "types/data/team"
 import DeleteButton from "./DeleteButton"
 
@@ -29,7 +29,7 @@ const Time = () => {
   ) => {
     try {
       if (index < 0 || index >= time.length || !time[index]) return
-      time[index][field] = e.target.value
+      setTime((prev) => prev.map((member, i) => (i === index ? { ...member, [field]: e.target.value } : member)))
       setTeamHasChanged(true)
     } catch (error) {
       alert("Erro ao alterar membro da equipe")
@@ -82,7 +82,9 @@ const Time = () => {
   ) => {
     try {
       if (index < 0 || index >= bolsistas.length || !bolsistas[index]) return
-      bolsistas[index][field] = e.target.value
+      setBolsistas((prev) =>
+        prev.map((bolsista, i) => (i === index ? { ...bolsista, [field]: e.target.value } : bolsista))
+      )
       setBolsistasHasChanged(true)
     } catch (error) {
       alert("Erro ao alterar bolsista")
@@ -131,7 +133,7 @@ const Time = () => {
   ) => {
     try {
       if (index < 0 || index >= allMembers.length || !allMembers[index]) return
-      allMembers[index][field] = e.target.value
+      setAllMembers((prev) => prev.map((member, i) => (i === index ? { ...member, [field]: e.target.value } : member)))
       setOldMembersHasChanged(true)
     } catch (error) {
       alert("Erro ao alterar membro")

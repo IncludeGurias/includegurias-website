@@ -1,9 +1,9 @@
 "use client"
 import { AspectRatio, Box, Divider, Text } from "@chakra-ui/react"
-import { Reveal } from "components"
 import Image from "next/image"
-import { CounterMap } from "public"
 import { useState } from "react"
+import { Reveal } from "components"
+import { CounterMap } from "public"
 import { TeamMember } from "types/data/team"
 import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 

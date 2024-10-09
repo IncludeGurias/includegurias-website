@@ -14,14 +14,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react"
 import { Collapse } from "@chakra-ui/transition"
+import { useEffect } from "react"
 import { FaChevronDown, FaChevronRight } from "react-icons/fa"
 import { GoChevronDown } from "react-icons/go"
 import { IoClose } from "react-icons/io5"
 import { RxHamburgerMenu } from "react-icons/rx"
-import { HeaderMotion, LogoMotion } from "./HeaderMotion"
 import { useMaterialsStore } from "app/states"
-import { useEffect } from "react"
 import Material from "types/data/material"
+import { HeaderMotion, LogoMotion } from "./HeaderMotion"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()

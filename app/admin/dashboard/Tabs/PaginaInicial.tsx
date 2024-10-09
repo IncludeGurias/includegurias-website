@@ -23,10 +23,10 @@ import { BiSave } from "react-icons/bi"
 import { TbPlus } from "react-icons/tb"
 import { usePrimaryPageVideosStore, useSocialMediaPostsStore, useTestimonialsStore } from "app/states"
 import { HeadingText } from "components"
+import SocialMediaPost from "types/data/socialMediaPost"
 import Testimonial from "types/data/testimonial"
 import Video from "types/data/video"
 import DeleteButton from "./DeleteButton"
-import SocialMediaPost from "types/data/socialMediaPost"
 
 const PaginaInicial = () => {
   const [videos, setVideos] = useState<Video[]>([])
@@ -63,7 +63,7 @@ const PaginaInicial = () => {
   ) => {
     try {
       if (index < 0 || index >= videos.length || !videos[index]) return
-      videos[index][type] = e.target.value
+      setVideos((prev) => prev.map((video, i) => (i === index ? { ...video, [type]: e.target.value } : video)))
       setHasVideoChanged(true)
     } catch (error) {
       console.error(error)
@@ -111,7 +111,9 @@ const PaginaInicial = () => {
   ) => {
     try {
       if (index < 0 || index >= testimonials.length || !testimonials[index]) return
-      testimonials[index][type] = e.target.value
+      setTestimonials((prev) =>
+        prev.map((testimonial, i) => (i === index ? { ...testimonial, [type]: e.target.value } : testimonial))
+      )
       setHasTestimonialChanged(true)
     } catch (error) {
       console.error(error)
@@ -181,7 +183,7 @@ const PaginaInicial = () => {
   ) => {
     try {
       if (index < 0 || index >= socialMediaPosts.length || !socialMediaPosts[index]) return
-      ;(socialMediaPosts[index][type] as string) = e.target.value
+      setSocialMediaPosts((prev) => prev.map((news, i) => (i === index ? { ...news, [type]: e.target.value } : news)))
       setHasSocialMediaPostsChanged(true)
     } catch (error) {
       console.error(error)

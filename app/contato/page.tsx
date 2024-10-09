@@ -11,14 +11,14 @@ import {
   Textarea,
   VStack,
 } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { BsPerson } from "react-icons/bs"
 import { FaRegMessage } from "react-icons/fa6"
 import { FiSend } from "react-icons/fi"
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md"
+import { useIncludeInfoStore, useSocialMediaStore } from "app/states"
 import { HeadingText, PrimaryButton, SocialButton } from "components"
 import { ConfettiLight } from "public"
-import { useIncludeInfoStore, useSocialMediaStore } from "app/states"
-import { useEffect } from "react"
 import getSocialmediaIcon from "utils/getSocialMediaIcon"
 
 export default function ContactForm() {

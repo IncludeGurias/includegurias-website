@@ -4,9 +4,9 @@ import Avatar from "boring-avatars"
 import Image from "next/image"
 import Link from "next/link"
 import { CounterMap } from "public"
-import S from "./cardTeam.module.css"
 import { ScholarshipMember, TeamMember } from "types/data/team"
 import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
+import S from "./cardTeam.module.css"
 
 type CardTeamProps = {
   title: string

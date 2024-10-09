@@ -13,7 +13,7 @@ const TestimonialsCarousel = () => {
   const [testimonials] = useTestimonialsStore((state) => [state.testimonials])
   const { getTestimonials, loading } = useTestimonialsStore((state) => ({
     getTestimonials: state.getTestimonials,
-    loading: state.loading,
+    loading: state.testimonial_loading,
   }))
 
   useEffect(() => {

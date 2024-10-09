@@ -1,8 +1,8 @@
 "use client"
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { useNewsStore } from "app/states"
 import { HeadingText, NewsCard, Reveal, SeeMoreArrow } from "components"
-import { useEffect } from "react"
 
 const NewsSection = () => {
   const { getNews, news } = useNewsStore((state) => ({

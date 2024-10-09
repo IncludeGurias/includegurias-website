@@ -4,12 +4,12 @@ import { redirect } from "next/navigation"
 import { BiLogOut } from "react-icons/bi"
 import EventosAtividades from "./Tabs/EventosAtividades"
 import Materiais from "./Tabs/Materiais"
+import Noticias from "./Tabs/Noticias"
 import PaginaInicial from "./Tabs/PaginaInicial"
 import Partners from "./Tabs/Partners"
 import RedesSociais from "./Tabs/RedesSociais"
 import Time from "./Tabs/Time"
 import useAuthStore from "../authStore"
-import Noticias from "./Tabs/Noticias"
 
 const TAB_LIST = [
   { name: "Materiais", icon: "FaBook", component: Materiais },

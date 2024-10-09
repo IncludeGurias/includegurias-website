@@ -1,5 +1,5 @@
-import { getLayout } from "components"
 import { Metadata } from "next"
+import { getLayout } from "components"
 import baseMetadata from "utils/metadata"
 
 export const metadata: Metadata = {

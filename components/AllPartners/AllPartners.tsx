@@ -1,9 +1,9 @@
 "use client"
 import { AspectRatio, Box, Link, Stack, Tooltip } from "@chakra-ui/react"
-import { usePartnersStore } from "app/states"
-import { Reveal } from "components"
 import Image from "next/image"
 import { useEffect } from "react"
+import { usePartnersStore } from "app/states"
+import { Reveal } from "components"
 import Partner from "types/data/partner"
 import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 

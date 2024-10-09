@@ -1,8 +1,8 @@
 "use client"
 import { Grid } from "@chakra-ui/react"
+import { useEffect } from "react"
 import { useTeamMembersStore } from "app/states"
 import { TeamCard } from "components"
-import { useEffect } from "react"
 import { TeamMember } from "types/data/team"
 
 export const TeamForAboutUs = () => {

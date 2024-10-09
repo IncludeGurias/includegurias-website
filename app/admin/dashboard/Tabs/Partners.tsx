@@ -28,7 +28,7 @@ const Partners = () => {
   ) => {
     try {
       if (index < 0 || index >= partners.length || !partners[index]) return
-      ;(partners[index][field] as string) = e.target.value
+      setPartners((prev) => prev.map((partner, i) => (i === index ? { ...partner, [field]: e.target.value } : partner)))
       setHasChanged(true)
     } catch (error) {
       console.error(error)
@@ -56,8 +56,9 @@ const Partners = () => {
   const handleSwitchChange = (index: number) => {
     try {
       if (index < 0 || index >= partners.length || !partners[index]) return
-      partners[index].active = !partners[index].active
-      setPartners([...partners])
+      setPartners((prev) =>
+        prev.map((partner, i) => (i === index ? { ...partner, active: partner.active ? false : true } : partner))
+      )
       setHasChanged(true)
     } catch (error) {
       console.error(error)

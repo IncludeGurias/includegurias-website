@@ -30,7 +30,9 @@ const RedesSociais = () => {
   ) => {
     try {
       if (index < 0 || index >= SocialMedia.length || !SocialMedia[index]) return
-      SocialMedia[index][field] = e.target.value
+      setSocialMedia((prev) =>
+        prev.map((socialMedia, i) => (i === index ? { ...socialMedia, [field]: e.target.value } : socialMedia))
+      )
       setHasSocialMediaChanged(true)
     } catch (error) {
       alert("Erro ao alterar rede social")
@@ -91,7 +93,7 @@ const RedesSociais = () => {
   ) => {
     try {
       if (index < 0 || index >= Info.length || !Info[index]) return
-      Info[index][field] = e.target.value
+      setInfo((prev) => prev.map((info, i) => (i === index ? { ...info, [field]: e.target.value } : info)))
       setHasInfoChanged(true)
     } catch (error) {
       alert("Erro ao alterar informação")
