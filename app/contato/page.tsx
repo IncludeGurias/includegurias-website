@@ -1,3 +1,4 @@
+"use client"
 import {
   Box,
   Flex,
@@ -15,11 +16,30 @@ import { FaRegMessage } from "react-icons/fa6"
 import { FiSend } from "react-icons/fi"
 import { MdLocationOn, MdOutlineEmail, MdPhone } from "react-icons/md"
 import { HeadingText, PrimaryButton, SocialButton } from "components"
-import { includeInfo } from "data"
 import { ConfettiLight } from "public"
-import { SocialMediaData } from "utils/socialMedia"
+import { useIncludeInfoStore, useSocialMediaStore } from "app/states"
+import { useEffect } from "react"
+import getSocialmediaIcon from "utils/getSocialMediaIcon"
 
 export default function ContactForm() {
+  const { getSocialMedia, socialMedia } = useSocialMediaStore((state) => ({
+    getSocialMedia: state.getSocialMedia,
+    socialMedia: state.socialMedia,
+  }))
+
+  useEffect(() => {
+    getSocialMedia()
+  }, [getSocialMedia])
+
+  const { getIncludeInfo, includeInfo } = useIncludeInfoStore((state) => ({
+    getIncludeInfo: state.getIncludeInfo,
+    includeInfo: state.includeInfo,
+  }))
+
+  useEffect(() => {
+    getIncludeInfo()
+  }, [getIncludeInfo])
+
   return (
     <Flex
       align="center"
@@ -38,16 +58,16 @@ export default function ContactForm() {
 
             <Stack spacing={{ base: 4, md: 8, lg: 20 }} direction={{ base: "column", md: "row" }} w={"100%"}>
               <Stack align="center" justify="space-around" direction={{ base: "row", md: "column" }}>
-                {SocialMediaData.map((socialMedia) => (
+                {socialMedia.map((socialMedia) => (
                   <div className="flex w-full items-center justify-start gap-2" key={socialMedia.name}>
                     <SocialButton
                       size={50}
                       label={socialMedia.name}
-                      href={socialMedia.link}
+                      href={socialMedia.href}
                       animation="rotateHover"
                       circle={true}
                     >
-                      {socialMedia.icon}
+                      {getSocialmediaIcon({ socialMedia: socialMedia.name, props: { size: 30, color: "white" } })}
                     </SocialButton>
                     <span className="hidden text-lg font-semibold md:block">
                       {socialMedia.name === "Chatbot" ? "Whatsapp" : socialMedia.name}
@@ -97,39 +117,15 @@ export default function ContactForm() {
             {/* Adicionar informações de contato */}
             <Box bg={"white"} borderRadius="lg" p={5} w="100%" color={"text.700"} shadow="base">
               <VStack spacing={3}>
-                <span className="text-lg font-semibold">Informações de Contato</span>
-                <Flex align="center">
-                  <MdOutlineEmail />
-                  <span className="ml-2">
-                    <strong> include.gurias@gmail.com</strong>
-                    <strong>{includeInfo.email}</strong>
-                  </span>
-                </Flex>
-                <Flex align="center">
-                  <MdPhone />
-                  <span className="ml-2">
-                    Telefone da Secretaria: <strong>{includeInfo.phone}</strong>
-                  </span>
-                </Flex>
-                <Flex align="center">
-                  <MdOutlineEmail />
-                  <span className="ml-2">
-                    Email da Coordenadora:<strong>{includeInfo.coordinatorEmail}</strong>
-                  </span>
-                </Flex>
-                <Flex align="center">
-                  <MdLocationOn />
-                  <span className="ml-2">
-                    Endereço:
-                    <strong>{includeInfo.address}</strong>
-                  </span>
-                </Flex>
-                <Flex align="center">
-                  <MdPhone />
-                  <span className="ml-2">
-                    Número do Chatbot:<strong>{includeInfo.chatbotNumber}</strong>
-                  </span>
-                </Flex>
+                {includeInfo.map((info) => (
+                  <Flex align="center" key={info.name}>
+                    {info.name === "Localização" ? <MdLocationOn /> : info.name === "Telefone" ? <MdPhone /> : null}
+                    <span className="ml-2">
+                      <strong>{info.name}: </strong>
+                      {info.value}
+                    </span>
+                  </Flex>
+                ))}
               </VStack>
             </Box>
           </VStack>

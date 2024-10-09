@@ -1,11 +1,11 @@
 import { Card, CardBody, CardFooter, Heading } from "@chakra-ui/react"
 import { VideoFrame } from "components"
-import { VideoType } from "types/videoType"
+import VideoType from "types/data/video"
 
-const VideoFrameCarousel = ({ videoList }: { videoList: VideoType }) => {
+const VideoFrameCarousel = ({ video }: { video: VideoType }) => {
   return (
     <Card
-      key={videoList.title}
+      key={video.title}
       size="lg"
       width="full"
       transition="all 0.3s ease-in-out"
@@ -21,14 +21,14 @@ const VideoFrameCarousel = ({ videoList }: { videoList: VideoType }) => {
           width="100%"
           height="250px"
           loading="lazy"
-          embedId={videoList.video}
-          title={videoList.title}
+          embedId={video.videoUrl.replace("https://www.youtube.com/embed/", "")}
+          title={video.title}
           allowFullScreen
         />
       </CardBody>
       <CardFooter bg={"var(--primary-400)"} borderBottomRadius="md" textAlign="center" h={100} p={2}>
         <Heading size="md" color={"white"} margin={"auto"}>
-          {videoList.title}
+          {video.title}
         </Heading>
       </CardFooter>
     </Card>

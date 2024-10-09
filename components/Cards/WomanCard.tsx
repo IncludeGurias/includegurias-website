@@ -1,6 +1,7 @@
 import { Box, WrapItem } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 
 interface womanCardProps {
   name: string
@@ -26,7 +27,7 @@ const WomanCard = ({ name, imageUrl }: womanCardProps) => {
         >
           {imageUrl && (
             <Image
-              src={imageUrl}
+              src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
               alt={name}
               loading="lazy"
               quality={75}

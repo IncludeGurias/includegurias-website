@@ -1,13 +1,22 @@
+"use client"
 import { AspectRatio, Box, Flex, Grid, Popover, PopoverContent, PopoverTrigger, Text } from "@chakra-ui/react"
 import Avatar from "boring-avatars"
 import Image from "next/image"
 import { Reveal } from "components"
-import { ALL_TEAM_MEMBERS } from "data"
-import { allMembersMemberType } from "types/teamMembers"
-
-// This Component is used in the Team Section of the About Us Page to display all the team members from the past.
+import { useOldMembersStore } from "app/states"
+import { useEffect } from "react"
+import { OldMember } from "types/data/team"
 
 const AllPeople = () => {
+  const [allMembers] = useOldMembersStore((state) => [state.oldMembers])
+  const { getOldMembers } = useOldMembersStore((state) => ({
+    getOldMembers: state.getOldMembers,
+  }))
+
+  useEffect(() => {
+    getOldMembers()
+  }, [getOldMembers])
+
   return (
     <Grid
       templateColumns={{
@@ -19,7 +28,7 @@ const AllPeople = () => {
       px={{ base: "1rem", md: "2rem" }}
       my={12}
     >
-      {ALL_TEAM_MEMBERS.map((person: allMembersMemberType, index: number) => (
+      {allMembers.map((person: OldMember, index: number) => (
         <Reveal key={index} animationdirection="bottom" delay={0.05 * index}>
           <Popover trigger="hover" placement="top" closeDelay={150}>
             <PopoverTrigger>
@@ -46,9 +55,15 @@ const AllPeople = () => {
             >
               <Box p={5}>
                 <Flex justify="center" align="center">
-                  {person.image ? (
+                  {person.imageUrl ? (
                     <AspectRatio ratio={1} w="100px" mb={4} borderRadius="full" className="border-2 border-rose-500">
-                      <Image src={person.image} alt={person.name} fill className="h-full rounded-full object-cover" />
+                      <Image
+                        src={person.imageUrl}
+                        alt={person.name}
+                        fill
+                        className="h-full rounded-full object-cover"
+                        loading="lazy"
+                      />
                     </AspectRatio>
                   ) : (
                     <Avatar
@@ -62,9 +77,9 @@ const AllPeople = () => {
                 <Text fontSize="sm" fontWeight="bold" textAlign="center" mt={2}>
                   {person.name}
                 </Text>
-                {person.role && (
+                {person.job && (
                   <Text fontSize="sm" fontWeight="bold" textAlign="center">
-                    {person.role}
+                    {person.job}
                   </Text>
                 )}
               </Box>

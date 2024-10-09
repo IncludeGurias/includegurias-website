@@ -1,12 +1,21 @@
 "use client"
 import { EmblaOptionsType } from "embla-carousel"
-import { MAIN_PAGE_VIDEO_LIST } from "data"
+import { useEffect } from "react"
+import { usePrimaryPageVideosStore } from "app/states"
 import EmblaCarousel from "./EmblaCarousel"
 
 const VideosCarousel: React.FC = () => {
   const OPTIONS: EmblaOptionsType = { loop: true }
+  const [PrimaryPageVideos] = usePrimaryPageVideosStore((state) => [state.primaryPageVideos])
+  const { getPrimaryPageVideos } = usePrimaryPageVideosStore((state) => ({
+    getPrimaryPageVideos: state.getPrimaryPageVideos,
+  }))
 
-  return <EmblaCarousel slides={MAIN_PAGE_VIDEO_LIST} options={OPTIONS} />
+  useEffect(() => {
+    getPrimaryPageVideos()
+  }, [getPrimaryPageVideos])
+
+  return <EmblaCarousel slides={PrimaryPageVideos} options={OPTIONS} />
 }
 
 export default VideosCarousel

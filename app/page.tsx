@@ -1,3 +1,4 @@
+"use client"
 import { Box, Container, Flex, Grid, GridItem, Heading, Icon, Stack, Text } from "@chakra-ui/react"
 import Link from "next/link"
 import { IoIosPeople, IoLogoYoutube } from "react-icons/io"
@@ -20,12 +21,32 @@ import {
   VideoFrame,
   WhatWeDoSection,
 } from "components"
-import SOCIALMEDIA_DATA from "data/socialMediaPosts"
-import { IncludeAvatar } from "public"
 import { contactLinks } from "utils/includeLinks"
-import { SocialMediaData } from "utils/socialMedia"
+import { useEffect } from "react"
+import SocialMedia from "types/data/socialMedia"
+import getSocialmediaIcon from "utils/getSocialMediaIcon"
+import { useSocialMediaPostsStore, useSocialMediaStore } from "./states"
 
 export default function Home() {
+  const { getSocialMedia, socialMedia } = useSocialMediaStore((state) => ({
+    getSocialMedia: state.getSocialMedia,
+    socialMediaLoading: state.socialMediaLoading,
+    socialMedia: state.socialMedia,
+  }))
+
+  useEffect(() => {
+    getSocialMedia()
+  }, [getSocialMedia])
+
+  const { getSocialMediaPosts, socialMediaPosts } = useSocialMediaPostsStore((state) => ({
+    getSocialMediaPosts: state.getSocialMediaPosts,
+    socialMediaPosts: state.socialMediaPosts,
+  }))
+
+  useEffect(() => {
+    getSocialMediaPosts()
+  }, [getSocialMediaPosts])
+
   return (
     <HeaderAndFooter>
       <Container maxW={{ base: "100%", md: "7xl" }} pt={100}>
@@ -135,17 +156,16 @@ export default function Home() {
         <Box p={4} maxW={{ base: "100%", md: "9xl" }} display={"flex"} flexDirection={"column"}>
           <HeadingText text="Siga o Include" align="center" />
           <div className="mb-6 grid grid-cols-3 justify-items-center gap-4 sm:flex-wrap sm:justify-center md:flex">
-            {/* placeholder hidden, later mobile friendly */}
-            {SocialMediaData.map((socialMedia, index) => (
+            {socialMedia.map((socialMedia: SocialMedia, index: number) => (
               <SocialButton
                 key={socialMedia.name + index}
                 size={45}
                 label={socialMedia.name}
-                href={socialMedia.link}
+                href={socialMedia.href}
                 animation="rotateHover"
                 delay={index * 0.1}
               >
-                {socialMedia.icon}
+                {getSocialmediaIcon({ socialMedia: socialMedia.name, props: { size: 24 } })}
               </SocialButton>
             ))}
           </div>
@@ -160,18 +180,17 @@ export default function Home() {
             w="full"
             justifyContent="space-between"
           >
-            {SOCIALMEDIA_DATA.map((post, index) => (
+            {socialMediaPosts.map((post, index) => (
               <GridItem w="full" key={post.name + index}>
                 <SocialMediaCard
                   text={post.text}
-                  avatarImage={IncludeAvatar}
+                  imageUrl={post.imageUrl}
                   name={post.name}
                   subname={post.subname}
                   socialMedia={post.socialMedia}
                   classNames={{
                     reveal: `${index === 1 && "mt-8"}`,
                   }}
-                  postImage={post.image}
                   delay={index * 0.2}
                 />
               </GridItem>
@@ -184,7 +203,7 @@ export default function Home() {
           <VideoCarousel />
 
           <Flex direction="column" alignItems="center" mb={5} id="text">
-            <Link href={contactLinks.Youtube} passHref>
+            <Link href={socialMedia.find((media) => media.name.toLowerCase() === "youtube")?.href || "#"} passHref>
               <PrimaryButton recuo={-270} classNames={{ divContainer: "w-[350px]" }} icon={<IoLogoYoutube size={25} />}>
                 Veja mais videos
               </PrimaryButton>

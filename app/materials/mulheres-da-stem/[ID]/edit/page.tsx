@@ -1,7 +1,7 @@
 import { Box, Container, Flex, Stack } from "@chakra-ui/react"
 import { Metadata } from "next"
 import GirlNotFound from "app/not-found-woman"
-import { womanType } from "types/womanType"
+import { womanType } from "types/woman"
 import ConfirmLeaveModal from "./ConfirmLeaveModal"
 import EditarMulherForm from "./EditarMulherForm"
 import EditarMulherImagem from "./EditarMulherImagem"

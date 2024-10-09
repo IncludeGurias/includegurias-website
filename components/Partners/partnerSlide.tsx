@@ -1,19 +1,17 @@
 "use client"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 
 type PartnerSlideProps = {
-  image: StaticImageData
+  imageUrl: string
   name: string
-  ariaLabel?: boolean
-  delay?: number
-  key?: string
 }
 
-const PartnerSlide = ({ image, name }: PartnerSlideProps) => {
+const PartnerSlide = ({ imageUrl, name }: PartnerSlideProps) => {
   return (
     <div className="absolute inset-0 flex h-full w-full items-center justify-center">
       <Image
-        src={image}
+        src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
         className="h-full w-full object-contain"
         quality={50}
         fill

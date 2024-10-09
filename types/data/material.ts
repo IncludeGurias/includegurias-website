@@ -1,11 +1,8 @@
-import { StaticImageData } from "next/image"
-
-//usado no materials.tsx
-export interface Material {
-  [key: string]: string | StaticImageData | undefined | boolean
+export default interface Material {
+  [key: string]: string | boolean | undefined | number
   title: string
   description: string
   isNew?: boolean
-  imageURL: StaticImageData | string | undefined
+  imageUrl: string
   href: string
 }

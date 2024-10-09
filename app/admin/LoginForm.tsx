@@ -8,8 +8,8 @@ import {
   InputLeftElement,
   InputRightElement,
   Stack,
-  useToast,
 } from "@chakra-ui/react"
+import { redirect } from "next/navigation"
 import { FormEvent, useState } from "react"
 import { FaEye, FaEyeSlash, FaLock, FaUserAlt } from "react-icons/fa"
 import useAuthStore from "./authStore"
@@ -21,31 +21,27 @@ const FormLogin = () => {
   const [showPassword, setShowPassword] = useState(false)
   const handleShowClick = () => setShowPassword(!showPassword)
 
-  const { user, email, password, setEmail, setPassword, login } = useAuthStore()
-  const toast = useToast()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const { login, isLoggedIn } = useAuthStore()
+
+  if (isLoggedIn) {
+    redirect("/admin/dashboard")
+  }
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
     try {
-      await login()
-      console.log("User:", user?.name)
-      if (user)
-        toast({
-          title: `Login successful: ${user.name}`,
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        })
+      await login(email, password)
+      redirect("/admin/dashboard")
     } catch (error: any) {
-      toast({
-        title: `Login failed.`,
-        description: error.message,
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      })
+      alert(error.message)
     }
   }
+
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value)
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)
 
   return (
     <form onSubmit={handleSubmit}>
@@ -55,7 +51,7 @@ const FormLogin = () => {
             <InputLeftElement pointerEvents="none">
               <CFaUserAlt color="gray.300" />
             </InputLeftElement>
-            <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Input type="email" placeholder="Email" value={email} onChange={handleChangeEmail} />
           </InputGroup>
         </FormControl>
         <FormControl>
@@ -67,7 +63,7 @@ const FormLogin = () => {
               type={showPassword ? "text" : "password"}
               placeholder="Senha"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChangePassword}
             />
             <InputRightElement>
               <Button size="sm" onClick={handleShowClick} h="1.75rem" variant="unstyled">
@@ -75,12 +71,8 @@ const FormLogin = () => {
               </Button>
             </InputRightElement>
           </InputGroup>
-          {/* Theres no need for a password recovery mechanism 
-          <FormHelperText textAlign="right">
-            <Link color="teal.500">Esqueceu a senha?</Link>
-          </FormHelperText>*/}
         </FormControl>
-        <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full">
+        <Button borderRadius={4} type="submit" variant="solid" colorScheme="teal" width="full">
           Login
         </Button>
       </Stack>

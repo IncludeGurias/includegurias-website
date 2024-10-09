@@ -2,14 +2,26 @@
 import { Box, Container, Flex, Stack, Text } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
+import { useEffect } from "react"
+import { useSocialMediaStore } from "app/states"
 import { SocialButton } from "components"
 import "styles/TextHoverAnimation.css"
 import { Love } from "components"
 import { ProjetoChancelado } from "public"
+import getSocialmediaIcon from "utils/getSocialMediaIcon"
 import { contactLinks } from "utils/includeLinks"
-import { SocialMediaData } from "utils/socialMedia"
 
 const Footer = () => {
+  const { getSocialMedia, socialMedia } = useSocialMediaStore((state) => ({
+    getSocialMedia: state.getSocialMedia,
+    socialMediaLoading: state.socialMediaLoading,
+    socialMedia: state.socialMedia,
+  }))
+
+  useEffect(() => {
+    getSocialMedia()
+  }, [getSocialMedia])
+
   return (
     <Box style={{ backgroundColor: "#F28080" }} color={"white"} maxWidth="100wh" overflowX="hidden" id="footer">
       <Container
@@ -45,16 +57,16 @@ const Footer = () => {
             Siga o #Include
           </Text>
           <div className="mb-6 grid grid-cols-3 justify-items-center gap-4 sm:flex-wrap sm:justify-center md:flex">
-            {SocialMediaData.map((socialMedia) => (
+            {socialMedia.map((socialMedia) => (
               <SocialButton
                 key={socialMedia.name}
                 size={50}
                 label={socialMedia.name}
-                href={socialMedia.link}
+                href={socialMedia.href}
                 animation="rotateHover"
                 circle={true}
               >
-                {socialMedia.icon}
+                {getSocialmediaIcon({ socialMedia: socialMedia.name, props: { size: 25 } })}
               </SocialButton>
             ))}
           </div>
@@ -70,7 +82,7 @@ const Footer = () => {
           <Love />
           por
           <Link href={contactLinks.creatorSite}>
-            <strong className="hover-underline-animation">Bots Channel</strong>
+            <strong className="hover-underline-animation">Lucas Diniz</strong>
           </Link>
         </Flex>
       </Container>

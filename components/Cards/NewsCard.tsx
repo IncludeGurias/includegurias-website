@@ -2,9 +2,10 @@
 import { Box, Card, Grid, Text } from "@chakra-ui/react"
 import Image from "next/image"
 import Link from "next/link"
-import { NewsItem } from "types/News"
+import News from "types/data/news"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
 
-const NewsCard = ({ title, description, image, href, date }: NewsItem) => {
+const NewsCard = ({ title, text, imageUrl, href, date }: News) => {
   const formattedDate = date ? new Date(date).toLocaleDateString() : date
 
   return (
@@ -17,10 +18,12 @@ const NewsCard = ({ title, description, image, href, date }: NewsItem) => {
     >
       <Grid templateColumns="1fr" gap={0}>
         <Box position="relative" overflow="hidden" w="full" h="200px" rounded="t-lg">
-          {image ? (
+          {imageUrl ? (
             <Image
-              src={image}
+              src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
               alt={title}
+              loading="lazy"
+              quality={75}
               fill
               className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
               sizes={"(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
@@ -38,7 +41,7 @@ const NewsCard = ({ title, description, image, href, date }: NewsItem) => {
             {title}
           </Text>
           <Text id="text" fontSize="md" color="gray.500" mb={6}>
-            {description}
+            {text}
           </Text>
           {href && (
             <div className="absolute bottom-0 left-0 p-2 text-gray-700">

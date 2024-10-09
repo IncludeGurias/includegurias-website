@@ -5,35 +5,27 @@ import "styles/tailwind.css"
 
 export function HeaderAndFooter({ children }: { children: React.ReactNode }) {
   return (
-    <body className="bg-[#F3F4F6]">
-      <ChakraProvider>
-        <Header />
-        <FloatButton />
-        <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
-        <Footer />
-      </ChakraProvider>
-    </body>
+    <>
+      <Header />
+      <FloatButton />
+      <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
+      <Footer />
+    </>
   )
 }
 
 export function OnlyHeader({ children }: { children: React.ReactNode }) {
   return (
-    <body className="bg-[#F3F4F6]">
-      <ChakraProvider>
-        <Header />
-        <FloatButton />
-        <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
-      </ChakraProvider>
-    </body>
+    <>
+      <Header />
+      <FloatButton />
+      <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
+    </>
   )
 }
 
 export function CleanLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <ChakraProvider>
-      <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
-    </ChakraProvider>
-  )
+  return <main className="max-w-screen min-h-screen overflow-hidden">{children}</main>
 }
 
 export function RootLayout({ children }: { children: React.ReactNode }) {
@@ -41,7 +33,9 @@ export function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <html lang="en" className={`${breeSerif.variable} ${raleway.variable} ${encodeSans.variable}`}>
-      {children}
+      <body className="bg-[#F3F4F6]">
+        <ChakraProvider>{children}</ChakraProvider>
+      </body>
     </html>
   )
 }

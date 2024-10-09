@@ -1,5 +1,5 @@
 import axios from "axios"
-import { womanType } from "types/womanType"
+import { womanType } from "types/woman"
 
 export async function fetchGurias() {
   try {

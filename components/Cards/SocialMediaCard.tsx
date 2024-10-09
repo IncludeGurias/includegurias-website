@@ -1,9 +1,11 @@
 "use client"
-import { AspectRatio, Avatar, Box, Card, CardFooter, Flex, Heading, Text } from "@chakra-ui/react"
-import Image, { StaticImageData } from "next/image"
-import { createElement } from "react"
+import { AspectRatio, Box, Card, CardFooter, Flex, Heading, Text } from "@chakra-ui/react"
 import { Reveal, SocialButton } from "components"
-import getIcon from "utils/getSocialMediaIcon"
+import AvatarInclude from "components/IncludeAvatar"
+import Image from "next/image"
+import SocialMediaPost from "types/data/socialMediaPost"
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
+import getSocialmediaIcon from "utils/getSocialMediaIcon"
 import { contactLinks } from "utils/includeLinks"
 
 interface classNames {
@@ -11,29 +13,23 @@ interface classNames {
   card?: string
 }
 
-type SocialMediaCardProps = {
-  text: string
-  avatarImage: StaticImageData
-  name: string
-  subname: string
-  socialMedia: string
-  postImage: StaticImageData
+interface SocialMediaCardProps extends SocialMediaPost {
   classNames?: classNames
   delay?: number
 }
 
 const SocialMediaCard = ({
-  text,
-  avatarImage,
-  name,
-  subname,
-  socialMedia,
-  postImage,
   classNames,
   delay,
+  text,
+  name,
+  subname,
+  imageUrl,
+  href,
+  date,
+  showInTimeline,
+  socialMedia,
 }: SocialMediaCardProps) => {
-  const icon = getIcon(socialMedia)
-
   return (
     <Reveal animationdirection="bottom" delay={delay || 0.01} className={`flex justify-center ${classNames?.reveal}`}>
       <Card
@@ -52,11 +48,12 @@ const SocialMediaCard = ({
         <AspectRatio ratio={20 / 20} className="w-full overflow-hidden rounded-t-xl">
           <Image
             className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
-            src={postImage}
+            src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
             alt={name}
             height={400}
+            width={300}
             quality={75}
-            priority
+            loading="lazy"
           />
         </AspectRatio>
 
@@ -65,7 +62,6 @@ const SocialMediaCard = ({
             {text}
           </Text>
           <div
-            // href={contactLinks[socialMedia as keyof typeof contactLinks]}
             onClick={() => {
               window.open(contactLinks[socialMedia as keyof typeof contactLinks], "_blank")
             }}
@@ -85,7 +81,7 @@ const SocialMediaCard = ({
                 paddingRight: "1",
               }}
             >
-              <Avatar name={name} src={avatarImage.src} />
+              <AvatarInclude name={name} />
               <Box w={"full"} display="flex" flexDirection="column" alignItems="start" justifyContent="center">
                 <Heading size="sm">{name}</Heading>
                 <Text color="gray.500" fontSize="xs">
@@ -98,9 +94,9 @@ const SocialMediaCard = ({
                 href={contactLinks[socialMedia as keyof typeof contactLinks]}
                 animation="scale(1.1)"
                 circle={true}
-                tooltipCustomLabel={`Follow us on ${socialMedia}`}
+                tooltipCustomLabel={`Siga a gente no ${socialMedia}`}
               >
-                {createElement(icon, { size: 30 })}
+                {getSocialmediaIcon({ socialMedia: socialMedia, props: { size: 30 } })}
               </SocialButton>
             </Flex>
           </div>

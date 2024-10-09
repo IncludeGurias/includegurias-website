@@ -18,12 +18,35 @@ import { FaChevronDown, FaChevronRight } from "react-icons/fa"
 import { GoChevronDown } from "react-icons/go"
 import { IoClose } from "react-icons/io5"
 import { RxHamburgerMenu } from "react-icons/rx"
-import { INCLUDE_MATERIALS } from "data"
 import { HeaderMotion, LogoMotion } from "./HeaderMotion"
+import { useMaterialsStore } from "app/states"
+import { useEffect } from "react"
+import Material from "types/data/material"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
+  const { getMaterials } = useMaterialsStore((state) => ({
+    getMaterials: state.getMaterials,
+  }))
+  const [IncludeMaterials] = useMaterialsStore((state) => [state.materials])
 
+  useEffect(() => {
+    getMaterials()
+  }, [getMaterials])
+
+  const materialsItem = NAV_ITEMS?.find((item) => item.label === "Nossos Materiais")
+
+  if (materialsItem) {
+    materialsItem.children = IncludeMaterials.map((material: Material) => ({
+      label: material.title,
+      href: `${material.href}`,
+    })).concat([
+      {
+        label: "Ver todos",
+        href: "/materials",
+      },
+    ])
+  }
   return (
     <HeaderMotion>
       <>
@@ -225,17 +248,3 @@ const NAV_ITEMS: Array<NavItem> = [
     href: "/contato",
   },
 ]
-
-const materialsItem = NAV_ITEMS?.find((item) => item.label === "Nossos Materiais")
-
-if (materialsItem) {
-  materialsItem.children = INCLUDE_MATERIALS.map((material) => ({
-    label: material.title,
-    href: `${material.href}`,
-  })).concat([
-    {
-      label: "Ver todos",
-      href: "/materials",
-    },
-  ])
-}
