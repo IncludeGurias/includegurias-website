@@ -1,8 +1,19 @@
+"use client"
 import { Box } from "@chakra-ui/react"
+import { useEffect } from "react"
+import { useNewsStore } from "app/states"
 import { HeadingText, NewsCard } from "components"
-import { NEWS } from "data"
 
 const NewsGrid = () => {
+  const { getNews, news } = useNewsStore((state) => ({
+    getNews: state.getNews,
+    news: state.news,
+  }))
+
+  useEffect(() => {
+    getNews()
+  }, [getNews])
+
   return (
     <Box
       p={4}
@@ -13,15 +24,15 @@ const NewsGrid = () => {
       className="section"
     >
       <HeadingText text="Notícias" align="start" />
-      {NEWS.map((item, index) => (
+      {news.map((item, index) => (
         <NewsCard
           key={index}
           title={item.title}
-          description={item.description}
-          image={item.image}
+          text={item.text}
+          imageUrl={item.imageUrl}
           href={item.href}
           date={item.date}
-          id={item.id}
+          showInTimeline={item.showInTimeline}
         />
       ))}
     </Box>
