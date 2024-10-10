@@ -47,6 +47,7 @@ export const TeamCard = ({ name, imageUrl, job, href }: TeamMember) => {
                 src={getPlaceholderImageIfNone(imageUrl, 300, 300)}
                 loading="lazy"
                 alt={name}
+                crossOrigin="anonymous"
                 fill
                 className="h-full rounded-lg object-cover shadow-lg"
                 sizes="300 300"
