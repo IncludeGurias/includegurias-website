@@ -1,114 +1,106 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
+# Here's your README.md content in YAML format:
 
-<h3 align="center">
-Include Gurias
-</h3>
+name: Include Gurias
 
-<div align="center">
+# Project logo (replace with your actual image URL)
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+logo: https://i.imgur.com/6wj0hh6.jpg
 
-</div>
+# Project description (replace with a few lines describing your project)
 
----
+description: |
+Few lines describing your project.
+<br>
 
-<p align="center"> Few lines describing your project.
-    <br> 
-</p>
+# Badges (replace placeholders with actual URLs)
 
-## 📝 Table of Contents
+status:
+label: Status
+color: success
+message: active
+github_issues:
+label: GitHub Issues
+url: https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg
+github_pull_requests:
+label: GitHub Pull Requests
+url: https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg
+license:
+label: License
+color: blue
+url: /LICENSE
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+# Table of Contents
 
-## 🧐 About <a name = "about"></a>
+toc:
 
+- About
+- Getting Started
+- Deployment
+- Usage
+- Built Using
+- TODO (../TODO.md)
+- Contributing (../CONTRIBUTING.md)
+- Authors
+- Acknowledgments
+
+# About the project
+
+about: |
 Write about 1-2 paragraphs describing the purpose of your project.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+# Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+getting_started:
+title: Getting Started
 
-### Prerequisites
+# Explain prerequisites and installation steps here
 
+prerequisites: |
 What things you need to install the software and how to install them.
-
-```
-Give examples
-```
-
-### Installing
-
+`     Give examples
+    `
+installation: |
 A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
+`     Say what the step will be
+    `
 Give the example
-```
-
-And repeat
-
-```
+`     And repeat
+    `
 until finished
 ```
-
 End with an example of getting some data out of the system or using it for a little demo.
 
-## 🔧 Running the tests <a name = "tests"></a>
+# Running the tests (Optional)
 
-Explain how to run the automated tests for this system.
+# Include sections on end-to-end and coding style tests if applicable.
 
-### Break down into end to end tests
+# Usage
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
+usage: |
 Add notes about how to use the system.
 
-## 🚀 Deployment <a name = "deployment"></a>
+# Deployment
 
+deployment: |
 Add additional notes about how to deploy this on a live system.
 
-## ⛏️ Built Using <a name = "built_using"></a>
+# Built Using
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+built_using:
 
-## ✍️ Authors <a name = "authors"></a>
+- Supabase: [https://supabase.io/](https://supabase.io/) - Database
+- NextJs: [https://nextjs.org/](https://nextjs.org/) - Frontend Framework
+- NodeJs: [https://nodejs.org/en/](https://nodejs.org/en/) - Server Environment
+
+# Authors
+
+authors:
 
 - [@LucasHenriqueDiniz](https://github.com/LucasHenriqueDiniz)
-  See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+# Acknowledgments
+
+acknowledgements: |
 
 - Hat tip to anyone whose code was used
 - Inspiration

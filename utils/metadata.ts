@@ -80,12 +80,11 @@ const baseMetadata: Metadata = {
       name: "Lucas Henrique Diniz Ostroski",
       url: "https://www.linkedin.com/in/lucas-diniz-ostroski/",
     },
-    { name: "Bots Channel", url: "https://www.botschannel.com//" },
   ],
-  creator: "Bots Channel, Lucas Henrique Diniz Ostroski",
+  creator: "Lucas Henrique Diniz Ostroski",
   keywords: keywords,
   icons: {
-    icon: "/public/favicon.ico",
+    icon: "public/favicon.ico",
   },
   openGraph: {
     title: "Include Gurias",
@@ -102,13 +101,11 @@ const baseMetadata: Metadata = {
   twitter: {
     site: "@includegurias",
     card: "summary_large_image",
-    creator: "@lucasostroski",
     title: "Include Gurias",
     description: "Aqui você encontra tudo sobre o projeto Include Gurias",
     images: "public/metadata/main.png",
   },
-
-  metadataBase: new URL(env.SITE_URL), // Assuming env.SITE_URL holds your base URL
+  metadataBase: new URL(env.SITE_URL),
 }
 
 export default baseMetadata

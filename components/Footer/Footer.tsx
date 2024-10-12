@@ -41,6 +41,7 @@ const Footer = () => {
           href={contactLinks["Meninas Digitais"]}
           cursor={"pointer"}
         >
+          {/* @TODO ADICIONAR LOGO UERGGS E PPGSTEM */}
           <Image
             src={ProjetoChancelado}
             alt="Logo"
