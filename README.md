@@ -80,6 +80,6 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 - fazer laz laoding no https://includegurias.com.br/materials/mulheres-da-stem
 - terminar paginas em contrução (linha do tempo e eventos e atividades)
 - atualizar equipe e suas imagens (pelo )
-- Ver o que precisa fazer para atualizar o primsa do 5.22.0 -> 6.^^^^^^
+- Ver o que precisa fazer para atualizar o primsa do 5.22.0 -> 6.0 ou superior
 
-Dúvidas? pode me chamar no whats que eu ajudo qualquer coisa +5551 995245504.
+Dúvidas? pode me chamar no whats que eu ajudo qualquer coisa +55 51 99524-5504 .
