@@ -1,107 +1,78 @@
-# Here's your README.md content in YAML format:
+# Include Gurias
 
-name: Include Gurias
+Este repositório contém o site do projeto Include Gurias, focado em divulgação e empoderamento feminino em STEM.
 
-# Project logo (replace with your actual image URL)
+## Estrutura do Projeto
 
-logo: https://i.imgur.com/6wj0hh6.jpg
+- **/app**: Rotas e páginas do Next.js (API, páginas, materiais, etc)
+- **/components**: Componentes reutilizáveis de UI
+- **/public**: Assets estáticos (imagens, favicon, etc)
+- **/prisma**: Schema do banco de dados (usado para Supabase/Postgres)
+- **/styles**: Estilos globais e Tailwind
+- **/types**: Tipagens TypeScript customizadas
+- **/utils**: Funções utilitárias e helpers
+- **State Management**: O gerenciamento de estado global é feito com **Zustand** e está localizado em arquivos dentro de `/app/states`.
 
-# Project description (replace with a few lines describing your project)
+## Tecnologias Utilizadas
 
-description: |
-Few lines describing your project.
-<br>
+- **Next.js** (React, SSR/SSG, API routes)
+- **TypeScript**
+- **TailwindCSS**
+- **Supabase** (banco de dados e autenticação)
+- **Prisma** (ORM, opcional para Supabase)
+- **ESLint** (lint de código)
+- **Zustand** (state management)
+- **Chakra UI** (componentes de UI)
+- **Embla Carousel** (carrosséis)
 
-# Badges (replace placeholders with actual URLs)
+## Como rodar localmente
 
-status:
-label: Status
-color: success
-message: active
-github_issues:
-label: GitHub Issues
-url: https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg
-github_pull_requests:
-label: GitHub Pull Requests
-url: https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg
-license:
-label: License
-color: blue
-url: /LICENSE
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Crie um arquivo `.env.local` com:
+   ```env
+   NEXT_PUBLIC_SITE_URL=https://includegurias.com.br
+   NEXT_PUBLIC_SUPABASE_URL=... (url do seu projeto Supabase)
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=... (anon key do Supabase)
+   DATABASE_URL=... (url postgres do Supabase)
+   DIRECT_URL=... (direct url postgres do Supabase)
+   ```
+3. Rode o projeto:
+   ```bash
+   npm run dev
+   ```
 
-# Table of Contents
+## Scripts úteis
 
-toc:
+- `npm run dev` — roda local
+- `npm run build` — build de produção
+- `npm start` — inicia produção
+- `npm run lint` — checa problemas de código
+- `npm run lint:fix` — corrige problemas de lint automaticamente
 
-- About
-- Getting Started
-- Deployment
-- Usage
-- Built Using
-- TODO (../TODO.md)
-- Contributing (../CONTRIBUTING.md)
-- Authors
-- Acknowledgments
+## Deploy na Vercel
 
-# About the project
+1. Importe o repositório na [Vercel](https://vercel.com/)
+2. Configure as variáveis de ambiente (iguais ao `.env.local`)
+3. Faça o deploy
+4. Configure o domínio em "Settings > Domains"
 
-about: |
-Write about 1-2 paragraphs describing the purpose of your project.
+## Boas práticas
+- Use sempre variáveis de ambiente padrão Next.js (`process.env.NEXT_PUBLIC_...`)
+- Mantenha o código limpo e tipado
+- Prefira componentes reutilizáveis
+- Atualize este README se mudar a estrutura
 
-# Getting Started
+---
 
-getting_started:
-title: Getting Started
+# Não sabe muito bem por onde começar?
 
-# Explain prerequisites and installation steps here
+- As **cores do site** poderiam ser padronizadas em alguns locais. Eu sou daltônico e ficou complicado para mim padronizar tudo.
+- Os **componentes não estão todos com nomes padronizados**. Seria bom revisar e padronizar os nomes para facilitar a manutenção.
+- Algumas partes precisam de **melhoria de UX**. Quando fiz esse site eu era bem iniciante, então há muitos pontos que podem ser melhorados em usabilidade e experiência do usuário.
+- Se encontrar algo estranho, provavelmente é porque eu estava aprendendo na época. Sinta-se à vontade para refatorar e melhorar!
+- Atualmente todos os dados são pegos do banco de dados (Partners, videoshowcase, etc) é IMPORTANTE ter um sistema de cache, para evitar chamadas desnecessarias (possivelmente colocar no state)
 
-prerequisites: |
-What things you need to install the software and how to install them.
-`     Give examples
-    `
-installation: |
-A step by step series of examples that tell you how to get a development env running.
-`     Say what the step will be
-    `
-Give the example
-`     And repeat
-    `
-until finished
-```
-End with an example of getting some data out of the system or using it for a little demo.
-
-# Running the tests (Optional)
-
-# Include sections on end-to-end and coding style tests if applicable.
-
-# Usage
-
-usage: |
-Add notes about how to use the system.
-
-# Deployment
-
-deployment: |
-Add additional notes about how to deploy this on a live system.
-
-# Built Using
-
-built_using:
-
-- Supabase: [https://supabase.io/](https://supabase.io/) - Database
-- NextJs: [https://nextjs.org/](https://nextjs.org/) - Frontend Framework
-- NodeJs: [https://nodejs.org/en/](https://nodejs.org/en/) - Server Environment
-
-# Authors
-
-authors:
-
-- [@LucasHenriqueDiniz](https://github.com/LucasHenriqueDiniz)
-
-# Acknowledgments
-
-acknowledgements: |
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+Dúvidas? pode me chamar no whats que eu ajudo qualquer coisa +5551 995245504.

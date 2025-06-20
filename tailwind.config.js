@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { pick, omit } = require("lodash")
-const colors = require("tailwindcss/colors")
-const defaultTheme = require("tailwindcss/defaultTheme")
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -79,16 +74,10 @@ module.exports = {
         6: "6px",
         8: "8px",
       },
-      minHeight: {
-        ...defaultTheme.height,
-      },
-      minWidth: {
-        ...defaultTheme.width,
-      },
     },
   },
   plugins: [],
   future: {
     hoverOnlyWhenSupported: true,
   },
-}
+};

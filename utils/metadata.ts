@@ -1,5 +1,4 @@
-import { Metadata } from "next"
-import { env } from "env.mjs"
+import { Metadata } from "next";
 
 export const keywords = [
   "IncludeGurias",
@@ -68,7 +67,9 @@ export const keywords = [
   "Meninas na matemática",
   "Meninas na programação",
   "Meninas na robótica",
-]
+];
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
 
 const baseMetadata: Metadata = {
   title: "Include Gurias",
@@ -89,7 +90,7 @@ const baseMetadata: Metadata = {
   openGraph: {
     title: "Include Gurias",
     description: "Aqui você encontra tudo sobre o projeto Include Gurias",
-    url: `${env.SITE_URL}/`,
+    url: `${SITE_URL}/`,
     type: "website",
     siteName: "Include Gurias",
     images: [
@@ -105,7 +106,7 @@ const baseMetadata: Metadata = {
     description: "Aqui você encontra tudo sobre o projeto Include Gurias",
     images: "public/metadata/main.png",
   },
-  metadataBase: new URL(env.SITE_URL),
-}
+  metadataBase: new URL(SITE_URL),
+};
 
-export default baseMetadata
+export default baseMetadata;

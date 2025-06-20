@@ -1,14 +1,11 @@
-import withBundleAnalyzer from "@next/bundle-analyzer"
-import withPlugins from "next-compose-plugins"
-import { env } from "./env.mjs"
-
 /**
  * @type {import('next').NextConfig}
  */
-const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
+const config = {
   reactStrictMode: true,
-  experimental: { instrumentationHook: true },
   images: {
+    // É permitido qualquer host porque pode ser colocado qualquer link de imagem no database
+    // Eu sei isso é uma bosta.
     remotePatterns: [
       {
         protocol: "https",
@@ -16,23 +13,6 @@ const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
       },
     ],
   },
-  webpack: (config) => {
-    config.resolve.alias.canvas = false
-    config.module.rules.push({
-      test: /\.node/,
-      use: "raw-loader",
-    })
+};
 
-    return config
-  },
-  rewrites() {
-    return [
-      { source: "/healthz", destination: "/api/health" },
-      { source: "/api/healthz", destination: "/api/health" },
-      { source: "/health", destination: "/api/health" },
-      { source: "/ping", destination: "/api/health" },
-    ]
-  },
-})
-
-export default config
+export default config;
