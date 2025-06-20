@@ -69,13 +69,18 @@ export const keywords = [
   "Meninas na robótica",
 ];
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://includegurias.com.br";
 
 const baseMetadata: Metadata = {
-  title: "Include Gurias",
-  description: "Aqui você encontra tudo sobre o projeto Include Gurias",
+  title: {
+    default: "Include Gurias - Garotas que codam mudam o mundo",
+    template: "%s | Include Gurias",
+  },
+  description:
+    "Projeto Include Gurias: Despertando o interesse de meninas na área STEM através do desenvolvimento do pensamento computacional. Oficinas de programação, robótica e tecnologia para empoderar mulheres na ciência.",
   applicationName: "Include Gurias",
-  publisher: "Bots Channel",
+  publisher: "Include Gurias",
   authors: [
     {
       name: "Lucas Henrique Diniz Ostroski",
@@ -84,29 +89,61 @@ const baseMetadata: Metadata = {
   ],
   creator: "Lucas Henrique Diniz Ostroski",
   keywords: keywords,
-  icons: {
-    icon: "public/favicon.ico",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
-    title: "Include Gurias",
-    description: "Aqui você encontra tudo sobre o projeto Include Gurias",
-    url: `${SITE_URL}/`,
-    type: "website",
+    title: "Include Gurias - Garotas que codam mudam o mundo",
+    description:
+      "Projeto Include Gurias: Despertando o interesse de meninas na área STEM através do desenvolvimento do pensamento computacional.",
+    url: `${SITE_URL}`,
     siteName: "Include Gurias",
+    locale: "pt_BR",
+    type: "website",
     images: [
       {
-        url: "public/metadata/main.png",
+        url: `${SITE_URL}/metadata/main.png`,
+        width: 1200,
+        height: 630,
+        alt: "Include Gurias - Projeto STEM para meninas",
       },
     ],
   },
   twitter: {
-    site: "@includegurias",
     card: "summary_large_image",
-    title: "Include Gurias",
-    description: "Aqui você encontra tudo sobre o projeto Include Gurias",
-    images: "public/metadata/main.png",
+    site: "@includegurias",
+    creator: "@includegurias",
+    title: "Include Gurias - Garotas que codam mudam o mundo",
+    description:
+      "Projeto Include Gurias: Despertando o interesse de meninas na área STEM através do desenvolvimento do pensamento computacional.",
+    images: [`${SITE_URL}/metadata/main.png`],
   },
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: `${SITE_URL}`,
+  },
+  category: "education",
+  classification: "STEM Education",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
 };
 
 export default baseMetadata;

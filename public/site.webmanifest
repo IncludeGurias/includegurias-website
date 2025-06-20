@@ -1,0 +1,19 @@
+{
+  "name": "Include Gurias",
+  "short_name": "Include Gurias",
+  "description": "Projeto Include Gurias: Despertando o interesse de meninas na área STEM através do desenvolvimento do pensamento computacional",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["education", "technology"],
+  "lang": "pt-BR"
+}
