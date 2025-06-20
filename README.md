@@ -32,18 +32,17 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
    ```bash
    npm install
    ```
-2. Crie um arquivo `.env.local` com:
+2. Edite o `.env.example` para `.env` e coloque:
    ```env
-   NEXT_PUBLIC_SITE_URL=https://includegurias.com.br
-   NEXT_PUBLIC_SUPABASE_URL=... (url do seu projeto Supabase)
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=... (anon key do Supabase)
-   DATABASE_URL=... (url postgres do Supabase)
+   DATABASE_URL=... (database url do Supabase)
    DIRECT_URL=... (direct url postgres do Supabase)
+   NEXT_PUBLIC_SITE_URL=https://includegurias.com.br
    ```
 3. Rode o projeto:
    ```bash
    npm run dev
    ```
+   OBS: As variaveis estao como secrets no repositorio do github e na vercel.
 
 ## Scripts úteis
 
@@ -63,6 +62,7 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 4. Configure o domínio em "Settings > Domains"
 
 ## Boas práticas
+
 - Use sempre variáveis de ambiente padrão Next.js (`process.env.NEXT_PUBLIC_...`)
 - Mantenha o código limpo e tipado
 - Prefira componentes reutilizáveis
@@ -78,5 +78,6 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 - Algumas partes precisam de **melhoria de UX**. Quando fiz esse site eu era bem iniciante, então há muitos pontos que podem ser melhorados em usabilidade e experiência do usuário.
 - Se encontrar algo estranho, provavelmente é porque eu estava aprendendo na época. Sinta-se à vontade para refatorar e melhorar!
 - Atualmente todos os dados são pegos do banco de dados (Partners, videoshowcase, etc) é IMPORTANTE ter um sistema de cache, para evitar chamadas desnecessarias (possivelmente colocar no state)
+- Ver o que precisa fazer para atualizar o primsa do 5.22.0 -> 6.^^^^^^
 
 Dúvidas? pode me chamar no whats que eu ajudo qualquer coisa +5551 995245504.
