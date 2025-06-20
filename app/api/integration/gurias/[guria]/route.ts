@@ -1,12 +1,12 @@
-import { NextRequest } from "next/server";
-import { prisma } from "prisma/config";
+import { NextRequest } from "next/server"
+import { prisma } from "../../../../../prisma/config"
 
 export async function GET(
   req: NextRequest,
   context: {
     params: {
-      guria: string;
-    };
+      guria: string
+    }
   }
 ) {
   const guria = await prisma.guria
@@ -22,37 +22,31 @@ export async function GET(
         },
       },
     })
-    .then(
-      (guria: {
-        id: any;
-        name: any;
-        birthplace: any;
-        birthdate: any;
-        deathdate: any;
-        bio: any;
-        job: any;
-        imageUrl: any;
-        GuriaTags: { tag: { name: any } }[];
-      }) => {
-        return {
-          id: guria.id,
-          name: guria.name,
-          birthplace: guria.birthplace,
-          birthdate: guria.birthdate,
-          deathdate: guria.deathdate,
-          bio: guria.bio,
-          job: guria.job,
-          imageUrl: guria.imageUrl,
-          tags: guria.GuriaTags.map(
-            (guriaTag: { tag: { name: any } }) => guriaTag.tag.name
-          ),
-        };
+    .then((guria) => {
+      if (!guria) return null
+      return {
+        id: guria.id,
+        name: guria.name,
+        birthplace: guria.birthplace,
+        birthdate: guria.birthdate,
+        deathdate: guria.deathdate,
+        bio: guria.bio,
+        job: guria.job,
+        imageUrl: guria.imageUrl,
+        tags: guria.GuriaTags.map((guriaTag: { tag: { name: any } }) => guriaTag.tag.name),
       }
-    );
+    })
+
+  if (!guria) {
+    return new Response(JSON.stringify({ error: "Guria não encontrada" }), {
+      status: 404,
+      headers: { "Content-Type": "application/json" },
+    })
+  }
 
   return new Response(JSON.stringify(guria), {
     headers: { "Content-Type": "application/json" },
-  });
+  })
 }
 
 /*
