@@ -78,6 +78,6 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 - Algumas partes precisam de **melhoria de UX**. Quando fiz esse site eu era bem iniciante, então há muitos pontos que podem ser melhorados em usabilidade e experiência do usuário.
 - Se encontrar algo estranho, provavelmente é porque eu estava aprendendo na época. Sinta-se à vontade para refatorar e melhorar!
 - Atualmente todos os dados são pegos do banco de dados (Partners, videoshowcase, etc) é IMPORTANTE ter um sistema de cache, para evitar chamadas desnecessarias (possivelmente colocar no state)
-- Ver o que precisa fazer para atualizar o primsa do 5.22.0 -> 6.^^^^^^
+- Ver o que precisa fazer para atualizar o prisma da versão 5.22.0 para 6.0 ou superior
 
 Dúvidas? pode me chamar no whats que eu ajudo qualquer coisa +5551 995245504.
