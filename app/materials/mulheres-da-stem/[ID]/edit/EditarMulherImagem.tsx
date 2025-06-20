@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   AspectRatio,
   Box,
@@ -12,24 +12,24 @@ import {
   Text,
   useDisclosure,
   useToast,
-} from "@chakra-ui/react"
-import Image from "next/image"
-import { BiEdit } from "react-icons/bi"
-import { Reveal } from "components"
+} from "@chakra-ui/react";
+import { Reveal } from "components";
+import Image from "next/image";
+import { BiEdit } from "react-icons/bi";
 
 const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const toast = useToast()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
 
   const handleEditClick = () => {
-    onOpen() // Open modal on edit icon click
+    onOpen(); // Open modal on edit icon click
     // Implement logic for image editing here (e.g., redirect to image upload page)
     toast({
       title: "Ainda não disponível",
       status: "info",
       duration: 3000,
-    })
-  }
+    });
+  };
 
   return (
     <>
@@ -45,7 +45,7 @@ const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null 
       >
         {/* Overlay */}
         <Box
-          className="overlay absolute left-0 top-0 z-10 h-full w-full rounded-3xl bg-black opacity-0 transition duration-300 ease-in-out group-hover:opacity-30"
+          className="overlay absolute left-0 top-0 z-10 size-full rounded-3xl bg-black opacity-0 transition duration-300 ease-in-out group-hover:opacity-30"
           cursor="pointer"
           onClick={handleEditClick}
         />
@@ -88,10 +88,17 @@ const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null 
           alignItems="center"
         >
           <Text className="text-lg font-bold text-white">Mudar Imagem</Text>
-          <BiEdit size={50} color="white" />
+          <BiEdit
+            size={50}
+            color="white"
+          />
         </Box>
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Mudar Imagem</ModalHeader>
@@ -102,7 +109,7 @@ const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null 
         </ModalContent>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default EditarMulherImagem
+export default EditarMulherImagem;

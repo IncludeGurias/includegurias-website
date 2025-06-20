@@ -1,70 +1,72 @@
-"use client"
-import { EmblaCarouselType } from "embla-carousel"
-import React, { PropsWithChildren, useCallback, useEffect, useState } from "react"
+"use client";
+import { EmblaCarouselType } from "embla-carousel";
+import React, { PropsWithChildren, useCallback, useEffect, useState } from "react";
 
 type UsePrevNextButtonsType = {
-  prevBtnDisabled: boolean
-  nextBtnDisabled: boolean
-  onPrevButtonClick: () => void
-  onNextButtonClick: () => void
-  setActiveSlide?: (index: number) => void
-}
+  prevBtnDisabled: boolean;
+  nextBtnDisabled: boolean;
+  onPrevButtonClick: () => void;
+  onNextButtonClick: () => void;
+  setActiveSlide?: (index: number) => void;
+};
 
 export const usePrevNextButtons = (
   emblaApi: EmblaCarouselType | undefined,
   onButtonClick?: (emblaApi: EmblaCarouselType) => void,
   setActiveSlide?: (index: number) => void
 ): UsePrevNextButtonsType => {
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
   const onPrevButtonClick = useCallback(() => {
-    if (!emblaApi) return
-    emblaApi.scrollPrev()
-    setActiveSlide && setActiveSlide(emblaApi.selectedScrollSnap())
-    if (onButtonClick) onButtonClick(emblaApi)
-  }, [emblaApi, onButtonClick, setActiveSlide])
+    if (!emblaApi) return;
+    emblaApi.scrollPrev();
+    setActiveSlide && setActiveSlide(emblaApi.selectedScrollSnap());
+    if (onButtonClick) onButtonClick(emblaApi);
+  }, [emblaApi, onButtonClick, setActiveSlide]);
 
   const onNextButtonClick = useCallback(() => {
-    if (!emblaApi) return
-    emblaApi.scrollNext()
-    setActiveSlide && setActiveSlide(emblaApi.selectedScrollSnap())
-    if (onButtonClick) onButtonClick(emblaApi)
-  }, [emblaApi, onButtonClick, setActiveSlide])
+    if (!emblaApi) return;
+    emblaApi.scrollNext();
+    setActiveSlide && setActiveSlide(emblaApi.selectedScrollSnap());
+    if (onButtonClick) onButtonClick(emblaApi);
+  }, [emblaApi, onButtonClick, setActiveSlide]);
 
   const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setPrevBtnDisabled(!emblaApi.canScrollPrev())
-    setNextBtnDisabled(!emblaApi.canScrollNext())
-  }, [])
+    setPrevBtnDisabled(!emblaApi.canScrollPrev());
+    setNextBtnDisabled(!emblaApi.canScrollNext());
+  }, []);
 
   useEffect(() => {
-    if (!emblaApi) return
+    if (!emblaApi) return;
 
-    onSelect(emblaApi)
-    emblaApi.on("reInit", onSelect)
-    emblaApi.on("select", onSelect)
-  }, [emblaApi, onSelect])
+    onSelect(emblaApi);
+    emblaApi.on("reInit", onSelect);
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
 
   return {
     prevBtnDisabled,
     nextBtnDisabled,
     onPrevButtonClick,
     onNextButtonClick,
-  }
-}
+  };
+};
 
-type PropType = PropsWithChildren<
-  React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
->
+type PropType = PropsWithChildren<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>>;
 
 export const PrevButton: React.FC<PropType> = (props) => {
-  const { children, ...restProps } = props
+  const { children, ...restProps } = props;
 
   return (
-    <button className="embla__button embla__button--prev" type="button" {...restProps}>
-      <div className="group flex h-full w-full items-center justify-center ">
+    <button
+      className="embla__button embla__button--prev"
+      type="button"
+      {...restProps}
+    >
+      <div className="group flex size-full items-center justify-center ">
         <svg
-          className="group-active:scale-80 w-[50%] transition-all group-hover:translate-x-[-0.25rem] group-hover:scale-95 group-active:translate-x-[-0.5rem]"
+          className="group-active:scale-80 w-1/2 transition-all group-hover:scale-95 group-hover:-translate-x-2"
           viewBox="0 0 532 532"
         >
           <path
@@ -75,17 +77,21 @@ export const PrevButton: React.FC<PropType> = (props) => {
       </div>
       {children}
     </button>
-  )
-}
+  );
+};
 
 export const NextButton: React.FC<PropType> = (props) => {
-  const { children, ...restProps } = props
+  const { children, ...restProps } = props;
 
   return (
-    <button className="embla__button embla__button--next" type="button" {...restProps}>
-      <div className="group flex h-full w-full items-center justify-center ">
+    <button
+      className="embla__button embla__button--next"
+      type="button"
+      {...restProps}
+    >
+      <div className="group flex size-full items-center justify-center ">
         <svg
-          className="group-active:scale-80 w-[50%] transition-all group-hover:translate-x-1 group-hover:scale-95 group-active:translate-x-2"
+          className="group-active:scale-80 w-1/2 transition-all group-hover:translate-x-1 group-hover:scale-95 group-active:translate-x-2"
           viewBox="0 0 532 532"
         >
           <path
@@ -96,5 +102,5 @@ export const NextButton: React.FC<PropType> = (props) => {
       </div>
       {children}
     </button>
-  )
-}
+  );
+};

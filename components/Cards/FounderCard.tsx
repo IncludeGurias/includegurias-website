@@ -1,18 +1,18 @@
-"use client"
-import { AspectRatio, Box, Divider, Text } from "@chakra-ui/react"
-import Image from "next/image"
-import { useState } from "react"
-import { Reveal } from "components"
-import { CounterMap } from "public"
-import { TeamMember } from "types/data/team"
-import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
+"use client";
+import { AspectRatio, Box, Divider, Text } from "@chakra-ui/react";
+import { Reveal } from "components";
+import Image from "next/image";
+import { CounterMap } from "public";
+import { useState } from "react";
+import { TeamMember } from "types/data/team";
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone";
 
 interface FounderCardType extends TeamMember {
-  text: string
+  text: string;
 }
 
 const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <Box
       position="relative"
@@ -24,7 +24,10 @@ const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Reveal animationdirection="none" className="z-0">
+      <Reveal
+        animationdirection="none"
+        className="z-0"
+      >
         <Image
           src={CounterMap}
           alt="Contour Line"
@@ -36,8 +39,15 @@ const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
           }}
         />
       </Reveal>
-      <Reveal className="flex" delay={0.1}>
-        <AspectRatio ratio={1} maxW="500px" className="z-10 h-full w-full">
+      <Reveal
+        className="flex"
+        delay={0.1}
+      >
+        <AspectRatio
+          ratio={1}
+          maxW="500px"
+          className="z-10 size-full"
+        >
           <Image
             src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
             alt={name}
@@ -47,7 +57,7 @@ const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
         </AspectRatio>
         <Box
           p={4}
-          className="h-full w-full bg-red-300"
+          className="size-full bg-red-300"
           zIndex={10}
           display="flex"
           flexDirection="column"
@@ -56,7 +66,12 @@ const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
           borderTopRightRadius={"lg"}
           borderBottomRightRadius={"lg"}
         >
-          <Text fontSize="1.25rem" fontWeight="bold" mb={2} color={"gray.800"}>
+          <Text
+            fontSize="1.25rem"
+            fontWeight="bold"
+            mb={2}
+            color={"gray.800"}
+          >
             {text}
           </Text>
           <Divider />
@@ -73,7 +88,7 @@ const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
         </Box>
       </Reveal>
     </Box>
-  )
-}
+  );
+};
 
-export default FounderCard
+export default FounderCard;

@@ -1,35 +1,34 @@
-import Avatar from "boring-avatars"
-import Image from "next/image"
-import Link from "next/link"
-import { FaQuoteLeft } from "react-icons/fa"
-import Testimonial from "types/data/testimonial"
-import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
+import Avatar from "boring-avatars";
+import Image from "next/image";
+import Link from "next/link";
+import { FaQuoteLeft } from "react-icons/fa";
+import Testimonial from "types/data/testimonial";
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone";
 
 interface TestimonialProps {
-  testimonial: Testimonial
-  className?: string
+  testimonial: Testimonial;
+  className?: string;
 }
 
-const TestimonialsCard = ({
-  testimonial: { testimonial, name, sublegend, sublegendHref, avatar, color },
-  className,
-}: TestimonialProps) => {
+const TestimonialsCard = ({ testimonial: { testimonial, name, sublegend, sublegendHref, avatar, color }, className }: TestimonialProps) => {
   return (
-    <div
-      className={`${
-        className ? { className } : ""
-      } relative flex h-full w-full flex-col justify-between rounded-lg bg-gray-100 p-4 text-gray-700 shadow`}
-    >
+    <div className={`${className ? { className } : ""} relative flex size-full flex-col justify-between rounded-lg bg-gray-100 p-4 text-gray-700 shadow`}>
       <div>
-        <FaQuoteLeft size={30} color={color} />
-        <div id="text" className="mt-2">
+        <FaQuoteLeft
+          size={30}
+          color={color}
+        />
+        <div
+          id="text"
+          className="mt-2"
+        >
           {testimonial}
         </div>
       </div>
       <div>
         <div className={`mx-auto w-full border border-${color}-500 my-8`} />
         <div className="flex items-center">
-          <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-indigo-400">
+          <div className="relative size-12 overflow-hidden rounded-full border-2 border-indigo-400">
             {avatar === null ? (
               <Avatar
                 size={50}
@@ -48,7 +47,10 @@ const TestimonialsCard = ({
             )}
           </div>
           <div className="ml-4">
-            <div id="text" className="font-bold">
+            <div
+              id="text"
+              className="font-bold"
+            >
               {name}
             </div>
             <div className="mt-1 text-sm text-gray-600">
@@ -64,7 +66,7 @@ const TestimonialsCard = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TestimonialsCard
+export default TestimonialsCard;

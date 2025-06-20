@@ -1,24 +1,43 @@
-"use client"
-import { Box, Flex, Grid, GridItem } from "@chakra-ui/react"
-import { useEffect } from "react"
-import { useNewsStore } from "app/states"
-import { HeadingText, NewsCard, Reveal, SeeMoreArrow } from "components"
+"use client";
+import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
+import { useNewsStore } from "app/states";
+import { HeadingText, NewsCard, Reveal, SeeMoreArrow } from "components";
+import { useEffect } from "react";
 
 const NewsSection = () => {
   const { getNews, news } = useNewsStore((state) => ({
     getNews: state.getNews,
     news: state.news,
-  }))
+  }));
 
   useEffect(() => {
-    getNews()
-  }, [getNews])
+    getNews();
+  }, [getNews]);
 
   return (
-    <Box p={4} display="flex" flexDirection="column" alignItems="center" minH="600px" className="section">
-      <Flex direction="column" alignItems="center" w="full" gap={4} my={8}>
-        <HeadingText text="Últimas Notícias" align="center" />
-        <Reveal animationdirection="left" delay={0.3}>
+    <Box
+      p={4}
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      minH="600px"
+      className="section"
+    >
+      <Flex
+        direction="column"
+        alignItems="center"
+        w="full"
+        gap={4}
+        my={8}
+      >
+        <HeadingText
+          text="Últimas Notícias"
+          align="center"
+        />
+        <Reveal
+          animationdirection="left"
+          delay={0.3}
+        >
           <div className="mb-6 text-center text-xl font-light text-gray-700">
             Fique por dentro de tudo que acontece no <strong>#Include</strong>!
           </div>
@@ -32,8 +51,16 @@ const NewsSection = () => {
           w="full"
         >
           {news.slice(0, 3).map((item, index) => (
-            <GridItem key={index} w="full" className={index !== 0 ? "GridItem" : ""}>
-              <Reveal animationdirection="bottom" delay={0.1} className="flex h-full w-full justify-between">
+            <GridItem
+              key={index}
+              w="full"
+              className={index !== 0 ? "GridItem" : ""}
+            >
+              <Reveal
+                animationdirection="bottom"
+                delay={0.1}
+                className="flex size-full justify-between"
+              >
                 <NewsCard {...item} />
               </Reveal>
             </GridItem>
@@ -51,7 +78,7 @@ const NewsSection = () => {
         </div>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
-export default NewsSection
+export default NewsSection;

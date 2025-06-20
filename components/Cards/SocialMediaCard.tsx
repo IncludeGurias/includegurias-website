@@ -1,26 +1,30 @@
-"use client"
-import { AspectRatio, Box, Card, CardFooter, Flex, Heading, Text } from "@chakra-ui/react"
-import Image from "next/image"
-import { Reveal, SocialButton } from "components"
-import AvatarInclude from "components/IncludeAvatar"
-import SocialMediaPost from "types/data/socialMediaPost"
-import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
-import getSocialmediaIcon from "utils/getSocialMediaIcon"
-import { contactLinks } from "utils/includeLinks"
+"use client";
+import { AspectRatio, Box, Card, CardFooter, Flex, Heading, Text } from "@chakra-ui/react";
+import { Reveal, SocialButton } from "components";
+import AvatarInclude from "components/IncludeAvatar";
+import Image from "next/image";
+import SocialMediaPost from "types/data/socialMediaPost";
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone";
+import getSocialmediaIcon from "utils/getSocialMediaIcon";
+import { contactLinks } from "utils/includeLinks";
 
 interface classNames {
-  reveal?: string
-  card?: string
+  reveal?: string;
+  card?: string;
 }
 
 interface SocialMediaCardProps extends SocialMediaPost {
-  classNames?: classNames
-  delay?: number
+  classNames?: classNames;
+  delay?: number;
 }
 
 const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, socialMedia }: SocialMediaCardProps) => {
   return (
-    <Reveal animationdirection="bottom" delay={delay || 0.01} className={`flex justify-center ${classNames?.reveal}`}>
+    <Reveal
+      animationdirection="bottom"
+      delay={delay || 0.01}
+      className={`flex justify-center ${classNames?.reveal}`}
+    >
       <Card
         maxW="sm"
         maxH="xl"
@@ -34,7 +38,10 @@ const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, soc
           shadow: "xl",
         }}
       >
-        <AspectRatio ratio={20 / 20} className="w-full overflow-hidden rounded-t-xl">
+        <AspectRatio
+          ratio={20 / 20}
+          className="w-full overflow-hidden rounded-t-xl"
+        >
           <Image
             className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
             src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
@@ -46,15 +53,25 @@ const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, soc
           />
         </AspectRatio>
 
-        <CardFooter justify="space-between" flexWrap="wrap" alignItems={"center"} p={4}>
-          <Text id="text" fontSize="sm" color="gray.500" noOfLines={4}>
+        <CardFooter
+          justify="space-between"
+          flexWrap="wrap"
+          alignItems={"center"}
+          p={4}
+        >
+          <Text
+            id="text"
+            fontSize="sm"
+            color="gray.500"
+            noOfLines={4}
+          >
             {text}
           </Text>
           <div
             onClick={() => {
-              window.open(contactLinks[socialMedia as keyof typeof contactLinks], "_blank")
+              window.open(contactLinks[socialMedia as keyof typeof contactLinks], "_blank");
             }}
-            className="h-full w-full"
+            className="size-full"
           >
             <Flex
               flex="1"
@@ -71,9 +88,18 @@ const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, soc
               }}
             >
               <AvatarInclude name={name} />
-              <Box w={"full"} display="flex" flexDirection="column" alignItems="start" justifyContent="center">
+              <Box
+                w={"full"}
+                display="flex"
+                flexDirection="column"
+                alignItems="start"
+                justifyContent="center"
+              >
                 <Heading size="sm">{name}</Heading>
-                <Text color="gray.500" fontSize="xs">
+                <Text
+                  color="gray.500"
+                  fontSize="xs"
+                >
                   {subname}
                 </Text>
               </Box>
@@ -92,7 +118,7 @@ const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, soc
         </CardFooter>
       </Card>
     </Reveal>
-  )
-}
+  );
+};
 
-export default SocialMediaCard
+export default SocialMediaCard;
