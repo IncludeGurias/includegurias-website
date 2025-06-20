@@ -1,17 +1,17 @@
-import { Button, Container, Flex, Heading, Text } from "@chakra-ui/react"
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
-import { AnimatedWavyText } from "components"
-import { meninasEmpoderadas } from "public"
-import { GibisLinks } from "utils/includeLinks"
-import baseMetadata from "utils/metadata"
+import { Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
+import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { AnimatedWavyText } from "components";
+import { meninasEmpoderadas } from "public";
+import { GibisLinks } from "utils/includeLinks";
+import baseMetadata from "utils/metadata";
 
 export const metadata: Metadata = {
   ...baseMetadata,
   title: "Meninas Empoderadas",
   description: "Aqui você encontra tudo sobre o projeto Meninas Empoderadas",
-}
+};
 
 const MeninasEmpoderadas = () => {
   return (
@@ -28,18 +28,30 @@ const MeninasEmpoderadas = () => {
     >
       <Image src={meninasEmpoderadas} alt="Meninas Empoderadas" />
       <Flex direction={"column"} px={4} align="center">
-        <Heading lineHeight={1.1} fontWeight={600} fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}>
+        <Heading
+          lineHeight={1.1}
+          fontWeight={600}
+          fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+        >
           <AnimatedWavyText
             line1="GIBI: Meninas Empoderadas"
             ClassNames={{
-              firstLine: "text-red-400 font-bold tracking-tight mb-4 text-shadow-md",
+              firstLine:
+                "text-red-400 font-bold tracking-tight mb-4 text-shadow-md",
             }}
           />
         </Heading>
-        <Text mt={4} color={"primary.TEXT"} as={"span"} fontSize={{ base: "xl" }} maxW={{ base: "100%", md: "3xl" }}>
-          GIBI: Meninas Empoderadas é uma série de histórias em quadrinhos que apresenta meninas e mulheres reais que
-          fizeram a diferença no mundo, desafiando estereótipos de gênero e inspirando outras meninas a seguirem seus
-          sonhos.
+        <Text
+          mt={4}
+          color={"primary.TEXT"}
+          as={"span"}
+          fontSize={{ base: "xl" }}
+          maxW={{ base: "100%", md: "3xl" }}
+        >
+          GIBI: Meninas Empoderadas é uma série de histórias em quadrinhos que
+          apresenta meninas e mulheres reais que fizeram a diferença no mundo,
+          desafiando estereótipos de gênero e inspirando outras meninas a
+          seguirem seus sonhos.
         </Text>
         <Link href={GibisLinks.MeninasEmpoderadas}>
           <Button
@@ -60,7 +72,7 @@ const MeninasEmpoderadas = () => {
         </Link>
       </Flex>
     </Container>
-  )
-}
+  );
+};
 
-export default MeninasEmpoderadas
+export default MeninasEmpoderadas;

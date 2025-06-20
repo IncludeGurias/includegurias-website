@@ -1,10 +1,16 @@
-import { Divider } from "@chakra-ui/react"
-import { Box, Text } from "@chakra-ui/react"
-import Image from "next/image"
-import { SeeMoreArrow } from "components"
-import { WhatWeDoCardProps } from "types/WhatWeDoCard"
+import { Divider } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
+import Image from "next/image";
+import { SeeMoreArrow } from "components";
+import { WhatWeDoCardProps } from "types/WhatWeDoCard";
 
-const WhatWeDoCard = ({ image, title, text, arrowTxt, arrowHref }: WhatWeDoCardProps) => {
+const WhatWeDoCard = ({
+  image,
+  title,
+  text,
+  arrowTxt,
+  arrowHref,
+}: WhatWeDoCardProps) => {
   return (
     <Box maxW="sm" overflow="hidden" w={"full"}>
       <Box p="6">
@@ -19,11 +25,23 @@ const WhatWeDoCard = ({ image, title, text, arrowTxt, arrowHref }: WhatWeDoCardP
             height: "auto",
           }}
         />
-        <Box mt="1" fontWeight="semibold" as="h3" lineHeight="tight" fontSize={{ base: "xl", lg: "2xl" }} isTruncated>
+        <Box
+          mt="1"
+          fontWeight="semibold"
+          as="h3"
+          lineHeight="tight"
+          fontSize={{ base: "xl", lg: "2xl" }}
+          isTruncated
+        >
           {title}
         </Box>
         <Box mb={4}>
-          <Text fontSize={{ base: "sm", lg: "md" }} color="gray.500" height={100} id="text">
+          <Text
+            fontSize={{ base: "sm", lg: "md" }}
+            color="gray.500"
+            height={100}
+            id="text"
+          >
             {text}
           </Text>
         </Box>
@@ -31,7 +49,7 @@ const WhatWeDoCard = ({ image, title, text, arrowTxt, arrowHref }: WhatWeDoCardP
         <SeeMoreArrow text={arrowTxt} href={arrowHref} />
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default WhatWeDoCard
+export default WhatWeDoCard;

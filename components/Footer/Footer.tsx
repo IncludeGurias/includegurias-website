@@ -1,29 +1,35 @@
-"use client"
-import { Box, Container, Flex, Stack, Text } from "@chakra-ui/react"
-import Image from "next/image"
-import Link from "next/link"
-import { useEffect } from "react"
-import { useSocialMediaStore } from "app/states"
-import { SocialButton } from "components"
-import "styles/TextHoverAnimation.css"
-import { Love } from "components"
-import { ProjetoChancelado } from "public"
-import getSocialmediaIcon from "utils/getSocialMediaIcon"
-import { contactLinks } from "utils/includeLinks"
+"use client";
+import { Box, Container, Flex, Stack, Text } from "@chakra-ui/react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
+import { useSocialMediaStore } from "app/states";
+import { SocialButton } from "components";
+import "styles/TextHoverAnimation.css";
+import { Love } from "components";
+import { ProjetoChancelado } from "public";
+import getSocialmediaIcon from "utils/getSocialMediaIcon";
+import { contactLinks } from "utils/includeLinks";
 
 const Footer = () => {
   const { getSocialMedia, socialMedia } = useSocialMediaStore((state) => ({
     getSocialMedia: state.getSocialMedia,
     socialMediaLoading: state.socialMediaLoading,
     socialMedia: state.socialMedia,
-  }))
+  }));
 
   useEffect(() => {
-    getSocialMedia()
-  }, [getSocialMedia])
+    getSocialMedia();
+  }, [getSocialMedia]);
 
   return (
-    <Box style={{ backgroundColor: "#F28080" }} color={"white"} maxWidth="100wh" overflowX="hidden" id="footer">
+    <Box
+      style={{ backgroundColor: "#F28080" }}
+      color={"white"}
+      maxWidth="100wh"
+      overflowX="hidden"
+      id="footer"
+    >
       <Container
         as={Stack}
         maxW={"6xl"}
@@ -48,7 +54,12 @@ const Footer = () => {
             height={150}
             className="transition-transform duration-500 hover:scale-105"
           />
-          <Text fontWeight={400} letterSpacing={1} className="hover-underline-animation" id="text">
+          <Text
+            fontWeight={400}
+            letterSpacing={1}
+            className="hover-underline-animation"
+            id="text"
+          >
             Projeto chancelado pelo Programa Meninas Digitais
           </Text>
         </Flex>
@@ -67,14 +78,30 @@ const Footer = () => {
                 animation="rotateHover"
                 circle={true}
               >
-                {getSocialmediaIcon({ socialMedia: socialMedia.name, props: { size: 25 } })}
+                {getSocialmediaIcon({
+                  socialMedia: socialMedia.name,
+                  props: { size: 25 },
+                })}
               </SocialButton>
             ))}
           </div>
         </Flex>
       </Container>
-      <Container as={Stack} maxW={"6xl"} py={1} direction="row" spacing={4} justify="space-between">
-        <Text fontWeight={300} textAlign="center" color={"white"} id="text" fontSize={"sm"}>
+      <Container
+        as={Stack}
+        maxW={"6xl"}
+        py={1}
+        direction="row"
+        spacing={4}
+        justify="space-between"
+      >
+        <Text
+          fontWeight={300}
+          textAlign="center"
+          color={"white"}
+          id="text"
+          fontSize={"sm"}
+        >
           &copy; {new Date().getFullYear()}
           <strong> #Include &lt;gurias&gt;</strong> Todos os direitos reservados
         </Text>
@@ -88,7 +115,7 @@ const Footer = () => {
         </Flex>
       </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

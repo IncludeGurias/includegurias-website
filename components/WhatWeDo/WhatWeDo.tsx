@@ -1,7 +1,7 @@
-"use client"
-import { Box, Flex, Grid, Text } from "@chakra-ui/react"
-import { HeadingText, Reveal, SeeMoreArrow, WhatWeDoCard } from "components"
-import { Clubs, College, Workshops } from "public"
+"use client";
+import { Box, Flex, Grid, Text } from "@chakra-ui/react";
+import { HeadingText, Reveal, SeeMoreArrow, WhatWeDoCard } from "components";
+import { Clubs, College, Workshops } from "public";
 
 const WhatWeDoCards = [
   {
@@ -25,26 +25,44 @@ const WhatWeDoCards = [
     arrowTxt: "Inspire-se conosco",
     arrowHref: "/materials/mulheres-na-stem",
   },
-]
+];
 
 const WhatWeDoSection = () => {
   return (
-    <Box p={4} maxW={{ base: "100%", md: "9xl" }} display={"flex"} flexDirection={"column"} alignItems={"start"}>
+    <Box
+      p={4}
+      maxW={{ base: "100%", md: "9xl" }}
+      display={"flex"}
+      flexDirection={"column"}
+      alignItems={"start"}
+    >
       <Flex direction="column" gap={4} my={8}>
         <HeadingText text="O que nós fazemos?" align="start" />
         <Reveal animationdirection="left" delay={0.3}>
-          <Text fontSize={{ base: "lg", lg: "xl" }} maxW={{ base: "100%", md: "2xl" }} textAlign="justify" id="text">
-            O Projeto Include Gurias visa divulgar a área da STEM despertando o interesse de meninas para a área
-            tecnológica e das exatas, através do desenvolvimento do pensamento computacional. Buscamos promover e
-            incentivar uma maior participação de meninas na area STEM. Promovemos atividades como oficinas de
-            programção, eletronica, divulgamos olimpiadas de aplicativos visando ampliar o acesso e a representatividade
-            feminina nessas áreas. Somos parceiros do programa Meninas Digitais da Sociedade Brasileira de Computação.
+          <Text
+            fontSize={{ base: "lg", lg: "xl" }}
+            maxW={{ base: "100%", md: "2xl" }}
+            textAlign="justify"
+            id="text"
+          >
+            O Projeto Include Gurias visa divulgar a área da STEM despertando o
+            interesse de meninas para a área tecnológica e das exatas, através
+            do desenvolvimento do pensamento computacional. Buscamos promover e
+            incentivar uma maior participação de meninas na area STEM.
+            Promovemos atividades como oficinas de programção, eletronica,
+            divulgamos olimpiadas de aplicativos visando ampliar o acesso e a
+            representatividade feminina nessas áreas. Somos parceiros do
+            programa Meninas Digitais da Sociedade Brasileira de Computação.
           </Text>
         </Reveal>
         <SeeMoreArrow text="Sobre nós" href="/sobre-nos" delay={0.5} />
       </Flex>
 
-      <Grid templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }} gap={"4em"} px={"2rem"}>
+      <Grid
+        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
+        gap={"4em"}
+        px={"2rem"}
+      >
         {WhatWeDoCards.map((card, index) => (
           <Reveal key={index} animationdirection="bottom" delay={index * 0.2}>
             <WhatWeDoCard
@@ -58,7 +76,7 @@ const WhatWeDoSection = () => {
         ))}
       </Grid>
     </Box>
-  )
-}
+  );
+};
 
-export default WhatWeDoSection
+export default WhatWeDoSection;

@@ -1,4 +1,4 @@
-import { AboutUsIcon, AboutUsIcon2, AboutUsIcon3 } from "public"
+import { AboutUsIcon, AboutUsIcon2, AboutUsIcon3 } from "public";
 
 const aboutUsValues = [
   {
@@ -20,6 +20,6 @@ const aboutUsValues = [
     title: "Graduação",
     description: "@TODO - Ver o que colocar aqui",
   },
-]
+];
 
-export default aboutUsValues
+export default aboutUsValues;

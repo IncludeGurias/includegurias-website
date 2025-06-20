@@ -24,30 +24,22 @@ const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <Reveal
-        animationdirection="none"
-        className="z-0"
-      >
+      <Reveal animationdirection="none" className="z-0">
         <Image
           src={CounterMap}
           alt="Contour Line"
           className={`fill-red absolute right-0 top-0 z-0 -translate-x-3 -translate-y-0 object-cover${
-            isHovered ? "translate-x-0 translate-y-0" : "translate-x-3 translate-y-0"
+            isHovered
+              ? "translate-x-0 translate-y-0"
+              : "translate-x-3 translate-y-0"
           } transition-transform duration-300`}
           style={{
             filter: "brightness(0.5)",
           }}
         />
       </Reveal>
-      <Reveal
-        className="flex"
-        delay={0.1}
-      >
-        <AspectRatio
-          ratio={1}
-          maxW="500px"
-          className="z-10 size-full"
-        >
+      <Reveal className="flex" delay={0.1}>
+        <AspectRatio ratio={1} maxW="500px" className="z-10 size-full">
           <Image
             src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
             alt={name}
@@ -66,12 +58,7 @@ const FounderCard = ({ name, job, imageUrl, text }: FounderCardType) => {
           borderTopRightRadius={"lg"}
           borderBottomRightRadius={"lg"}
         >
-          <Text
-            fontSize="1.25rem"
-            fontWeight="bold"
-            mb={2}
-            color={"gray.800"}
-          >
+          <Text fontSize="1.25rem" fontWeight="bold" mb={2} color={"gray.800"}>
             {text}
           </Text>
           <Divider />

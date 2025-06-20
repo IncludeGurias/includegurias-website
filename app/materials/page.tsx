@@ -1,21 +1,30 @@
-"use client"
-import { Box, Flex, Grid, GridItem, Heading, Spinner, Text, VStack } from "@chakra-ui/react"
-import { useEffect } from "react"
-import { useMaterialsStore } from "app/states"
-import { MaterialCard, Reveal } from "components"
-import { ConfettiLight } from "public"
-import Material from "types/data/material"
+"use client";
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Spinner,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useMaterialsStore } from "app/states";
+import { MaterialCard, Reveal } from "components";
+import { ConfettiLight } from "public";
+import Material from "types/data/material";
 
 export default function OurMaterials() {
   const { getMaterials, loading, materials } = useMaterialsStore((state) => ({
     getMaterials: state.getMaterials,
     loading: state.materials_loading,
     materials: state.materials,
-  }))
+  }));
 
   useEffect(() => {
-    getMaterials()
-  }, [getMaterials])
+    getMaterials();
+  }, [getMaterials]);
 
   return (
     <Flex
@@ -43,10 +52,15 @@ export default function OurMaterials() {
               </Heading>
             </Reveal>
             <Reveal animationdirection="bottom" delay={0.2}>
-              <Text maxW="6xl" fontSize={{ base: "md", md: "lg", lg: "xl" }} textAlign="center">
-                Nos da include gurias acreditamos que a tecnologia é uma ferramenta poderosa para transformar a vida das
-                pessoas. Por isso, desenvolvemos programas de formação e mentoria para mulheres que desejam ingressar na
-                área de tecnologia.
+              <Text
+                maxW="6xl"
+                fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                textAlign="center"
+              >
+                Nos da include gurias acreditamos que a tecnologia é uma
+                ferramenta poderosa para transformar a vida das pessoas. Por
+                isso, desenvolvemos programas de formação e mentoria para
+                mulheres que desejam ingressar na área de tecnologia.
               </Text>
             </Reveal>
             <Reveal animationdirection="bottom" delay={0.4}>
@@ -62,7 +76,11 @@ export default function OurMaterials() {
                   <Spinner />
                 ) : (
                   materials.map((material: Material) => (
-                    <GridItem key={material.title} colSpan={{ base: 1, md: 1 }} h={{ base: "full" }}>
+                    <GridItem
+                      key={material.title}
+                      colSpan={{ base: 1, md: 1 }}
+                      h={{ base: "full" }}
+                    >
                       <MaterialCard
                         title={material.title}
                         description={material.description}
@@ -79,5 +97,5 @@ export default function OurMaterials() {
         </Box>
       </Box>
     </Flex>
-  )
+  );
 }

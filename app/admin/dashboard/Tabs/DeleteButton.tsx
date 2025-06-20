@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Button,
   IconButton,
@@ -11,14 +11,19 @@ import {
   PopoverTrigger,
   Portal,
   Stack,
-} from "@chakra-ui/react"
-import { TbTrash } from "react-icons/tb"
+} from "@chakra-ui/react";
+import { TbTrash } from "react-icons/tb";
 
 const DeleteButton = ({ onDelete }: { onDelete: () => void }) => {
   return (
     <Popover placement="bottom">
       <PopoverTrigger>
-        <IconButton colorScheme="red" aria-label="Delete" icon={<TbTrash />} w="100%" />
+        <IconButton
+          colorScheme="red"
+          aria-label="Delete"
+          icon={<TbTrash />}
+          w="100%"
+        />
       </PopoverTrigger>
       <Portal>
         <PopoverContent>
@@ -36,7 +41,7 @@ const DeleteButton = ({ onDelete }: { onDelete: () => void }) => {
         </PopoverContent>
       </Portal>
     </Popover>
-  )
-}
+  );
+};
 
-export default DeleteButton
+export default DeleteButton;

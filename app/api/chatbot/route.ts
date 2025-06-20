@@ -1,4 +1,4 @@
-import data from "data/womanData.json"
+import data from "data/womanData.json";
 
 /**
  * @swagger
@@ -18,19 +18,19 @@ import data from "data/womanData.json"
  */
 
 export async function GET(request: Request) {
-  const { searchParams }: any = new URL(request.url)
-  const tagTitle: any = searchParams.get("tag")
+  const { searchParams }: any = new URL(request.url);
+  const tagTitle: any = searchParams.get("tag");
 
-  const uniqueTags: any = new Set()
+  const uniqueTags: any = new Set();
   data.forEach((item: any) => {
     item.tags.forEach((tag: any) => {
-      if (tag.indexOf(" ") === -1) uniqueTags.add(tag)
-    })
-  })
-  const tagsData: any = Array.from(uniqueTags)
+      if (tag.indexOf(" ") === -1) uniqueTags.add(tag);
+    });
+  });
+  const tagsData: any = Array.from(uniqueTags);
 
   if (!tagTitle) {
-    console.log("no tags, return all tags")
+    console.log("no tags, return all tags");
     return new Response(
       JSON.stringify({
         areas: tagsData.sort(() => Math.random() - 0.5).slice(0, 10),
@@ -38,26 +38,28 @@ export async function GET(request: Request) {
       {
         headers: { "Content-Type": "application/json" },
       }
-    )
+    );
   } else {
-    console.log("tag found, return data")
-    console.log(tagTitle)
+    console.log("tag found, return data");
+    console.log(tagTitle);
     try {
       const tagGurias: any = data
         .filter((item: any) => {
-          return item.tags.includes(tagTitle)
+          return item.tags.includes(tagTitle);
         })
         .map((item: any) => {
           return {
             name: item.name,
             query: item.imageUrl,
-          }
-        }, [])
+          };
+        }, []);
 
-      const randomGurias: any = tagGurias.sort(() => Math.random() - 0.5).slice(0, 3)
+      const randomGurias: any = tagGurias
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
 
-      const responseGurias = randomGurias.map((item: any) => item.name)
-      const responseGuriasQuery = randomGurias.map((item: any) => item.query)
+      const responseGurias = randomGurias.map((item: any) => item.name);
+      const responseGuriasQuery = randomGurias.map((item: any) => item.query);
 
       return new Response(
         JSON.stringify({
@@ -67,12 +69,12 @@ export async function GET(request: Request) {
         {
           headers: { "Content-Type": "application/json" },
         }
-      )
+      );
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return new Response(JSON.stringify(error), {
         headers: { "Content-Type": "application/json" },
-      })
+      });
     }
   }
 }

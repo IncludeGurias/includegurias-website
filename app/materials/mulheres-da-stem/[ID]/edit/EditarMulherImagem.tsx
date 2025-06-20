@@ -17,7 +17,11 @@ import { Reveal } from "components";
 import Image from "next/image";
 import { BiEdit } from "react-icons/bi";
 
-const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null }) => {
+const EditarMulherImagem = ({
+  womanImageItem,
+}: {
+  womanImageItem: string | null;
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
 
@@ -62,7 +66,9 @@ const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null 
               <Image
                 src={womanImageItem}
                 alt={womanImageItem}
-                sizes={"(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"}
+                sizes={
+                  "(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                }
                 priority
                 fill
                 className="z-auto h-full rounded-xl"
@@ -88,23 +94,18 @@ const EditarMulherImagem = ({ womanImageItem }: { womanImageItem: string | null 
           alignItems="center"
         >
           <Text className="text-lg font-bold text-white">Mudar Imagem</Text>
-          <BiEdit
-            size={50}
-            color="white"
-          />
+          <BiEdit size={50} color="white" />
         </Box>
       </Flex>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        isCentered
-      >
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Mudar Imagem</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>A funcionalidade de edição de imagem ainda não está disponível.</Text>
+            <Text>
+              A funcionalidade de edição de imagem ainda não está disponível.
+            </Text>
           </ModalBody>
         </ModalContent>
       </Modal>

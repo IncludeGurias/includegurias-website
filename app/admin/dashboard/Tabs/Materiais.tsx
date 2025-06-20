@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Accordion,
   AccordionButton,
@@ -14,61 +14,76 @@ import {
   Stack,
   Switch,
   Textarea,
-} from "@chakra-ui/react"
-import { ChangeEvent, useEffect, useState } from "react"
-import { BiSave } from "react-icons/bi"
-import { TbPlus } from "react-icons/tb"
-import { useMaterialsStore } from "app/states"
-import { HeadingText } from "components"
-import Material from "types/data/material"
-import DeleteButton from "./DeleteButton"
+} from "@chakra-ui/react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { BiSave } from "react-icons/bi";
+import { TbPlus } from "react-icons/tb";
+import { useMaterialsStore } from "app/states";
+import { HeadingText } from "components";
+import Material from "types/data/material";
+import DeleteButton from "./DeleteButton";
 
 const Materiais = () => {
-  const [hasChanged, setHasChanged] = useState(false)
-  const [IncludeMaterials, setIncludeMaterials] = useState<Material[]>([])
+  const [hasChanged, setHasChanged] = useState(false);
+  const [IncludeMaterials, setIncludeMaterials] = useState<Material[]>([]);
 
-  const { loading, getMaterials, updateMaterials } = useMaterialsStore((state) => ({
-    loading: state.materials_loading,
-    getMaterials: state.getMaterials,
-    updateMaterials: state.updateMaterials,
-  }))
+  const { loading, getMaterials, updateMaterials } = useMaterialsStore(
+    (state) => ({
+      loading: state.materials_loading,
+      getMaterials: state.getMaterials,
+      updateMaterials: state.updateMaterials,
+    })
+  );
 
   useEffect(() => {
     getMaterials().then((data) => {
       if (data) {
-        setIncludeMaterials(data)
+        setIncludeMaterials(data);
       }
-    })
-  }, [getMaterials])
+    });
+  }, [getMaterials]);
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     index: number,
     type: keyof Material
   ) => {
-    if (index < 0 || index >= IncludeMaterials.length || !IncludeMaterials[index]) {
-      return
+    if (
+      index < 0 ||
+      index >= IncludeMaterials.length ||
+      !IncludeMaterials[index]
+    ) {
+      return;
     }
 
     setIncludeMaterials((prevMaterials) =>
-      prevMaterials.map((material, i) => (i === index ? { ...material, [type]: e.target.value } : material))
-    )
-    setHasChanged(true)
-  }
+      prevMaterials.map((material, i) =>
+        i === index ? { ...material, [type]: e.target.value } : material
+      )
+    );
+    setHasChanged(true);
+  };
 
   const handleSwitchChange = (index: number) => {
     try {
-      if (index < 0 || index >= IncludeMaterials.length || !IncludeMaterials[index]) return
+      if (
+        index < 0 ||
+        index >= IncludeMaterials.length ||
+        !IncludeMaterials[index]
+      )
+        return;
       setIncludeMaterials((prevMaterials) => {
         return prevMaterials.map((material, i) =>
-          i === index ? { ...material, isNew: material.isNew ? false : true } : material
-        )
-      })
-      setHasChanged(true)
+          i === index
+            ? { ...material, isNew: material.isNew ? false : true }
+            : material
+        );
+      });
+      setHasChanged(true);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   const handleAddMaterial = () => {
     const newMaterial: Material = {
@@ -77,28 +92,33 @@ const Materiais = () => {
       description: "",
       imageUrl: "#",
       isNew: false,
-    }
-    setIncludeMaterials([...IncludeMaterials, newMaterial])
-  }
+    };
+    setIncludeMaterials([...IncludeMaterials, newMaterial]);
+  };
 
   const handleDeleteMaterial = (index: number) => {
-    const updatedIncludeMaterials = [...IncludeMaterials]
-    updatedIncludeMaterials.splice(index, 1)
-    setIncludeMaterials(updatedIncludeMaterials)
-  }
+    const updatedIncludeMaterials = [...IncludeMaterials];
+    updatedIncludeMaterials.splice(index, 1);
+    setIncludeMaterials(updatedIncludeMaterials);
+  };
 
   const handleSave = () => {
     updateMaterials(IncludeMaterials).then(() => {
-      setHasChanged(false)
-      alert("Materiais salvos com sucesso!")
-    })
-  }
+      setHasChanged(false);
+      alert("Materiais salvos com sucesso!");
+    });
+  };
 
   return (
     <Box px={4} display="flex" flexDirection="column" gap={4}>
       <HeadingText align="left" text="Materiais" />
       {loading && <Spinner />}
-      <Accordion border={"1px solid"} borderColor={"red.400"} borderRadius={"md"} allowToggle>
+      <Accordion
+        border={"1px solid"}
+        borderColor={"red.400"}
+        borderRadius={"md"}
+        allowToggle
+      >
         {IncludeMaterials.map((item, index) => (
           <AccordionItem key={index}>
             <h2>
@@ -109,7 +129,12 @@ const Materiais = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4} display="flex" flexDirection="column" gap={2}>
+            <AccordionPanel
+              pb={4}
+              display="flex"
+              flexDirection="column"
+              gap={2}
+            >
               <FormControl alignItems="center">
                 <FormLabel htmlFor="title" mb="0">
                   Título do Material
@@ -183,7 +208,12 @@ const Materiais = () => {
       </Accordion>
 
       <Stack direction="row" spacing={4} justifyContent="between">
-        <Button variant={"outline"} leftIcon={<TbPlus />} onClick={handleAddMaterial} isDisabled={loading}>
+        <Button
+          variant={"outline"}
+          leftIcon={<TbPlus />}
+          onClick={handleAddMaterial}
+          isDisabled={loading}
+        >
           Adicionar Material
         </Button>
         <Button
@@ -197,7 +227,7 @@ const Materiais = () => {
         </Button>
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
-export default Materiais
+export default Materiais;

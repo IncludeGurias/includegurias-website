@@ -1,5 +1,5 @@
-"use client"
-import { HeadingText, Reveal, TestimonialsCarousel } from "components"
+"use client";
+import { HeadingText, Reveal, TestimonialsCarousel } from "components";
 
 const TestimonialsSection = () => {
   return (
@@ -9,13 +9,14 @@ const TestimonialsSection = () => {
         <HeadingText text="Testemunhos" align="center" />
         <Reveal animationdirection="left" delay={0.3}>
           <div className="text-center text-xl font-light text-gray-700">
-            Empoderando Mulheres na Tecnologia. Veja o que estão falando sobre nós!
+            Empoderando Mulheres na Tecnologia. Veja o que estão falando sobre
+            nós!
           </div>
         </Reveal>
       </div>
       <TestimonialsCarousel />
     </div>
-  )
-}
+  );
+};
 
-export default TestimonialsSection
+export default TestimonialsSection;

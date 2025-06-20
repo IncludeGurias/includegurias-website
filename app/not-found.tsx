@@ -1,11 +1,11 @@
-import { Box, Button, Heading, Link, Text } from "@chakra-ui/react"
-import { Metadata } from "next"
-import { FaHome } from "react-icons/fa"
+import { Box, Button, Heading, Link, Text } from "@chakra-ui/react";
+import { Metadata } from "next";
+import { FaHome } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "404 Página não encontrada - Include Gurias",
   description: "Ops! Parece que essa página não foi encontrada.",
-}
+};
 
 export default function NotFound() {
   return (
@@ -48,5 +48,5 @@ export default function NotFound() {
         </Button>
       </Link>
     </Box>
-  )
+  );
 }

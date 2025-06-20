@@ -1,20 +1,33 @@
-"use client"
-import { Heading, Text } from "@chakra-ui/react"
-import { Reveal } from "components"
+"use client";
+import { Heading, Text } from "@chakra-ui/react";
+import { Reveal } from "components";
 
 interface classNames {
-  text?: string
-  span?: string
+  text?: string;
+  span?: string;
 }
 
 interface HeadingProps {
-  align?: "left" | "center" | "right" | "justify" | "initial" | "inherit" | "unset" | "start"
-  text: string
-  classNames?: classNames
-  color?: string
+  align?:
+    | "left"
+    | "center"
+    | "right"
+    | "justify"
+    | "initial"
+    | "inherit"
+    | "unset"
+    | "start";
+  text: string;
+  classNames?: classNames;
+  color?: string;
 }
 
-export const HeadingText = ({ align, classNames, text, color }: HeadingProps) => {
+export const HeadingText = ({
+  align,
+  classNames,
+  text,
+  color,
+}: HeadingProps) => {
   return (
     <Reveal animationdirection="left">
       <Heading
@@ -37,8 +50,8 @@ export const HeadingText = ({ align, classNames, text, color }: HeadingProps) =>
         } ${classNames && classNames.span}`}
       />
     </Reveal>
-  )
-}
+  );
+};
 
 export const SubHeadingText = ({ text, align, classNames }: HeadingProps) => {
   return (
@@ -62,8 +75,8 @@ export const SubHeadingText = ({ text, align, classNames }: HeadingProps) => {
         }`}
       />
     </Reveal>
-  )
-}
+  );
+};
 
 export const SubText = ({ align, classNames, text }: HeadingProps) => {
   return (
@@ -81,8 +94,8 @@ export const SubText = ({ align, classNames, text }: HeadingProps) => {
         {text}
       </Text>
     </Reveal>
-  )
-}
+  );
+};
 
 export const MegaTitle = ({ align, classNames, text }: HeadingProps) => {
   return (
@@ -99,5 +112,5 @@ export const MegaTitle = ({ align, classNames, text }: HeadingProps) => {
         {text}
       </Heading>
     </Reveal>
-  )
-}
+  );
+};

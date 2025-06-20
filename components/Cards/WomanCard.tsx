@@ -1,19 +1,23 @@
-import { Box, WrapItem } from "@chakra-ui/react"
-import Image from "next/image"
-import Link from "next/link"
-import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
+import { Box, WrapItem } from "@chakra-ui/react";
+import Image from "next/image";
+import Link from "next/link";
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone";
 
 interface womanCardProps {
-  name: string
-  imageUrl?: string
-  tags: string[]
-  index: number
+  name: string;
+  imageUrl?: string;
+  tags: string[];
+  index: number;
 }
 
 const WomanCard = ({ name, imageUrl }: womanCardProps) => {
   return (
     <WrapItem key={name} zIndex={1} title={name}>
-      <Link href={`/materials/mulheres-da-stem/${name.replaceAll(" ", "+")}`} prefetch={false} className="z-1">
+      <Link
+        href={`/materials/mulheres-da-stem/${name.replaceAll(" ", "+")}`}
+        prefetch={false}
+        className="z-1"
+      >
         <Box
           w="300px"
           h="400px"
@@ -39,7 +43,7 @@ const WomanCard = ({ name, imageUrl }: womanCardProps) => {
         </Box>
       </Link>
     </WrapItem>
-  )
-}
+  );
+};
 
-export default WomanCard
+export default WomanCard;

@@ -23,21 +23,9 @@ const NewsSection = () => {
       minH="600px"
       className="section"
     >
-      <Flex
-        direction="column"
-        alignItems="center"
-        w="full"
-        gap={4}
-        my={8}
-      >
-        <HeadingText
-          text="Últimas Notícias"
-          align="center"
-        />
-        <Reveal
-          animationdirection="left"
-          delay={0.3}
-        >
+      <Flex direction="column" alignItems="center" w="full" gap={4} my={8}>
+        <HeadingText text="Últimas Notícias" align="center" />
+        <Reveal animationdirection="left" delay={0.3}>
           <div className="mb-6 text-center text-xl font-light text-gray-700">
             Fique por dentro de tudo que acontece no <strong>#Include</strong>!
           </div>

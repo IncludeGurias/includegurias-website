@@ -1,6 +1,11 @@
 "use client";
 import { EmblaCarouselType } from "embla-carousel";
-import React, { PropsWithChildren, useCallback, useEffect, useState } from "react";
+import React, {
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 type UsePrevNextButtonsType = {
   prevBtnDisabled: boolean;
@@ -53,7 +58,12 @@ export const usePrevNextButtons = (
   };
 };
 
-type PropType = PropsWithChildren<React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>>;
+type PropType = PropsWithChildren<
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >
+>;
 
 export const PrevButton: React.FC<PropType> = (props) => {
   const { children, ...restProps } = props;
@@ -66,7 +76,7 @@ export const PrevButton: React.FC<PropType> = (props) => {
     >
       <div className="group flex size-full items-center justify-center ">
         <svg
-          className="group-active:scale-80 w-1/2 transition-all group-hover:scale-95 group-hover:-translate-x-2"
+          className="group-active:scale-80 w-1/2 transition-all group-hover:-translate-x-2 group-hover:scale-95"
           viewBox="0 0 532 532"
         >
           <path

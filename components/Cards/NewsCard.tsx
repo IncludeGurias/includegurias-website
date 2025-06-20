@@ -1,12 +1,12 @@
-"use client"
-import { Box, Card, Grid, Text } from "@chakra-ui/react"
-import Image from "next/image"
-import Link from "next/link"
-import News from "types/data/news"
-import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
+"use client";
+import { Box, Card, Grid, Text } from "@chakra-ui/react";
+import Image from "next/image";
+import Link from "next/link";
+import News from "types/data/news";
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone";
 
 const NewsCard = ({ title, text, imageUrl, href, date }: News) => {
-  const formattedDate = date ? new Date(date).toLocaleDateString() : date
+  const formattedDate = date ? new Date(date).toLocaleDateString() : date;
 
   return (
     <Card
@@ -17,7 +17,13 @@ const NewsCard = ({ title, text, imageUrl, href, date }: News) => {
       _hover={{ shadow: "lg", transform: "translateY(-4px)" }}
     >
       <Grid templateColumns="1fr" gap={0}>
-        <Box position="relative" overflow="hidden" w="full" h="200px" rounded="t-lg">
+        <Box
+          position="relative"
+          overflow="hidden"
+          w="full"
+          h="200px"
+          rounded="t-lg"
+        >
           {imageUrl ? (
             <Image
               src={getPlaceholderImageIfNone(imageUrl, 400, 300)}
@@ -29,7 +35,14 @@ const NewsCard = ({ title, text, imageUrl, href, date }: News) => {
               sizes={"(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
             />
           ) : (
-            <Box display="flex" justifyContent="center" alignItems="center" w="full" h="full" bg="gray.200">
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              w="full"
+              h="full"
+              bg="gray.200"
+            >
               <Text fontSize="xl" fontWeight="bold">
                 Sem imagem
               </Text>
@@ -50,11 +63,13 @@ const NewsCard = ({ title, text, imageUrl, href, date }: News) => {
               </Link>
             </div>
           )}
-          <div className="absolute bottom-0 right-0 p-2 text-gray-700">{formattedDate}</div>
+          <div className="absolute bottom-0 right-0 p-2 text-gray-700">
+            {formattedDate}
+          </div>
         </Box>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default NewsCard
+export default NewsCard;

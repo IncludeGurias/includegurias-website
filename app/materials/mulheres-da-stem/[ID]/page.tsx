@@ -1,25 +1,35 @@
-import { AspectRatio, Box, Container, Divider, Flex, Stack, Text } from "@chakra-ui/react"
-import { Metadata } from "next"
-import Image from "next/image"
-import { BiArrowBack, BiEdit } from "react-icons/bi"
-import GirlNotFound from "app/not-found-woman"
-import { AnimatedWavyText, Reveal } from "components"
-import { womanType } from "types/woman"
-import { fetchGuria, fetchGuriaImage } from "./FetchMulherNext"
-import IconCircleButton from "./IconCircleButton"
-import MulherTags from "./Tags"
+import {
+  AspectRatio,
+  Box,
+  Container,
+  Divider,
+  Flex,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { Metadata } from "next";
+import Image from "next/image";
+import { BiArrowBack, BiEdit } from "react-icons/bi";
+import GirlNotFound from "app/not-found-woman";
+import { AnimatedWavyText, Reveal } from "components";
+import { womanType } from "types/woman";
+import { fetchGuria, fetchGuriaImage } from "./FetchMulherNext";
+import IconCircleButton from "./IconCircleButton";
+import MulherTags from "./Tags";
 
 interface paramsProp {
   params: {
-    ID: string
-  }
+    ID: string;
+  };
 }
 
-export async function generateMetadata({ params }: paramsProp): Promise<Metadata> {
-  const { ID } = params
+export async function generateMetadata({
+  params,
+}: paramsProp): Promise<Metadata> {
+  const { ID } = params;
   //@TODO remove need for double fetch
-  const data = (await fetchGuria(ID)) as womanType | null
-  const womanImageItem = (await fetchGuriaImage(ID)) as string | null
+  const data = (await fetchGuria(ID)) as womanType | null;
+  const womanImageItem = (await fetchGuriaImage(ID)) as string | null;
 
   return {
     title: data?.name + " - Include Gurias" || "Mulher não encontrada",
@@ -31,23 +41,36 @@ export async function generateMetadata({ params }: paramsProp): Promise<Metadata
         },
       ],
     },
-  }
+  };
 }
 
 export default async function GuriaPage({ params }: paramsProp) {
-  const { ID } = params
+  const { ID } = params;
 
-  const data = (await fetchGuria(ID)) as womanType | null
-  const womanImageItem = (await fetchGuriaImage(ID)) as string | null
+  const data = (await fetchGuria(ID)) as womanType | null;
+  const womanImageItem = (await fetchGuriaImage(ID)) as string | null;
 
   return (
     <>
       {data ? (
         <Stack direction="column" spacing={8} py="110px">
-          <Container maxW="7xl" display="flex" flexDirection={{ base: "column", md: "row" }}>
+          <Container
+            maxW="7xl"
+            display="flex"
+            flexDirection={{ base: "column", md: "row" }}
+          >
             {/* Responsive Image & Content Layout */}
-            <Flex w="full" h="full" flexDirection="column" alignItems={{ base: "center", md: "flex-start" }}>
-              <AspectRatio ratio={1 / 1} w={{ base: "full", md: 500 }} h={{ base: 450, md: 698 }}>
+            <Flex
+              w="full"
+              h="full"
+              flexDirection="column"
+              alignItems={{ base: "center", md: "flex-start" }}
+            >
+              <AspectRatio
+                ratio={1 / 1}
+                w={{ base: "full", md: 500 }}
+                h={{ base: 450, md: 698 }}
+              >
                 {womanImageItem ? (
                   <Reveal>
                     <Image
@@ -75,7 +98,8 @@ export default async function GuriaPage({ params }: paramsProp) {
               <AnimatedWavyText
                 line1={data.name}
                 ClassNames={{
-                  firstLine: "text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-2",
+                  firstLine:
+                    "text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-center mb-2",
                   div: "min-h-[80px]",
                 }}
               />
@@ -117,7 +141,14 @@ export default async function GuriaPage({ params }: paramsProp) {
             </Flex>
           </Container>
           {/* Fixed & Responsive Action Buttons */}
-          <Stack direction="row" justifySelf="flex-start" position="fixed" bottom="15px" left="15px" zIndex="100">
+          <Stack
+            direction="row"
+            justifySelf="flex-start"
+            position="fixed"
+            bottom="15px"
+            left="15px"
+            zIndex="100"
+          >
             <IconCircleButton
               icon={<BiArrowBack />}
               href="/materials/mulheres-da-stem"
@@ -136,5 +167,5 @@ export default async function GuriaPage({ params }: paramsProp) {
         <GirlNotFound girlName={ID} />
       )}
     </>
-  )
+  );
 }

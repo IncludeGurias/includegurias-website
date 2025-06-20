@@ -1,4 +1,4 @@
-import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools"
+import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 
 export const TextStyle = {
   baseStyle: {},
@@ -20,6 +20,6 @@ export const TextStyle = {
     }),
   },
   defaultProps: {},
-}
+};
 
-export default TextStyle
+export default TextStyle;

@@ -1,5 +1,5 @@
-"use client"
-import { createIcon } from "@chakra-ui/react"
+"use client";
+import { createIcon } from "@chakra-ui/react";
 
 const Arrow = createIcon({
   displayName: "Arrow",
@@ -12,6 +12,6 @@ const Arrow = createIcon({
       fill={"red"}
     />
   ),
-})
+});
 
-export default Arrow
+export default Arrow;

@@ -1,21 +1,30 @@
-"use client"
-import { AspectRatio, Box, Flex, Grid, Popover, PopoverContent, PopoverTrigger, Text } from "@chakra-ui/react"
-import Avatar from "boring-avatars"
-import Image from "next/image"
-import { useEffect } from "react"
-import { useOldMembersStore } from "app/states"
-import { Reveal } from "components"
-import { OldMember } from "types/data/team"
+"use client";
+import {
+  AspectRatio,
+  Box,
+  Flex,
+  Grid,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  Text,
+} from "@chakra-ui/react";
+import Avatar from "boring-avatars";
+import Image from "next/image";
+import { useEffect } from "react";
+import { useOldMembersStore } from "app/states";
+import { Reveal } from "components";
+import { OldMember } from "types/data/team";
 
 const AllPeople = () => {
-  const [allMembers] = useOldMembersStore((state) => [state.oldMembers])
+  const [allMembers] = useOldMembersStore((state) => [state.oldMembers]);
   const { getOldMembers } = useOldMembersStore((state) => ({
     getOldMembers: state.getOldMembers,
-  }))
+  }));
 
   useEffect(() => {
-    getOldMembers()
-  }, [getOldMembers])
+    getOldMembers();
+  }, [getOldMembers]);
 
   return (
     <Grid
@@ -42,7 +51,10 @@ const AllPeople = () => {
                 transition={"all 0.3s ease-in-out"}
                 _hover={{ color: "gray.500" }}
               >
-                {person.name.split(" ")[0] + " " + person.name.split(" ")[1]?.charAt(0) + "."}
+                {person.name.split(" ")[0] +
+                  " " +
+                  person.name.split(" ")[1]?.charAt(0) +
+                  "."}
               </Text>
             </PopoverTrigger>
             <PopoverContent
@@ -56,7 +68,13 @@ const AllPeople = () => {
               <Box p={5}>
                 <Flex justify="center" align="center">
                   {person.imageUrl ? (
-                    <AspectRatio ratio={1} w="100px" mb={4} borderRadius="full" className="border-2 border-rose-500">
+                    <AspectRatio
+                      ratio={1}
+                      w="100px"
+                      mb={4}
+                      borderRadius="full"
+                      className="border-2 border-rose-500"
+                    >
                       <Image
                         src={person.imageUrl}
                         alt={person.name}
@@ -70,7 +88,13 @@ const AllPeople = () => {
                       name={person.name}
                       variant="beam"
                       size={100}
-                      colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+                      colors={[
+                        "#92A1C6",
+                        "#146A7C",
+                        "#F0AB3D",
+                        "#C271B4",
+                        "#C20D90",
+                      ]}
                     />
                   )}
                 </Flex>
@@ -88,7 +112,7 @@ const AllPeople = () => {
         </Reveal>
       ))}
     </Grid>
-  )
-}
+  );
+};
 
-export default AllPeople
+export default AllPeople;

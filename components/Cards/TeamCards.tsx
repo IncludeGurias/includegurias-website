@@ -1,40 +1,50 @@
-"use client"
-import { AspectRatio, Box, Flex } from "@chakra-ui/react"
-import Avatar from "boring-avatars"
-import Image from "next/image"
-import Link from "next/link"
-import { CounterMap } from "public"
-import { ScholarshipMember, TeamMember } from "types/data/team"
-import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone"
-import S from "./cardTeam.module.css"
+"use client";
+import { AspectRatio, Box, Flex } from "@chakra-ui/react";
+import Avatar from "boring-avatars";
+import Image from "next/image";
+import Link from "next/link";
+import { CounterMap } from "public";
+import { ScholarshipMember, TeamMember } from "types/data/team";
+import getPlaceholderImageIfNone from "utils/getPlaceholderImageIfNone";
+import S from "./cardTeam.module.css";
 
 type CardTeamProps = {
-  title: string
-  children: React.ReactNode
-  href: string
-}
+  title: string;
+  children: React.ReactNode;
+  href: string;
+};
 
 export const BaseTeamCard = ({ title, children, href }: CardTeamProps) => (
   <Link href={href} passHref>
     <Box className={S.__TeamCardMain}>
-      <Image src={CounterMap} alt="Contour Line" fill className={S.__CountourLineSvg} />
+      <Image
+        src={CounterMap}
+        alt="Contour Line"
+        fill
+        className={S.__CountourLineSvg}
+      />
       <Box p="6" bg={"var(--primary-300)"} className={S.__TeamCard}>
         <Box className={S.__TeamCardTitle}>{title}</Box>
         {children}
       </Box>
     </Box>
   </Link>
-)
+);
 
 export const BaseBolsistaCard = ({ title, children }: CardTeamProps) => (
   <Box className={S.__BolsistaCardMain}>
-    <Image src={CounterMap} alt="Contour Line" fill className={S.__CountourLineSvg} />
+    <Image
+      src={CounterMap}
+      alt="Contour Line"
+      fill
+      className={S.__CountourLineSvg}
+    />
     <Box p="6" bg={"var(--primary-300)"} className={S.__BolsistaCard}>
       <Box className={S.__TeamCardTitle}>{title}</Box>
       {children}
     </Box>
   </Box>
-)
+);
 
 export const TeamCard = ({ name, imageUrl, job, href }: TeamMember) => {
   return (
@@ -42,7 +52,12 @@ export const TeamCard = ({ name, imageUrl, job, href }: TeamMember) => {
       <Flex justifyContent="space-between" direction="column" h={"90%"}>
         <Flex justify="center" align="center">
           {imageUrl ? (
-            <AspectRatio ratio={1} w="300px" mb={4} className={S.__CardTeamImage}>
+            <AspectRatio
+              ratio={1}
+              w="300px"
+              mb={4}
+              className={S.__CardTeamImage}
+            >
               <Image
                 src={getPlaceholderImageIfNone(imageUrl, 300, 300)}
                 loading="lazy"
@@ -74,8 +89,8 @@ export const TeamCard = ({ name, imageUrl, job, href }: TeamMember) => {
         )}
       </Flex>
     </BaseTeamCard>
-  )
-}
+  );
+};
 
 export const BolsistaCard = ({ name, imageUrl }: ScholarshipMember) => {
   return (
@@ -83,7 +98,12 @@ export const BolsistaCard = ({ name, imageUrl }: ScholarshipMember) => {
       <Flex justifyContent="space-between" direction="column" h={"90%"}>
         <Flex justify="center" align="center">
           {imageUrl ? (
-            <AspectRatio ratio={1} w="150px" mb={4} className={S.__CardTeamImage}>
+            <AspectRatio
+              ratio={1}
+              w="150px"
+              mb={4}
+              className={S.__CardTeamImage}
+            >
               <Image
                 src={getPlaceholderImageIfNone(imageUrl, 150, 150)}
                 alt={name}
@@ -106,5 +126,5 @@ export const BolsistaCard = ({ name, imageUrl }: ScholarshipMember) => {
         </Flex>
       </Flex>
     </BaseBolsistaCard>
-  )
-}
+  );
+};

@@ -1,26 +1,43 @@
-"use client"
-import { Box, Button, Input, Spinner, Stack, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react"
-import { ChangeEvent, useEffect, useState } from "react"
-import { BiSave } from "react-icons/bi"
-import { TbPlus } from "react-icons/tb"
-import { useOldMembersStore, useScholarshipMembersStore, useTeamMembersStore } from "app/states"
-import { HeadingText } from "components"
-import { OldMember, ScholarshipMember, TeamMember } from "types/data/team"
-import DeleteButton from "./DeleteButton"
+"use client";
+import {
+  Box,
+  Button,
+  Input,
+  Spinner,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { BiSave } from "react-icons/bi";
+import { TbPlus } from "react-icons/tb";
+import {
+  useOldMembersStore,
+  useScholarshipMembersStore,
+  useTeamMembersStore,
+} from "app/states";
+import { HeadingText } from "components";
+import { OldMember, ScholarshipMember, TeamMember } from "types/data/team";
+import DeleteButton from "./DeleteButton";
 
 const Time = () => {
-  const [time, setTime] = useState<TeamMember[]>([])
-  const [teamHasChanged, setTeamHasChanged] = useState(false)
+  const [time, setTime] = useState<TeamMember[]>([]);
+  const [teamHasChanged, setTeamHasChanged] = useState(false);
 
-  const { getTeamMembers, updateTeamMembers, teamMembersLoading } = useTeamMembersStore((state) => ({
-    getTeamMembers: state.getTeamMembers,
-    updateTeamMembers: state.updateTeamMembers,
-    teamMembersLoading: state.teamMembersLoading,
-  }))
+  const { getTeamMembers, updateTeamMembers, teamMembersLoading } =
+    useTeamMembersStore((state) => ({
+      getTeamMembers: state.getTeamMembers,
+      updateTeamMembers: state.updateTeamMembers,
+      teamMembersLoading: state.teamMembersLoading,
+    }));
 
   useEffect(() => {
-    getTeamMembers().then((data) => setTime(data))
-  }, [getTeamMembers])
+    getTeamMembers().then((data) => setTime(data));
+  }, [getTeamMembers]);
 
   const handleTeamChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
@@ -28,14 +45,18 @@ const Time = () => {
     field: keyof TeamMember
   ) => {
     try {
-      if (index < 0 || index >= time.length || !time[index]) return
-      setTime((prev) => prev.map((member, i) => (i === index ? { ...member, [field]: e.target.value } : member)))
-      setTeamHasChanged(true)
+      if (index < 0 || index >= time.length || !time[index]) return;
+      setTime((prev) =>
+        prev.map((member, i) =>
+          i === index ? { ...member, [field]: e.target.value } : member
+        )
+      );
+      setTeamHasChanged(true);
     } catch (error) {
-      alert("Erro ao alterar membro da equipe")
-      console.error(error)
+      alert("Erro ao alterar membro da equipe");
+      console.error(error);
     }
-  }
+  };
 
   const handleTeamAdd = () => {
     const newTeamMember: TeamMember = {
@@ -43,37 +64,39 @@ const Time = () => {
       job: "",
       imageUrl: "",
       href: "",
-    }
-    setTime([...time, newTeamMember])
-  }
+    };
+    setTime([...time, newTeamMember]);
+  };
 
   const handleTeamDelete = (index: number) => {
-    setTeamHasChanged(true)
-    const updatedTeam = [...time]
-    updatedTeam.splice(index, 1)
-    setTime(updatedTeam)
-  }
+    setTeamHasChanged(true);
+    const updatedTeam = [...time];
+    updatedTeam.splice(index, 1);
+    setTime(updatedTeam);
+  };
 
   const handleTeamSave = () => {
     updateTeamMembers(time).then(() => {
-      alert("Membros da equipe salvos com sucesso!")
-    })
-    setTeamHasChanged(false)
-  }
+      alert("Membros da equipe salvos com sucesso!");
+    });
+    setTeamHasChanged(false);
+  };
 
-  const [bolsistas, setBolsistas] = useState<ScholarshipMember[]>([])
-  const [bolsistasHasChanged, setBolsistasHasChanged] = useState(false)
-  const { getScholarshipMembers, updateScholarshipMembers, scholarshipMembersLoading } = useScholarshipMembersStore(
-    (state) => ({
-      getScholarshipMembers: state.getScholarshipMembers,
-      updateScholarshipMembers: state.updateScholarshipMembers,
-      scholarshipMembersLoading: state.scholarshipMembersLoading,
-    })
-  )
+  const [bolsistas, setBolsistas] = useState<ScholarshipMember[]>([]);
+  const [bolsistasHasChanged, setBolsistasHasChanged] = useState(false);
+  const {
+    getScholarshipMembers,
+    updateScholarshipMembers,
+    scholarshipMembersLoading,
+  } = useScholarshipMembersStore((state) => ({
+    getScholarshipMembers: state.getScholarshipMembers,
+    updateScholarshipMembers: state.updateScholarshipMembers,
+    scholarshipMembersLoading: state.scholarshipMembersLoading,
+  }));
 
   useEffect(() => {
-    getScholarshipMembers().then((data) => setBolsistas(data))
-  }, [getScholarshipMembers])
+    getScholarshipMembers().then((data) => setBolsistas(data));
+  }, [getScholarshipMembers]);
 
   const handleBolsistaChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
@@ -81,50 +104,53 @@ const Time = () => {
     field: keyof ScholarshipMember
   ) => {
     try {
-      if (index < 0 || index >= bolsistas.length || !bolsistas[index]) return
+      if (index < 0 || index >= bolsistas.length || !bolsistas[index]) return;
       setBolsistas((prev) =>
-        prev.map((bolsista, i) => (i === index ? { ...bolsista, [field]: e.target.value } : bolsista))
-      )
-      setBolsistasHasChanged(true)
+        prev.map((bolsista, i) =>
+          i === index ? { ...bolsista, [field]: e.target.value } : bolsista
+        )
+      );
+      setBolsistasHasChanged(true);
     } catch (error) {
-      alert("Erro ao alterar bolsista")
-      console.error(error)
+      alert("Erro ao alterar bolsista");
+      console.error(error);
     }
-  }
+  };
 
   const handleBolsistaAdd = () => {
     const newBolsista: ScholarshipMember = {
       name: "Novo Bolsista",
       imageUrl: "",
-    }
-    setBolsistas([...bolsistas, newBolsista])
-  }
+    };
+    setBolsistas([...bolsistas, newBolsista]);
+  };
 
   const handleBolsistaDelete = (index: number) => {
-    setBolsistasHasChanged(true)
-    const updatedBolsistas = [...bolsistas]
-    updatedBolsistas.splice(index, 1)
-    setBolsistas(updatedBolsistas)
-  }
+    setBolsistasHasChanged(true);
+    const updatedBolsistas = [...bolsistas];
+    updatedBolsistas.splice(index, 1);
+    setBolsistas(updatedBolsistas);
+  };
 
   const handleBolsistaSave = () => {
     updateScholarshipMembers(bolsistas).then(() => {
-      alert("Bolsistas salvos com sucesso!")
-    })
-    setBolsistasHasChanged(false)
-  }
+      alert("Bolsistas salvos com sucesso!");
+    });
+    setBolsistasHasChanged(false);
+  };
 
-  const [allMembers, setAllMembers] = useState<OldMember[]>([])
-  const [oldMembersHasChanged, setOldMembersHasChanged] = useState(false)
-  const { getOldMembers, updateOldMembers, oldMembersLoading } = useOldMembersStore((state) => ({
-    getOldMembers: state.getOldMembers,
-    updateOldMembers: state.updateOldMembers,
-    oldMembersLoading: state.oldMembersLoading,
-  }))
+  const [allMembers, setAllMembers] = useState<OldMember[]>([]);
+  const [oldMembersHasChanged, setOldMembersHasChanged] = useState(false);
+  const { getOldMembers, updateOldMembers, oldMembersLoading } =
+    useOldMembersStore((state) => ({
+      getOldMembers: state.getOldMembers,
+      updateOldMembers: state.updateOldMembers,
+      oldMembersLoading: state.oldMembersLoading,
+    }));
 
   useEffect(() => {
-    getOldMembers().then((data) => setAllMembers(data))
-  }, [getOldMembers])
+    getOldMembers().then((data) => setAllMembers(data));
+  }, [getOldMembers]);
 
   const handleOldMemberChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
@@ -132,38 +158,42 @@ const Time = () => {
     field: keyof OldMember
   ) => {
     try {
-      if (index < 0 || index >= allMembers.length || !allMembers[index]) return
-      setAllMembers((prev) => prev.map((member, i) => (i === index ? { ...member, [field]: e.target.value } : member)))
-      setOldMembersHasChanged(true)
+      if (index < 0 || index >= allMembers.length || !allMembers[index]) return;
+      setAllMembers((prev) =>
+        prev.map((member, i) =>
+          i === index ? { ...member, [field]: e.target.value } : member
+        )
+      );
+      setOldMembersHasChanged(true);
     } catch (error) {
-      alert("Erro ao alterar membro")
-      console.error(error)
+      alert("Erro ao alterar membro");
+      console.error(error);
     }
-  }
+  };
 
   const handleOldMemberAdd = () => {
-    setOldMembersHasChanged(true)
+    setOldMembersHasChanged(true);
     const newMember: OldMember = {
       name: "Novo Membro",
       imageUrl: "",
       job: "",
-    }
-    setAllMembers([...allMembers, newMember])
-  }
+    };
+    setAllMembers([...allMembers, newMember]);
+  };
 
   const handleOldMemberDelete = (index: number) => {
-    setOldMembersHasChanged(true)
-    const updatedMembers = [...allMembers]
-    updatedMembers.splice(index, 1)
-    setAllMembers(updatedMembers)
-  }
+    setOldMembersHasChanged(true);
+    const updatedMembers = [...allMembers];
+    updatedMembers.splice(index, 1);
+    setAllMembers(updatedMembers);
+  };
 
   const handleOldMemberSave = () => {
     updateOldMembers(allMembers).then(() => {
-      alert("Membros salvos com sucesso!")
-    })
-    setOldMembersHasChanged(false)
-  }
+      alert("Membros salvos com sucesso!");
+    });
+    setOldMembersHasChanged(false);
+  };
 
   return (
     <Box px={4} display="flex" flexDirection="column" gap={4}>
@@ -225,7 +255,12 @@ const Time = () => {
         </Table>
       )}
       <Stack direction="row" spacing={4}>
-        <Button variant={"outline"} leftIcon={<TbPlus />} onClick={handleTeamAdd} isDisabled={teamMembersLoading}>
+        <Button
+          variant={"outline"}
+          leftIcon={<TbPlus />}
+          onClick={handleTeamAdd}
+          isDisabled={teamMembersLoading}
+        >
           Adicionar Membro
         </Button>
         <Button
@@ -336,7 +371,9 @@ const Time = () => {
                     placeholder="Imagem"
                     mb={2}
                     defaultValue={member.imageUrl || ""}
-                    onChange={(e) => handleOldMemberChange(e, index, "imageUrl")}
+                    onChange={(e) =>
+                      handleOldMemberChange(e, index, "imageUrl")
+                    }
                   />
                 </Td>
                 <Td>
@@ -348,7 +385,12 @@ const Time = () => {
         </Table>
       )}
       <Stack direction="row" spacing={4}>
-        <Button variant={"outline"} leftIcon={<TbPlus />} onClick={handleOldMemberAdd} isDisabled={oldMembersLoading}>
+        <Button
+          variant={"outline"}
+          leftIcon={<TbPlus />}
+          onClick={handleOldMemberAdd}
+          isDisabled={oldMembersLoading}
+        >
           Adicionar Membro
         </Button>
         <Button
@@ -362,7 +404,7 @@ const Time = () => {
         </Button>
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
-export default Time
+export default Time;

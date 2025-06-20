@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Accordion,
   AccordionButton,
@@ -13,32 +13,32 @@ import {
   Spinner,
   Stack,
   Switch,
-} from "@chakra-ui/react"
-import { ChangeEvent, useEffect, useState } from "react"
-import { BiSave } from "react-icons/bi"
-import { TbPlus } from "react-icons/tb"
-import { useNewsStore } from "app/states"
-import { HeadingText } from "components"
-import News from "types/data/news"
-import DeleteButton from "./DeleteButton"
+} from "@chakra-ui/react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { BiSave } from "react-icons/bi";
+import { TbPlus } from "react-icons/tb";
+import { useNewsStore } from "app/states";
+import { HeadingText } from "components";
+import News from "types/data/news";
+import DeleteButton from "./DeleteButton";
 
 const Noticias = () => {
-  const [noticias, setNoticias] = useState<News[]>([])
-  const [hasChanged, setHasChanged] = useState(false)
+  const [noticias, setNoticias] = useState<News[]>([]);
+  const [hasChanged, setHasChanged] = useState(false);
   const { getNews, updateNews, newsLoading } = useNewsStore((state) => ({
     getNews: state.getNews,
     updateNews: state.updateNews,
     newsLoading: state.newsLoading,
-  }))
+  }));
 
   useEffect(() => {
     getNews().then((news) => {
-      setNoticias(news)
-    })
-  }, [getNews])
+      setNoticias(news);
+    });
+  }, [getNews]);
 
   const handleAddNews = () => {
-    setHasChanged(true)
+    setHasChanged(true);
     const newNews: News = {
       title: "Sem título",
       text: "Sem descrição",
@@ -46,25 +46,25 @@ const Noticias = () => {
       href: "",
       date: new Date().toLocaleDateString("pt-BR"),
       showInTimeline: false,
-    }
-    setNoticias((prev) => [...prev, newNews])
-  }
+    };
+    setNoticias((prev) => [...prev, newNews]);
+  };
 
   const handleDeleteNews = (index: number) => {
-    setHasChanged(true)
+    setHasChanged(true);
     setNoticias((prev) => {
-      const updatedNoticias = [...prev]
-      updatedNoticias.splice(index, 1)
-      return updatedNoticias
-    })
-  }
+      const updatedNoticias = [...prev];
+      updatedNoticias.splice(index, 1);
+      return updatedNoticias;
+    });
+  };
 
   const handleSave = () => {
     updateNews(noticias).then(() => {
-      alert("Materiais salvos com sucesso!")
-    })
-    setHasChanged(false)
-  }
+      alert("Materiais salvos com sucesso!");
+    });
+    setHasChanged(false);
+  };
 
   const handleNewsChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -72,25 +72,33 @@ const Noticias = () => {
     type: keyof News
   ) => {
     try {
-      if (index < 0 || index >= noticias.length || !noticias[index]) return
-      setNoticias((prev) => prev.map((news, i) => (i === index ? { ...news, [type]: e.target.value } : news)))
-      setHasChanged(true)
+      if (index < 0 || index >= noticias.length || !noticias[index]) return;
+      setNoticias((prev) =>
+        prev.map((news, i) =>
+          i === index ? { ...news, [type]: e.target.value } : news
+        )
+      );
+      setHasChanged(true);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   const handleSwitchChange = (index: number) => {
     try {
-      if (index < 0 || index >= noticias.length || !noticias[index]) return
+      if (index < 0 || index >= noticias.length || !noticias[index]) return;
       setNoticias((prev) =>
-        prev.map((news, i) => (i === index ? { ...news, showInTimeline: news.showInTimeline ? false : true } : news))
-      )
-      setHasChanged(true)
+        prev.map((news, i) =>
+          i === index
+            ? { ...news, showInTimeline: news.showInTimeline ? false : true }
+            : news
+        )
+      );
+      setHasChanged(true);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
   return (
     <Box px={4} display="flex" flexDirection="column" gap={4}>
@@ -98,7 +106,12 @@ const Noticias = () => {
       {newsLoading ? (
         <Spinner />
       ) : (
-        <Accordion border={"1px solid"} borderColor={"red.400"} borderRadius={"md"} allowToggle>
+        <Accordion
+          border={"1px solid"}
+          borderColor={"red.400"}
+          borderRadius={"md"}
+          allowToggle
+        >
           {noticias.map((noticia, index) => (
             <AccordionItem key={index}>
               <h2>
@@ -153,11 +166,14 @@ const Noticias = () => {
                   </FormControl>
                   <FormControl>
                     <FormLabel>Exibir na timeline</FormLabel>
-                    <Switch defaultChecked={noticia.showInTimeline} onChange={() => handleSwitchChange(index)} />
+                    <Switch
+                      defaultChecked={noticia.showInTimeline}
+                      onChange={() => handleSwitchChange(index)}
+                    />
                   </FormControl>
                   <DeleteButton
                     onDelete={() => {
-                      handleDeleteNews(index)
+                      handleDeleteNews(index);
                     }}
                   />
                 </Stack>
@@ -168,7 +184,12 @@ const Noticias = () => {
       )}
 
       <Stack direction="row" spacing={4} justifyContent="between">
-        <Button variant={"outline"} leftIcon={<TbPlus />} onClick={() => handleAddNews()} isDisabled={newsLoading}>
+        <Button
+          variant={"outline"}
+          leftIcon={<TbPlus />}
+          onClick={() => handleAddNews()}
+          isDisabled={newsLoading}
+        >
           Adicionar Notícia
         </Button>
         <Button
@@ -182,7 +203,7 @@ const Noticias = () => {
         </Button>
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
-export default Noticias
+export default Noticias;

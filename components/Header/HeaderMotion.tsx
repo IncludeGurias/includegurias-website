@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { motion, useAnimation } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
-import { useEffect, useState } from "react"
-import { Logo } from "public"
-import { headerMotionProps } from "types/Header"
+import { motion, useAnimation } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Logo } from "public";
+import { headerMotionProps } from "types/Header";
 
 export const HeaderMotion = ({ children }: headerMotionProps) => {
-  const controls = useAnimation()
-  const [isScrolled, setIsScrolled] = useState(true) // Initial state: header is large
+  const controls = useAnimation();
+  const [isScrolled, setIsScrolled] = useState(true); // Initial state: header is large
   // const isMobileRef = useRef(window.innerWidth < 768)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY === 0)
-    }
+      setIsScrolled(window.scrollY === 0);
+    };
 
-    window.addEventListener("scroll", handleScroll) // Add event listener
+    window.addEventListener("scroll", handleScroll); // Add event listener
 
-    return () => window.removeEventListener("scroll", handleScroll) // Cleanup
-  }, []) // Only re-attach listener if mobile state changes
+    return () => window.removeEventListener("scroll", handleScroll); // Cleanup
+  }, []); // Only re-attach listener if mobile state changes
 
   useEffect(() => {
-    controls.start(isScrolled ? "visible" : "hidden")
-    controls.start(isScrolled ? "heightMax" : "heightMin")
-  }, [isScrolled, controls])
+    controls.start(isScrolled ? "visible" : "hidden");
+    controls.start(isScrolled ? "heightMax" : "heightMin");
+  }, [isScrolled, controls]);
 
   return (
     <motion.div
@@ -51,32 +51,32 @@ export const HeaderMotion = ({ children }: headerMotionProps) => {
     >
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
 export const LogoMotion = () => {
-  const controls = useAnimation()
-  const [isScrolled, setIsScrolled] = useState(false)
+  const controls = useAnimation();
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
-        setIsScrolled(true)
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false)
+        setIsScrolled(false);
       }
-    })
-  }, [])
+    });
+  }, []);
 
   useEffect(() => {
     if (!isScrolled) {
-      controls.start("visible")
-      controls.start("heightMax")
+      controls.start("visible");
+      controls.start("heightMax");
     } else {
-      controls.start("hidden")
-      controls.start("heightMin")
+      controls.start("hidden");
+      controls.start("heightMin");
     }
-  }, [isScrolled, controls])
+  }, [isScrolled, controls]);
 
   return (
     <motion.div
@@ -93,5 +93,5 @@ export const LogoMotion = () => {
         <Image src={Logo} alt="Logo" width={150} />
       </Link>
     </motion.div>
-  )
-}
+  );
+};

@@ -1,15 +1,15 @@
-import { Box, Button, Heading, Link, Text } from "@chakra-ui/react"
-import { Metadata } from "next"
-import baseMetadata from "utils/metadata"
+import { Box, Button, Heading, Link, Text } from "@chakra-ui/react";
+import { Metadata } from "next";
+import baseMetadata from "utils/metadata";
 
 export const metadata: Metadata = {
   ...baseMetadata,
   title: "404 Garota não encontrada - Include Gurias",
   description: "Ops! Parece que essa mulher não foi encontrada.",
-}
+};
 
 const GirlNotFound = ({ girlName }: { girlName: string }) => {
-  const decodedName = decodeURIComponent(girlName)
+  const decodedName = decodeURIComponent(girlName);
 
   return (
     <Box
@@ -37,7 +37,7 @@ const GirlNotFound = ({ girlName }: { girlName: string }) => {
         </Link>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default GirlNotFound
+export default GirlNotFound;

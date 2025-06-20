@@ -1,14 +1,14 @@
-import { Reveal } from "components"
+import { Reveal } from "components";
 
 interface YoutubeEmbedProps {
-  embedId: string
-  loading?: "eager" | "lazy"
-  allowFullScreen?: boolean
-  title?: string
-  className?: string
-  style?: string
-  width?: number | string
-  height?: number | string
+  embedId: string;
+  loading?: "eager" | "lazy";
+  allowFullScreen?: boolean;
+  title?: string;
+  className?: string;
+  style?: string;
+  width?: number | string;
+  height?: number | string;
 }
 
 const YoutubeEmbed = ({
@@ -34,6 +34,6 @@ const YoutubeEmbed = ({
       {...(style && { className: style })}
     />
   </Reveal>
-)
+);
 
-export default YoutubeEmbed
+export default YoutubeEmbed;

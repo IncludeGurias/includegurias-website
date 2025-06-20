@@ -1,18 +1,18 @@
-"use client"
-import { Box } from "@chakra-ui/react"
-import { useEffect } from "react"
-import { useNewsStore } from "app/states"
-import { HeadingText, NewsCard } from "components"
+"use client";
+import { Box } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useNewsStore } from "app/states";
+import { HeadingText, NewsCard } from "components";
 
 const NewsGrid = () => {
   const { getNews, news } = useNewsStore((state) => ({
     getNews: state.getNews,
     news: state.news,
-  }))
+  }));
 
   useEffect(() => {
-    getNews()
-  }, [getNews])
+    getNews();
+  }, [getNews]);
 
   return (
     <Box
@@ -36,7 +36,7 @@ const NewsGrid = () => {
         />
       ))}
     </Box>
-  )
-}
+  );
+};
 
-export default NewsGrid
+export default NewsGrid;

@@ -21,6 +21,7 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 - **Supabase** (banco de dados e autenticação)
 - **Prisma** (ORM, opcional para Supabase)
 - **ESLint** (lint de código)
+- **Prettier** (formatação de código)
 - **Zustand** (state management)
 - **Chakra UI** (componentes de UI)
 - **Embla Carousel** (carrosséis)
@@ -51,6 +52,8 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 - `npm start` — inicia produção
 - `npm run lint` — checa problemas de código
 - `npm run lint:fix` — corrige problemas de lint automaticamente
+- `npm run prettier` — checa formatação do código
+- `npm run prettier:fix` — formata o código automaticamente
 
 ## Deploy na Vercel
 
@@ -64,6 +67,7 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 - Mantenha o código limpo e tipado
 - Prefira componentes reutilizáveis
 - Atualize este README se mudar a estrutura
+- Use `npm run prettier:fix` antes de fazer commit para manter o código formatado
 
 ---
 

@@ -1,29 +1,29 @@
-"use client"
-import { motion, useInView } from "framer-motion"
-import { useEffect, useRef } from "react"
-import { usePartnersStore } from "app/states"
-import PartnerSlide from "./partnerSlide"
-import "./partners.css"
+"use client";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { usePartnersStore } from "app/states";
+import PartnerSlide from "./partnerSlide";
+import "./partners.css";
 
 export default function Partners() {
-  const [partners] = usePartnersStore((state) => [state.partners])
+  const [partners] = usePartnersStore((state) => [state.partners]);
   const { getPartners } = usePartnersStore((state) => ({
     getPartners: state.getPartners,
-  }))
+  }));
 
   useEffect(() => {
-    getPartners()
-  }, [getPartners])
+    getPartners();
+  }, [getPartners]);
 
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    const marquee = document.querySelector(".marquee--8") as HTMLElement
+    const marquee = document.querySelector(".marquee--8") as HTMLElement;
     if (marquee) {
-      marquee.style.setProperty("--marquee-items", partners.length.toString())
+      marquee.style.setProperty("--marquee-items", partners.length.toString());
     }
-  })
+  });
 
   return (
     <div className="container mx-auto flex flex-col items-center justify-center space-y-8">
@@ -34,12 +34,16 @@ export default function Partners() {
             className="marquee__item first-row"
             initial={{ scale: 0 }}
             ref={ref}
-            animate={{ ...(isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }) }}
+            animate={{
+              ...(isInView
+                ? { opacity: 1, scale: 1 }
+                : { opacity: 0, scale: 0 }),
+            }}
           >
             <PartnerSlide imageUrl={partner.imageUrl} name={partner.name} />
           </motion.div>
         ))}
       </div>
     </div>
-  )
+  );
 }

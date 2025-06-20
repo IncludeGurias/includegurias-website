@@ -17,4 +17,4 @@ export const tagColors = {
   Economista: "gold",
   UERGS: "red",
   // ...
-}
+};

@@ -1,4 +1,4 @@
 export default interface IncludeInfo {
-  name: string
-  value: string
+  name: string;
+  value: string;
 }

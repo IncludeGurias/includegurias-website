@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Button,
   HStack,
@@ -16,25 +16,38 @@ import {
   TagLabel,
   Wrap,
   WrapItem,
-} from "@chakra-ui/react"
-import { useState } from "react"
-import { BiFilterAlt, BiSearch } from "react-icons/bi"
-import { IoAdd, IoClose } from "react-icons/io5"
-import { tagColors } from "utils/getTagColors"
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { BiFilterAlt, BiSearch } from "react-icons/bi";
+import { IoAdd, IoClose } from "react-icons/io5";
+import { tagColors } from "utils/getTagColors";
 
 interface SearchBarProps {
-  tags: string[]
-  selectedTags: string[]
-  setSelectedTags: React.Dispatch<React.SetStateAction<string[]>>
-  searchValue: string
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>
+  tags: string[];
+  selectedTags: string[];
+  setSelectedTags: React.Dispatch<React.SetStateAction<string[]>>;
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchBar = ({ tags, selectedTags, setSelectedTags, searchValue, setSearchValue }: SearchBarProps) => {
-  const [isEditing, setIsEditing] = useState(false)
+const SearchBar = ({
+  tags,
+  selectedTags,
+  setSelectedTags,
+  searchValue,
+  setSearchValue,
+}: SearchBarProps) => {
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <InputGroup borderRadius={5} size="sm" maxW={600} zIndex={25} bg={"white"} boxShadow={"md"}>
+    <InputGroup
+      borderRadius={5}
+      size="sm"
+      maxW={600}
+      zIndex={25}
+      bg={"white"}
+      boxShadow={"md"}
+    >
       <InputLeftElement pointerEvents="none">
         <BiSearch color="gray.300" />
       </InputLeftElement>
@@ -42,7 +55,9 @@ const SearchBar = ({ tags, selectedTags, setSelectedTags, searchValue, setSearch
         type="text"
         placeholder="Pesquisar mulheres da STEM..."
         value={searchValue}
-        onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value)}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          setSearchValue(event.target.value)
+        }
       />
       <InputRightAddon p={0} border="none">
         <Popover
@@ -85,19 +100,29 @@ const SearchBar = ({ tags, selectedTags, setSelectedTags, searchValue, setSearch
                         }}
                       >
                         <Tag
-                          colorScheme={tagColors[tag as keyof typeof tagColors] || "teal"}
-                          border={selectedTags.indexOf(tag) !== -1 ? "2px" : "0px"}
+                          colorScheme={
+                            tagColors[tag as keyof typeof tagColors] || "teal"
+                          }
+                          border={
+                            selectedTags.indexOf(tag) !== -1 ? "2px" : "0px"
+                          }
                           borderColor={"red"}
                           onClick={() => {
                             if (selectedTags.indexOf(tag) === -1) {
-                              setSelectedTags([...selectedTags, tag])
+                              setSelectedTags([...selectedTags, tag]);
                             } else {
-                              setSelectedTags(selectedTags.filter((item) => item !== tag))
+                              setSelectedTags(
+                                selectedTags.filter((item) => item !== tag)
+                              );
                             }
                           }}
                         >
                           <TagLabel>{tag}</TagLabel>
-                          {selectedTags.indexOf(tag) !== -1 ? <TagCloseButton /> : <IoAdd className="ml-2" />}
+                          {selectedTags.indexOf(tag) !== -1 ? (
+                            <TagCloseButton />
+                          ) : (
+                            <IoAdd className="ml-2" />
+                          )}
                         </Tag>
                       </WrapItem>
                     ))}
@@ -113,7 +138,7 @@ const SearchBar = ({ tags, selectedTags, setSelectedTags, searchValue, setSearch
         </Popover>
       </InputRightAddon>
     </InputGroup>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

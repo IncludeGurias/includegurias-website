@@ -1,5 +1,5 @@
-import { Box, Flex } from "@chakra-ui/react"
-import LoginForm from "./LoginForm"
+import { Box, Flex } from "@chakra-ui/react";
+import LoginForm from "./LoginForm";
 
 export default function Admin() {
   return (
@@ -15,5 +15,5 @@ export default function Admin() {
         <LoginForm />
       </Box>
     </Flex>
-  )
+  );
 }

@@ -10,18 +10,17 @@ interface TestimonialProps {
   className?: string;
 }
 
-const TestimonialsCard = ({ testimonial: { testimonial, name, sublegend, sublegendHref, avatar, color }, className }: TestimonialProps) => {
+const TestimonialsCard = ({
+  testimonial: { testimonial, name, sublegend, sublegendHref, avatar, color },
+  className,
+}: TestimonialProps) => {
   return (
-    <div className={`${className ? { className } : ""} relative flex size-full flex-col justify-between rounded-lg bg-gray-100 p-4 text-gray-700 shadow`}>
+    <div
+      className={`${className ? { className } : ""} relative flex size-full flex-col justify-between rounded-lg bg-gray-100 p-4 text-gray-700 shadow`}
+    >
       <div>
-        <FaQuoteLeft
-          size={30}
-          color={color}
-        />
-        <div
-          id="text"
-          className="mt-2"
-        >
+        <FaQuoteLeft size={30} color={color} />
+        <div id="text" className="mt-2">
           {testimonial}
         </div>
       </div>
@@ -47,10 +46,7 @@ const TestimonialsCard = ({ testimonial: { testimonial, name, sublegend, sublege
             )}
           </div>
           <div className="ml-4">
-            <div
-              id="text"
-              className="font-bold"
-            >
+            <div id="text" className="font-bold">
               {name}
             </div>
             <div className="mt-1 text-sm text-gray-600">

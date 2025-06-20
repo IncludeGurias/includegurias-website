@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import { create } from "zustand"
-import { persist } from "zustand/middleware"
-import IncludeInfo from "types/data/includeInfo"
-import Material from "types/data/material"
-import News from "types/data/news"
-import Partner from "types/data/partner"
-import SocialMedia from "types/data/socialMedia"
-import SocialMediaPost from "types/data/socialMediaPost"
-import { OldMember, ScholarshipMember, TeamMember } from "types/data/team"
-import Testimonial from "types/data/testimonial"
-import video from "types/data/video"
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import IncludeInfo from "types/data/includeInfo";
+import Material from "types/data/material";
+import News from "types/data/news";
+import Partner from "types/data/partner";
+import SocialMedia from "types/data/socialMedia";
+import SocialMediaPost from "types/data/socialMediaPost";
+import { OldMember, ScholarshipMember, TeamMember } from "types/data/team";
+import Testimonial from "types/data/testimonial";
+import video from "types/data/video";
 
 interface MaterialsState {
-  materials: Material[]
-  setMaterials: (materials: Material[]) => void
-  getMaterials: () => Promise<Material[]>
-  materials_loading: boolean
-  setLoading: (loading: boolean) => void
-  updateMaterials: (materials: Material[]) => Promise<void>
+  materials: Material[];
+  setMaterials: (materials: Material[]) => void;
+  getMaterials: () => Promise<Material[]>;
+  materials_loading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateMaterials: (materials: Material[]) => Promise<void>;
 }
 
 export const useMaterialsStore = create(
@@ -30,30 +30,30 @@ export const useMaterialsStore = create(
       setMaterials: (materials) => set({ materials }),
       getMaterials: async () => {
         if (get().materials.length === 0) {
-          set({ materials_loading: true })
+          set({ materials_loading: true });
           try {
-            const response = await fetch("/api/dashboard/materials")
+            const response = await fetch("/api/dashboard/materials");
             if (response.ok) {
-              const data = (await response.json()) as Material[]
-              set({ materials: data })
-              return data
+              const data = (await response.json()) as Material[];
+              set({ materials: data });
+              return data;
             } else {
-              console.error("Erro ao buscar materiais:", response.status)
-              return []
+              console.error("Erro ao buscar materiais:", response.status);
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar materiais:", error)
-            return []
+            console.error("Erro ao buscar materiais:", error);
+            return [];
           } finally {
-            set({ materials_loading: false })
+            set({ materials_loading: false });
           }
         } else {
-          set({ materials_loading: false })
-          return get().materials
+          set({ materials_loading: false });
+          return get().materials;
         }
       },
       updateMaterials: async (materials) => {
-        set({ materials_loading: true })
+        set({ materials_loading: true });
         try {
           const response = await fetch("/api/dashboard/materials", {
             method: "PUT",
@@ -61,16 +61,16 @@ export const useMaterialsStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(materials),
-          })
+          });
           if (response.ok) {
-            set({ materials })
+            set({ materials });
           } else {
-            console.error("Erro ao atualizar materiais:", response.status)
+            console.error("Erro ao atualizar materiais:", response.status);
           }
         } catch (error) {
-          console.error("Erro ao atualizar materiais:", error)
+          console.error("Erro ao atualizar materiais:", error);
         } finally {
-          set({ materials_loading: false })
+          set({ materials_loading: false });
         }
       },
     }),
@@ -78,15 +78,15 @@ export const useMaterialsStore = create(
       name: "materials",
     }
   )
-)
+);
 
 interface TestimonialState {
-  testimonials: Testimonial[]
-  setTestimonials: (testimonials: Testimonial[]) => void
-  getTestimonials: () => Promise<Testimonial[]>
-  testimonial_loading: boolean
-  setLoading: (loading: boolean) => void
-  updateTestimonials: (testimonials: Testimonial[]) => Promise<void>
+  testimonials: Testimonial[];
+  setTestimonials: (testimonials: Testimonial[]) => void;
+  getTestimonials: () => Promise<Testimonial[]>;
+  testimonial_loading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateTestimonials: (testimonials: Testimonial[]) => Promise<void>;
 }
 
 export const useTestimonialsStore = create(
@@ -98,30 +98,30 @@ export const useTestimonialsStore = create(
       setTestimonials: (testimonials) => set({ testimonials }),
       getTestimonials: async () => {
         if (get().testimonials.length === 0) {
-          set({ testimonial_loading: true })
+          set({ testimonial_loading: true });
           try {
-            const response = await fetch("/api/dashboard/testimonials")
+            const response = await fetch("/api/dashboard/testimonials");
             if (response.ok) {
-              const data = (await response.json()) as Testimonial[]
-              set({ testimonials: data })
-              return data
+              const data = (await response.json()) as Testimonial[];
+              set({ testimonials: data });
+              return data;
             } else {
-              console.error("Erro ao buscar depoimentos:", response.status)
-              return []
+              console.error("Erro ao buscar depoimentos:", response.status);
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar depoimentos:", error)
-            return []
+            console.error("Erro ao buscar depoimentos:", error);
+            return [];
           } finally {
-            set({ testimonial_loading: false })
+            set({ testimonial_loading: false });
           }
         } else {
-          set({ testimonial_loading: false })
-          return get().testimonials
+          set({ testimonial_loading: false });
+          return get().testimonials;
         }
       },
       updateTestimonials: async (testimonials) => {
-        set({ testimonial_loading: true })
+        set({ testimonial_loading: true });
         try {
           const response = await fetch("/api/dashboard/testimonials", {
             method: "PUT",
@@ -129,16 +129,16 @@ export const useTestimonialsStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(testimonials),
-          })
+          });
           if (response.ok) {
-            set({ testimonials })
+            set({ testimonials });
           } else {
-            console.error("Erro ao atualizar depoimentos:", response.status)
+            console.error("Erro ao atualizar depoimentos:", response.status);
           }
         } catch (error) {
-          console.error("Erro ao atualizar depoimentos:", error)
+          console.error("Erro ao atualizar depoimentos:", error);
         } finally {
-          set({ testimonial_loading: false })
+          set({ testimonial_loading: false });
         }
       },
     }),
@@ -146,15 +146,15 @@ export const useTestimonialsStore = create(
       name: "testimonials",
     }
   )
-)
+);
 
 interface PrimaryPageVideosState {
-  primaryPageVideos: video[]
-  setPrimaryPageVideos: (primaryPageVideos: video[]) => void
-  getPrimaryPageVideos: () => Promise<video[]>
-  primaryPageVideosLoading: boolean
-  setLoading: (loading: boolean) => void
-  updatePrimaryPageVideos: (primaryPageVideos: video[]) => Promise<void>
+  primaryPageVideos: video[];
+  setPrimaryPageVideos: (primaryPageVideos: video[]) => void;
+  getPrimaryPageVideos: () => Promise<video[]>;
+  primaryPageVideosLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updatePrimaryPageVideos: (primaryPageVideos: video[]) => Promise<void>;
 }
 
 export const usePrimaryPageVideosStore = create(
@@ -166,30 +166,33 @@ export const usePrimaryPageVideosStore = create(
       setPrimaryPageVideos: (primaryPageVideos) => set({ primaryPageVideos }),
       getPrimaryPageVideos: async () => {
         if (get().primaryPageVideos.length === 0) {
-          set({ primaryPageVideosLoading: true })
+          set({ primaryPageVideosLoading: true });
           try {
-            const response = await fetch("/api/dashboard/primaryPageVideos")
+            const response = await fetch("/api/dashboard/primaryPageVideos");
             if (response.ok) {
-              const data = (await response.json()) as video[]
-              set({ primaryPageVideos: data })
-              return data
+              const data = (await response.json()) as video[];
+              set({ primaryPageVideos: data });
+              return data;
             } else {
-              console.error("Erro ao buscar vídeos da página principal:", response.status)
-              return []
+              console.error(
+                "Erro ao buscar vídeos da página principal:",
+                response.status
+              );
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar vídeos da página principal:", error)
-            return []
+            console.error("Erro ao buscar vídeos da página principal:", error);
+            return [];
           } finally {
-            set({ primaryPageVideosLoading: false })
+            set({ primaryPageVideosLoading: false });
           }
         } else {
-          set({ primaryPageVideosLoading: false })
-          return get().primaryPageVideos
+          set({ primaryPageVideosLoading: false });
+          return get().primaryPageVideos;
         }
       },
       updatePrimaryPageVideos: async (primaryPageVideos) => {
-        set({ primaryPageVideosLoading: true })
+        set({ primaryPageVideosLoading: true });
         try {
           const response = await fetch("/api/dashboard/primaryPageVideos", {
             method: "PUT",
@@ -197,16 +200,19 @@ export const usePrimaryPageVideosStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(primaryPageVideos),
-          })
+          });
           if (response.ok) {
-            set({ primaryPageVideos })
+            set({ primaryPageVideos });
           } else {
-            console.error("Erro ao atualizar vídeos da página principal:", response.status)
+            console.error(
+              "Erro ao atualizar vídeos da página principal:",
+              response.status
+            );
           }
         } catch (error) {
-          console.error("Erro ao atualizar vídeos da página principal:", error)
+          console.error("Erro ao atualizar vídeos da página principal:", error);
         } finally {
-          set({ primaryPageVideosLoading: false })
+          set({ primaryPageVideosLoading: false });
         }
       },
     }),
@@ -214,15 +220,15 @@ export const usePrimaryPageVideosStore = create(
       name: "primaryPageVideos",
     }
   )
-)
+);
 
 interface SocialMediaState {
-  socialMedia: SocialMedia[]
-  setSocialMedia: (socialMedia: SocialMedia[]) => void
-  getSocialMedia: () => Promise<SocialMedia[]>
-  socialMediaLoading: boolean
-  setLoading: (loading: boolean) => void
-  updateSocialMedia: (socialMedia: SocialMedia[]) => Promise<void>
+  socialMedia: SocialMedia[];
+  setSocialMedia: (socialMedia: SocialMedia[]) => void;
+  getSocialMedia: () => Promise<SocialMedia[]>;
+  socialMediaLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateSocialMedia: (socialMedia: SocialMedia[]) => Promise<void>;
 }
 
 export const useSocialMediaStore = create(
@@ -234,30 +240,30 @@ export const useSocialMediaStore = create(
       setSocialMedia: (socialMedia) => set({ socialMedia }),
       getSocialMedia: async () => {
         if (get().socialMedia.length === 0) {
-          set({ socialMediaLoading: true })
+          set({ socialMediaLoading: true });
           try {
-            const response = await fetch("/api/dashboard/socialMedia")
+            const response = await fetch("/api/dashboard/socialMedia");
             if (response.ok) {
-              const data = (await response.json()) as SocialMedia[]
-              set({ socialMedia: data })
-              return data
+              const data = (await response.json()) as SocialMedia[];
+              set({ socialMedia: data });
+              return data;
             } else {
-              console.error("Erro ao buscar redes sociais:", response.status)
-              return []
+              console.error("Erro ao buscar redes sociais:", response.status);
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar redes sociais:", error)
-            return []
+            console.error("Erro ao buscar redes sociais:", error);
+            return [];
           } finally {
-            set({ socialMediaLoading: false })
+            set({ socialMediaLoading: false });
           }
         } else {
-          set({ socialMediaLoading: false })
-          return get().socialMedia
+          set({ socialMediaLoading: false });
+          return get().socialMedia;
         }
       },
       updateSocialMedia: async (socialMedia) => {
-        set({ socialMediaLoading: true })
+        set({ socialMediaLoading: true });
         try {
           const response = await fetch("/api/dashboard/socialMedia", {
             method: "PUT",
@@ -265,16 +271,16 @@ export const useSocialMediaStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(socialMedia),
-          })
+          });
           if (response.ok) {
-            set({ socialMedia })
+            set({ socialMedia });
           } else {
-            console.error("Erro ao atualizar redes sociais:", response.status)
+            console.error("Erro ao atualizar redes sociais:", response.status);
           }
         } catch (error) {
-          console.error("Erro ao atualizar redes sociais:", error)
+          console.error("Erro ao atualizar redes sociais:", error);
         } finally {
-          set({ socialMediaLoading: false })
+          set({ socialMediaLoading: false });
         }
       },
     }),
@@ -282,15 +288,15 @@ export const useSocialMediaStore = create(
       name: "socialMedia",
     }
   )
-)
+);
 
 interface PartnersState {
-  partners: Partner[]
-  setPartners: (partners: Partner[]) => void
-  getPartners: () => Promise<Partner[]>
-  partnersLoading: boolean
-  setLoading: (loading: boolean) => void
-  updatePartners: (partners: Partner[]) => Promise<void>
+  partners: Partner[];
+  setPartners: (partners: Partner[]) => void;
+  getPartners: () => Promise<Partner[]>;
+  partnersLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updatePartners: (partners: Partner[]) => Promise<void>;
 }
 
 export const usePartnersStore = create(
@@ -302,30 +308,30 @@ export const usePartnersStore = create(
       setPartners: (partners) => set({ partners }),
       getPartners: async () => {
         if (get().partners.length === 0) {
-          set({ partnersLoading: true })
+          set({ partnersLoading: true });
           try {
-            const response = await fetch("/api/dashboard/partners")
+            const response = await fetch("/api/dashboard/partners");
             if (response.ok) {
-              const data = (await response.json()) as Partner[]
-              set({ partners: data })
-              return data
+              const data = (await response.json()) as Partner[];
+              set({ partners: data });
+              return data;
             } else {
-              console.error("Erro ao buscar parceiros:", response.status)
-              return []
+              console.error("Erro ao buscar parceiros:", response.status);
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar parceiros:", error)
-            return []
+            console.error("Erro ao buscar parceiros:", error);
+            return [];
           } finally {
-            set({ partnersLoading: false })
+            set({ partnersLoading: false });
           }
         } else {
-          set({ partnersLoading: false })
-          return get().partners
+          set({ partnersLoading: false });
+          return get().partners;
         }
       },
       updatePartners: async (partners) => {
-        set({ partnersLoading: true })
+        set({ partnersLoading: true });
         try {
           const response = await fetch("/api/dashboard/partners", {
             method: "PUT",
@@ -333,16 +339,16 @@ export const usePartnersStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(partners),
-          })
+          });
           if (response.ok) {
-            set({ partners })
+            set({ partners });
           } else {
-            console.error("Erro ao atualizar parceiros:", response.status)
+            console.error("Erro ao atualizar parceiros:", response.status);
           }
         } catch (error) {
-          console.error("Erro ao atualizar parceiros:", error)
+          console.error("Erro ao atualizar parceiros:", error);
         } finally {
-          set({ partnersLoading: false })
+          set({ partnersLoading: false });
         }
       },
     }),
@@ -350,15 +356,15 @@ export const usePartnersStore = create(
       name: "partners",
     }
   )
-)
+);
 
 interface IncludeInfoState {
-  includeInfo: IncludeInfo[]
-  setIncludeInfo: (includeInfo: IncludeInfo[]) => void
-  getIncludeInfo: () => Promise<IncludeInfo[]>
-  includeInfoLoading: boolean
-  setLoading: (loading: boolean) => void
-  updateIncludeInfo: (includeInfo: IncludeInfo[]) => Promise<void>
+  includeInfo: IncludeInfo[];
+  setIncludeInfo: (includeInfo: IncludeInfo[]) => void;
+  getIncludeInfo: () => Promise<IncludeInfo[]>;
+  includeInfoLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateIncludeInfo: (includeInfo: IncludeInfo[]) => Promise<void>;
 }
 
 export const useIncludeInfoStore = create(
@@ -370,30 +376,33 @@ export const useIncludeInfoStore = create(
       setIncludeInfo: (includeInfo) => set({ includeInfo }),
       getIncludeInfo: async () => {
         if (get().includeInfo.length === 0) {
-          set({ includeInfoLoading: true })
+          set({ includeInfoLoading: true });
           try {
-            const response = await fetch("/api/dashboard/includeInfo")
+            const response = await fetch("/api/dashboard/includeInfo");
             if (response.ok) {
-              const data = (await response.json()) as IncludeInfo[]
-              set({ includeInfo: data })
-              return data
+              const data = (await response.json()) as IncludeInfo[];
+              set({ includeInfo: data });
+              return data;
             } else {
-              console.error("Erro ao buscar informações inclusas:", response.status)
-              return []
+              console.error(
+                "Erro ao buscar informações inclusas:",
+                response.status
+              );
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar informações inclusas:", error)
-            return []
+            console.error("Erro ao buscar informações inclusas:", error);
+            return [];
           } finally {
-            set({ includeInfoLoading: false })
+            set({ includeInfoLoading: false });
           }
         } else {
-          set({ includeInfoLoading: false })
-          return get().includeInfo
+          set({ includeInfoLoading: false });
+          return get().includeInfo;
         }
       },
       updateIncludeInfo: async (includeInfo) => {
-        set({ includeInfoLoading: true })
+        set({ includeInfoLoading: true });
         try {
           const response = await fetch("/api/dashboard/includeInfo", {
             method: "PUT",
@@ -401,16 +410,19 @@ export const useIncludeInfoStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(includeInfo),
-          })
+          });
           if (response.ok) {
-            set({ includeInfo })
+            set({ includeInfo });
           } else {
-            console.error("Erro ao atualizar informações inclusas:", response.status)
+            console.error(
+              "Erro ao atualizar informações inclusas:",
+              response.status
+            );
           }
         } catch (error) {
-          console.error("Erro ao atualizar informações inclusas:", error)
+          console.error("Erro ao atualizar informações inclusas:", error);
         } finally {
-          set({ includeInfoLoading: false })
+          set({ includeInfoLoading: false });
         }
       },
     }),
@@ -418,15 +430,17 @@ export const useIncludeInfoStore = create(
       name: "includeInfo",
     }
   )
-)
+);
 
 interface SocialMediaPostsState {
-  socialMediaPosts: SocialMediaPost[]
-  setSocialMediaPosts: (socialMediaPosts: SocialMediaPost[]) => void
-  getSocialMediaPosts: () => Promise<SocialMediaPost[]>
-  socialMediaPostsLoading: boolean
-  setLoading: (loading: boolean) => void
-  updateSocialMediaPosts: (socialMediaPosts: SocialMediaPost[]) => Promise<void>
+  socialMediaPosts: SocialMediaPost[];
+  setSocialMediaPosts: (socialMediaPosts: SocialMediaPost[]) => void;
+  getSocialMediaPosts: () => Promise<SocialMediaPost[]>;
+  socialMediaPostsLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateSocialMediaPosts: (
+    socialMediaPosts: SocialMediaPost[]
+  ) => Promise<void>;
 }
 
 export const useSocialMediaPostsStore = create(
@@ -438,30 +452,33 @@ export const useSocialMediaPostsStore = create(
       setSocialMediaPosts: (socialMediaPosts) => set({ socialMediaPosts }),
       getSocialMediaPosts: async () => {
         if (get().socialMediaPosts.length === 0) {
-          set({ socialMediaPostsLoading: true })
+          set({ socialMediaPostsLoading: true });
           try {
-            const response = await fetch("/api/dashboard/socialMediaPosts")
+            const response = await fetch("/api/dashboard/socialMediaPosts");
             if (response.ok) {
-              const data = (await response.json()) as SocialMediaPost[]
-              set({ socialMediaPosts: data })
-              return data
+              const data = (await response.json()) as SocialMediaPost[];
+              set({ socialMediaPosts: data });
+              return data;
             } else {
-              console.error("Erro ao buscar posts de mídia social:", response.status)
-              return []
+              console.error(
+                "Erro ao buscar posts de mídia social:",
+                response.status
+              );
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar posts de mídia social:", error)
-            return []
+            console.error("Erro ao buscar posts de mídia social:", error);
+            return [];
           } finally {
-            set({ socialMediaPostsLoading: false })
+            set({ socialMediaPostsLoading: false });
           }
         } else {
-          set({ socialMediaPostsLoading: false })
-          return get().socialMediaPosts
+          set({ socialMediaPostsLoading: false });
+          return get().socialMediaPosts;
         }
       },
       updateSocialMediaPosts: async (socialMediaPosts) => {
-        set({ socialMediaPostsLoading: true })
+        set({ socialMediaPostsLoading: true });
         try {
           const response = await fetch("/api/dashboard/socialMediaPosts", {
             method: "PUT",
@@ -469,16 +486,19 @@ export const useSocialMediaPostsStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(socialMediaPosts),
-          })
+          });
           if (response.ok) {
-            set({ socialMediaPosts })
+            set({ socialMediaPosts });
           } else {
-            console.error("Erro ao atualizar posts de mídia social:", response.status)
+            console.error(
+              "Erro ao atualizar posts de mídia social:",
+              response.status
+            );
           }
         } catch (error) {
-          console.error("Erro ao atualizar posts de mídia social:", error)
+          console.error("Erro ao atualizar posts de mídia social:", error);
         } finally {
-          set({ socialMediaPostsLoading: false })
+          set({ socialMediaPostsLoading: false });
         }
       },
     }),
@@ -486,15 +506,15 @@ export const useSocialMediaPostsStore = create(
       name: "socialMediaPosts",
     }
   )
-)
+);
 
 interface NewsState {
-  news: News[]
-  setNews: (news: News[]) => void
-  getNews: () => Promise<News[]>
-  newsLoading: boolean
-  setLoading: (loading: boolean) => void
-  updateNews: (news: News[]) => Promise<void>
+  news: News[];
+  setNews: (news: News[]) => void;
+  getNews: () => Promise<News[]>;
+  newsLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateNews: (news: News[]) => Promise<void>;
 }
 
 export const useNewsStore = create(
@@ -506,30 +526,30 @@ export const useNewsStore = create(
       setNews: (news) => set({ news }),
       getNews: async () => {
         if (get().news.length === 0) {
-          set({ newsLoading: true })
+          set({ newsLoading: true });
           try {
-            const response = await fetch("/api/dashboard/news")
+            const response = await fetch("/api/dashboard/news");
             if (response.ok) {
-              const data = (await response.json()) as News[]
-              set({ news: data })
-              return data
+              const data = (await response.json()) as News[];
+              set({ news: data });
+              return data;
             } else {
-              console.error("Erro ao buscar notícias:", response.status)
-              return []
+              console.error("Erro ao buscar notícias:", response.status);
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar notícias:", error)
-            return []
+            console.error("Erro ao buscar notícias:", error);
+            return [];
           } finally {
-            set({ newsLoading: false })
+            set({ newsLoading: false });
           }
         } else {
-          set({ newsLoading: false })
-          return get().news
+          set({ newsLoading: false });
+          return get().news;
         }
       },
       updateNews: async (news) => {
-        set({ newsLoading: true })
+        set({ newsLoading: true });
         try {
           const response = await fetch("/api/dashboard/news", {
             method: "PUT",
@@ -537,16 +557,16 @@ export const useNewsStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(news),
-          })
+          });
           if (response.ok) {
-            set({ news })
+            set({ news });
           } else {
-            console.error("Erro ao atualizar notícias:", response.status)
+            console.error("Erro ao atualizar notícias:", response.status);
           }
         } catch (error) {
-          console.error("Erro ao atualizar notícias:", error)
+          console.error("Erro ao atualizar notícias:", error);
         } finally {
-          set({ newsLoading: false })
+          set({ newsLoading: false });
         }
       },
     }),
@@ -554,15 +574,15 @@ export const useNewsStore = create(
       name: "news",
     }
   )
-)
+);
 
 interface TeamMembersState {
-  teamMembers: TeamMember[]
-  setTeamMembers: (teamMembers: TeamMember[]) => void
-  getTeamMembers: () => Promise<TeamMember[]>
-  teamMembersLoading: boolean
-  setLoading: (loading: boolean) => void
-  updateTeamMembers: (teamMembers: TeamMember[]) => Promise<void>
+  teamMembers: TeamMember[];
+  setTeamMembers: (teamMembers: TeamMember[]) => void;
+  getTeamMembers: () => Promise<TeamMember[]>;
+  teamMembersLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateTeamMembers: (teamMembers: TeamMember[]) => Promise<void>;
 }
 
 export const useTeamMembersStore = create(
@@ -574,30 +594,33 @@ export const useTeamMembersStore = create(
       setTeamMembers: (teamMembers) => set({ teamMembers }),
       getTeamMembers: async () => {
         if (get().teamMembers.length === 0) {
-          set({ teamMembersLoading: true })
+          set({ teamMembersLoading: true });
           try {
-            const response = await fetch("/api/dashboard/teamMembers")
+            const response = await fetch("/api/dashboard/teamMembers");
             if (response.ok) {
-              const data = (await response.json()) as TeamMember[]
-              set({ teamMembers: data })
-              return data
+              const data = (await response.json()) as TeamMember[];
+              set({ teamMembers: data });
+              return data;
             } else {
-              console.error("Erro ao buscar membros da equipe:", response.status)
-              return []
+              console.error(
+                "Erro ao buscar membros da equipe:",
+                response.status
+              );
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar membros da equipe:", error)
-            return []
+            console.error("Erro ao buscar membros da equipe:", error);
+            return [];
           } finally {
-            set({ teamMembersLoading: false })
+            set({ teamMembersLoading: false });
           }
         } else {
-          set({ teamMembersLoading: false })
-          return get().teamMembers
+          set({ teamMembersLoading: false });
+          return get().teamMembers;
         }
       },
       updateTeamMembers: async (teamMembers) => {
-        set({ teamMembersLoading: true })
+        set({ teamMembersLoading: true });
         try {
           const response = await fetch("/api/dashboard/teamMembers", {
             method: "PUT",
@@ -605,16 +628,19 @@ export const useTeamMembersStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(teamMembers),
-          })
+          });
           if (response.ok) {
-            set({ teamMembers })
+            set({ teamMembers });
           } else {
-            console.error("Erro ao atualizar membros da equipe:", response.status)
+            console.error(
+              "Erro ao atualizar membros da equipe:",
+              response.status
+            );
           }
         } catch (error) {
-          console.error("Erro ao atualizar membros da equipe:", error)
+          console.error("Erro ao atualizar membros da equipe:", error);
         } finally {
-          set({ teamMembersLoading: false })
+          set({ teamMembersLoading: false });
         }
       },
     }),
@@ -622,15 +648,17 @@ export const useTeamMembersStore = create(
       name: "teamMembers",
     }
   )
-)
+);
 
 interface ScholarshipMembersState {
-  scholarshipMembers: ScholarshipMember[]
-  setScholarshipMembers: (scholarshipMembers: ScholarshipMember[]) => void
-  getScholarshipMembers: () => Promise<ScholarshipMember[]>
-  scholarshipMembersLoading: boolean
-  setLoading: (loading: boolean) => void
-  updateScholarshipMembers: (scholarshipMembers: ScholarshipMember[]) => Promise<void>
+  scholarshipMembers: ScholarshipMember[];
+  setScholarshipMembers: (scholarshipMembers: ScholarshipMember[]) => void;
+  getScholarshipMembers: () => Promise<ScholarshipMember[]>;
+  scholarshipMembersLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateScholarshipMembers: (
+    scholarshipMembers: ScholarshipMember[]
+  ) => Promise<void>;
 }
 
 export const useScholarshipMembersStore = create(
@@ -639,33 +667,37 @@ export const useScholarshipMembersStore = create(
       scholarshipMembers: [],
       scholarshipMembersLoading: true,
       setLoading: (loading) => set({ scholarshipMembersLoading: loading }),
-      setScholarshipMembers: (scholarshipMembers) => set({ scholarshipMembers }),
+      setScholarshipMembers: (scholarshipMembers) =>
+        set({ scholarshipMembers }),
       getScholarshipMembers: async () => {
         if (get().scholarshipMembers.length === 0) {
-          set({ scholarshipMembersLoading: true })
+          set({ scholarshipMembersLoading: true });
           try {
-            const response = await fetch("/api/dashboard/scholarshipMembers")
+            const response = await fetch("/api/dashboard/scholarshipMembers");
             if (response.ok) {
-              const data = (await response.json()) as ScholarshipMember[]
-              set({ scholarshipMembers: data })
-              return data
+              const data = (await response.json()) as ScholarshipMember[];
+              set({ scholarshipMembers: data });
+              return data;
             } else {
-              console.error("Erro ao buscar membros de bolsa:", response.status)
-              return []
+              console.error(
+                "Erro ao buscar membros de bolsa:",
+                response.status
+              );
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar membros de bolsa:", error)
-            return []
+            console.error("Erro ao buscar membros de bolsa:", error);
+            return [];
           } finally {
-            set({ scholarshipMembersLoading: false })
+            set({ scholarshipMembersLoading: false });
           }
         } else {
-          set({ scholarshipMembersLoading: false })
-          return get().scholarshipMembers
+          set({ scholarshipMembersLoading: false });
+          return get().scholarshipMembers;
         }
       },
       updateScholarshipMembers: async (scholarshipMembers) => {
-        set({ scholarshipMembersLoading: true })
+        set({ scholarshipMembersLoading: true });
         try {
           const response = await fetch("/api/dashboard/scholarshipMembers", {
             method: "PUT",
@@ -673,16 +705,19 @@ export const useScholarshipMembersStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(scholarshipMembers),
-          })
+          });
           if (response.ok) {
-            set({ scholarshipMembers })
+            set({ scholarshipMembers });
           } else {
-            console.error("Erro ao atualizar membros de bolsa:", response.status)
+            console.error(
+              "Erro ao atualizar membros de bolsa:",
+              response.status
+            );
           }
         } catch (error) {
-          console.error("Erro ao atualizar membros de bolsa:", error)
+          console.error("Erro ao atualizar membros de bolsa:", error);
         } finally {
-          set({ scholarshipMembersLoading: false })
+          set({ scholarshipMembersLoading: false });
         }
       },
     }),
@@ -690,15 +725,15 @@ export const useScholarshipMembersStore = create(
       name: "scholarshipMembers",
     }
   )
-)
+);
 
 interface OldMembersState {
-  oldMembers: OldMember[]
-  setOldMembers: (oldMembers: OldMember[]) => void
-  getOldMembers: () => Promise<OldMember[]>
-  oldMembersLoading: boolean
-  setLoading: (loading: boolean) => void
-  updateOldMembers: (oldMembers: OldMember[]) => Promise<void>
+  oldMembers: OldMember[];
+  setOldMembers: (oldMembers: OldMember[]) => void;
+  getOldMembers: () => Promise<OldMember[]>;
+  oldMembersLoading: boolean;
+  setLoading: (loading: boolean) => void;
+  updateOldMembers: (oldMembers: OldMember[]) => Promise<void>;
 }
 
 export const useOldMembersStore = create(
@@ -710,30 +745,30 @@ export const useOldMembersStore = create(
       setOldMembers: (oldMembers) => set({ oldMembers }),
       getOldMembers: async () => {
         if (get().oldMembers.length === 0) {
-          set({ oldMembersLoading: true })
+          set({ oldMembersLoading: true });
           try {
-            const response = await fetch("/api/dashboard/oldMembers")
+            const response = await fetch("/api/dashboard/oldMembers");
             if (response.ok) {
-              const data = (await response.json()) as OldMember[]
-              set({ oldMembers: data })
-              return data
+              const data = (await response.json()) as OldMember[];
+              set({ oldMembers: data });
+              return data;
             } else {
-              console.error("Erro ao buscar antigos membros:", response.status)
-              return []
+              console.error("Erro ao buscar antigos membros:", response.status);
+              return [];
             }
           } catch (error) {
-            console.error("Erro ao buscar antigos membros:", error)
-            return []
+            console.error("Erro ao buscar antigos membros:", error);
+            return [];
           } finally {
-            set({ oldMembersLoading: false })
+            set({ oldMembersLoading: false });
           }
         } else {
-          set({ oldMembersLoading: false })
-          return get().oldMembers
+          set({ oldMembersLoading: false });
+          return get().oldMembers;
         }
       },
       updateOldMembers: async (oldMembers) => {
-        set({ oldMembersLoading: true })
+        set({ oldMembersLoading: true });
         try {
           const response = await fetch("/api/dashboard/oldMembers", {
             method: "PUT",
@@ -741,16 +776,19 @@ export const useOldMembersStore = create(
               "Content-Type": "application/json",
             },
             body: JSON.stringify(oldMembers),
-          })
+          });
           if (response.ok) {
-            set({ oldMembers })
+            set({ oldMembers });
           } else {
-            console.error("Erro ao atualizar antigos membros:", response.status)
+            console.error(
+              "Erro ao atualizar antigos membros:",
+              response.status
+            );
           }
         } catch (error) {
-          console.error("Erro ao atualizar antigos membros:", error)
+          console.error("Erro ao atualizar antigos membros:", error);
         } finally {
-          set({ oldMembersLoading: false })
+          set({ oldMembersLoading: false });
         }
       },
     }),
@@ -758,4 +796,4 @@ export const useOldMembersStore = create(
       name: "oldMembers",
     }
   )
-)
+);

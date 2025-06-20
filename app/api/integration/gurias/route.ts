@@ -1,4 +1,4 @@
-import { prisma } from "prisma/config"
+import { prisma } from "prisma/config";
 
 export async function GET() {
   const gurias = await prisma.guria
@@ -14,15 +14,15 @@ export async function GET() {
     .then((gurias: any[]) => {
       return gurias.map(
         (guria: {
-          id: any
-          name: any
-          birthplace: any
-          birthdate: any
-          deathdate: any
-          bio: any
-          job: any
-          imageUrl: any
-          GuriaTags: { tag: { name: any } }[]
+          id: any;
+          name: any;
+          birthplace: any;
+          birthdate: any;
+          deathdate: any;
+          bio: any;
+          job: any;
+          imageUrl: any;
+          GuriaTags: { tag: { name: any } }[];
         }) => {
           return {
             id: guria.id,
@@ -33,15 +33,17 @@ export async function GET() {
             bio: guria.bio,
             job: guria.job,
             imageUrl: guria.imageUrl,
-            tags: guria.GuriaTags.map((guriaTag: { tag: { name: any } }) => guriaTag.tag.name),
-          }
+            tags: guria.GuriaTags.map(
+              (guriaTag: { tag: { name: any } }) => guriaTag.tag.name
+            ),
+          };
         }
-      )
-    })
+      );
+    });
 
   return new Response(JSON.stringify(gurias), {
     headers: { "Content-Type": "application/json" },
-  })
+  });
 }
 
 /*

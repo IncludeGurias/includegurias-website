@@ -1,4 +1,4 @@
 export default interface Video {
-  videoUrl: string
-  title: string
+  videoUrl: string;
+  title: string;
 }

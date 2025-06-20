@@ -1,5 +1,13 @@
 "use client";
-import { AspectRatio, Box, Card, CardFooter, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  AspectRatio,
+  Box,
+  Card,
+  CardFooter,
+  Flex,
+  Heading,
+  Text,
+} from "@chakra-ui/react";
 import { Reveal, SocialButton } from "components";
 import AvatarInclude from "components/IncludeAvatar";
 import Image from "next/image";
@@ -18,7 +26,15 @@ interface SocialMediaCardProps extends SocialMediaPost {
   delay?: number;
 }
 
-const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, socialMedia }: SocialMediaCardProps) => {
+const SocialMediaCard = ({
+  classNames,
+  delay,
+  text,
+  name,
+  subname,
+  imageUrl,
+  socialMedia,
+}: SocialMediaCardProps) => {
   return (
     <Reveal
       animationdirection="bottom"
@@ -59,17 +75,15 @@ const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, soc
           alignItems={"center"}
           p={4}
         >
-          <Text
-            id="text"
-            fontSize="sm"
-            color="gray.500"
-            noOfLines={4}
-          >
+          <Text id="text" fontSize="sm" color="gray.500" noOfLines={4}>
             {text}
           </Text>
           <div
             onClick={() => {
-              window.open(contactLinks[socialMedia as keyof typeof contactLinks], "_blank");
+              window.open(
+                contactLinks[socialMedia as keyof typeof contactLinks],
+                "_blank"
+              );
             }}
             className="size-full"
           >
@@ -96,10 +110,7 @@ const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, soc
                 justifyContent="center"
               >
                 <Heading size="sm">{name}</Heading>
-                <Text
-                  color="gray.500"
-                  fontSize="xs"
-                >
+                <Text color="gray.500" fontSize="xs">
                   {subname}
                 </Text>
               </Box>
@@ -111,7 +122,10 @@ const SocialMediaCard = ({ classNames, delay, text, name, subname, imageUrl, soc
                 circle={true}
                 tooltipCustomLabel={`Siga a gente no ${socialMedia}`}
               >
-                {getSocialmediaIcon({ socialMedia: socialMedia, props: { size: 30 } })}
+                {getSocialmediaIcon({
+                  socialMedia: socialMedia,
+                  props: { size: 30 },
+                })}
               </SocialButton>
             </Flex>
           </div>

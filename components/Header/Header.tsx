@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Box,
   Flex,
@@ -12,29 +12,31 @@ import {
   Stack,
   Text,
   useDisclosure,
-} from "@chakra-ui/react"
-import { Collapse } from "@chakra-ui/transition"
-import { useEffect } from "react"
-import { FaChevronDown, FaChevronRight } from "react-icons/fa"
-import { GoChevronDown } from "react-icons/go"
-import { IoClose } from "react-icons/io5"
-import { RxHamburgerMenu } from "react-icons/rx"
-import { useMaterialsStore } from "app/states"
-import Material from "types/data/material"
-import { HeaderMotion, LogoMotion } from "./HeaderMotion"
+} from "@chakra-ui/react";
+import { Collapse } from "@chakra-ui/transition";
+import { useEffect } from "react";
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
+import { GoChevronDown } from "react-icons/go";
+import { IoClose } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { useMaterialsStore } from "app/states";
+import Material from "types/data/material";
+import { HeaderMotion, LogoMotion } from "./HeaderMotion";
 
 export default function WithSubnavigation() {
-  const { isOpen, onToggle } = useDisclosure()
+  const { isOpen, onToggle } = useDisclosure();
   const { getMaterials } = useMaterialsStore((state) => ({
     getMaterials: state.getMaterials,
-  }))
-  const [IncludeMaterials] = useMaterialsStore((state) => [state.materials])
+  }));
+  const [IncludeMaterials] = useMaterialsStore((state) => [state.materials]);
 
   useEffect(() => {
-    getMaterials()
-  }, [getMaterials])
+    getMaterials();
+  }, [getMaterials]);
 
-  const materialsItem = NAV_ITEMS?.find((item) => item.label === "Nossos Materiais")
+  const materialsItem = NAV_ITEMS?.find(
+    (item) => item.label === "Nossos Materiais"
+  );
 
   if (materialsItem) {
     materialsItem.children = IncludeMaterials.map((material: Material) => ({
@@ -45,22 +47,38 @@ export default function WithSubnavigation() {
         label: "Ver todos",
         href: "/materials",
       },
-    ])
+    ]);
   }
   return (
     <HeaderMotion>
       <>
-        <Flex py={{ base: 2 }} px={{ base: 4 }} justify="center" alignItems="center" h="full">
-          <Flex flex={{ base: 1, md: "auto" }} ml={{ base: -2 }} display={{ base: "flex", md: "none" }}>
+        <Flex
+          py={{ base: 2 }}
+          px={{ base: 4 }}
+          justify="center"
+          alignItems="center"
+          h="full"
+        >
+          <Flex
+            flex={{ base: 1, md: "auto" }}
+            ml={{ base: -2 }}
+            display={{ base: "flex", md: "none" }}
+          >
             <IconButton
               onClick={onToggle}
-              icon={isOpen ? <IoClose size={35} /> : <RxHamburgerMenu size={35} />}
+              icon={
+                isOpen ? <IoClose size={35} /> : <RxHamburgerMenu size={35} />
+              }
               variant={"ghost"}
               aria-label={"Toggle Navigation"}
             />
           </Flex>
 
-          <Flex w="100%" align={"center"} display={{ base: "none", md: "flex" }}>
+          <Flex
+            w="100%"
+            align={"center"}
+            display={{ base: "none", md: "flex" }}
+          >
             <LogoMotion />
 
             <Flex w={"100%"}>
@@ -78,12 +96,18 @@ export default function WithSubnavigation() {
         </Collapse>
       </>
     </HeaderMotion>
-  )
+  );
 }
 
 const DesktopNav = () => {
   return (
-    <Stack direction={"row"} spacing={4} align={"center"} justify={"center"} style={{ width: "100%" }}>
+    <Stack
+      direction={"row"}
+      spacing={4}
+      align={"center"}
+      justify={"center"}
+      style={{ width: "100%" }}
+    >
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={"hover"}>
@@ -103,13 +127,22 @@ const DesktopNav = () => {
                   }}
                 >
                   {navItem.label}
-                  {navItem.children && <Icon as={GoChevronDown} w={5} h={5} ml={1} />}
+                  {navItem.children && (
+                    <Icon as={GoChevronDown} w={5} h={5} ml={1} />
+                  )}
                 </Box>
               </Link>
             </PopoverTrigger>
 
             {navItem.children && (
-              <PopoverContent border={0} boxShadow={"xl"} p={4} rounded={"xl"} minW={"sm"} bg={"var(--primary-200)"}>
+              <PopoverContent
+                border={0}
+                boxShadow={"xl"}
+                p={4}
+                rounded={"xl"}
+                minW={"sm"}
+                bg={"var(--primary-200)"}
+              >
                 <PopoverBody>
                   {navItem.children.map((child) => (
                     <Link href={child.href} key={child.label}>
@@ -123,15 +156,20 @@ const DesktopNav = () => {
         </Box>
       ))}
     </Stack>
-  )
-}
+  );
+};
 
 const DesktopSubNav = ({ label, subLabel }: NavItem) => {
   return (
     <Box role={"group"} display={"block"} p={2} rounded={"md"}>
       <Stack direction={"row"} align={"center"}>
         <Box>
-          <Text transition={"all .3s ease"} _groupHover={{ color: "#62676f" }} color={"white"} fontWeight={600}>
+          <Text
+            transition={"all .3s ease"}
+            _groupHover={{ color: "#62676f" }}
+            color={"white"}
+            fontWeight={600}
+          >
             {label}
           </Text>
           {subLabel && <Text fontSize={"lg"}>{subLabel}</Text>}
@@ -149,23 +187,27 @@ const DesktopSubNav = ({ label, subLabel }: NavItem) => {
         </Flex>
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
 const MobileNav = () => {
   return (
     <Stack p={4} display={{ md: "none" }} bg={"var(--primary-300)"}>
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} label={navItem.label} href={navItem.href}>
+        <MobileNavItem
+          key={navItem.label}
+          label={navItem.label}
+          href={navItem.href}
+        >
           {navItem.children}
         </MobileNavItem>
       ))}
     </Stack>
-  )
-}
+  );
+};
 
 const MobileNavItem = ({ label, children, href }: NavItem) => {
-  const { isOpen, onToggle } = useDisclosure()
+  const { isOpen, onToggle } = useDisclosure();
   return (
     <Stack spacing={4} onClick={children && onToggle}>
       <Link href={href === "/materials" ? "#" : href} key={label}>
@@ -192,7 +234,13 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       </Link>
 
       <Collapse in={isOpen} animateOpacity>
-        <Stack mt={2} pl={4} borderLeft={1} borderStyle={"solid"} align={"start"}>
+        <Stack
+          mt={2}
+          pl={4}
+          borderLeft={1}
+          borderStyle={"solid"}
+          align={"start"}
+        >
           {children &&
             children.map((child) => (
               <Link href={href} key={child.label}>
@@ -202,14 +250,14 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         </Stack>
       </Collapse>
     </Stack>
-  )
-}
+  );
+};
 
 interface NavItem {
-  label: string
-  subLabel?: string
-  children?: Array<NavItem>
-  href: string
+  label: string;
+  subLabel?: string;
+  children?: Array<NavItem>;
+  href: string;
 }
 
 const NAV_ITEMS: Array<NavItem> = [
@@ -247,4 +295,4 @@ const NAV_ITEMS: Array<NavItem> = [
     label: "Contato",
     href: "/contato",
   },
-]
+];

@@ -1,15 +1,21 @@
-import { Button, Tooltip } from "@chakra-ui/react"
-import Link from "next/link"
+import { Button, Tooltip } from "@chakra-ui/react";
+import Link from "next/link";
 
 interface iconCircleButtonProps {
-  icon: any
-  href?: string
-  tooltip: string
-  bgColor?: string
-  onClick?: () => void
+  icon: any;
+  href?: string;
+  tooltip: string;
+  bgColor?: string;
+  onClick?: () => void;
 }
 
-const IconCircleButton = ({ icon, href, tooltip, bgColor, onClick }: iconCircleButtonProps) => {
+const IconCircleButton = ({
+  icon,
+  href,
+  tooltip,
+  bgColor,
+  onClick,
+}: iconCircleButtonProps) => {
   return (
     <Link href={href ?? "#"} passHref>
       <Tooltip label={tooltip} aria-label={tooltip}>
@@ -33,7 +39,7 @@ const IconCircleButton = ({ icon, href, tooltip, bgColor, onClick }: iconCircleB
         </Button>
       </Tooltip>
     </Link>
-  )
-}
+  );
+};
 
-export default IconCircleButton
+export default IconCircleButton;

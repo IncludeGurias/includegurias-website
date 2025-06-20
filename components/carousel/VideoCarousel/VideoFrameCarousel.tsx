@@ -1,6 +1,6 @@
-import { Card, CardBody, CardFooter, Heading } from "@chakra-ui/react"
-import { VideoFrame } from "components"
-import VideoType from "types/data/video"
+import { Card, CardBody, CardFooter, Heading } from "@chakra-ui/react";
+import { VideoFrame } from "components";
+import VideoType from "types/data/video";
 
 const VideoFrameCarousel = ({ video }: { video: VideoType }) => {
   return (
@@ -16,7 +16,13 @@ const VideoFrameCarousel = ({ video }: { video: VideoType }) => {
         transform: "translateY(-5px)",
       }}
     >
-      <CardBody p={0} height="275px" overflow="hidden" borderTopRadius="md" w={"100%"}>
+      <CardBody
+        p={0}
+        height="275px"
+        overflow="hidden"
+        borderTopRadius="md"
+        w={"100%"}
+      >
         <VideoFrame
           width="100%"
           height="250px"
@@ -26,13 +32,19 @@ const VideoFrameCarousel = ({ video }: { video: VideoType }) => {
           allowFullScreen
         />
       </CardBody>
-      <CardFooter bg={"var(--primary-400)"} borderBottomRadius="md" textAlign="center" h={100} p={2}>
+      <CardFooter
+        bg={"var(--primary-400)"}
+        borderBottomRadius="md"
+        textAlign="center"
+        h={100}
+        p={2}
+      >
         <Heading size="md" color={"white"} margin={"auto"}>
           {video.title}
         </Heading>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default VideoFrameCarousel
+export default VideoFrameCarousel;

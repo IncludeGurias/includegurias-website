@@ -1,24 +1,26 @@
-"use client"
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+"use client";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface RotateRevealProps {
-  children: React.ReactNode
-  delay?: number
-  className?: string
-  animateonview?: string
-  layout?: boolean
-  layoutID?: string
-  duration?: number
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+  animateonview?: string;
+  layout?: boolean;
+  layoutID?: string;
+  duration?: number;
 }
 
 const RotateReveal = ({ children, ...props }: RotateRevealProps) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref)
+  const ref = useRef(null);
+  const isInView = useInView(ref);
   return (
     <motion.div
       ref={ref}
-      animate={props.animateonview ? (isInView ? "visible" : "hidden") : "visible"}
+      animate={
+        props.animateonview ? (isInView ? "visible" : "hidden") : "visible"
+      }
       transition={{
         duration: props.duration || 0.5,
         delay: props.delay || 0,
@@ -37,7 +39,7 @@ const RotateReveal = ({ children, ...props }: RotateRevealProps) => {
     >
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
-export default RotateReveal
+export default RotateReveal;

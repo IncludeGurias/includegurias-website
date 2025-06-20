@@ -1,10 +1,10 @@
-"use client"
-import { Flex, IconButton, Tooltip } from "@chakra-ui/react"
-import Link from "next/link"
-import { ReactNode } from "react"
-import { Reveal } from "components"
+"use client";
+import { Flex, IconButton, Tooltip } from "@chakra-ui/react";
+import Link from "next/link";
+import { ReactNode } from "react";
+import { Reveal } from "components";
 
-export type BorderType = "none" | "sm" | "md" | "lg" | "full" | undefined
+export type BorderType = "none" | "sm" | "md" | "lg" | "full" | undefined;
 
 // const Gradients: Record<string, string> = {
 //   instagram: "linear(#405DE6 0%, #833AB4 25%, #FD1D1D 50%, #F56040 75%, #FCAF45 100%)",
@@ -34,16 +34,16 @@ export type BorderType = "none" | "sm" | "md" | "lg" | "full" | undefined
 // }
 
 interface SocialButtonProps {
-  children: ReactNode | ReactNode[]
-  size: number
-  animation?: string
-  label: string
-  href: string
-  circle?: boolean
-  border?: BorderType
-  className?: string
-  tooltipCustomLabel?: string
-  delay?: number
+  children: ReactNode | ReactNode[];
+  size: number;
+  animation?: string;
+  label: string;
+  href: string;
+  circle?: boolean;
+  border?: BorderType;
+  className?: string;
+  tooltipCustomLabel?: string;
+  delay?: number;
 }
 
 export default function SocialButton({
@@ -59,13 +59,20 @@ export default function SocialButton({
   delay = 0,
 }: SocialButtonProps) {
   if (label === "email") {
-    href = `mailto:${href}`
+    href = `mailto:${href}`;
   }
 
-  label = label.charAt(0).toUpperCase() + label.slice(1)
+  label = label.charAt(0).toUpperCase() + label.slice(1);
 
   return (
-    <Tooltip hasArrow key={label} label={tooltipCustomLabel || label} placement="top" color={"white"} fontSize={"md"}>
+    <Tooltip
+      hasArrow
+      key={label}
+      label={tooltipCustomLabel || label}
+      placement="top"
+      color={"white"}
+      fontSize={"md"}
+    >
       <Link href={href ?? "/404"} target={"_target"} passHref>
         <Flex
           bgGradient={`linear(to-br, var(--primary-300), var(--primary-400))`}
@@ -79,7 +86,9 @@ export default function SocialButton({
           _hover={{
             shadow: "lg",
           }}
-          {...(circle ? { borderRadius: "50%" } : { rounded: border ? border : "md" })}
+          {...(circle
+            ? { borderRadius: "50%" }
+            : { rounded: border ? border : "md" })}
         >
           <Reveal delay={delay}>
             <IconButton
@@ -95,7 +104,10 @@ export default function SocialButton({
               alignItems={"center"}
               bg={"transparent"}
               _groupHover={{
-                transform: animation === "rotateHover" ? "rotate(360deg) scale(1.5)" : animation,
+                transform:
+                  animation === "rotateHover"
+                    ? "rotate(360deg) scale(1.5)"
+                    : animation,
               }}
             >
               {children}
@@ -104,5 +116,5 @@ export default function SocialButton({
         </Flex>
       </Link>
     </Tooltip>
-  )
+  );
 }

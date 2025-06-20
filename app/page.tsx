@@ -1,9 +1,19 @@
-"use client"
-import { Box, Container, Flex, Grid, GridItem, Heading, Icon, Stack, Text } from "@chakra-ui/react"
-import Link from "next/link"
-import { useEffect } from "react"
-import { IoIosPeople, IoLogoYoutube } from "react-icons/io"
-import { MdLocalPhone } from "react-icons/md"
+"use client";
+import {
+  Box,
+  Container,
+  Flex,
+  Grid,
+  GridItem,
+  Heading,
+  Icon,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import Link from "next/link";
+import { useEffect } from "react";
+import { IoIosPeople, IoLogoYoutube } from "react-icons/io";
+import { MdLocalPhone } from "react-icons/md";
 import {
   AnimatedWavyText,
   HeaderAndFooter,
@@ -21,30 +31,32 @@ import {
   VideoCarousel,
   VideoFrame,
   WhatWeDoSection,
-} from "components"
-import SocialMedia from "types/data/socialMedia"
-import getSocialmediaIcon from "utils/getSocialMediaIcon"
-import { useSocialMediaPostsStore, useSocialMediaStore } from "./states"
+} from "components";
+import SocialMedia from "types/data/socialMedia";
+import getSocialmediaIcon from "utils/getSocialMediaIcon";
+import { useSocialMediaPostsStore, useSocialMediaStore } from "./states";
 
 export default function Home() {
   const { getSocialMedia, socialMedia } = useSocialMediaStore((state) => ({
     getSocialMedia: state.getSocialMedia,
     socialMediaLoading: state.socialMediaLoading,
     socialMedia: state.socialMedia,
-  }))
+  }));
 
   useEffect(() => {
-    getSocialMedia()
-  }, [getSocialMedia])
+    getSocialMedia();
+  }, [getSocialMedia]);
 
-  const { getSocialMediaPosts, socialMediaPosts } = useSocialMediaPostsStore((state) => ({
-    getSocialMediaPosts: state.getSocialMediaPosts,
-    socialMediaPosts: state.socialMediaPosts,
-  }))
+  const { getSocialMediaPosts, socialMediaPosts } = useSocialMediaPostsStore(
+    (state) => ({
+      getSocialMediaPosts: state.getSocialMediaPosts,
+      socialMediaPosts: state.socialMediaPosts,
+    })
+  );
 
   useEffect(() => {
-    getSocialMediaPosts()
-  }, [getSocialMediaPosts])
+    getSocialMediaPosts();
+  }, [getSocialMediaPosts]);
 
   return (
     <HeaderAndFooter>
@@ -67,20 +79,30 @@ export default function Home() {
                 line1="Garotas que codam"
                 line2="Mudam o mundo"
                 ClassNames={{
-                  firstLine: "text-red-400 font-bold tracking-tight mb-4 text-shadow-md",
+                  firstLine:
+                    "text-red-400 font-bold tracking-tight mb-4 text-shadow-md",
                 }}
               />
             </Heading>
             <Reveal>
-              <Text fontSize={{ base: "lg", lg: "xl" }} textAlign="justify" id="text">
-                O Projeto Include Gurias visa divulgar a área da STEM (ciências, tecnologia, engenharias e matemática)
-                para despertar o interesse de meninas da educação básica para a área tecnológica através do
-                desenvolvimento do pensamento computacional. Pretende-se motivar mais mulheres a usarem sua criatividade
-                e capacidade intelectual para desenvolver programas, robôs, jogos, sistemas embarcados, associados à
-                inovação tecnológica. Ao inserir Tecnologias de Informação e Comunicação (TIC) na educação básica, por
-                meio da programação cuja base é o raciocínio lógico de programação, é possível trabalhar com resolução
-                de problemas, desenvolver habilidades de trabalho colaborativo e cooperativo, desenvolver a capacidade
-                criativa. O Projeto Include Gurias é desenvolvido dentro do Curso de Engenharia de Computação da UERGS
+              <Text
+                fontSize={{ base: "lg", lg: "xl" }}
+                textAlign="justify"
+                id="text"
+              >
+                O Projeto Include Gurias visa divulgar a área da STEM (ciências,
+                tecnologia, engenharias e matemática) para despertar o interesse
+                de meninas da educação básica para a área tecnológica através do
+                desenvolvimento do pensamento computacional. Pretende-se motivar
+                mais mulheres a usarem sua criatividade e capacidade intelectual
+                para desenvolver programas, robôs, jogos, sistemas embarcados,
+                associados à inovação tecnológica. Ao inserir Tecnologias de
+                Informação e Comunicação (TIC) na educação básica, por meio da
+                programação cuja base é o raciocínio lógico de programação, é
+                possível trabalhar com resolução de problemas, desenvolver
+                habilidades de trabalho colaborativo e cooperativo, desenvolver
+                a capacidade criativa. O Projeto Include Gurias é desenvolvido
+                dentro do Curso de Engenharia de Computação da UERGS
                 (Universidade Estadual do Rio Grande do Sul).
               </Text>
             </Reveal>
@@ -94,14 +116,24 @@ export default function Home() {
               flexDirection={{ base: "column", sm: "row" }}
             >
               <Link href="/sobre-nos" passHref>
-                <PrimaryButton icon={<IoIosPeople size={25} />}>Sobre nós</PrimaryButton>
+                <PrimaryButton icon={<IoIosPeople size={25} />}>
+                  Sobre nós
+                </PrimaryButton>
               </Link>
               <Link href="/contato" passHref>
-                <PrimaryButton icon={<MdLocalPhone size={25} />}>Contato</PrimaryButton>
+                <PrimaryButton icon={<MdLocalPhone size={25} />}>
+                  Contato
+                </PrimaryButton>
               </Link>
             </Stack>
           </Stack>
-          <Flex flex={1} justify={"center"} align={"center"} position={"relative"} w={"full"}>
+          <Flex
+            flex={1}
+            justify={"center"}
+            align={"center"}
+            position={"relative"}
+            w={"full"}
+          >
             <MotionBlob
               w={"100%"}
               h={"100%"}
@@ -159,7 +191,12 @@ export default function Home() {
 
         <TestimonialsSection />
 
-        <Box p={4} maxW={{ base: "100%", md: "9xl" }} display={"flex"} flexDirection={"column"}>
+        <Box
+          p={4}
+          maxW={{ base: "100%", md: "9xl" }}
+          display={"flex"}
+          flexDirection={"column"}
+        >
           <HeadingText text="Siga o Include" align="center" />
           <div className="mb-6 grid grid-cols-3 justify-items-center gap-4 sm:flex-wrap sm:justify-center md:flex">
             {socialMedia.map((socialMedia: SocialMedia, index: number) => (
@@ -171,7 +208,10 @@ export default function Home() {
                 animation="rotateHover"
                 delay={index * 0.1}
               >
-                {getSocialmediaIcon({ socialMedia: socialMedia.name, props: { size: 24 } })}
+                {getSocialmediaIcon({
+                  socialMedia: socialMedia.name,
+                  props: { size: 24 },
+                })}
               </SocialButton>
             ))}
           </div>
@@ -203,14 +243,31 @@ export default function Home() {
             ))}
           </Grid>
         </Box>
-        <Box p={4} maxW={{ base: "100%", md: "9xl" }} display={"flex"} flexDirection={"column"} mt={8}>
+        <Box
+          p={4}
+          maxW={{ base: "100%", md: "9xl" }}
+          display={"flex"}
+          flexDirection={"column"}
+          mt={8}
+        >
           <HeadingText text="Confira nossos videos" align={"center"} />
 
           <VideoCarousel />
 
           <Flex direction="column" alignItems="center" mb={5} id="text">
-            <Link href={socialMedia.find((media) => media.name.toLowerCase() === "youtube")?.href || "#"} passHref>
-              <PrimaryButton recuo={-270} classNames={{ divContainer: "w-[350px]" }} icon={<IoLogoYoutube size={25} />}>
+            <Link
+              href={
+                socialMedia.find(
+                  (media) => media.name.toLowerCase() === "youtube"
+                )?.href || "#"
+              }
+              passHref
+            >
+              <PrimaryButton
+                recuo={-270}
+                classNames={{ divContainer: "w-[350px]" }}
+                icon={<IoLogoYoutube size={25} />}
+              >
                 Veja mais videos
               </PrimaryButton>
             </Link>
@@ -218,5 +275,5 @@ export default function Home() {
         </Box>
       </Container>
     </HeaderAndFooter>
-  )
+  );
 }

@@ -1,43 +1,48 @@
-"use client"
-import { motion, useInView } from "framer-motion"
-import { useRef, useState } from "react"
+"use client";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 
 export interface RevealProps {
-  children: React.ReactNode
-  animationdirection?: "left" | "right" | "top" | "bottom" | "none"
-  delay?: number
-  className?: string
-  dontanimateonview?: string
-  layout?: boolean
-  layoutID?: string
-  key?: any
-  animateOnce?: boolean
+  children: React.ReactNode;
+  animationdirection?: "left" | "right" | "top" | "bottom" | "none";
+  delay?: number;
+  className?: string;
+  dontanimateonview?: string;
+  layout?: boolean;
+  layoutID?: string;
+  key?: any;
+  animateOnce?: boolean;
 }
 
-const Reveal = ({ children, delay = 0, animationdirection = "none", ...props }: RevealProps) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref)
-  const [hasAnimated, setHasAnimated] = useState(false)
+const Reveal = ({
+  children,
+  delay = 0,
+  animationdirection = "none",
+  ...props
+}: RevealProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const handleInView = () => {
     if (isInView && !hasAnimated) {
-      setHasAnimated(true)
+      setHasAnimated(true);
     }
-  }
+  };
 
   function getStart() {
     if (animationdirection === "none") {
-      return { x: 0, y: 0 }
+      return { x: 0, y: 0 };
     } else if (animationdirection === "left") {
-      return { x: -100 }
+      return { x: -100 };
     } else if (animationdirection === "right") {
-      return { x: 100 }
+      return { x: 100 };
     } else if (animationdirection === "top") {
-      return { y: -100 }
+      return { y: -100 };
     } else if (animationdirection === "bottom") {
-      return { y: 100 }
+      return { y: 100 };
     } else {
-      return { x: 0, y: 0 }
+      return { x: 0, y: 0 };
     }
   }
 
@@ -60,15 +65,15 @@ const Reveal = ({ children, delay = 0, animationdirection = "none", ...props }: 
     >
       {children}
     </motion.div>
-  )
-}
+  );
+};
 
-export default Reveal
+export default Reveal;
 
 export const RevealClientOnly = ({ children, ...props }: RevealProps) => {
   if (typeof window === "undefined") {
-    return null
+    return null;
   }
 
-  return <Reveal {...props}>{children}</Reveal>
-}
+  return <Reveal {...props}>{children}</Reveal>;
+};

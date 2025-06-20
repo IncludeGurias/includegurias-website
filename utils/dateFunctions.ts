@@ -1,16 +1,16 @@
 function normalizeDate(date: string) {
-  return date.replace(/-/g, "/")
+  return date.replace(/-/g, "/");
 }
 
 export function formatYYYYMMDD(date: string) {
-  console.log("date", date)
+  console.log("date", date);
   if (date === "") {
-    return ""
+    return "";
   }
-  const [day, month, year] = date.replace(/-/g, "/").split("/")
+  const [day, month, year] = date.replace(/-/g, "/").split("/");
 
   if (day && day.trim().length > 2) {
-    return `${day}-${month}-${year}`
+    return `${day}-${month}-${year}`;
   }
-  return `${year}-${month}-${day}`
+  return `${year}-${month}-${day}`;
 }

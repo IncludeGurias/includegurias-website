@@ -1,4 +1,4 @@
-import { WOMAN_DATA } from "data"
+import { WOMAN_DATA } from "data";
 
 /**
  * @swagger
@@ -19,17 +19,17 @@ import { WOMAN_DATA } from "data"
 
 export async function GET() {
   // return all tags from the data
-  const uniqueTags: any = new Set()
+  const uniqueTags: any = new Set();
 
   WOMAN_DATA.forEach((item: any) => {
     item.tags.forEach((tag: any) => {
-      uniqueTags.add(tag)
-    })
-  })
+      uniqueTags.add(tag);
+    });
+  });
 
-  const tagsData: any = Array.from(uniqueTags)
+  const tagsData: any = Array.from(uniqueTags);
 
   return new Response(JSON.stringify(tagsData), {
     headers: { "Content-Type": "application/json" },
-  })
+  });
 }

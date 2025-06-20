@@ -13,7 +13,10 @@ export default async function FetchMulherNext(ID: string) {
   var imageData: string | null = null;
 
   try {
-    const staticData = await fetch(guriaUrl, { cache: "force-cache", next: { revalidate: 600 } });
+    const staticData = await fetch(guriaUrl, {
+      cache: "force-cache",
+      next: { revalidate: 600 },
+    });
     data = (await staticData.json()) as womanType;
 
     if (data) {

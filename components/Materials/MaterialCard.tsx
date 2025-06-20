@@ -11,17 +11,17 @@ interface MaterialCardProps extends Material {
   delay: number;
 }
 
-const MaterialCard = ({ title, description, isNew, imageUrl, href, delay }: MaterialCardProps) => {
+const MaterialCard = ({
+  title,
+  description,
+  isNew,
+  imageUrl,
+  href,
+  delay,
+}: MaterialCardProps) => {
   return (
-    <Link
-      href={href}
-      className="flex size-full items-center justify-center"
-    >
-      <Reveal
-        animationdirection="bottom"
-        delay={delay}
-        className="h-full"
-      >
+    <Link href={href} className="flex size-full items-center justify-center">
+      <Reveal animationdirection="bottom" delay={delay} className="h-full">
         <Box
           bg={"red.400"}
           maxW="sm"
@@ -54,10 +54,7 @@ const MaterialCard = ({ title, description, isNew, imageUrl, href, delay }: Mate
               style={{ borderRadius: "12px 12px 0 0" }}
             />
           </AspectRatio>
-          <Box
-            p="6"
-            h="full"
-          >
+          <Box p="6" h="full">
             <Box
               display="flex"
               alignItems="baseline"
@@ -86,23 +83,13 @@ const MaterialCard = ({ title, description, isNew, imageUrl, href, delay }: Mate
               {title}
             </Box>
 
-            <Flex
-              justifyContent="space-between"
-              alignContent="center"
-            >
-              <Box
-                fontSize="md"
-                color={"gray.800"}
-              >
+            <Flex justifyContent="space-between" alignContent="center">
+              <Box fontSize="md" color={"gray.800"}>
                 {description}
               </Box>
             </Flex>
           </Box>
-          <Flex
-            justifyContent="center"
-            alignContent="center"
-            my="4"
-          >
+          <Flex justifyContent="center" alignContent="center" my="4">
             <Button
               colorScheme="primary"
               variant="outline"

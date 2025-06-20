@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Box,
   chakra,
@@ -9,31 +9,31 @@ import {
   useBreakpointValue,
   useColorModeValue,
   VStack,
-} from "@chakra-ui/react"
-import { useEffect } from "react"
-import { useNewsStore } from "app/states"
-import { SeeMoreArrow } from "components"
-import { ConfettiDark } from "public"
-import News from "types/data/news"
+} from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useNewsStore } from "app/states";
+import { SeeMoreArrow } from "components";
+import { ConfettiDark } from "public";
+import News from "types/data/news";
 
 const Timeline = () => {
-  const isMobile = useBreakpointValue({ base: true, md: false })
-  const isDesktop = useBreakpointValue({ base: false, md: true })
+  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isDesktop = useBreakpointValue({ base: false, md: true });
 
   const { getNews, news } = useNewsStore((state) => ({
     getNews: state.getNews,
     news: state.news,
-  }))
+  }));
 
   useEffect(() => {
-    getNews()
-  }, [getNews])
+    getNews();
+  }, [getNews]);
 
   const TIMELINE_DATA = news
     .filter((item) => item.showInTimeline === true)
     .sort((a, b) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime()
-    })
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
+    });
 
   return (
     <Container
@@ -77,26 +77,26 @@ const Timeline = () => {
         </Flex>
       ))}
     </Container>
-  )
-}
+  );
+};
 
 interface CardProps extends News {
-  index: number
+  index: number;
 }
 
 const Card = ({ index, date, title, text, href }: CardProps) => {
-  const formattedDate = new Date(date).toLocaleDateString()
+  const formattedDate = new Date(date).toLocaleDateString();
 
-  const isEvenId = index % 2 === 0
-  let borderWidthValue = isEvenId ? "15px 15px 15px 0" : "15px 0 15px 15px"
-  let leftValue = isEvenId ? "-15px" : "unset"
-  let rightValue = isEvenId ? "unset" : "-15px"
+  const isEvenId = index % 2 === 0;
+  let borderWidthValue = isEvenId ? "15px 15px 15px 0" : "15px 0 15px 15px";
+  let leftValue = isEvenId ? "-15px" : "unset";
+  let rightValue = isEvenId ? "unset" : "-15px";
 
-  const isMobile = useBreakpointValue({ base: true, md: false })
+  const isMobile = useBreakpointValue({ base: true, md: false });
   if (isMobile) {
-    leftValue = "-15px"
-    rightValue = "unset"
-    borderWidthValue = "15px 15px 15px 0"
+    leftValue = "-15px";
+    rightValue = "unset";
+    borderWidthValue = "15px 15px 15px 0";
   }
 
   return (
@@ -135,12 +135,17 @@ const Card = ({ index, date, title, text, href }: CardProps) => {
         {href && <SeeMoreArrow text="Saiba mais" href={href} />}
       </Box>
     </HStack>
-  )
-}
+  );
+};
 
 const LineWithDot = () => {
   return (
-    <Flex pos="relative" alignItems="center" mr={{ base: "40px", md: "40px" }} ml={{ base: "0", md: "40px" }}>
+    <Flex
+      pos="relative"
+      alignItems="center"
+      mr={{ base: "40px", md: "40px" }}
+      ml={{ base: "0", md: "40px" }}
+    >
       <chakra.span
         position="absolute"
         left="50%"
@@ -168,11 +173,17 @@ const LineWithDot = () => {
         ></Box>
       </Box>
     </Flex>
-  )
-}
+  );
+};
 
 const EmptyCard = () => {
-  return <Box flex={{ base: 0, md: 1 }} p={{ base: 0, md: 6 }} bg="transparent"></Box>
-}
+  return (
+    <Box
+      flex={{ base: 0, md: 1 }}
+      p={{ base: 0, md: 6 }}
+      bg="transparent"
+    ></Box>
+  );
+};
 
-export default Timeline
+export default Timeline;

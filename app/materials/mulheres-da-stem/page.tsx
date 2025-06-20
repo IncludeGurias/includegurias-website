@@ -1,5 +1,16 @@
 "use client";
-import { Badge, Button, Card, CardBody, Divider, Flex, Spinner, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import {
+  Badge,
+  Button,
+  Card,
+  CardBody,
+  Divider,
+  Flex,
+  Spinner,
+  Text,
+  Wrap,
+  WrapItem,
+} from "@chakra-ui/react";
 import { HeadingText, Reveal, SearchBar, WomanCard } from "components";
 import Link from "next/link";
 import { ConfettiLight } from "public";
@@ -18,7 +29,11 @@ const TagsSelecionadas = ({ selectedTags }: { selectedTags: string[] }) => {
         selectedTags.map((tag, index) => (
           <Reveal key={index}>
             <WrapItem key={index}>
-              <Badge colorScheme={tagColors[tag as keyof typeof tagColors] || "teal"}>{tag}</Badge>
+              <Badge
+                colorScheme={tagColors[tag as keyof typeof tagColors] || "teal"}
+              >
+                {tag}
+              </Badge>
             </WrapItem>
           </Reveal>
         ))}
@@ -48,7 +63,10 @@ const MulheresNasExatas = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [guriasData, tagsData] = await Promise.all([fetchGurias(), fetchTags()]);
+        const [guriasData, tagsData] = await Promise.all([
+          fetchGurias(),
+          fetchTags(),
+        ]);
 
         setGurias(guriasData);
         setFilteredGurias(guriasData);
@@ -85,7 +103,9 @@ const MulheresNasExatas = () => {
 
         const nameMatches = name.includes(searchValueLower);
 
-        const tagsMatches = selectedTags.every((tag) => guria.tags.includes(tag));
+        const tagsMatches = selectedTags.every((tag) =>
+          guria.tags.includes(tag)
+        );
 
         if (selectedTags.length === 0) {
           return nameMatches;
@@ -110,22 +130,14 @@ const MulheresNasExatas = () => {
       }}
     >
       <div className="section mt-28 flex w-full flex-col items-center gap-2">
-        <HeadingText
-          text="Mulheres da STEM"
-          align="center"
-        />
-        <p
-          id="text"
-          className="text-center text-xl"
-        >
-          Conheça as mulheres que fizeram história nas áreas de Ciência, Tecnologia, Engenharia e Matemática! Clique sobre a imagem para saber mais sobre a vida
-          e a carreira de cada uma delas.{" "}
+        <HeadingText text="Mulheres da STEM" align="center" />
+        <p id="text" className="text-center text-xl">
+          Conheça as mulheres que fizeram história nas áreas de Ciência,
+          Tecnologia, Engenharia e Matemática! Clique sobre a imagem para saber
+          mais sobre a vida e a carreira de cada uma delas.{" "}
         </p>
         {/* Falar que temos os cards fisicamente, PDF (disponibilizar o link) e no chatbot (link) */}
-        <span
-          className="text-md text-center"
-          id="text"
-        >
+        <span className="text-md text-center" id="text">
           Nós temos os estes cards fisicamente, em{" "}
           <Link
             className="text-blue-500 underline hover:text-blue-700"
@@ -195,30 +207,31 @@ const MulheresNasExatas = () => {
           )}
         </div>
         <div className="md:w-8xl mb-8 flex w-full flex-col items-center justify-center">
-          <Wrap
-            spacing={4}
-            mb={8}
-            zIndex={1}
-            justify="center"
-          >
+          <Wrap spacing={4} mb={8} zIndex={1} justify="center">
             {gurias && gurias.length > 0 ? (
               <>
                 {filteredGurias.length > 0 ? (
                   <>
-                    {filteredGurias.map((womanData: womanType, index: number) => (
-                      <Reveal
-                        delay={index === 0 || index % 4 === 0 ? 0 : 0.1 * (index % 4)}
-                        key={womanData.name}
-                      >
-                        <WomanCard
+                    {filteredGurias.map(
+                      (womanData: womanType, index: number) => (
+                        <Reveal
+                          delay={
+                            index === 0 || index % 4 === 0
+                              ? 0
+                              : 0.1 * (index % 4)
+                          }
                           key={womanData.name}
-                          name={womanData.name}
-                          imageUrl={getImage(womanData.name, images)}
-                          tags={womanData.tags}
-                          index={index}
-                        />
-                      </Reveal>
-                    ))}
+                        >
+                          <WomanCard
+                            key={womanData.name}
+                            name={womanData.name}
+                            imageUrl={getImage(womanData.name, images)}
+                            tags={womanData.tags}
+                            index={index}
+                          />
+                        </Reveal>
+                      )
+                    )}
                   </>
                 ) : (
                   <Card
@@ -234,10 +247,7 @@ const MulheresNasExatas = () => {
                     onClick={() => clearSearch()}
                     className="flex size-full flex-col items-center justify-center"
                   >
-                    <CardBody
-                      fontSize="xl"
-                      color="white"
-                    >
+                    <CardBody fontSize="xl" color="white">
                       Nenhuma mulher encontrada com esses filtros :(
                     </CardBody>
                   </Card>

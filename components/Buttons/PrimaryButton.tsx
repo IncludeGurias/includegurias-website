@@ -17,7 +17,14 @@ interface PrimaryButtonProps {
   disabled?: boolean;
 }
 
-const PrimaryButton = ({ children, icon, classNames, recuo, type, disabled }: PrimaryButtonProps) => {
+const PrimaryButton = ({
+  children,
+  icon,
+  classNames,
+  recuo,
+  type,
+  disabled,
+}: PrimaryButtonProps) => {
   const controls = useAnimation();
   const iconControls = useAnimation();
 
@@ -40,7 +47,9 @@ const PrimaryButton = ({ children, icon, classNames, recuo, type, disabled }: Pr
   };
 
   return (
-    <div className={`relative inline-block min-w-[250px] ${classNames?.divContainer}`}>
+    <div
+      className={`relative inline-block min-w-[250px] ${classNames?.divContainer}`}
+    >
       <motion.button
         disabled={disabled || false}
         onHoverStart={onHoverStart}

@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export default function EventosAndActivities() {
   return (
@@ -28,7 +28,10 @@ export default function EventosAndActivities() {
         {/* Seção de Oficinas */}
         <section className="mb-8">
           <h2 className="text-2xl font-semibold">Oficinas</h2>
-          <p>Descrição das oficinas realizadas, incluindo objetivos, temas abordados e impacto.</p>
+          <p>
+            Descrição das oficinas realizadas, incluindo objetivos, temas
+            abordados e impacto.
+          </p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Exemplo de oficina */}
             <div className="rounded bg-white p-4 shadow">
@@ -45,14 +48,17 @@ export default function EventosAndActivities() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold">Visitas Técnicas</h2>
           <p>
-            Detalhes sobre as visitas técnicas realizadas, incluindo locais visitados, aprendizados e experiências
-            compartilhadas.
+            Detalhes sobre as visitas técnicas realizadas, incluindo locais
+            visitados, aprendizados e experiências compartilhadas.
           </p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Exemplo de visita técnica */}
             <div className="rounded bg-white p-4 shadow">
               <h3 className="font-bold">Visita à Empresa TechX</h3>
-              <p>Visita técnica à TechX para aprender sobre desenvolvimento de software.</p>
+              <p>
+                Visita técnica à TechX para aprender sobre desenvolvimento de
+                software.
+              </p>
               {/* Placeholder de imagem */}
               <div className="mt-2 h-32 rounded bg-gray-200"></div>
             </div>
@@ -64,14 +70,16 @@ export default function EventosAndActivities() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold">Cursos</h2>
           <p>
-            Informações sobre os cursos oferecidos, incluindo conteúdo programático, duração e feedback dos
-            participantes.
+            Informações sobre os cursos oferecidos, incluindo conteúdo
+            programático, duração e feedback dos participantes.
           </p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Exemplo de curso */}
             <div className="rounded bg-white p-4 shadow">
               <h3 className="font-bold">Curso de Web Development</h3>
-              <p>Curso abrangente sobre desenvolvimento web com React e Node.js.</p>
+              <p>
+                Curso abrangente sobre desenvolvimento web com React e Node.js.
+              </p>
               {/* Placeholder de imagem */}
               <div className="mt-2 h-32 rounded bg-gray-200"></div>
             </div>
@@ -82,7 +90,10 @@ export default function EventosAndActivities() {
         {/* Seção de Lives */}
         <section className="mb-8">
           <h2 className="text-2xl font-semibold">Lives</h2>
-          <p>Resumo das lives realizadas, com temas discutidos e principais insights.</p>
+          <p>
+            Resumo das lives realizadas, com temas discutidos e principais
+            insights.
+          </p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Exemplo de live */}
             <div className="rounded bg-white p-4 shadow">
@@ -98,11 +109,16 @@ export default function EventosAndActivities() {
         {/* Seção de Palestras */}
         <section className="mb-8">
           <h2 className="text-2xl font-semibold">Palestras</h2>
-          <p>Descrição das palestras ministradas, incluindo tópicos abordados e palestrantes.</p>
+          <p>
+            Descrição das palestras ministradas, incluindo tópicos abordados e
+            palestrantes.
+          </p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Exemplo de palestra */}
             <div className="rounded bg-white p-4 shadow">
-              <h3 className="font-bold">Palestra sobre Segurança Cibernética</h3>
+              <h3 className="font-bold">
+                Palestra sobre Segurança Cibernética
+              </h3>
               <p>Palestra sobre como proteger seus dados online.</p>
               {/* Placeholder de imagem */}
               <div className="mt-2 h-32 rounded bg-gray-200"></div>
@@ -113,8 +129,13 @@ export default function EventosAndActivities() {
 
         {/* Seção de Semana Nacional de Sistemas e Tecnologia */}
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold">Semana Nacional de Sistemas e Tecnologia</h2>
-          <p>Informações sobre a participação e atividades durante a Semana Nacional de Sistemas e Tecnologia.</p>
+          <h2 className="text-2xl font-semibold">
+            Semana Nacional de Sistemas e Tecnologia
+          </h2>
+          <p>
+            Informações sobre a participação e atividades durante a Semana
+            Nacional de Sistemas e Tecnologia.
+          </p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Exemplo de atividade */}
             <div className="rounded bg-white p-4 shadow">
@@ -130,7 +151,10 @@ export default function EventosAndActivities() {
         {/* Seção de Escolas Parceiras */}
         <section className="mb-8">
           <h2 className="text-2xl font-semibold">Escolas Parceiras</h2>
-          <p>Descrição das escolas que já foram atendidas pelo projeto, destacando parcerias e colaborações.</p>
+          <p>
+            Descrição das escolas que já foram atendidas pelo projeto,
+            destacando parcerias e colaborações.
+          </p>
           <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {/* Exemplo de escola parceira */}
             <div className="rounded bg-white p-4 shadow">
@@ -144,5 +168,5 @@ export default function EventosAndActivities() {
         </section>
       </div>
     </div>
-  )
+  );
 }

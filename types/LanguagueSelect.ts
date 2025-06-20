@@ -1,5 +1,5 @@
 export interface LanguageSelectProps {
-  onClickFunction: (value: string) => void
-  openMenu: boolean
-  setOpenMenu: (value: boolean) => void
+  onClickFunction: (value: string) => void;
+  openMenu: boolean;
+  setOpenMenu: (value: boolean) => void;
 }

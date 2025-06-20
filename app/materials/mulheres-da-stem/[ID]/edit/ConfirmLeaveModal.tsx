@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Button,
   Modal,
@@ -10,17 +10,22 @@ import {
   ModalOverlay,
   Text,
   useDisclosure,
-} from "@chakra-ui/react"
-import Link from "next/link"
-import { BiArrowBack } from "react-icons/bi"
-import IconCircleButton from "../IconCircleButton"
+} from "@chakra-ui/react";
+import Link from "next/link";
+import { BiArrowBack } from "react-icons/bi";
+import IconCircleButton from "../IconCircleButton";
 
 function ConfirmModal({ url }: { url: string }) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <IconCircleButton icon={<BiArrowBack />} bgColor="red.100" tooltip="Voltar" onClick={onOpen} />
+      <IconCircleButton
+        icon={<BiArrowBack />}
+        bgColor="red.100"
+        tooltip="Voltar"
+        onClick={onOpen}
+      />
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
@@ -44,7 +49,7 @@ function ConfirmModal({ url }: { url: string }) {
         </ModalContent>
       </Modal>
     </>
-  )
+  );
 }
 
-export default ConfirmModal
+export default ConfirmModal;

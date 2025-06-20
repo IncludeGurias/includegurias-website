@@ -1,27 +1,28 @@
-"use client"
-import { Box, Button, Input, Spinner, Stack, Table } from "@chakra-ui/react"
-import { ChangeEvent, useEffect, useState } from "react"
-import { BiSave } from "react-icons/bi"
-import { TbPlus } from "react-icons/tb"
-import { useIncludeInfoStore, useSocialMediaStore } from "app/states"
-import { HeadingText } from "components"
-import IncludeInfo from "types/data/includeInfo"
-import SocialMediaType from "types/data/socialMedia"
-import DeleteButton from "./DeleteButton"
+"use client";
+import { Box, Button, Input, Spinner, Stack, Table } from "@chakra-ui/react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { BiSave } from "react-icons/bi";
+import { TbPlus } from "react-icons/tb";
+import { useIncludeInfoStore, useSocialMediaStore } from "app/states";
+import { HeadingText } from "components";
+import IncludeInfo from "types/data/includeInfo";
+import SocialMediaType from "types/data/socialMedia";
+import DeleteButton from "./DeleteButton";
 
 const RedesSociais = () => {
-  const [SocialMedia, setSocialMedia] = useState<SocialMediaType[]>([])
-  const [hasSocialMediaChanged, setHasSocialMediaChanged] = useState(false)
+  const [SocialMedia, setSocialMedia] = useState<SocialMediaType[]>([]);
+  const [hasSocialMediaChanged, setHasSocialMediaChanged] = useState(false);
 
-  const { getSocialMedia, updateSocialMedia, socialMediaLoading } = useSocialMediaStore((state) => ({
-    getSocialMedia: state.getSocialMedia,
-    updateSocialMedia: state.updateSocialMedia,
-    socialMediaLoading: state.socialMediaLoading,
-  }))
+  const { getSocialMedia, updateSocialMedia, socialMediaLoading } =
+    useSocialMediaStore((state) => ({
+      getSocialMedia: state.getSocialMedia,
+      updateSocialMedia: state.updateSocialMedia,
+      socialMediaLoading: state.socialMediaLoading,
+    }));
 
   useEffect(() => {
-    getSocialMedia().then((data) => setSocialMedia(data))
-  }, [getSocialMedia])
+    getSocialMedia().then((data) => setSocialMedia(data));
+  }, [getSocialMedia]);
 
   const handleSocialMediaChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
@@ -29,62 +30,68 @@ const RedesSociais = () => {
     field: keyof SocialMediaType
   ) => {
     try {
-      if (index < 0 || index >= SocialMedia.length || !SocialMedia[index]) return
+      if (index < 0 || index >= SocialMedia.length || !SocialMedia[index])
+        return;
       setSocialMedia((prev) =>
-        prev.map((socialMedia, i) => (i === index ? { ...socialMedia, [field]: e.target.value } : socialMedia))
-      )
-      setHasSocialMediaChanged(true)
+        prev.map((socialMedia, i) =>
+          i === index
+            ? { ...socialMedia, [field]: e.target.value }
+            : socialMedia
+        )
+      );
+      setHasSocialMediaChanged(true);
     } catch (error) {
-      alert("Erro ao alterar rede social")
-      console.error(error)
+      alert("Erro ao alterar rede social");
+      console.error(error);
     }
-  }
+  };
 
   const handleAddSocialMedia = () => {
-    setHasSocialMediaChanged(true)
+    setHasSocialMediaChanged(true);
     const newSocialMedia: SocialMediaType = {
       name: "Nova Rede Social",
       href: "#",
-    }
-    setSocialMedia([...SocialMedia, newSocialMedia])
-  }
+    };
+    setSocialMedia([...SocialMedia, newSocialMedia]);
+  };
 
   const handleDeleteSocialMedia = (index: number) => {
-    setHasSocialMediaChanged(true)
-    const updatedSocialMedia = [...SocialMedia]
-    updatedSocialMedia.splice(index, 1)
-    setSocialMedia(updatedSocialMedia)
-  }
+    setHasSocialMediaChanged(true);
+    const updatedSocialMedia = [...SocialMedia];
+    updatedSocialMedia.splice(index, 1);
+    setSocialMedia(updatedSocialMedia);
+  };
 
   const handleSaveSocialMedia = () => {
     SocialMedia.forEach((item) => {
       if (!item.name) {
-        alert("Nome da rede social não pode ser vazio!")
-        return
+        alert("Nome da rede social não pode ser vazio!");
+        return;
       }
       if (!item.href) {
-        alert("Link da rede social não pode ser vazio!")
-        return
+        alert("Link da rede social não pode ser vazio!");
+        return;
       }
-    })
+    });
     updateSocialMedia(SocialMedia).then(() => {
-      alert("Redes sociais salvas com sucesso!")
-    })
-    setHasSocialMediaChanged(false)
-  }
+      alert("Redes sociais salvas com sucesso!");
+    });
+    setHasSocialMediaChanged(false);
+  };
 
-  const [Info, setInfo] = useState<IncludeInfo[]>([])
-  const [hasInfoChanged, setHasInfoChanged] = useState(false)
+  const [Info, setInfo] = useState<IncludeInfo[]>([]);
+  const [hasInfoChanged, setHasInfoChanged] = useState(false);
 
-  const { getIncludeInfo, updateIncludeInfo, includeInfoLoading } = useIncludeInfoStore((state) => ({
-    getIncludeInfo: state.getIncludeInfo,
-    updateIncludeInfo: state.updateIncludeInfo,
-    includeInfoLoading: state.includeInfoLoading,
-  }))
+  const { getIncludeInfo, updateIncludeInfo, includeInfoLoading } =
+    useIncludeInfoStore((state) => ({
+      getIncludeInfo: state.getIncludeInfo,
+      updateIncludeInfo: state.updateIncludeInfo,
+      includeInfoLoading: state.includeInfoLoading,
+    }));
 
   useEffect(() => {
-    getIncludeInfo().then((data) => setInfo(data))
-  }, [getIncludeInfo])
+    getIncludeInfo().then((data) => setInfo(data));
+  }, [getIncludeInfo]);
 
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
@@ -92,36 +99,40 @@ const RedesSociais = () => {
     field: keyof IncludeInfo
   ) => {
     try {
-      if (index < 0 || index >= Info.length || !Info[index]) return
-      setInfo((prev) => prev.map((info, i) => (i === index ? { ...info, [field]: e.target.value } : info)))
-      setHasInfoChanged(true)
+      if (index < 0 || index >= Info.length || !Info[index]) return;
+      setInfo((prev) =>
+        prev.map((info, i) =>
+          i === index ? { ...info, [field]: e.target.value } : info
+        )
+      );
+      setHasInfoChanged(true);
     } catch (error) {
-      alert("Erro ao alterar informação")
-      console.error(error)
+      alert("Erro ao alterar informação");
+      console.error(error);
     }
-  }
+  };
 
   const handleAddInfo = () => {
     const newInfo: IncludeInfo = {
       name: "Nova Informação",
       value: "",
-    }
-    setInfo([...Info, newInfo])
-  }
+    };
+    setInfo([...Info, newInfo]);
+  };
 
   const handleDeleteInfo = (index: number) => {
-    const updatedInfo = [...Info]
-    updatedInfo.splice(index, 1)
-    setInfo(updatedInfo)
-    setHasInfoChanged(true)
-  }
+    const updatedInfo = [...Info];
+    updatedInfo.splice(index, 1);
+    setInfo(updatedInfo);
+    setHasInfoChanged(true);
+  };
 
   const handleSaveInfo = () => {
     updateIncludeInfo(Info).then(() => {
-      alert("Informações salvas com sucesso!")
-    })
-    setHasInfoChanged(false)
-  }
+      alert("Informações salvas com sucesso!");
+    });
+    setHasInfoChanged(false);
+  };
 
   return (
     <Box px={4} display="flex" flexDirection="column" gap={4}>
@@ -157,7 +168,9 @@ const RedesSociais = () => {
                   />
                 </td>
                 <td className="flex w-full justify-center">
-                  <DeleteButton onDelete={() => handleDeleteSocialMedia(index)} />
+                  <DeleteButton
+                    onDelete={() => handleDeleteSocialMedia(index)}
+                  />
                 </td>
               </tr>
             ))}
@@ -224,7 +237,12 @@ const RedesSociais = () => {
         </Table>
       )}
       <Stack direction="row" spacing={4} justifyContent="between" mt={4}>
-        <Button variant={"outline"} leftIcon={<TbPlus />} onClick={handleAddInfo} isDisabled={includeInfoLoading}>
+        <Button
+          variant={"outline"}
+          leftIcon={<TbPlus />}
+          onClick={handleAddInfo}
+          isDisabled={includeInfoLoading}
+        >
           Adicionar Informação
         </Button>
         <Button
@@ -238,7 +256,7 @@ const RedesSociais = () => {
         </Button>
       </Stack>
     </Box>
-  )
-}
+  );
+};
 
-export default RedesSociais
+export default RedesSociais;

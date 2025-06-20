@@ -1,15 +1,15 @@
-"use client"
-import { Box, IconButton, Tooltip } from "@chakra-ui/react"
-import { Fade } from "@chakra-ui/transition"
-import { useEffect, useState } from "react"
-import { IoAccessibilitySharp } from "react-icons/io5"
-import { IoClose } from "react-icons/io5"
-import { TbTextColor, TbTextDecrease, TbTextIncrease } from "react-icons/tb"
-import increaseFontSize from "utils/increaseFontSize"
+"use client";
+import { Box, IconButton, Tooltip } from "@chakra-ui/react";
+import { Fade } from "@chakra-ui/transition";
+import { useEffect, useState } from "react";
+import { IoAccessibilitySharp } from "react-icons/io5";
+import { IoClose } from "react-icons/io5";
+import { TbTextColor, TbTextDecrease, TbTextIncrease } from "react-icons/tb";
+import increaseFontSize from "utils/increaseFontSize";
 
 const FloatButton = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isClient, setIsClient] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   // const { colorMode, toggleColorMode } = useColorMode();
   // const { theme, setTheme } = useTheme();
@@ -37,25 +37,29 @@ const FloatButton = () => {
       icon: <TbTextColor size={27} />,
       action: () => window.location.reload(),
     },
-  ]
+  ];
 
   const openMenu = () => {
-    setIsMenuOpen(true)
-  }
+    setIsMenuOpen(true);
+  };
 
   const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
+    setIsMenuOpen(false);
+  };
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
+    setIsClient(true);
+  }, []);
 
   return (
     <Box position="fixed" bottom="15px" right="15px" zIndex={99999}>
       {isClient && (
         <div>
-          <Tooltip label="Abrir menu de acessibilidade" aria-label="Abrir" placement="top">
+          <Tooltip
+            label="Abrir menu de acessibilidade"
+            aria-label="Abrir"
+            placement="top"
+          >
             <IconButton
               visibility={!isMenuOpen ? "visible" : "hidden"}
               icon={<IoAccessibilitySharp size={25} />}
@@ -104,7 +108,12 @@ const FloatButton = () => {
                 />
               </Tooltip>
               {menuOptions.map((option, index) => (
-                <Tooltip key={index} label={option.name} aria-label={option.name} placement="left">
+                <Tooltip
+                  key={index}
+                  label={option.name}
+                  aria-label={option.name}
+                  placement="left"
+                >
                   <IconButton
                     w={"40px"}
                     h={"40px"}
@@ -122,7 +131,7 @@ const FloatButton = () => {
         </div>
       )}
     </Box>
-  )
-}
+  );
+};
 
-export default FloatButton
+export default FloatButton;

@@ -1,6 +1,6 @@
-import { Container } from "@chakra-ui/react"
-import Link from "next/link"
-import { Timeline } from "components"
+import { Container } from "@chakra-ui/react";
+import Link from "next/link";
+import { Timeline } from "components";
 
 export default function TimelinePage() {
   return (
@@ -14,5 +14,5 @@ export default function TimelinePage() {
         <Timeline />
       </Container>
     </div>
-  )
+  );
 }

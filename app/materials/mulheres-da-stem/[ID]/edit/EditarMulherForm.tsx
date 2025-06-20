@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Button,
   ButtonGroup,
@@ -15,21 +15,27 @@ import {
   Stack,
   Text,
   Textarea,
-} from "@chakra-ui/react"
-import Link from "next/link"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { BiSave } from "react-icons/bi"
-import { MdOutlineCancel } from "react-icons/md"
-import { PrimaryButton } from "components"
-import { womanType } from "types/woman"
-import { formatYYYYMMDD } from "utils/dateFunctions"
-import Tags from "./Tags"
+} from "@chakra-ui/react";
+import Link from "next/link";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { BiSave } from "react-icons/bi";
+import { MdOutlineCancel } from "react-icons/md";
+import { PrimaryButton } from "components";
+import { womanType } from "types/woman";
+import { formatYYYYMMDD } from "utils/dateFunctions";
+import Tags from "./Tags";
 
-const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[] | null }) => {
+const EditarMulherForm = ({
+  data,
+  allTags,
+}: {
+  data: womanType;
+  allTags: string[] | null;
+}) => {
   // const [loading, setLoading] = useState<boolean>(false)
-  const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false)
-  const [selectedTags, setSelectedTags] = useState<string[]>(data.tags ?? [])
+  const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
+  const [selectedTags, setSelectedTags] = useState<string[]>(data.tags ?? []);
 
   const {
     handleSubmit,
@@ -45,21 +51,31 @@ const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[
       birthPlace: data.birthPlace,
       job: data.job,
     },
-  })
+  });
 
   function onSubmit(values: any) {
-    const womanData = { ...values, tags: selectedTags }
-    console.log(womanData)
+    const womanData = { ...values, tags: selectedTags };
+    console.log(womanData);
   }
 
   function handleReset(id: keyof womanType) {
     // setValue(id, data[id])
-    setFocus(id)
-    resetField(id)
-    console.log(getFieldState(id).isDirty)
+    setFocus(id);
+    resetField(id);
+    console.log(getFieldState(id).isDirty);
   }
 
-  const FormItem = ({ id, label, error, children }: { id: string; label: string; error: any; children: any }) => {
+  const FormItem = ({
+    id,
+    label,
+    error,
+    children,
+  }: {
+    id: string;
+    label: string;
+    error: any;
+    children: any;
+  }) => {
     return (
       <FormControl isInvalid={error}>
         <FormLabel htmlFor={id}>{label}</FormLabel>
@@ -78,10 +94,16 @@ const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[
           </Button>
         </Flex>
       </FormControl>
-    )
-  }
+    );
+  };
 
-  const PopConfirm = ({ onCancel, encodedName }: { onCancel: () => void; encodedName: string }) => {
+  const PopConfirm = ({
+    onCancel,
+    encodedName,
+  }: {
+    onCancel: () => void;
+    encodedName: string;
+  }) => {
     return (
       <Stack spacing={4}>
         <Text fontSize="xl" fontWeight="bold">
@@ -91,13 +113,17 @@ const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[
           <Link passHref href={`/materials/mulheres-da-stem/${encodedName}`}>
             <Button variant="outline">Sim</Button>
           </Link>
-          <Button variant="solid" className="cursor-pointer overflow-hidden font-medium shadow-md" onClick={onCancel}>
+          <Button
+            variant="solid"
+            className="cursor-pointer overflow-hidden font-medium shadow-md"
+            onClick={onCancel}
+          >
             Não
           </Button>
         </ButtonGroup>
       </Stack>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -115,7 +141,11 @@ const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[
           />
         </FormItem>
 
-        <FormItem id="birthPlace" label="Local de Nascimento" error={errors.birthPlace}>
+        <FormItem
+          id="birthPlace"
+          label="Local de Nascimento"
+          error={errors.birthPlace}
+        >
           <Input
             id="birthPlace"
             placeholder="Local de Nascimento"
@@ -127,10 +157,19 @@ const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[
         </FormItem>
 
         <FormItem id="job" label="Profissão" error={errors.job}>
-          <Input id="job" placeholder="Profissão" defaultValue={data.job} {...register("job", {})} />
+          <Input
+            id="job"
+            placeholder="Profissão"
+            defaultValue={data.job}
+            {...register("job", {})}
+          />
         </FormItem>
 
-        <FormItem id="birthDate" label="Data de Nascimento" error={errors.birthDate}>
+        <FormItem
+          id="birthDate"
+          label="Data de Nascimento"
+          error={errors.birthDate}
+        >
           <Input
             placeholder="2000-01-01"
             id="birthDate"
@@ -154,7 +193,11 @@ const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[
         </FormItem>
         <FormControl>
           <FormLabel htmlFor={"tags"}>Tags</FormLabel>
-          <Tags tags={allTags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+          <Tags
+            tags={allTags}
+            selectedTags={selectedTags}
+            setSelectedTags={setSelectedTags}
+          />
 
           <Flex w="full" justifyContent="flex-end">
             <Button
@@ -196,18 +239,25 @@ const EditarMulherForm = ({ data, allTags }: { data: womanType; allTags: string[
             </PopoverTrigger>
             <PopoverContent p={5}>
               <FocusLock persistentFocus={false}>
-                <PopConfirm onCancel={() => setIsPopoverOpen(false)} encodedName={encodeURIComponent(data.name)} />
+                <PopConfirm
+                  onCancel={() => setIsPopoverOpen(false)}
+                  encodedName={encodeURIComponent(data.name)}
+                />
                 <PopoverCloseButton />
               </FocusLock>
             </PopoverContent>
           </Popover>
-          <PrimaryButton type="submit" disabled={!isDirty || isSubmitting} icon={<BiSave size={25} />}>
+          <PrimaryButton
+            type="submit"
+            disabled={!isDirty || isSubmitting}
+            icon={<BiSave size={25} />}
+          >
             Salvar
           </PrimaryButton>
         </Flex>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default EditarMulherForm
+export default EditarMulherForm;

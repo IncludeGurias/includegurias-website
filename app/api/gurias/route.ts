@@ -47,60 +47,72 @@
  *         description: Bad request
  */
 
-import { WOMAN_DATA } from "data"
-import WomanImageDict from "utils/cardsDict"
-import { removeAccents as normalize, toCamelCase } from "utils/stringFunctions"
+import { WOMAN_DATA } from "data";
+import WomanImageDict from "utils/cardsDict";
+import { removeAccents as normalize, toCamelCase } from "utils/stringFunctions";
 
 export async function GET(request: Request) {
-  const { searchParams }: any = new URL(request.url)
+  const { searchParams }: any = new URL(request.url);
 
-  const _checkGuria: any = searchParams.get("guria") || null
-  const checkTags: any = searchParams.get("tags") || null
+  const _checkGuria: any = searchParams.get("guria") || null;
+  const checkTags: any = searchParams.get("tags") || null;
 
-  const checkImage: any = searchParams.get("image") || false
-  const checkSubstring: any = searchParams.get("substring") || false
+  const checkImage: any = searchParams.get("image") || false;
+  const checkSubstring: any = searchParams.get("substring") || false;
 
-  const checkGuria = _checkGuria ? normalize(_checkGuria) : null
+  const checkGuria = _checkGuria ? normalize(_checkGuria) : null;
 
   if (checkGuria) {
     if (checkSubstring) {
-      const guria: string = checkGuria.replace(/([A-Z])/g, " $1").replace(/^\w/, (c: string) => c.toUpperCase())
-      const name: string = guria.toLowerCase()
-      const nameData: any = WOMAN_DATA.filter((item: any) => item.name.toLowerCase().includes(name))
+      const guria: string = checkGuria
+        .replace(/([A-Z])/g, " $1")
+        .replace(/^\w/, (c: string) => c.toUpperCase());
+      const name: string = guria.toLowerCase();
+      const nameData: any = WOMAN_DATA.filter((item: any) =>
+        item.name.toLowerCase().includes(name)
+      );
 
       return new Response(JSON.stringify(nameData), {
         headers: { "Content-Type": "application/json" },
-      })
+      });
     } else if (checkImage) {
-      const guriaImage: any = WomanImageDict[toCamelCase(checkGuria)]
+      const guriaImage: any = WomanImageDict[toCamelCase(checkGuria)];
 
       return new Response(JSON.stringify(guriaImage["src"]), {
         headers: { "Content-Type": "application/json" },
-      })
+      });
     } else {
-      const guria: string = toCamelCase(checkGuria)
-      const guriaData: any = WOMAN_DATA.find((item: any) => toCamelCase(item.name) === guria)
+      const guria: string = toCamelCase(checkGuria);
+      const guriaData: any = WOMAN_DATA.find(
+        (item: any) => toCamelCase(item.name) === guria
+      );
 
       return new Response(JSON.stringify(guriaData), {
         headers: { "Content-Type": "application/json" },
-      })
+      });
     }
   } else if (checkTags) {
     const listtags: string[] = checkTags
       .split("|")
-      .map((tag: string) => tag.replace(/([A-Z])/g, " $1").replace(/^\w/, (c) => c.toUpperCase()))
-    const tags: string[] = listtags.map((tag: string) => tag.replace(/Da/g, "da").replace(/De/g, "de"))
+      .map((tag: string) =>
+        tag.replace(/([A-Z])/g, " $1").replace(/^\w/, (c) => c.toUpperCase())
+      );
+    const tags: string[] = listtags.map((tag: string) =>
+      tag.replace(/Da/g, "da").replace(/De/g, "de")
+    );
 
     const tagsData: any = WOMAN_DATA.filter((item: any) =>
       tags.every((tag: string) => {
-        return item.tags.map((tag: string) => normalize(tag)).includes(normalize(tag))
+        return item.tags
+          .map((tag: string) => normalize(tag))
+          .includes(normalize(tag));
       })
-    )
+    );
 
     return new Response(JSON.stringify(tagsData), {
       headers: { "Content-Type": "application/json" },
-    })
+    });
   } else {
-    return new Response("Missing Parameters in the request", { status: 400 })
+    return new Response("Missing Parameters in the request", { status: 400 });
   }
 }

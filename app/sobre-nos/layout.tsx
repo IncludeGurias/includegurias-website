@@ -1,13 +1,17 @@
-import { Metadata } from "next"
-import { getLayout } from "components"
-import baseMetadata from "utils/metadata"
+import { Metadata } from "next";
+import { getLayout } from "components";
+import baseMetadata from "utils/metadata";
 
 export const metadata: Metadata = {
   ...baseMetadata,
   title: "Sobre nós - Include Gurias",
   description: "Conheça mais sobre o projeto Include Gurias e sua equipe!",
-}
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return getLayout(children)
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return getLayout(children);
 }

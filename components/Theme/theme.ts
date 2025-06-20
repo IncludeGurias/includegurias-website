@@ -1,6 +1,6 @@
 /* theme.ts */
-import { extendTheme } from "@chakra-ui/react"
-import TextStyle from "./TextStyle"
+import { extendTheme } from "@chakra-ui/react";
+import TextStyle from "./TextStyle";
 
 export const theme = extendTheme({
   config: {
@@ -54,4 +54,4 @@ export const theme = extendTheme({
   components: {
     TextStyle,
   },
-})
+});
