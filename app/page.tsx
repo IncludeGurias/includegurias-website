@@ -90,20 +90,10 @@ export default function Home() {
                 textAlign="justify"
                 id="text"
               >
-                O Projeto Include Gurias visa divulgar a área da STEM (ciências,
-                tecnologia, engenharias e matemática) para despertar o interesse
-                de meninas da educação básica para a área tecnológica através do
-                desenvolvimento do pensamento computacional. Pretende-se motivar
-                mais mulheres a usarem sua criatividade e capacidade intelectual
-                para desenvolver programas, robôs, jogos, sistemas embarcados,
-                associados à inovação tecnológica. Ao inserir Tecnologias de
-                Informação e Comunicação (TIC) na educação básica, por meio da
-                programação cuja base é o raciocínio lógico de programação, é
-                possível trabalhar com resolução de problemas, desenvolver
-                habilidades de trabalho colaborativo e cooperativo, desenvolver
-                a capacidade criativa. O Projeto Include Gurias é desenvolvido
-                dentro do Curso de Engenharia de Computação da UERGS
-                (Universidade Estadual do Rio Grande do Sul).
+                O Projeto Include Gurias incentiva meninas da educação básica a
+                explorarem tecnologia, ciências e programação, desenvolvendo
+                criatividade, lógica e pensamento computacional. A iniciativa é
+                promovida pela Engenharia de Computação da UERGS.
               </Text>
             </Reveal>
             <Stack

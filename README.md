@@ -77,7 +77,9 @@ Este repositório contém o site do projeto Include Gurias, focado em divulgaç�
 - Os **componentes não estão todos com nomes padronizados**. Seria bom revisar e padronizar os nomes para facilitar a manutenção.
 - Algumas partes precisam de **melhoria de UX**. Quando fiz esse site eu era bem iniciante, então há muitos pontos que podem ser melhorados em usabilidade e experiência do usuário.
 - Se encontrar algo estranho, provavelmente é porque eu estava aprendendo na época. Sinta-se à vontade para refatorar e melhorar!
-- Atualmente todos os dados são pegos do banco de dados (Partners, videoshowcase, etc) é IMPORTANTE ter um sistema de cache, para evitar chamadas desnecessarias (possivelmente colocar no state)
+- fazer laz laoding no https://includegurias.com.br/materials/mulheres-da-stem
+- terminar paginas em contrução (linha do tempo e eventos e atividades)
+- atualizar equipe e suas imagens (pelo )
 - Ver o que precisa fazer para atualizar o primsa do 5.22.0 -> 6.^^^^^^
 
 Dúvidas? pode me chamar no whats que eu ajudo qualquer coisa +5551 995245504.
