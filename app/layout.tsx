@@ -1,6 +1,6 @@
-import { Metadata } from "next"
-import { getRootLayout } from "components"
-import baseMetadata from "utils/metadata"
+import { Metadata } from "next";
+import { getRootLayout } from "components";
+import baseMetadata from "utils/metadata";
 
 export const metadata: Metadata = {
   ...baseMetadata,
@@ -19,8 +19,12 @@ export const metadata: Metadata = {
     description:
       "Projeto Include Gurias: Despertando o interesse de meninas na área STEM através do desenvolvimento do pensamento computacional. Oficinas de programação, robótica e tecnologia para empoderar mulheres na ciência.",
   },
-}
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return getRootLayout(children)
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return getRootLayout(children);
 }

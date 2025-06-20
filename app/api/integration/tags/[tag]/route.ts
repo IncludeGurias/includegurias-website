@@ -1,12 +1,12 @@
-import { NextRequest } from "next/server"
-import { prisma } from "../../../../../prisma/config"
+import { NextRequest } from "next/server";
+import { prisma } from "../../../../../prisma/config";
 
 export async function GET(
   req: NextRequest,
   context: {
     params: {
-      tag: string
-    }
+      tag: string;
+    };
   }
 ) {
   const gurias = await prisma.tag
@@ -23,19 +23,19 @@ export async function GET(
       },
     })
     .then((tag) => {
-      if (!tag) return []
+      if (!tag) return [];
       return tag.GuriaTags.map(
         (guriaTag: {
           guria: {
-            id: any
-            name: any
-            birthplace: any
-            birthdate: any
-            deathdate: any
-            bio: any
-            job: any
-            imageUrl: any
-          }
+            id: any;
+            name: any;
+            birthplace: any;
+            birthdate: any;
+            deathdate: any;
+            bio: any;
+            job: any;
+            imageUrl: any;
+          };
         }) => {
           return {
             id: guriaTag.guria.id,
@@ -46,18 +46,18 @@ export async function GET(
             bio: guriaTag.guria.bio,
             job: guriaTag.guria.job,
             imageUrl: guriaTag.guria.imageUrl,
-          }
+          };
         }
-      ).sort(() => Math.random() - 0.5)
-    })
+      ).sort(() => Math.random() - 0.5);
+    });
 
   const response = {
     gurias: gurias,
-  }
+  };
 
   return new Response(JSON.stringify(response), {
     headers: { "Content-Type": "application/json" },
-  })
+  });
 }
 
 /*
